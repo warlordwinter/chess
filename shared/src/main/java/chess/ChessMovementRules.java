@@ -1,15 +1,16 @@
 package chess;
 
+import javax.lang.model.type.NullType;
+
 /**
  * This is the parent class that has some general attributes that apply to all the pieces
  */
 public class ChessMovementRules {
-}
-
 /**
  * This is the Pawn class that has all the movement rules for the Pawn
  */
 class Pawn extends ChessMovementRules{
+}
 
 }
 
