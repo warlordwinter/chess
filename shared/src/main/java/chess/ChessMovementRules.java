@@ -1,6 +1,5 @@
 package chess;
 
-import javax.lang.model.type.NullType;
 import java.util.ArrayList;
 //import java.util.List;
 
@@ -9,10 +8,47 @@ import java.util.ArrayList;
  */
 public class ChessMovementRules {
     protected int[][] chessMovesArray;
-  public void chessMove(ChessBoard chessBoard, ChessPosition chessPosition){
+
+  /**
+   * This is the overarching method for all the chess peices to know where they can move.
+   * @param chessBoard
+   * @param chessPosition
+   */
+    public void chessMove(ChessBoard chessBoard, ChessPosition chessPosition){
     System.out.println(chessPosition);
   }
-}
+
+  /**
+   * This function allows the program to know all the possible empty spaces on the board.
+   * We can then use this with the indivigual movement rules for each class to be able to move accordingly.
+   *
+   * @param chessBoard
+   * @return emptyChessSpacesArray
+   */
+  public int[][] calculateCurrentBoard(ChessBoard chessBoard){
+    ChessPiece[][] squares = ChessBoard.getSquares();
+    ArrayList<int[]> emptyChessSpaces = new ArrayList<>();
+    for (int i = 0; i <9; i++){
+      for(int j = 0; j <9; j++){
+        if(squares[i][j] == null){
+          int[] coordinates = {i,j};
+          emptyChessSpaces.add(coordinates);
+          //turn this function into the parent class
+          //record where all the pieces are.
+          //check to see if the piece is one that we are allowed to take
+          //if so add it to the collection
+          //cross-reference the pieces to see if the pieces in the way we are allowed to take
+          //return array points.
+        }
+      }
+    }
+
+    int[][] emptyChessSpacesArray = new int[emptyChessSpaces.size()][2];
+    for (int i = 0; i < emptyChessSpaces.size(); i++){
+      emptyChessSpacesArray[i] = emptyChessSpaces.get(i);
+    }
+    return emptyChessSpacesArray;
+  }
 /**
  * This is the Pawn class that has all the movement rules for the Pawn
  */
@@ -34,27 +70,18 @@ class King extends ChessMovementRules{
 class Bishop extends ChessMovementRules{
   @Override
   public void chessMove(ChessBoard chessBoard,ChessPosition chessPosition){
-    //take chess position and determine objects around it.
-    //iterate through the array and find all the coordinates for possible movement spots.
-    int currentColumn = chessPosition.getColumn();
-    int currentRow =chessPosition.getRow();
-    ChessPiece[][] squares = ChessBoard.getSquares();
-    for (int i = 0; i <9; i++){
-      for(int j = 0; j <9; j++){
-        if(squares[i][j] == null){
-          int[] coordinates = {i,j};
+    int[][] possibleChessBoardMoves = calculateCurrentBoard(chessBoard);
+    //implement an array for all the coordinates the Bishop can go to.
+    int col = chessPosition.getColumn();
+    int row = chessPosition.getRow();
 
-          //turn this function into the parent class
-          //record where all the pieces are.
-          //check to see if the piece is one that we are allowed to take
-          //if so add it to the collection
-          //cross-reference the pieces to see if the pieces in the way we are allowed to take
-          //return array points.
-        }
+    for (int i = 0; row<=8; i++){
+      for(int j =0; col<=8;j++){
+
       }
+
     }
   }
-
 }
 /**
  * This is the Rook class that has all the movement rules for the Rook
@@ -74,4 +101,5 @@ class Queen extends ChessMovementRules{
  */
 class Knight extends ChessMovementRules{
 
+  }
 }
