@@ -7,8 +7,12 @@ package chess;
  * signature of the existing methods.
  */
 public class ChessBoard {
-    private ChessPiece[][] squares = new ChessPiece[8][8]; //this array has no data type but is basically a list that will store all of the chess piece objects
+    public static ChessPiece[][] squares = new ChessPiece[8][8]; //this array has no data type but is basically a list that will store all of the chess piece objects
     public ChessBoard() {
+    }
+
+    public static ChessPiece[][] getSquares() {
+        return squares;
     }
 
     /**
