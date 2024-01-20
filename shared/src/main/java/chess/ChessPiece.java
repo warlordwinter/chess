@@ -1,7 +1,8 @@
 package chess;
 
-import chess.movement.*;
-
+import chess.movement.BishopMovementRules;
+import chess.movement.ChessMovementRule;
+//import chess.movement.ChessMovementRules;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -60,8 +61,9 @@ public class ChessPiece {
         Collection <ChessMove> collection = new ArrayList<>();
         switch (type) {
             case BISHOP:
-                ChessMovementRules bishopRules= new BishopMovementRules();
+                ChessMovementRule bishopRules= new BishopMovementRules();
                 bishopRules.chessMove(board,myPosition,collection);
+                System.out.println(bishopRules);
 //            case KING:
 //                ChessMovementRules.King King= new ChessMovementRules.King();
 //                return King.chessMove(board,myPosition);

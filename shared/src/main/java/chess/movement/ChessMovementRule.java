@@ -20,22 +20,22 @@ public abstract class ChessMovementRule {
     int row=chessPosition.getRow();
     ChessPiece startingPiece=chessBoard.getPiece(chessPosition);
     ChessGame.TeamColor startingColor=startingPiece.getTeamColor();
+    ChessPosition endingPosition;
+    ChessPiece piece;
 
-    while (row > 0 && row < 9 && col > 0 && col < 9) {
-      ChessPosition endingPosition=new ChessPosition(row, col);
-      ChessPiece piece=chessBoard.getPiece(endingPosition);
+    while (row > 1 && row < 8 && col > 1 && col < 8) {
+      row+=deltaRow;
+      col+=deltaCol;
+      endingPosition=new ChessPosition(row, col);
+      piece=chessBoard.getPiece(endingPosition);
       if (piece == null) {
         collection.add(new ChessMove(chessPosition, endingPosition, null));
-        row+=deltaRow;
-        col+=deltaCol;
-        endingPosition=new ChessPosition(row, col);
       } else {
         if (startingColor != piece.getTeamColor()) {
           collection.add(new ChessMove(chessPosition, endingPosition, null));
         }
         break;
       }
-
     }
   }
 }

@@ -14,4 +14,9 @@ public class BishopMovementRules extends ChessMovementRule{
     preditions(chessBoard,chessPosition,-1,-1,validMoves);
     preditions(chessBoard,chessPosition,1,-1,validMoves);
   }
+
+  @Override
+  public String toString() {
+    return "BishopMovementRules{}";
+  }
 }
