@@ -1,5 +1,8 @@
 package chess;
 
+import chess.movement.*;
+
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -52,6 +55,33 @@ public class ChessPiece {
      * @return Collection of valid moves
      */
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
-        return new ArrayList<>();
+        ChessPiece piece = board.getPiece(myPosition);
+        PieceType type = piece.getPieceType();
+        Collection <ChessMove> collection = new ArrayList<>();
+        switch (type) {
+            case BISHOP:
+                ChessMovementRules bishopRules= new BishopMovementRules();
+                bishopRules.chessMove(board,myPosition,collection);
+//            case KING:
+//                ChessMovementRules.King King= new ChessMovementRules.King();
+//                return King.chessMove(board,myPosition);
+//            case ROOK:
+//                ChessMovementRules.Rook Rook = new ChessMovementRules.Rook();
+//                return Rook.chessMove(board,myPosition);
+//            case PAWN:
+//                ChessMovementRules.Pawn Pawn= new ChessMovementRules.Pawn();
+//                return Pawn.chessMove(board,myPosition);
+//            case QUEEN:
+//                ChessMovementRules.Queen Queen = new ChessMovementRules.Queen();
+//                return Queen.chessMove(board,myPosition);
+//            case KNIGHT:
+//                ChessMovementRules.Knight Knight = new ChessMovementRules.Knight();
+//                return Knight.chessMove(board,myPosition);
+//            default:
+//                System.out.println("Unknown Piece type");
+//                break;
+        }
+        return collection;
     }
+
 }
