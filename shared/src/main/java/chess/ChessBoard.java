@@ -11,10 +11,14 @@ public class ChessBoard {
     public ChessBoard() {
     }
 
-//    @Override
-//    public boolean equals(Object obj) {
-//        return Arrays.deepEquals(this.squares);
-//    }
+    @Override
+    public boolean equals(Object obj) { // can take any kind of java obj
+        if(this.getClass() != obj.getClass()){
+            return false;
+        }
+        ChessBoard other = (ChessBoard) obj; //type casting into a chessboard
+        return Arrays.deepEquals(this.squares,other.squares);
+    }
 
     @Override
     public int hashCode(){
