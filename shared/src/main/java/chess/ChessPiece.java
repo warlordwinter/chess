@@ -64,27 +64,11 @@ public class ChessPiece {
             case BISHOP:
                 ChessMovementRule bishopRules= new BishopMovementRules();
                 bishopRules.chessMove(board,myPosition,collection);
-
                 break;
-//            case KING:
-//                ChessMovementRules.King King= new ChessMovementRules.King();
-//                return King.chessMove(board,myPosition);
             case ROOK:
                 ChessMovementRule rookRules = new RookMovementRules();
                 rookRules.chessMove(board,myPosition,collection);
                 break;
-//            case PAWN:
-//                ChessMovementRules.Pawn Pawn= new ChessMovementRules.Pawn();
-//                return Pawn.chessMove(board,myPosition);
-//            case QUEEN:
-//                ChessMovementRules.Queen Queen = new ChessMovementRules.Queen();
-//                return Queen.chessMove(board,myPosition);
-//            case KNIGHT:
-//                ChessMovementRules.Knight Knight = new ChessMovementRules.Knight();
-//                return Knight.chessMove(board,myPosition);
-//            default:
-//                System.out.println("Unknown Piece type");
-//                break;
         }
         return collection;
     }

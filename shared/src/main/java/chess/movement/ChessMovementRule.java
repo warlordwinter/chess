@@ -22,6 +22,12 @@ public abstract class ChessMovementRule {
     ChessGame.TeamColor startingColor=startingPiece.getTeamColor();
     ChessPosition endingPosition;
     ChessPiece piece;
+//    if (col==1) {
+//      col++;
+//    }
+//    if (row==1){
+//      row++;
+//    }
 
     while (row > 1 && row < 8 && col > 1 && col < 8) {
       row+=deltaRow;
