@@ -2,6 +2,7 @@ package chess;
 
 import chess.movement.BishopMovementRules;
 import chess.movement.ChessMovementRule;
+import chess.movement.RookMovementRules;
 //import chess.movement.ChessMovementRules;
 
 import java.util.ArrayList;
@@ -63,13 +64,15 @@ public class ChessPiece {
             case BISHOP:
                 ChessMovementRule bishopRules= new BishopMovementRules();
                 bishopRules.chessMove(board,myPosition,collection);
-                System.out.println(bishopRules);
+
+                break;
 //            case KING:
 //                ChessMovementRules.King King= new ChessMovementRules.King();
 //                return King.chessMove(board,myPosition);
-//            case ROOK:
-//                ChessMovementRules.Rook Rook = new ChessMovementRules.Rook();
-//                return Rook.chessMove(board,myPosition);
+            case ROOK:
+                ChessMovementRule rookRules = new RookMovementRules();
+                rookRules.chessMove(board,myPosition,collection);
+                break;
 //            case PAWN:
 //                ChessMovementRules.Pawn Pawn= new ChessMovementRules.Pawn();
 //                return Pawn.chessMove(board,myPosition);
