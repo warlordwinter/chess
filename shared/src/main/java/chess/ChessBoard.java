@@ -53,6 +53,9 @@ public class ChessBoard {
     public ChessPiece getPiece(ChessPosition position) {
         int row=position.getRow();
         int col=position.getColumn();
+        if (row == 0&&col==0){
+            return squares[row][col];
+        }
         if (row == 0) {
             return squares[row][col - 1];
         }
