@@ -25,39 +25,16 @@ public abstract class ChessMovementRule {
     ChessGame.TeamColor startingColor=startingPiece.getTeamColor();
     ChessPosition endingPosition;
     ChessPiece piece;
-    boolean tokenRow =false;
-    boolean tokenColumn = false;
-    if (col==1) {
-      col++;
-      tokenColumn = true;
-    }
-    if (row==1){
-      row++;
-      tokenRow = true;
-    }
 
-    while (row > 1 && row < 8 && col > 1 && col < 8) {
-      if (tokenRow == true||tokenColumn ==true){
-        if(col ==2 ){
-          col--;
-          tokenColumn =false;
-        } if(row ==2 ){
-          row--;
-          tokenRow = true;
-        }
-      }
-
+    while (row >= 1 && row <= 8 && col >= 1 && col <= 8) {
       row+=deltaRow;
       col+=deltaCol;
+      if(row ==0||col==0||row == 9||col==9)
+        break;
       endingPosition=new ChessPosition(row, col);
       piece=chessBoard.getPiece(endingPosition);
-//      if(endingPosition.getColumn() <= 0|| endingPosition.getRow()<=0  ||chessPosition.getColumn()>=8 ||chessPosition.getRow()>=8){
         if (piece == null) {
-          if(row ==0){
-            break;
-          } else {
             collection.add(new ChessMove(chessPosition, endingPosition, null));
-          }
         } else {
           if (startingColor != piece.getTeamColor()) {
             collection.add(new ChessMove(chessPosition, endingPosition, null));
@@ -65,6 +42,5 @@ public abstract class ChessMovementRule {
           break;
         }
       }
-//    }
   }
 }

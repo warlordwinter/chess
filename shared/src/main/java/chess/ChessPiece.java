@@ -2,6 +2,7 @@ package chess;
 
 import chess.movement.BishopMovementRules;
 import chess.movement.ChessMovementRule;
+import chess.movement.QueenMovementRules;
 import chess.movement.RookMovementRules;
 //import chess.movement.ChessMovementRules;
 
@@ -68,6 +69,10 @@ public class ChessPiece {
             case ROOK:
                 ChessMovementRule rookRules = new RookMovementRules();
                 rookRules.chessMove(board,myPosition,collection);
+                break;
+            case QUEEN:
+                ChessMovementRule queenRules = new QueenMovementRules();
+                queenRules.chessMove(board,myPosition,collection);
                 break;
         }
         return collection;
