@@ -14,10 +14,6 @@ public abstract class ChessMovementRule {
    * @param chessPosition
    */
   public abstract void chessMove(ChessBoard chessBoard, ChessPosition chessPosition,Collection<ChessMove> validMoves);
-//  protected void outOfBounds(Collection<ChessMove> validMoves){
-//    for (){
-//
-//    }
   protected void preditions(ChessBoard chessBoard,ChessPosition chessPosition,int deltaRow, int deltaCol,Collection <ChessMove> collection) {
     int col=chessPosition.getColumn();
     int row=chessPosition.getRow();

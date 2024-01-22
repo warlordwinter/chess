@@ -1,9 +1,6 @@
 package chess;
 
-import chess.movement.BishopMovementRules;
-import chess.movement.ChessMovementRule;
-import chess.movement.QueenMovementRules;
-import chess.movement.RookMovementRules;
+import chess.movement.*;
 //import chess.movement.ChessMovementRules;
 
 import java.util.ArrayList;
@@ -73,6 +70,10 @@ public class ChessPiece {
             case QUEEN:
                 ChessMovementRule queenRules = new QueenMovementRules();
                 queenRules.chessMove(board,myPosition,collection);
+                break;
+            case KING:
+                ChessMovementRule kingRules = new KingMovementRules();
+                kingRules.chessMove(board,myPosition,collection);
                 break;
         }
         return collection;
