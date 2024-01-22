@@ -35,7 +35,7 @@ public class KingMovementRules extends ChessMovementRule{
     //return collection
     while (row >= 1 && row <= 8 && col >= 1 && col <= 8 && loopRestrictor ==false){
       row += deltaRow;
-      col+= deltaCol;
+      col += deltaCol;
       if(row ==0||col==0||row == 9||col==9)
         break;
       endingPosition=new ChessPosition(row, col);
