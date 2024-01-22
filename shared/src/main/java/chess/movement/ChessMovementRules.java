@@ -28,7 +28,7 @@ public abstract class ChessMovementRules {
           collection.add(new ChessMove(chessPosition, endingPosition, null));
           row+=deltaRow;
           col+=deltaCol;
-          endingPosition=new ChessPosition(row, col);
+          endingPosition = new ChessPosition(row, col);
         } else {
           if (startingColor != piece.getTeamColor()) {
             collection.add(new ChessMove(chessPosition, endingPosition, null));
