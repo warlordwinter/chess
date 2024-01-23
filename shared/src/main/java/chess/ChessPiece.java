@@ -75,6 +75,10 @@ public class ChessPiece {
                 ChessMovementRule kingRules = new KingMovementRules();
                 kingRules.chessMove(board,myPosition,collection);
                 break;
+            case KNIGHT:
+                ChessMovementRule knightRules = new KnightMovementRules();
+                knightRules.chessMove(board,myPosition,collection);
+                break;
         }
         return collection;
     }
