@@ -43,28 +43,22 @@ public class PawnMovementRules extends ChessMovementRule {
     } else {
       increment=-1;//if the teamcolor is BLACK set i to -1
     }
-    if (firstMoveAvaliable==true) { //special start moves
+    if (row == 2&& startingColor == ChessGame.TeamColor.WHITE||row ==7 &&startingColor== ChessGame.TeamColor.BLACK) { //special start moves
       for (int i=1; i <= 1 && i >= -1; i+=increment) {
         endingPosition=new ChessPosition(row + i * increment, col);
-        if (chessBoard.getPiece(endingPosition) != null){
+        if (chessBoard.getPiece(endingPosition) != null) {
           break;
-        }
-        else {
+        } else {
           collection.add(new ChessMove(chessPosition, endingPosition, null));
         }
       }
-      endingPosition=new ChessPosition(row, col); // advance regularly on non-starter moves
+    }
+      int i =1;
+      endingPosition=new ChessPosition(row + i *increment, col); // advance regularly on non-starter moves
       if (chessBoard.getPiece(endingPosition) == null) {
         promotionPotential(endingPosition, chessPosition, collection);//check to promote regularly
-//            collection.add(new ChessMove(chessPosition,endingPosition, ChessPiece.PieceType.KNIGHT));
-//            collection.add(new ChessMove(chessPosition,endingPosition, ChessPiece.PieceType.BISHOP));
-//            collection.add(new ChessMove(chessPosition,endingPosition, ChessPiece.PieceType.QUEEN));
-//            collection.add(new ChessMove(chessPosition,endingPosition, ChessPiece.PieceType.ROOK));
-//          }else{
-//          collection.add(new ChessMove(chessPosition, endingPosition, null));
-//          }
       }
-    }
+
     //next side to side killing
     endingPosition=new ChessPosition(row - increment, col + 1); //left
     ChessPiece left = chessBoard.getPiece(endingPosition);
