@@ -18,9 +18,9 @@ public class PawnMovementRules extends ChessMovementRule {
     int col=endingPosition.getColumn();
     int row=endingPosition.getRow();
     if (row == 8 || row == 1 || col == 8 || col == 0) {
-      collection.add(new ChessMove(chessPosition, endingPosition, ChessPiece.PieceType.KNIGHT));
       collection.add(new ChessMove(chessPosition, endingPosition, ChessPiece.PieceType.QUEEN));
       collection.add(new ChessMove(chessPosition, endingPosition, ChessPiece.PieceType.ROOK));
+      collection.add(new ChessMove(chessPosition, endingPosition, ChessPiece.PieceType.KNIGHT));
       collection.add(new ChessMove(chessPosition, endingPosition, ChessPiece.PieceType.BISHOP));
     } else {
       collection.add(new ChessMove(chessPosition, endingPosition, null));
