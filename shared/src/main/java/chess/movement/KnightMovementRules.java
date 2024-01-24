@@ -8,31 +8,45 @@ public class KnightMovementRules extends ChessMovementRule{
 
   @Override
   public void chessMove(ChessBoard chessBoard, ChessPosition chessPosition, Collection<ChessMove> validMoves) {
-    preditions(chessBoard,chessPosition,1,2,validMoves); //Column Moves
-    preditions(chessBoard,chessPosition,-1,2,validMoves);
-    preditions(chessBoard,chessPosition,2,1,validMoves);
-    preditions(chessBoard,chessPosition,-2,-1,validMoves);
-    preditions(chessBoard,chessPosition,-2,1,validMoves); //Row Moves
-    preditions(chessBoard,chessPosition,-1,-2,validMoves);
-    preditions(chessBoard,chessPosition,2,-1,validMoves); //Row Moves
-    preditions(chessBoard,chessPosition,1,-2,validMoves);
+    knightPredictions(chessBoard,chessPosition,validMoves,1,2); //Column Moves
+    knightPredictions(chessBoard,chessPosition,validMoves,-1,2);
+    knightPredictions(chessBoard,chessPosition,validMoves,2,1);
+    knightPredictions(chessBoard,chessPosition,validMoves,-2,-1);
+    knightPredictions(chessBoard,chessPosition,validMoves,-2,1); //Row Moves
+    knightPredictions(chessBoard,chessPosition,validMoves,-1,-2);
+    knightPredictions(chessBoard,chessPosition,validMoves,2,-1); //Row Moves
+    knightPredictions(chessBoard,chessPosition,validMoves,1,-2);
 
   }
-//  public void knightPredictions(ChessBoard chessBoard, ChessPosition chessPosition, Collection <ChessMove> collection,int deltaCol, int deltaRow){
-//    int col = chessPosition.getColumn();
-//    int row = chessPosition.getRow();
-//    ChessPiece startingPiece = chessBoard.getPiece(chessPosition);
-//    ChessGame.TeamColor startingColor = startingPiece.getTeamColor();
-//    ChessPosition endingPosition;
-//    ChessPiece piece;
-//
-//    while (row >= 1 && row <= 8 && col >= 1 && col <= 8){
-//      //predict a move and see if it's on the board
-//      //if not on the board don't add
-//      //if is on board check if friend or foe.
-//
-//      endingPosition= new ChessPosition(row,col);
-//      if (row<=0||col<=0||row>=9||col>=9);
-//    }
-//  }
+  public void knightPredictions(ChessBoard chessBoard, ChessPosition chessPosition, Collection <ChessMove> collection,int deltaRow, int deltaCol){
+
+    int col = chessPosition.getColumn();
+    int row = chessPosition.getRow();
+    ChessPiece startingPiece = chessBoard.getPiece(chessPosition);
+    ChessGame.TeamColor startingColor = startingPiece.getTeamColor();
+    ChessPosition endingPosition;
+    ChessPiece piece;
+    boolean loopRestrictor = false;
+
+    while (row >= 1 && row <= 8 && col >= 1 && col <= 8 && loopRestrictor ==false){
+      loopRestrictor =true;
+      row += deltaRow;
+      col += deltaCol;
+      if(row <=0||col<=0||row == 9||col==9)
+        break;
+      endingPosition=new ChessPosition(row, col);
+      if (endingPosition.getRow() >=9 ||endingPosition.getColumn() >=9||endingPosition.getRow()<=0 ||endingPosition.getColumn()<=0){
+        break;
+      }
+      piece=chessBoard.getPiece(endingPosition);
+      if (piece == null) {
+        collection.add(new ChessMove(chessPosition, endingPosition, null));
+      } else {
+        if (startingColor != piece.getTeamColor()) {
+          collection.add(new ChessMove(chessPosition, endingPosition, null));
+        }
+        break;
+      }
+    }
+  }
 }

@@ -68,6 +68,9 @@ public class ChessBoard {
             return squares[row - 1][col - 1];
         }
     }
+//    public ChessPiece getPiecePredictions(ChessPosition position) {
+//        return squares;
+//    }
     /**
      * Sets the board to the default starting board
      * (How the game of chess normally starts)

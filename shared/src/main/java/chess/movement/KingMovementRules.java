@@ -21,6 +21,7 @@ public class KingMovementRules extends ChessMovementRule{
 
   }
   public void kingPredictions(ChessBoard chessBoard, ChessPosition chessPosition, Collection <ChessMove> collection,int deltaRow, int deltaCol){
+
     int col = chessPosition.getColumn();
     int row = chessPosition.getRow();
     ChessPiece startingPiece = chessBoard.getPiece(chessPosition);
@@ -34,18 +35,20 @@ public class KingMovementRules extends ChessMovementRule{
     //add to collection
     //return collection
     while (row >= 1 && row <= 8 && col >= 1 && col <= 8 && loopRestrictor ==false){
+      loopRestrictor =true;
       row += deltaRow;
       col += deltaCol;
       if(row ==0||col==0||row == 9||col==9)
         break;
       endingPosition=new ChessPosition(row, col);
+      if (endingPosition.getRow() >=9 ||endingPosition.getColumn() >=9){
+        break;
+      }
       piece=chessBoard.getPiece(endingPosition);
       if (piece == null) {
         collection.add(new ChessMove(chessPosition, endingPosition, null));
-        loopRestrictor =true;
       } else {
         if (startingColor != piece.getTeamColor()) {
-          loopRestrictor =true;
           collection.add(new ChessMove(chessPosition, endingPosition, null));
         }
         break;
