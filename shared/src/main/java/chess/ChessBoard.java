@@ -7,7 +7,7 @@ import java.util.Arrays;
  * signature of the existing methods.
  */
 public class ChessBoard {
-    public static ChessPiece[][] squares = new ChessPiece[8][8]; //this array has no data type but is basically a list that will store all of the chess piece objects
+    public ChessPiece[][] squares = new ChessPiece[8][8]; //this array has no data type but is basically a list that will store all of the chess piece objects
     public ChessBoard() {
     }
 
@@ -29,7 +29,7 @@ public class ChessBoard {
         return Arrays.deepToString(squares);
     }
 
-    public static ChessPiece[][] getSquares() {
+    public ChessPiece[][] getSquares() {
         return squares;
     }
 
