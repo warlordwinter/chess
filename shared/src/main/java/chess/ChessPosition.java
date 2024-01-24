@@ -32,7 +32,7 @@ public class ChessPosition {
     public int getColumn() {
         return col;
     }
-//    public int setColumn(int col){return this.col =col;}
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
