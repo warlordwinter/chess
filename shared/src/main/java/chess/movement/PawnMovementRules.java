@@ -44,14 +44,36 @@ public class PawnMovementRules extends ChessMovementRule {
       increment=-1;//if the teamcolor is BLACK set i to -1
     }
     if (row == 2&& startingColor == ChessGame.TeamColor.WHITE||row ==7 &&startingColor== ChessGame.TeamColor.BLACK) { //special start moves
-      for (int i=1; i <= 1 && i >= -1; i+=increment) {
-        endingPosition=new ChessPosition(row + i * increment, col);
-        if (chessBoard.getPiece(endingPosition) != null) {
-          break;
-        } else {
+      if(startingColor == ChessGame.TeamColor.WHITE){
+        endingPosition = new ChessPosition(row +1,col);
+        if (chessBoard.getPiece(endingPosition) ==null){
           collection.add(new ChessMove(chessPosition, endingPosition, null));
+          endingPosition = new ChessPosition(row+2,col);
+          if (chessBoard.getPiece(endingPosition) ==null){
+            endingPosition = new ChessPosition(row+2,col);
+            collection.add(new ChessMove(chessPosition, endingPosition, null));
+          }
         }
       }
+      if(startingColor == ChessGame.TeamColor.BLACK){
+        endingPosition = new ChessPosition(row -1,col);
+        if (chessBoard.getPiece(endingPosition) ==null){
+          collection.add(new ChessMove(chessPosition, endingPosition, null));
+          endingPosition = new ChessPosition(row-2,col);
+          if (chessBoard.getPiece(endingPosition) ==null){
+            endingPosition = new ChessPosition(row-2,col);
+            collection.add(new ChessMove(chessPosition, endingPosition, null));
+          }
+        }
+      }
+//      for (int i = -1; i <= 1; i += increment) {
+//        endingPosition=new ChessPosition(row + i * increment, col);
+//        if (chessBoard.getPiece(endingPosition) != null) {
+//          break;
+//        } else {
+//          collection.add(new ChessMove(chessPosition, endingPosition, null));
+//        }
+//      }
     }
       int i =1;
       endingPosition=new ChessPosition(row + i *increment, col); // advance regularly on non-starter moves
