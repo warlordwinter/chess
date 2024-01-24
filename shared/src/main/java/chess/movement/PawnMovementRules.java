@@ -59,16 +59,17 @@ public class PawnMovementRules extends ChessMovementRule {
         promotionPotential(endingPosition, chessPosition, collection);//check to promote regularly
       }
 
+      row = chessPosition.getRow();
     //next side to side killing
-    endingPosition=new ChessPosition(row - increment, col + 1); //left
+    endingPosition=new ChessPosition(row + increment, col + 1); //left
     ChessPiece left = chessBoard.getPiece(endingPosition);
     if (left !=null && startingColor != chessBoard.getPiece(endingPosition).getTeamColor()) {
-      collection.add(new ChessMove(chessPosition, endingPosition, null));
+      promotionPotential(endingPosition, chessPosition, collection);
     }
     endingPosition=new ChessPosition(row + increment, col - 1); //right
     ChessPiece right = chessBoard.getPiece(endingPosition);
     if (right!=null &&startingColor != chessBoard.getPiece(endingPosition).getTeamColor()) {
-      collection.add(new ChessMove(chessPosition, endingPosition, null));
+      promotionPotential(endingPosition, chessPosition, collection);
     }
   }
 }
