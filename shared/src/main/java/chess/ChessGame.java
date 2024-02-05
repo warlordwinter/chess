@@ -82,7 +82,10 @@ public class ChessGame {
      * @return True if the specified team is in check
      */
     public boolean isInCheck(TeamColor teamColor) {
-        throw new RuntimeException("Not implemented");
+//        throw new RuntimeException("Not implemented");
+        //find king
+        //Call enemyMoves and see if king's start position is in any of the enemy's end positions.
+        return true;
     }
 
     /**
@@ -124,13 +127,16 @@ public class ChessGame {
         return board;
     }
 
+    /**
+     * returns a set of all the enemy's moves.
+     * @param teamColor our team color.
+     * @return set call enemyMoveSet
+     */
     public Set<ChessMove> enemyMoveSet(TeamColor teamColor){
         Set<ChessMove> enemyMoveset = new HashSet<>();
         ChessPiece piece;
         ChessBoard board = getBoard();
-
-        //go throughout the board and call pieceMoves and store all of the moves
-        for (int i =0; i< 8; i++){
+        for (int i =0; i< 8; i++){ //go throughout the board and call pieceMoves and store all moves
             for (int j = 0; j < 8; j++){
                 piece = board.getPiece(new ChessPosition(i+1,j+1));
                     if(piece != null &&piece.getTeamColor()!= teamColor) {
@@ -140,7 +146,6 @@ public class ChessGame {
                     }
                 }
             }
-        //store all the moves in a hashset and see if they are valid.
-        return enemyMoveset;
+        return enemyMoveset; //store all the moves in a hashset and see if they are valid.
     }
 }
