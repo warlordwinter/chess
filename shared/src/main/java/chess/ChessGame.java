@@ -1,6 +1,9 @@
 package chess;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * For a class that can manage a chess game, making moves on a board
@@ -12,8 +15,8 @@ public class ChessGame {
     private TeamColor team;
     private ChessBoard board;
     public ChessGame() {
-        this.board = board;
-        this.team = team;
+        this.board = new ChessBoard();
+        this.team = TeamColor.WHITE;
     }
 
     /**
@@ -55,6 +58,9 @@ public class ChessGame {
         ChessPiece piece = board.getPiece(startPosition);
         if(piece ==null){
             return null;
+        }else {
+            //call make move
+            //see if moves endPosition = puts piece in check.
         }
         return piece.pieceMoves(board,startPosition);
     }
@@ -116,5 +122,25 @@ public class ChessGame {
      */
     public ChessBoard getBoard() {
         return board;
+    }
+
+    public Set<ChessMove> enemyMoveSet(TeamColor teamColor){
+        Set<ChessMove> enemyMoveset = new HashSet<>();
+        ChessPiece piece;
+        ChessBoard board = getBoard();
+
+        //go throughout the board and call pieceMoves and store all of the moves
+        for (int i =0; i< 8; i++){
+            for (int j = 0; j < 8; j++){
+                piece = board.getPiece(new ChessPosition(i+1,j+1));
+                    if(piece != null &&piece.getTeamColor()!= teamColor) {
+                        ChessPosition position=new ChessPosition(i, j);
+                        Collection<ChessMove> collection=piece.pieceMoves(board, position);
+                        enemyMoveset.addAll(collection);
+                    }
+                }
+            }
+        //store all the moves in a hashset and see if they are valid.
+        return enemyMoveset;
     }
 }

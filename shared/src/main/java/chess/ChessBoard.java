@@ -69,6 +69,7 @@ public class ChessBoard {
             return squares[row][col];
         } else {
             return squares[row - 1][col - 1];
+//            return squares[row][col];
         }
     }
 //    public ChessPiece getPiecePredictions(ChessPosition position) {
