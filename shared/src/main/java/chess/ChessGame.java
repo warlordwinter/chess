@@ -59,6 +59,30 @@ public class ChessGame {
         if(piece ==null){
             return null;
         }else {
+            //clone
+            ChessBoard clone = new ChessBoard(board);
+            ArrayList <ChessPosition> endingLocations = new ArrayList<>();
+            ArrayList <ChessMove> inValidMoves = new ArrayList<>();
+            ChessPiece clonePiece = clone.getPiece(startPosition);
+            ChessPiece.PieceType clonePiecetype =  clonePiece.getPieceType();
+            Collection<ChessMove> collection = clonePiece.pieceMoves(clone,startPosition);
+            collection.forEach(chessMove -> endingLocations.add(chessMove.getEndPosition()));// turn this into a for loop
+
+
+            for(int i =0; i<=endingLocations.size(); i++){
+                ChessPosition endingPosition = endingLocations.get(i);
+                clone.addPiece(startPosition, null);
+                clone.addPiece(endingPosition,clonePiece);
+                team = getTeamTurn();
+
+                if(isInCheck(team) ==true){
+                    inValidMoves.add(chessMove);
+                }
+                clone.addPiece(endingPosition, null);
+                clone.addPiece(startPosition,clonePiece);
+            }
+            collection.removeAll(inValidMoves);
+//            clone.addPiece(startPosition, null);
             //call make move
             //see if moves endPosition = puts piece in check.
         }
@@ -102,8 +126,6 @@ public class ChessGame {
                 return false;
             }
         }
-
-
         return true;
     }
 

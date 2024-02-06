@@ -12,6 +12,13 @@ public class ChessBoard {
     public ChessBoard() {
     }
 
+    public ChessBoard(ChessBoard original){
+        this.squares = new ChessPiece[8][8];
+        for (int i=0; i<8;i++){
+            System.arraycopy(original.squares[i],0,this.squares[i],0,8);
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
