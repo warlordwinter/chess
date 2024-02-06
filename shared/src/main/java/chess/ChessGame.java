@@ -82,9 +82,28 @@ public class ChessGame {
      * @return True if the specified team is in check
      */
     public boolean isInCheck(TeamColor teamColor) {
-//        throw new RuntimeException("Not implemented");
         //find king
         //Call enemyMoves and see if king's start position is in any of the enemy's end positions.
+        ChessBoard board = getBoard();
+        ChessPiece king;
+        for (int i =0; i< 8; i++){
+            for (int j = 0; j < 8; j++) {
+                king = board.getPiece(new ChessPosition(i+1,j+1));
+                if(king.getPieceType() == ChessPiece.PieceType.KING&& king.getTeamColor() == teamColor){
+                    ChessPosition kingsPosition = new ChessPosition(i,j);
+                    Set<ChessPosition> enemyMoveSet= enemyMoveSet(teamColor);
+                    if(enemyMoveSet.contains(kingsPosition) ==true){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                }
+                return false;
+            }
+        }
+
+
         return true;
     }
 
@@ -132,8 +151,8 @@ public class ChessGame {
      * @param teamColor our team color.
      * @return set call enemyMoveSet
      */
-    public Set<ChessMove> enemyMoveSet(TeamColor teamColor){
-        Set<ChessMove> enemyMoveset = new HashSet<>();
+    public Set<ChessPosition> enemyMoveSet(TeamColor teamColor){
+        Set<ChessPosition> enemyMoveset = new HashSet<>();
         ChessPiece piece;
         ChessBoard board = getBoard();
         for (int i =0; i< 8; i++){ //go throughout the board and call pieceMoves and store all moves
@@ -141,8 +160,9 @@ public class ChessGame {
                 piece = board.getPiece(new ChessPosition(i+1,j+1));
                     if(piece != null &&piece.getTeamColor()!= teamColor) {
                         ChessPosition position=new ChessPosition(i, j);
-                        Collection<ChessMove> collection=piece.pieceMoves(board, position);
-                        enemyMoveset.addAll(collection);
+                        Collection<ChessMove> collection = piece.pieceMoves(board, position);
+                        collection.forEach(chessMove -> enemyMoveset.add(chessMove.getEndPosition()));
+//                        enemyMoveset.addAll(collection);
                     }
                 }
             }
