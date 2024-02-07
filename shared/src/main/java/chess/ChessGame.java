@@ -66,27 +66,41 @@ public class ChessGame {
             ChessPiece clonePiece = clone.getPiece(startPosition);
             ChessPiece.PieceType clonePiecetype =  clonePiece.getPieceType();
             Collection<ChessMove> collection = clonePiece.pieceMoves(clone,startPosition);
-            collection.forEach(chessMove -> endingLocations.add(chessMove.getEndPosition()));// turn this into a for loop
+//          collection.forEach(chessMove -> endingLocations.add(chessMove.getEndPosition()));// turn this into a for loop
 
-
-            for(int i =0; i<=endingLocations.size(); i++){
-                ChessPosition endingPosition = endingLocations.get(i);
+            for (ChessMove chessMove : collection){
+                ChessPosition endingPosition = chessMove.getEndPosition();
                 clone.addPiece(startPosition, null);
                 clone.addPiece(endingPosition,clonePiece);
                 team = getTeamTurn();
 
                 if(isInCheck(team) ==true){
-                    inValidMoves.add(chessMove);
+                    inValidMoves.add(chessMove); // make chessMove a loop var
                 }
                 clone.addPiece(endingPosition, null);
                 clone.addPiece(startPosition,clonePiece);
+
             }
+
+//            for(int i =0; i<=endingLocations.size(); i++){
+//                ChessPosition endingPosition = endingLocations.get(i);
+//                clone.addPiece(startPosition, null);
+//                clone.addPiece(endingPosition,clonePiece);
+//                team = getTeamTurn();
+//
+//                if(isInCheck(team) ==true){
+//                    inValidMoves.add(chessMove); // make chessMove a loop var
+//                }
+//                clone.addPiece(endingPosition, null);
+//                clone.addPiece(startPosition,clonePiece);
+//            }
             collection.removeAll(inValidMoves);
-//            clone.addPiece(startPosition, null);
+            return collection;
+            //clone.addPiece(startPosition, null);
             //call make move
             //see if moves endPosition = puts piece in check.
         }
-        return piece.pieceMoves(board,startPosition);
+//        return piece.pieceMoves(board,startPosition);
     }
 
     /**
@@ -113,6 +127,9 @@ public class ChessGame {
         for (int i =0; i< 8; i++){
             for (int j = 0; j < 8; j++) {
                 king = board.getPiece(new ChessPosition(i+1,j+1));
+                if (king ==null){
+                    break;
+                }
                 if(king.getPieceType() == ChessPiece.PieceType.KING&& king.getTeamColor() == teamColor){
                     ChessPosition kingsPosition = new ChessPosition(i,j);
                     Set<ChessPosition> enemyMoveSet= enemyMoveSet(teamColor);
