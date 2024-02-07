@@ -42,6 +42,12 @@ public class ChessGame {
         WHITE,
         BLACK
     }
+    private boolean isOnBoard(ChessBoard board, ChessPosition position){
+        if(position.getColumn() >=9||position.getColumn()<=0){
+            return false;
+        }
+        return true;
+    }
 
     /**
      * Gets a valid moves for a piece at the given location
@@ -64,16 +70,24 @@ public class ChessGame {
 
             for (ChessMove chessMove : collection){
                 ChessPosition endingPosition = chessMove.getEndPosition();
-                clone.addPiece(startPosition, null);
-                ChessPiece endingPiece = clone.getPiece(endingPosition);
-                clone.addPiece(endingPosition,clonePiece);
+                //add a function to check to see if position is on board
+                if (isOnBoard(clone,endingPosition)==true) {
+                    clone.addPiece(startPosition, null);
+                }
+                ChessPiece endingPiece=clone.getPiece(endingPosition);
+                if(isOnBoard(clone,endingPosition)==true){
+                    clone.addPiece(endingPosition,clonePiece);
+                }
 
                 if(isInCheck(team,clone) ==true){
                     inValidMoves.add(chessMove);
                 }
-                clone.addPiece(endingPosition, endingPiece);
-                clone.addPiece(startPosition,clonePiece);
-
+//                clone.addPiece(endingPosition, endingPiece);
+//                clone.addPiece(startPosition,clonePiece);
+                if(isOnBoard(clone,endingPosition)==true){
+                    clone.addPiece(endingPosition,clonePiece);
+                    clone.addPiece(startPosition,clonePiece);
+                }
             }
             collection.removeAll(inValidMoves);
             return collection;
@@ -165,8 +179,6 @@ public class ChessGame {
 
                         for (ChessPosition enemyMove : enemyMoves) {
                             ChessPosition enemyEndingPosition = enemyMove;
-
-                            // Filter out ChessMoves with the same ending position as enemy moves
                             legalMoves.removeIf(move -> move.getEndPosition().equals(enemyEndingPosition));
                         }
 
