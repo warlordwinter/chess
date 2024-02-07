@@ -2,6 +2,7 @@ package chess.movement;
 
 import chess.*;
 
+import javax.swing.text.Position;
 import java.util.Collection;
 
 public class PawnMovementRules extends ChessMovementRule {
@@ -84,14 +85,19 @@ public class PawnMovementRules extends ChessMovementRule {
       row = chessPosition.getRow();
     //next side to side killing
     endingPosition=new ChessPosition(row + increment, col + 1);//left
-    if(endingPosition.getColumn()>=9){
-      col--;
+    if(endingPosition.getColumn()==9){
+      col=8;
+      endingPosition = new ChessPosition(row+increment,col);
     }
     ChessPiece left = chessBoard.getPiece(endingPosition);
     if (left !=null && startingColor != chessBoard.getPiece(endingPosition).getTeamColor()) {
       promotionPotential(endingPosition, chessPosition, collection);
     }
     endingPosition=new ChessPosition(row + increment, col - 1); //right
+    if(endingPosition.getColumn()==0){
+      col=1;
+      endingPosition = new ChessPosition(row+increment,col);
+    }
     ChessPiece right = chessBoard.getPiece(endingPosition);
     if (right!=null &&startingColor != chessBoard.getPiece(endingPosition).getTeamColor()) {
       promotionPotential(endingPosition, chessPosition, collection);
