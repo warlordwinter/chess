@@ -7,6 +7,13 @@ import java.util.Collection;
 
 public class PawnMovementRules extends ChessMovementRule {
 
+  private boolean isOnBoard(ChessBoard board, ChessPosition position){
+    if(position.getColumn() >=9||position.getColumn()<=0){
+      return false;
+    }
+    return true;
+
+  }
   @Override
   public void chessMove(ChessBoard chessBoard, ChessPosition chessPosition, Collection<ChessMove> collection) {
     pawnMoves(chessBoard, chessPosition, collection);
@@ -94,13 +101,11 @@ public class PawnMovementRules extends ChessMovementRule {
       promotionPotential(endingPosition, chessPosition, collection);
     }
     endingPosition=new ChessPosition(row + increment, col - 1); //right
-    if(endingPosition.getColumn()==0){
-      col=1;
-      endingPosition = new ChessPosition(row+increment,col);
-    }
+    if(isOnBoard(chessBoard,endingPosition) == true){
     ChessPiece right = chessBoard.getPiece(endingPosition);
-    if (right!=null &&startingColor != chessBoard.getPiece(endingPosition).getTeamColor()) {
-      promotionPotential(endingPosition, chessPosition, collection);
+      if (right!=null &&startingColor != chessBoard.getPiece(endingPosition).getTeamColor()) {
+        promotionPotential(endingPosition, chessPosition, collection);
+      }
     }
   }
 }
