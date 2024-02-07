@@ -51,56 +51,35 @@ public class ChessGame {
      * startPosition
      */
     public Collection<ChessMove> validMoves(ChessPosition startPosition) {
-        // get the piece at that position
-        // call the get moves
-        // return it.
         ChessBoard board = getBoard();
         ChessPiece piece = board.getPiece(startPosition);
         if(piece ==null){
             return null;
         }else {
-            //clone
             ChessBoard clone = new ChessBoard(board);
-            ArrayList <ChessPosition> endingLocations = new ArrayList<>();
+//            ArrayList <ChessPosition> endingLocations = new ArrayList<>();
             ArrayList <ChessMove> inValidMoves = new ArrayList<>();
             ChessPiece clonePiece = clone.getPiece(startPosition);
-            ChessPiece.PieceType clonePiecetype =  clonePiece.getPieceType();
+//            ChessPiece.PieceType clonePiecetype =  clonePiece.getPieceType();
             Collection<ChessMove> collection = clonePiece.pieceMoves(clone,startPosition);
-//          collection.forEach(chessMove -> endingLocations.add(chessMove.getEndPosition()));// turn this into a for loop
+            TeamColor team = clonePiece.getTeamColor();
 
             for (ChessMove chessMove : collection){
                 ChessPosition endingPosition = chessMove.getEndPosition();
                 clone.addPiece(startPosition, null);
+                ChessPiece endingPiece = clone.getPiece(endingPosition);
                 clone.addPiece(endingPosition,clonePiece);
-                team = getTeamTurn();
 
-                if(isInCheck(team) ==true){
-                    inValidMoves.add(chessMove); // make chessMove a loop var
+                if(isInCheck(team,clone) ==true){
+                    inValidMoves.add(chessMove);
                 }
-                clone.addPiece(endingPosition, null);
+                clone.addPiece(endingPosition, endingPiece);
                 clone.addPiece(startPosition,clonePiece);
 
             }
-
-//            for(int i =0; i<=endingLocations.size(); i++){
-//                ChessPosition endingPosition = endingLocations.get(i);
-//                clone.addPiece(startPosition, null);
-//                clone.addPiece(endingPosition,clonePiece);
-//                team = getTeamTurn();
-//
-//                if(isInCheck(team) ==true){
-//                    inValidMoves.add(chessMove); // make chessMove a loop var
-//                }
-//                clone.addPiece(endingPosition, null);
-//                clone.addPiece(startPosition,clonePiece);
-//            }
             collection.removeAll(inValidMoves);
             return collection;
-            //clone.addPiece(startPosition, null);
-            //call make move
-            //see if moves endPosition = puts piece in check.
         }
-//        return piece.pieceMoves(board,startPosition);
     }
 
     /**
@@ -120,27 +99,22 @@ public class ChessGame {
      * @return True if the specified team is in check
      */
     public boolean isInCheck(TeamColor teamColor) {
-        //find king
-        //Call enemyMoves and see if king's start position is in any of the enemy's end positions.
-        ChessBoard board = getBoard();
+        return isInCheck(teamColor, board);
+    }
+
+    public boolean isInCheck(TeamColor teamColor, ChessBoard board){
         ChessPiece king;
         for (int i =0; i< 8; i++){
             for (int j = 0; j < 8; j++) {
                 king = board.getPiece(new ChessPosition(i+1,j+1));
                 if (king ==null){
-                    break;
+                    continue;
                 }
-                if(king.getPieceType() == ChessPiece.PieceType.KING&& king.getTeamColor() == teamColor){
-                    ChessPosition kingsPosition = new ChessPosition(i,j);
-                    Set<ChessPosition> enemyMoveSet= enemyMoveSet(teamColor);
-                    if(enemyMoveSet.contains(kingsPosition) ==true){
-                        return true;
-                    }
-                    else{
-                        return false;
-                    }
+                if (king.getPieceType() == ChessPiece.PieceType.KING && king.getTeamColor().equals(teamColor)) {
+                    ChessPosition kingsPosition = new ChessPosition(i+1, j+1);
+                    Set<ChessPosition> enemyMoves = enemyMoveSet(teamColor, board);
+                    return enemyMoves.contains(kingsPosition);
                 }
-                return false;
             }
         }
         return true;
@@ -190,15 +164,14 @@ public class ChessGame {
      * @param teamColor our team color.
      * @return set call enemyMoveSet
      */
-    public Set<ChessPosition> enemyMoveSet(TeamColor teamColor){
+    public Set<ChessPosition> enemyMoveSet(TeamColor teamColor,ChessBoard board){
         Set<ChessPosition> enemyMoveset = new HashSet<>();
         ChessPiece piece;
-        ChessBoard board = getBoard();
         for (int i =0; i< 8; i++){ //go throughout the board and call pieceMoves and store all moves
             for (int j = 0; j < 8; j++){
                 piece = board.getPiece(new ChessPosition(i+1,j+1));
                     if(piece != null &&piece.getTeamColor()!= teamColor) {
-                        ChessPosition position=new ChessPosition(i, j);
+                        ChessPosition position=new ChessPosition(i+1, j+1);
                         Collection<ChessMove> collection = piece.pieceMoves(board, position);
                         collection.forEach(chessMove -> enemyMoveset.add(chessMove.getEndPosition()));
 //                        enemyMoveset.addAll(collection);
