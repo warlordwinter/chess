@@ -83,7 +83,7 @@ public class PawnMovementRules extends ChessMovementRule {
 
       row = chessPosition.getRow();
     //next side to side killing
-    endingPosition=new ChessPosition(row + increment, col + 1); //left
+    endingPosition=new ChessPosition(row + increment, col + 1);//left
     ChessPiece left = chessBoard.getPiece(endingPosition);
     if (left !=null && startingColor != chessBoard.getPiece(endingPosition).getTeamColor()) {
       promotionPotential(endingPosition, chessPosition, collection);

@@ -89,6 +89,32 @@ public class ChessGame {
      * @throws InvalidMoveException if move is invalid
      */
     public void makeMove(ChessMove move) throws InvalidMoveException {
+//        TeamColor teamColor = getTeamTurn();
+//        ChessPosition startingPosition = move.getStartPosition();
+//        ChessPiece piece = board.getPiece(startingPosition);
+//        Collection<ChessMove> validMoves = validMoves(startingPosition);
+//
+//        if (!piece.getTeamColor().equals(teamColor)) {
+//            throw new InvalidMoveException();
+//        }
+//
+//        if (!validMoves.contains(move)) {
+//            System.out.print(move);
+//            System.out.print(startingPosition);
+//            System.out.println(2);
+//            throw new InvalidMoveException();
+//        }
+//
+//        ChessPosition endingPosition = move.getEndPosition();
+//        chess.ChessPiece.PieceType type = piece.getPieceType();
+//        board.addPiece(endingPosition, piece);
+//        board.addPiece(startingPosition, null);
+//
+//        if (teamColor == TeamColor.WHITE) {
+//            setTeamTurn(TeamColor.BLACK);
+//        } else {
+//            setTeamTurn(TeamColor.WHITE);
+//        }
         throw new RuntimeException("Not implemented");
     }
 
@@ -127,7 +153,34 @@ public class ChessGame {
      * @return True if the specified team is in checkmate
      */
     public boolean isInCheckmate(TeamColor teamColor) {
-        throw new RuntimeException("Not implemented");
+        ArrayList<ChessPosition> enemyEndingLocations= new ArrayList<>();
+        if (isInCheck(teamColor, board)) {
+            boolean hasValidMoves = false;
+
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 8; j++) {
+                    ChessPiece piece = board.getPiece(new ChessPosition(i, j));
+
+                    if (piece != null && piece.getTeamColor() == teamColor) {
+                        Collection<ChessMove> moves = piece.pieceMoves(board, new ChessPosition(i, j));
+                        Set<ChessPosition> enemyMoves = enemyMoveSet(teamColor,board);
+
+
+                        if (!moves.isEmpty()) {
+                            hasValidMoves = true;
+                            break;  // Break the inner loop if any piece has valid moves
+                        }
+//                        for (ChessMove move : moves){
+//                            enemyEndingLocations.add();
+//                        }
+                    }
+                }
+            }
+
+            // Check if any piece of the specified team has valid moves
+            return !hasValidMoves;
+        }
+        return false;
     }
 
     /**
@@ -174,7 +227,6 @@ public class ChessGame {
                         ChessPosition position=new ChessPosition(i+1, j+1);
                         Collection<ChessMove> collection = piece.pieceMoves(board, position);
                         collection.forEach(chessMove -> enemyMoveset.add(chessMove.getEndPosition()));
-//                        enemyMoveset.addAll(collection);
                     }
                 }
             }
