@@ -90,6 +90,7 @@ public class ChessGame {
         TeamColor teamColor = getTeamTurn();
         ChessPosition startingPosition = move.getStartPosition();
         ChessPiece piece = board.getPiece(startingPosition);
+        TeamColor piececolor = piece.getTeamColor();
 //        Collection<ChessMove> validMoves = validMoves(startingPosition);
 
         if (!piece.getTeamColor().equals(teamColor)) {
@@ -102,7 +103,13 @@ public class ChessGame {
 
         ChessPosition endingPosition = move.getEndPosition();
         chess.ChessPiece.PieceType type = piece.getPieceType();
-        board.addPiece(endingPosition, piece);
+        if(move.getPromotionPiece()!=null){
+            ChessPiece.PieceType pieceType =move.getPromotionPiece();
+            ChessPiece pawnPiece = new ChessPiece(piececolor,pieceType);
+            board.addPiece(endingPosition,pawnPiece);
+        }else{
+            board.addPiece(endingPosition, piece);
+        }
         board.addPiece(startingPosition, null);
 
         if (teamColor == TeamColor.WHITE) {
