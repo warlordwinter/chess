@@ -64,6 +64,7 @@ public class ChessGame {
 
             for (ChessMove chessMove : collection){
                 ChessPosition endingPosition = chessMove.getEndPosition();
+//                ChessPosition adjStartPosition = new ChessPosition(chessMove.getStartPosition().getRow()+1,chessMove.getStartPosition().getColumn());
                 clone.addPiece(startPosition, null);
                 ChessPiece endingPiece = clone.getPiece(endingPosition);
                 clone.addPiece(endingPosition,clonePiece);
@@ -157,20 +158,22 @@ public class ChessGame {
 
             for (int i = 0; i < 8; i++) {
                 for (int j = 0; j < 8; j++) {
-                    ChessPiece piece = board.getPiece(new ChessPosition(i, j));
+                    ChessPiece piece = board.getPiece(new ChessPosition(i+1, j+1));
 
                     if (piece != null && piece.getTeamColor() == teamColor) {
-                        Collection<ChessMove> legalMoves = validMoves(new ChessPosition(i, j));
+                        Collection<ChessMove> legalMoves = validMoves(new ChessPosition(i+1, j+1));
                         Set<ChessPosition> enemyMoves = enemyMoveSet(teamColor, board);
 
                         for (ChessPosition enemyMove : enemyMoves) {
                             ChessPosition enemyEndingPosition = enemyMove;
 
                             // Filter out ChessMoves with the same ending position as enemy moves
-                            legalMoves.removeIf(move -> move.getEndPosition().equals(enemyEndingPosition));
+                            if (legalMoves != null) {
+                                legalMoves.removeIf(move -> move.getEndPosition().equals(enemyEndingPosition));
+                            }
                         }
 
-                        if (!legalMoves.isEmpty()) {
+                        if (legalMoves != null &&!legalMoves.isEmpty()) {
                             hasValidMoves = true;
                             break;
                         }
