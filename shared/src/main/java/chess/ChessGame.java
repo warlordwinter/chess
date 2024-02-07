@@ -42,12 +42,6 @@ public class ChessGame {
         WHITE,
         BLACK
     }
-    private boolean isOnBoard(ChessBoard board, ChessPosition position){
-        if(position.getColumn() >=9||position.getColumn()<=0){
-            return false;
-        }
-        return true;
-    }
 
     /**
      * Gets a valid moves for a piece at the given location
@@ -70,24 +64,17 @@ public class ChessGame {
 
             for (ChessMove chessMove : collection){
                 ChessPosition endingPosition = chessMove.getEndPosition();
-                //add a function to check to see if position is on board
-                if (isOnBoard(clone,endingPosition)==true) {
-                    clone.addPiece(startPosition, null);
-                }
-                ChessPiece endingPiece=clone.getPiece(endingPosition);
-                if(isOnBoard(clone,endingPosition)==true){
-                    clone.addPiece(endingPosition,clonePiece);
-                }
+//                ChessPosition adjStartPosition = new ChessPosition(chessMove.getStartPosition().getRow()+1,chessMove.getStartPosition().getColumn());
+                clone.addPiece(startPosition, null);
+                ChessPiece endingPiece = clone.getPiece(endingPosition);
+                clone.addPiece(endingPosition,clonePiece);
 
                 if(isInCheck(team,clone) ==true){
                     inValidMoves.add(chessMove);
                 }
-//                clone.addPiece(endingPosition, endingPiece);
-//                clone.addPiece(startPosition,clonePiece);
-                if(isOnBoard(clone,endingPosition)==true){
-                    clone.addPiece(endingPosition,clonePiece);
-                    clone.addPiece(startPosition,clonePiece);
-                }
+                clone.addPiece(endingPosition, endingPiece);
+                clone.addPiece(startPosition,clonePiece);
+
             }
             collection.removeAll(inValidMoves);
             return collection;
@@ -171,18 +158,22 @@ public class ChessGame {
 
             for (int i = 0; i < 8; i++) {
                 for (int j = 0; j < 8; j++) {
-                    ChessPiece piece = board.getPiece(new ChessPosition(i, j));
+                    ChessPiece piece = board.getPiece(new ChessPosition(i+1, j+1));
 
                     if (piece != null && piece.getTeamColor() == teamColor) {
-                        Collection<ChessMove> legalMoves = validMoves(new ChessPosition(i, j));
+                        Collection<ChessMove> legalMoves = validMoves(new ChessPosition(i+1, j+1));
                         Set<ChessPosition> enemyMoves = enemyMoveSet(teamColor, board);
 
                         for (ChessPosition enemyMove : enemyMoves) {
                             ChessPosition enemyEndingPosition = enemyMove;
-                            legalMoves.removeIf(move -> move.getEndPosition().equals(enemyEndingPosition));
+
+                            // Filter out ChessMoves with the same ending position as enemy moves
+                            if (legalMoves != null) {
+                                legalMoves.removeIf(move -> move.getEndPosition().equals(enemyEndingPosition));
+                            }
                         }
 
-                        if (!legalMoves.isEmpty()) {
+                        if (legalMoves != null &&!legalMoves.isEmpty()) {
                             hasValidMoves = true;
                             break;
                         }
@@ -252,15 +243,15 @@ public class ChessGame {
         for (int i =0; i< 8; i++){ //go throughout the board and call pieceMoves and store all moves
             for (int j = 0; j < 8; j++){
                 piece = board.getPiece(new ChessPosition(i+1,j+1));
-                    if(piece != null &&piece.getTeamColor()!= teamColor) {
-                        ChessPosition position=new ChessPosition(i+1, j+1);
-                        if(position.getColumn() <9||position.getRow()<9) {
-                            Collection<ChessMove> collection=piece.pieceMoves(board, position);
-                            collection.forEach(chessMove -> enemyMoveset.add(chessMove.getEndPosition()));
-                        }
+                if(piece != null &&piece.getTeamColor()!= teamColor) {
+                    ChessPosition position=new ChessPosition(i+1, j+1);
+                    if(position.getColumn() <9||position.getRow()<9) {
+                        Collection<ChessMove> collection=piece.pieceMoves(board, position);
+                        collection.forEach(chessMove -> enemyMoveset.add(chessMove.getEndPosition()));
                     }
                 }
             }
+        }
         return enemyMoveset; //store all the moves in a hashset and see if they are valid.
     }
 }
