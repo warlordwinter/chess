@@ -138,8 +138,10 @@ public class ChessGame {
                 }
                 if (king.getPieceType() == ChessPiece.PieceType.KING && king.getTeamColor().equals(teamColor)) {
                     ChessPosition kingsPosition = new ChessPosition(i+1, j+1);
-                    Set<ChessPosition> enemyMoves = enemyMoveSet(teamColor, board);
-                    return enemyMoves.contains(kingsPosition);
+                    if(kingsPosition.getRow()<=8 ||kingsPosition.getColumn()<=8) {
+                        Set<ChessPosition> enemyMoves=enemyMoveSet(teamColor, board);
+                        return enemyMoves.contains(kingsPosition);
+                    }
                 }
             }
         }
@@ -153,7 +155,6 @@ public class ChessGame {
      * @return True if the specified team is in checkmate
      */
     public boolean isInCheckmate(TeamColor teamColor) {
-        ArrayList<ChessPosition> enemyEndingLocations= new ArrayList<>();
         if (isInCheck(teamColor, board)) {
             boolean hasValidMoves = false;
 
@@ -162,26 +163,28 @@ public class ChessGame {
                     ChessPiece piece = board.getPiece(new ChessPosition(i, j));
 
                     if (piece != null && piece.getTeamColor() == teamColor) {
-                        Collection<ChessMove> moves = piece.pieceMoves(board, new ChessPosition(i, j));
-                        Set<ChessPosition> enemyMoves = enemyMoveSet(teamColor,board);
+                        Collection<ChessMove> legalMoves = validMoves(new ChessPosition(i, j));
+                        Set<ChessPosition> enemyMoves = enemyMoveSet(teamColor, board);
 
+                        for (ChessPosition enemyMove : enemyMoves) {
+                            ChessPosition enemyEndingPosition = enemyMove;
 
-                        if (!moves.isEmpty()) {
-                            hasValidMoves = true;
-                            break;  // Break the inner loop if any piece has valid moves
+                            // Filter out ChessMoves with the same ending position as enemy moves
+                            legalMoves.removeIf(move -> move.getEndPosition().equals(enemyEndingPosition));
                         }
-//                        for (ChessMove move : moves){
-//                            enemyEndingLocations.add();
-//                        }
+
+                        if (!legalMoves.isEmpty()) {
+                            hasValidMoves = true;
+                            break;
+                        }
                     }
                 }
             }
-
-            // Check if any piece of the specified team has valid moves
             return !hasValidMoves;
         }
         return false;
     }
+
 
     /**
      * Determines if the given team is in stalemate, which here is defined as having
