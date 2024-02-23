@@ -1,2 +1,5 @@
-package dataAccess;public interface AuthDao {
+package dataAccess;
+
+public interface AuthDao {
+  void clearAuthData();
 }

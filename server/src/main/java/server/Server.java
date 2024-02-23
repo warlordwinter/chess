@@ -1,7 +1,6 @@
 package server;
 
-import dataAccess.MemoryUserDao;
-import dataAccess.UserDao;
+import dataAccess.*;
 import server.handlers.ClearHandler;
 import spark.*;
 
@@ -10,8 +9,10 @@ public class Server {
     public int run(int desiredPort) {
         Spark.port(desiredPort);
         UserDao userDao = new MemoryUserDao();
+        GameDao gameDao = new MemoryGameDao();
+        AuthDao authDao = new MemoryAuthDao();
         Spark.staticFiles.location("web");
-        Spark.delete("/db", (req,res) -> (new ClearHandler().handleRequest(req,res, userDao)));
+        Spark.delete("/db", (req,res) -> (new ClearHandler().handleRequest(req,res, userDao,gameDao,authDao)));
         // Register your endpoints and handle exceptions here.
         Spark.init();
         Spark.awaitInitialization();
