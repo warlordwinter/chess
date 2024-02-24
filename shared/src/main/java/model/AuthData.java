@@ -1,19 +1,16 @@
 package model;
 
+import java.util.UUID;
+
 public class AuthData {
   final String authToken;
-  final String userName;
 
-  public AuthData(String authToken, String userName) {
+  public AuthData(String authToken) {
     this.authToken=authToken;
-    this.userName = userName;
   }
 
   public String getAuthToken() {
     return authToken;
   }
 
-  public String getUserName() {
-    return userName;
-  }
 }
