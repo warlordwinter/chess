@@ -28,10 +28,6 @@ public class Server {
     }
 
 
-    public String clear(Request rec, Response res){
-        System.out.println("hello");
-        return null;
-    }
 
     public void stop() {
         Spark.stop();
