@@ -11,7 +11,7 @@ import spark.Response;
 
 public class ClearHandler {
 
-  public Object handleRequest(Request req, Response res, UserDao userDao, GameDao gameDao, AuthDao authDao) {
+  public Object handleRequest(Response res, UserDao userDao, GameDao gameDao, AuthDao authDao) {
     try {
       ClearService clearService = new ClearService();
       clearService.clear(userDao, gameDao, authDao);
