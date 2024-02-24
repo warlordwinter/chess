@@ -10,11 +10,8 @@ public class RegistrationService {
 
 
   public AuthData registerUser(UserData user, UserDao userDao, AuthDao authDao) throws ResponseException{
-    //figure out username and password
-    //send to Userdao
-    //generate auth
-    //send to authDao
-    //return authData
+
+
     if (user == null){
       throw new ResponseException(400, "Bad Request");
     }
