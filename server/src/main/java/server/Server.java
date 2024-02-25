@@ -17,7 +17,7 @@ public class Server {
     public int run(int desiredPort) {
         Spark.port(desiredPort);
         Spark.staticFiles.location("web");
-        Spark.post("/session", (req,res) -> (new LoginHandler().handleLogin(req,res,userDao,gameDao)));
+        Spark.post("/session", (req,res) -> (new LoginHandler().handleLogin(req,res,userDao,authDao)));
         Spark.delete("/db", (req,res) -> (new ClearHandler().handleRequest(res, userDao,gameDao,authDao)));
         Spark.post("/user" ,(req,res) ->(new RegisterHandler().registerUser(req,res,userDao,authDao)));
         // Register your endpoints and handle exceptions here.
