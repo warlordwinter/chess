@@ -27,4 +27,17 @@ public class MemoryAuthDao implements AuthDao{
   public void addAuthToken(String user, AuthData authToken){
     authDataBase.put(user,authToken);
   }
+
+  @Override
+  public void deleteAuthToken(String authToken) {
+    authDataBase.remove(authToken);
+  }
+
+  @Override
+  public boolean verifyAuthToken(AuthData authToken) {
+    if(authDataBase.containsKey(authToken)){
+      return true;
+    }
+    return false;
+  }
 }
