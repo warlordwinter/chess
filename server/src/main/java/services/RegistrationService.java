@@ -16,7 +16,7 @@ public class RegistrationService {
       throw new ResponseException(400, "Bad Request");
     }
 
-    if (userDao.getUser(user.getUsername(),user.getPassword()) != null){
+    if (userDao.userInDatabase(user)){
       throw new ResponseException(403, "Error: already taken"); // change this number to be correct
     }
 

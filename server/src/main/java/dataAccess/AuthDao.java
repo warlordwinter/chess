@@ -7,7 +7,6 @@ public interface AuthDao {
 
   AuthData createAuthToken(String username);
 
-
   void addAuthToken(AuthData authToken);
 
   public void deleteAuthToken(String authToken);

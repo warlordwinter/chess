@@ -12,4 +12,6 @@ public interface UserDao {
 
   void clearUserData();
 
+
+  boolean userInDatabase(UserData userData);
 }
