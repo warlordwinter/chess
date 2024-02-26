@@ -6,18 +6,18 @@ import dataAccess.UserDao;
 import exception.ResponseException;
 import model.AuthData;
 import model.UserData;
+import response.LoginResponse;
 import spark.Request;
 
 public class LoginService {
 
-  public AuthData loginAuthentication(Request req,UserDao userDao, AuthDao authDao) throws ResponseException {
+  public LoginResponse loginAuthentication(Request req, UserDao userDao, AuthDao authDao) throws ResponseException {
     UserData user = new Gson().fromJson(req.body(),UserData.class);
-//    UserData userRequest = userDao.getUser(user.getUsername(),user.getPassword());
-    if(user.getUsername() == null ||user.getPassword() == null || user.getEmail() ==null) {
+    if(userDao.userInDatabase(user)) {
       throw new ResponseException(401, "Error: unauthorized");
     }
     AuthData token = authDao.createAuthToken(user.getUsername());
     authDao.addAuthToken(token);
-    return token;
+    return new LoginResponse(user.getUsername(),token.getAuthToken());
   }
 }

@@ -13,7 +13,7 @@ import spark.Response;
 
 public class RegisterHandler {
 
-  public Object registerUser(Request req, Response res, UserDao userDao, AuthDao authDao) throws ResponseException {
+  public Object registerUser(Request req, Response res, UserDao userDao, AuthDao authDao) {
     UserData user = new Gson().fromJson(req.body(), UserData.class);
 
     try {
