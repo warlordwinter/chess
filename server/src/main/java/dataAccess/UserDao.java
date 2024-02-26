@@ -8,7 +8,7 @@ public interface UserDao {
 
   void addUser(UserData user) throws ResponseException;
 
-  UserData getUser(String username, String password);
+  UserData getUser(UserData userData);
 
   void clearUserData();
 

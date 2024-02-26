@@ -5,11 +5,12 @@ import dataAccess.UserDao;
 import exception.ResponseException;
 import model.AuthData;
 import model.UserData;
+import response.RegisterResponse;
 
 public class RegistrationService {
 
 
-  public AuthData registerUser(UserData user, UserDao userDao, AuthDao authDao) throws ResponseException{
+  public RegisterResponse registerUser(UserData user, UserDao userDao, AuthDao authDao) throws ResponseException{
 
 
     if (user == null){
@@ -23,6 +24,6 @@ public class RegistrationService {
     userDao.addUser(user);
     AuthData token = authDao.createAuthToken(user.getUsername());
     authDao.addAuthToken(token);
-    return token;
+    return new RegisterResponse(user.getUsername(),token.getAuthToken());
   }
 }

@@ -14,15 +14,8 @@ public class MemoryUserDao implements UserDao{
     userDataBase.put(user.getUsername(),user);
   }
   @Override
-  public UserData getUser(String username, String password) {
-    if(!userDataBase.containsKey(username)){
-      UserData userData = userDataBase.get(username);
-      String passwordStoredInData = userData.getPassword();
-      if(passwordStoredInData!=password){
-        return null;
-      }
-    }
-    return userDataBase.get(username);
+  public UserData getUser(UserData userData) {
+    return userDataBase.get(userData.getUsername());
   }
 
 
