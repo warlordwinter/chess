@@ -21,7 +21,8 @@ public class LoginHandler {
 
     }catch(ResponseException e){
       res.status(e.StatusCode());
-      return new Gson().toJson(e.getMessage());
+//      ResponseObject
+      return new Gson().toJson(e);
     }
   }
 }

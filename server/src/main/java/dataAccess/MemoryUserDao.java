@@ -12,11 +12,17 @@ public class MemoryUserDao implements UserDao{
   @Override
   public void addUser(UserData user) throws ResponseException {
     userDataBase.put(user.getUsername(),user);
-
   }
 
   @Override
-  public UserData getUser(String username) {
+  public UserData getUser(String username, String password) {
+    if(userDataBase.containsKey(username)){
+      UserData userData = userDataBase.get(username);
+      String passwordStoredInData = userData.getPassword();
+      if(passwordStoredInData!=password){
+        return null;
+      }
+    }
     return userDataBase.get(username);
   }
 

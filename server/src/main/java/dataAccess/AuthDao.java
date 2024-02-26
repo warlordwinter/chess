@@ -5,11 +5,12 @@ import model.AuthData;
 public interface AuthDao {
   void clearAuthData();
 
-  AuthData createAuthToken();
+  AuthData createAuthToken(String username);
 
-  public void addAuthToken(String user, AuthData authToken);
+
+  void addAuthToken(AuthData authToken);
 
   public void deleteAuthToken(String authToken);
 
-  public boolean verifyAuthToken(AuthData authToken);
+  public boolean verifyAuthToken(String authToken);
 }

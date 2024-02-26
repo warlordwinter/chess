@@ -16,13 +16,13 @@ public class RegistrationService {
       throw new ResponseException(400, "Bad Request");
     }
 
-    if (userDao.getUser(user.getUsername()) != null){
+    if (userDao.getUser(user.getUsername(),user.getPassword()) != null){
       throw new ResponseException(403, "Error: already taken"); // change this number to be correct
     }
 
     userDao.addUser(user);
-    AuthData token = authDao.createAuthToken();
-    authDao.addAuthToken(token.getAuthToken(),token);
+    AuthData token = authDao.createAuthToken(user.getUsername());
+    authDao.addAuthToken(token);
     return token;
   }
 }

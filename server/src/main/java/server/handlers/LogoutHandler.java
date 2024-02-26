@@ -12,13 +12,12 @@ import spark.Response;
 
 public class LogoutHandler {
   public Object handleLogout(Request req, Response res, UserDao userDao, AuthDao authDao){
-    AuthData authInfo = new Gson().fromJson(req.body(), AuthData.class);
-    String authUser = authInfo.getAuthToken();
+    String authHeader = req.headers("authorization");
 
     try{
-      LogoutService logoutService =new LogoutService().logout(authInfo,authDao);
+      LogoutService logoutService =new LogoutService().logout(req,authHeader,authDao);
       res.status(200);
-      return new Gson().toJson(logoutService);
+      return "{}";
     } catch (ResponseException e){
       e.printStackTrace();
       res.status(e.StatusCode());

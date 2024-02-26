@@ -1,10 +1,7 @@
 package server;
 
 import dataAccess.*;
-import server.handlers.ClearHandler;
-import server.handlers.LoginHandler;
-import server.handlers.LogoutHandler;
-import server.handlers.RegisterHandler;
+import server.handlers.*;
 import services.RegistrationService;
 import spark.*;
 
@@ -22,6 +19,7 @@ public class Server {
         Spark.post("/session", (req,res) -> (new LoginHandler().handleLogin(req,res,userDao,authDao)));
         Spark.delete("/db", (req,res) -> (new ClearHandler().handleRequest(res, userDao,gameDao,authDao)));
         Spark.post("/user" ,(req,res) ->(new RegisterHandler().registerUser(req,res,userDao,authDao)));
+        Spark.post("/game", (req,res) -> (new CreateGameHandler().createGame(req,res,userDao,gameDao,authDao)));
         // Register your endpoints and handle exceptions here.
         Spark.init();
         Spark.awaitInitialization();

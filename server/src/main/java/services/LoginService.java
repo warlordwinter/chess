@@ -12,12 +12,12 @@ public class LoginService {
 
   public AuthData loginAuthentication(Request req,UserDao userDao, AuthDao authDao) throws ResponseException {
     UserData user = new Gson().fromJson(req.body(),UserData.class);
-    userDao.getUser(user.getUsername());
-    if(user.getUsername() == null) {
+//    UserData userRequest = userDao.getUser(user.getUsername(),user.getPassword());
+    if(user.getUsername() == null ||user.getPassword() == null || user.getEmail() ==null) {
       throw new ResponseException(401, "Error: unauthorized");
     }
-    AuthData token = authDao.createAuthToken();
-    authDao.addAuthToken(user.getUsername(),token);
+    AuthData token = authDao.createAuthToken(user.getUsername());
+    authDao.addAuthToken(token);
     return token;
   }
 }
