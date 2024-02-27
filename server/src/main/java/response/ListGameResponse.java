@@ -7,15 +7,15 @@ import java.util.Collection;
 public class ListGameResponse {
   final String message;
 
-  final Collection<GameData> collection;
+  final Collection<GameData> games;
 
   public ListGameResponse(String message) {
     this.message=message;
-    this.collection = null;
+    this.games = null;
   }
 
-  public ListGameResponse(Collection<GameData> collection){
+  public ListGameResponse(Collection<GameData> games){
     this.message = null;
-    this.collection = collection;
+    this.games = games;
   }
 }

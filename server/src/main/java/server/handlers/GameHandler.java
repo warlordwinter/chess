@@ -27,7 +27,7 @@ public class GameHandler {
 
   public Object listGames(Request req, Response res, AuthDao authDao, GameDao gameDao) {
     try {
-      CreateGameResponse response=new GameService().listGame(req, authDao, gameDao);
+      ListGameResponse response=new GameService().listGame(req, authDao, gameDao);
       res.status(200);
       return new Gson().toJson(response);
     } catch(ResponseException e){

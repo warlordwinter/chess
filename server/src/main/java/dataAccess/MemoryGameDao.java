@@ -1,7 +1,6 @@
 package dataAccess;
 
 import model.GameData;
-import model.UserData;
 
 import java.util.*;
 
@@ -20,15 +19,22 @@ public class MemoryGameDao implements GameDao{
   }
 
   @Override
-  public GameData createGame(String GameName) {
+  public GameData createGame(String gameName) {
     Integer uniqueGameID =Math.abs(UUID.randomUUID().hashCode());
-    return new GameData(GameName,uniqueGameID);
+    GameData newGame = new GameData(gameName,uniqueGameID);
+    addGame(gameName,newGame);
+    return newGame;
   }
 
   @Override
   public Collection<GameData> listGames() {
-    gameDataBase.values();
-    Collection<GameData> collectionOfGames = new ArrayList<>();
-    return collectionOfGames;
+//    Collection<GameData> collectionOfGames = new ArrayList<>();
+    Collection<GameData> gameData = gameDataBase.values();
+    return gameData;
+  }
+
+  @Override
+  public void addGame(String name, GameData gameData) {
+    gameDataBase.put(name,gameData);
   }
 }

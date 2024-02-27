@@ -9,6 +9,8 @@ import response.CreateGameResponse;
 import response.ListGameResponse;
 import spark.Request;
 
+import java.util.Collection;
+
 public class GameService {
 
   private ResponseException authenticate(Request req, AuthDao authDao) throws ResponseException {
@@ -25,9 +27,9 @@ public class GameService {
     return new CreateGameResponse(game.getGameID());
   }
 
-  public CreateGameResponse listGame(Request req, AuthDao authDao, GameDao gameDao) throws ResponseException {
+  public ListGameResponse listGame(Request req, AuthDao authDao, GameDao gameDao) throws ResponseException {
     authenticate(req,authDao);
-
-    return new ListGameResponse(message);
+    Collection<GameData> collection = gameDao.listGames();
+    return new ListGameResponse(collection);
   }
 }

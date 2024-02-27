@@ -12,4 +12,6 @@ public interface GameDao {
   GameData createGame(String GameName);
 
   Collection<GameData> listGames();
+
+  void addGame(String name, GameData gameData);
 }
