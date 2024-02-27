@@ -14,9 +14,10 @@ public interface GameDao {
 
   Collection<GameData> listGames();
 
-  void addGame(String name, GameData gameData);
+  void addGame(Integer gameID, GameData gameData);
 
   boolean checkGameAvalibility(JoinGameRequest request);
 
-  void updateGame(JoinGameRequest request);
+
+  void updateGame(JoinGameRequest request, AuthDao authDao, String authHeader);
 }

@@ -6,8 +6,8 @@ import java.util.UUID;
 
 public class GameData {
   final Integer gameID;
-  final String whiteUsername;
-  final String blackUsername;
+  String whiteUsername;
+  String blackUsername;
   final String gameName;
   final ChessGame game;
 
@@ -46,5 +46,13 @@ public class GameData {
 
   public ChessGame getGame() {
     return game;
+  }
+
+  public void setBlackUsername(String blackUsername){
+    this.blackUsername = blackUsername;
+  }
+
+  public void setWhiteUsername(String whiteUsername){
+    this.whiteUsername = whiteUsername;
   }
 }

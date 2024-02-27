@@ -19,6 +19,9 @@ public class AuthData {
     return authToken;
   }
 
+  public String getUsername() {
+    return username;
+  }
 
   @Override
   public String toString() {

@@ -45,8 +45,7 @@ public class GameService {
     if(!gameDao.checkGameAvalibility(request)){
       throw new ResponseException(403,  "Error: already taken");
     }
-
-    gameDao.updateGame(request);
-
+    String authHeader = req.headers("authorization");
+    gameDao.updateGame(request,authDao,authHeader);
   }
 }

@@ -39,4 +39,9 @@ public class MemoryAuthDao implements AuthDao{
     }
     return false;
   }
+
+  @Override
+  public AuthData getToken(String authID) {
+    return authDataBase.get(authID);
+  }
 }

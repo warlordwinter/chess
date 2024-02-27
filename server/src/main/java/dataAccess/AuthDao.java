@@ -9,7 +9,9 @@ public interface AuthDao {
 
   void addAuthToken(AuthData authToken);
 
-  public void deleteAuthToken(String authToken);
+  void deleteAuthToken(String authToken);
 
-  public boolean verifyAuthToken(String authToken);
+  boolean verifyAuthToken(String authToken);
+
+  AuthData getToken(String authID);
 }
