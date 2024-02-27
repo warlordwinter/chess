@@ -3,9 +3,7 @@ package dataAccess;
 import model.GameData;
 import model.UserData;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class MemoryGameDao implements GameDao{
 
@@ -25,5 +23,12 @@ public class MemoryGameDao implements GameDao{
   public GameData createGame(String GameName) {
     Integer uniqueGameID =Math.abs(UUID.randomUUID().hashCode());
     return new GameData(GameName,uniqueGameID);
+  }
+
+  @Override
+  public Collection<GameData> listGames() {
+    gameDataBase.values();
+    Collection<GameData> collectionOfGames = new ArrayList<>();
+    return collectionOfGames;
   }
 }
