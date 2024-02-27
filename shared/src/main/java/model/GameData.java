@@ -2,6 +2,8 @@ package model;
 
 import chess.ChessGame;
 
+import java.util.UUID;
+
 public class GameData {
   final Integer gameID;
   final String whiteUsername;
@@ -15,6 +17,14 @@ public class GameData {
     this.blackUsername=blackUsername;
     this.gameName=gameName;
     this.game=game;
+  }
+
+  public GameData(String gameName,Integer gameID){
+    this.gameID = gameID;
+    this.whiteUsername=null;
+    this.blackUsername=null;
+    this.gameName=gameName;
+    this.game=null;
   }
 
 
