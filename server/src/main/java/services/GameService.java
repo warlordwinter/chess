@@ -5,7 +5,9 @@ import dataAccess.AuthDao;
 import dataAccess.GameDao;
 import exception.ResponseException;
 import model.GameData;
+import requests.JoinGameRequest;
 import response.CreateGameResponse;
+import response.JoinGameResponse;
 import response.ListGameResponse;
 import spark.Request;
 
@@ -31,5 +33,20 @@ public class GameService {
     authenticate(req,authDao);
     Collection<GameData> collection = gameDao.listGames();
     return new ListGameResponse(collection);
+  }
+
+  public void joinGame(JoinGameRequest request, Request req, GameDao gameDao, AuthDao authDao) throws ResponseException {
+    authenticate(req,authDao);
+
+    if(request.gameID() == null||request.gameID()==""){
+      throw new ResponseException(400, "Error: bad request");
+    }
+
+    if(!gameDao.checkGameAvalibility(request)){
+      throw new ResponseException(403,  "Error: already taken");
+    }
+
+    gameDao.updateGame(request);
+
   }
 }

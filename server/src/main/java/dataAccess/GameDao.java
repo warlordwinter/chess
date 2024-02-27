@@ -1,6 +1,7 @@
 package dataAccess;
 
 import model.GameData;
+import requests.JoinGameRequest;
 
 import java.util.Collection;
 
@@ -14,4 +15,8 @@ public interface GameDao {
   Collection<GameData> listGames();
 
   void addGame(String name, GameData gameData);
+
+  boolean checkGameAvalibility(JoinGameRequest request);
+
+  void updateGame(JoinGameRequest request);
 }
