@@ -1,6 +1,6 @@
 package dataAccess;
 
-import exception.ResponseException;
+
 import model.UserData;
 
 import java.util.HashMap;
@@ -10,7 +10,7 @@ public class MemoryUserDao implements UserDao{
 
 
   @Override
-  public void addUser(UserData user) throws ResponseException {
+  public void addUser(UserData user){
     userDataBase.put(user.getUsername(),user);
   }
   @Override
@@ -33,7 +33,10 @@ public class MemoryUserDao implements UserDao{
       return false;
     }
 
-    return userData.equals(databaseCopy);
+    if(databaseCopy.getPassword().equals(userData.getPassword())){
+      return true;
+    }
+    return false;
   }
 
 

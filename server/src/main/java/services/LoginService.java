@@ -13,7 +13,7 @@ public class LoginService {
 
   public LoginResponse loginAuthentication(Request req, UserDao userDao, AuthDao authDao) throws ResponseException {
     UserData user = new Gson().fromJson(req.body(),UserData.class);
-    if(userDao.userInDatabase(user)) {
+    if(!userDao.userInDatabase(user)) {
       throw new ResponseException(401, "Error: unauthorized");
     }
     AuthData token = authDao.createAuthToken(user.getUsername());

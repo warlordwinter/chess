@@ -7,7 +7,7 @@ import spark.Request;
 
 public class LogoutService {
 
-  public LogoutService logout(Request req, String authHeader, AuthDao authDao) throws ResponseException {
+  public void logout(String authHeader, AuthDao authDao) throws ResponseException {
     if (!authDao.verifyAuthToken(authHeader)){
       throw new ResponseException(401,"Error: unauthorized");
     }
@@ -16,6 +16,5 @@ public class LogoutService {
     }catch (Exception e){
       throw new ResponseException(500, "Failure to Delete User");
     }
-    return null;
   }
 }

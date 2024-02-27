@@ -1,5 +1,6 @@
 package dataAccess;
 
+import exception.ResponseException;
 import model.AuthData;
 import model.GameData;
 import requests.JoinGameRequest;
@@ -48,19 +49,20 @@ public class MemoryGameDao implements GameDao{
   }
 
   @Override
-  public void updateGame(JoinGameRequest request, AuthDao authDao, String authHeader) {
+  public void updateGame(JoinGameRequest request, AuthDao authDao, String authHeader) throws ResponseException {
     GameData currentGame= gameDataBase.get(Integer.parseInt(request.gameID()));
-    if(request.playerColor()!=""){
-      if(currentGame.getBlackUsername().equals("") && request.playerColor().equals("BLACK")){
-        AuthData authData = authDao.getToken(authHeader);
+    if(currentGame ==null){
+      throw new ResponseException(400, "Error: bad request");
+    }
+    if (request.playerColor() == null) {
+    } else if (!request.playerColor().isEmpty() && !request.gameID().equals("0")) {
+      AuthData authData = authDao.getToken(authHeader);
+      if (currentGame.getBlackUsername() == null && request.playerColor().equals("BLACK")) {
         currentGame.setBlackUsername(authData.getUsername());
-      }
-      if(currentGame.getWhiteUsername().equals("") && request.playerColor().equals("WHITE")){
-        AuthData authData = authDao.getToken(authHeader);
+      } else if (currentGame.getWhiteUsername() == null && request.playerColor().equals("WHITE")) {
         currentGame.setWhiteUsername(authData.getUsername());
-      }
-      else{
-        //observer
+      } else {
+        throw new ResponseException(403, "Error: already taken");
       }
       gameDataBase.put(Integer.parseInt(request.gameID()), currentGame);
     }

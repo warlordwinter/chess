@@ -38,13 +38,10 @@ public class GameService {
   public void joinGame(JoinGameRequest request, Request req, GameDao gameDao, AuthDao authDao) throws ResponseException {
     authenticate(req,authDao);
 
-    if(request.gameID() == null||request.gameID()==""){
+    if(request.gameID() == null||request.gameID()==null){
       throw new ResponseException(400, "Error: bad request");
     }
 
-    if(!gameDao.checkGameAvalibility(request)){
-      throw new ResponseException(403,  "Error: already taken");
-    }
     String authHeader = req.headers("authorization");
     gameDao.updateGame(request,authDao,authHeader);
   }

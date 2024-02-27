@@ -1,5 +1,6 @@
 package dataAccess;
 
+import exception.ResponseException;
 import model.GameData;
 import requests.JoinGameRequest;
 
@@ -19,5 +20,5 @@ public interface GameDao {
   boolean checkGameAvalibility(JoinGameRequest request);
 
 
-  void updateGame(JoinGameRequest request, AuthDao authDao, String authHeader);
+  void updateGame(JoinGameRequest request, AuthDao authDao, String authHeader) throws ResponseException;
 }

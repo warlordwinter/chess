@@ -45,7 +45,7 @@ public class GameHandler {
       GameService response = new GameService();
       response.joinGame(request,req,gameDao,authDao);
       res.status(200);
-      return new Gson().toJson(response);
+      return "{}";
     }catch(ResponseException e){
       res.status(e.StatusCode());
       JoinGameResponse response = new JoinGameResponse(e.getMessage());

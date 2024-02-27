@@ -13,8 +13,8 @@ public class RegistrationService {
   public RegisterResponse registerUser(UserData user, UserDao userDao, AuthDao authDao) throws ResponseException{
 
 
-    if (user == null){
-      throw new ResponseException(400, "Bad Request");
+    if (user == null || user.getUsername() ==null|| user.getPassword() ==null || user.getEmail()==null){
+      throw new ResponseException(400, "Error: Bad Request");
     }
 
     if (userDao.userInDatabase(user)){

@@ -21,8 +21,8 @@ public class GameData {
 
   public GameData(String gameName,Integer gameID){
     this.gameID = gameID;
-    this.whiteUsername="";
-    this.blackUsername="";
+    this.whiteUsername=null;
+    this.blackUsername=null;
     this.gameName=gameName;
     this.game=null;
   }
