@@ -4,10 +4,9 @@ import com.google.gson.Gson;
 import dataAccess.AuthDao;
 import dataAccess.UserDao;
 import exception.ResponseException;
-import model.AuthData;
 import model.UserData;
 import response.RegisterResponse;
-import services.RegistrationService;
+import serviceTests.RegistrationService;
 import spark.Request;
 import spark.Response;
 

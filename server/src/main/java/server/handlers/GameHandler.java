@@ -8,7 +8,7 @@ import requests.JoinGameRequest;
 import response.CreateGameResponse;
 import response.JoinGameResponse;
 import response.ListGameResponse;
-import services.GameService;
+import serviceTests.GameService;
 import spark.Request;
 import spark.Response;
 

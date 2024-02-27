@@ -2,13 +2,10 @@ package server.handlers;
 
 import com.google.gson.Gson;
 import dataAccess.AuthDao;
-import dataAccess.GameDao;
 import dataAccess.UserDao;
 import exception.ResponseException;
-import model.AuthData;
 import response.LoginResponse;
-import response.RegisterResponse;
-import services.LoginService;
+import serviceTests.LoginService;
 import spark.Request;
 import spark.Response;
 

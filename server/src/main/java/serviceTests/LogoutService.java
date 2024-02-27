@@ -1,9 +1,7 @@
-package services;
+package serviceTests;
 
 import dataAccess.AuthDao;
 import exception.ResponseException;
-import model.AuthData;
-import spark.Request;
 
 public class LogoutService {
 

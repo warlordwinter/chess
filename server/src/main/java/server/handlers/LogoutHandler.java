@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import dataAccess.AuthDao;
 import exception.ResponseException;
 import response.LoginResponse;
-import services.LogoutService;
+import serviceTests.LogoutService;
 import spark.Request;
 import spark.Response;
 

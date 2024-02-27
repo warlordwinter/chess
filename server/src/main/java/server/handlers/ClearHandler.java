@@ -5,8 +5,7 @@ import dataAccess.AuthDao;
 import dataAccess.GameDao;
 import dataAccess.UserDao;
 import exception.ResponseException;
-import services.ClearService;
-import spark.Request;
+import serviceTests.ClearService;
 import spark.Response;
 
 public class ClearHandler {

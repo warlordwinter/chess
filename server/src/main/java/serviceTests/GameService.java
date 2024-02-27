@@ -1,4 +1,4 @@
-package services;
+package serviceTests;
 
 import com.google.gson.Gson;
 import dataAccess.AuthDao;
@@ -7,7 +7,6 @@ import exception.ResponseException;
 import model.GameData;
 import requests.JoinGameRequest;
 import response.CreateGameResponse;
-import response.JoinGameResponse;
 import response.ListGameResponse;
 import spark.Request;
 
