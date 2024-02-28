@@ -19,9 +19,6 @@ public class PawnMovementRules extends ChessMovementRule {
     pawnMoves(chessBoard, chessPosition, collection);
   }
 
-  //  public void killing(ChessPosition chessPosition, int deltaCol, int deltaRow){
-//
-//  }
   private void promotionPotential(ChessPosition endingPosition, ChessPosition chessPosition, Collection<ChessMove> collection) {
     int col=endingPosition.getColumn();
     int row=endingPosition.getRow();
@@ -74,14 +71,6 @@ public class PawnMovementRules extends ChessMovementRule {
           }
         }
       }
-//      for (int i = -1; i <= 1; i += increment) {
-//        endingPosition=new ChessPosition(row + i * increment, col);
-//        if (chessBoard.getPiece(endingPosition) != null) {
-//          break;
-//        } else {
-//          collection.add(new ChessMove(chessPosition, endingPosition, null));
-//        }
-//      }
     }
       int i =1;
       endingPosition=new ChessPosition(row + i *increment, col); // advance regularly on non-starter moves
