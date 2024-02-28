@@ -16,4 +16,12 @@ public class LoginResponse {
     this.username = null;
     this.authToken= null;
   }
+
+  public String getAuthToken() {
+    return authToken;
+  }
+
+  public String getUsername() {
+    return username;
+  }
 }

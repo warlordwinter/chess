@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public class MemoryAuthDao implements AuthDao{
 
-  private Map<String, AuthData> authDataBase =new HashMap<>();
+  public Map<String, AuthData> authDataBase =new HashMap<>();
 
   @Override
   public void clearAuthData() {
@@ -20,6 +20,9 @@ public class MemoryAuthDao implements AuthDao{
     String auth = UUID.randomUUID().toString();
     AuthData authToken = new AuthData(auth,username);
     return authToken;
+  }
+  public Map<String, AuthData> getAuthDataBase(){
+    return authDataBase;
   }
 
   @Override

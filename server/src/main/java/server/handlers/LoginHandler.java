@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import dataAccess.AuthDao;
 import dataAccess.UserDao;
 import exception.ResponseException;
+import model.UserData;
 import response.LoginResponse;
 import serviceTests.LoginService;
 import spark.Request;
@@ -13,7 +14,8 @@ public class LoginHandler {
 
   public Object handleLogin(Request req, Response res, UserDao userDao, AuthDao authDao) {
     try{
-      LoginResponse token = new LoginService().loginAuthentication(req, userDao, authDao);
+      UserData user = new Gson().fromJson(req.body(),UserData.class);
+      LoginResponse token = new LoginService().loginAuthentication(user, userDao, authDao);
       res.status(200);
       return new Gson().toJson(token);
 
