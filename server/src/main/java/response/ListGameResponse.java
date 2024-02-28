@@ -18,4 +18,8 @@ public class ListGameResponse {
     this.message = null;
     this.games = games;
   }
+
+  public Collection<GameData> getGames() {
+    return games;
+  }
 }

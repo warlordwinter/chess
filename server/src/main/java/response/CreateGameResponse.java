@@ -14,4 +14,7 @@ public class CreateGameResponse {
     this.message = message;
   }
 
+  public Integer getGameID() {
+    return gameID;
+  }
 }

@@ -17,8 +17,13 @@ public class MemoryGameDao implements GameDao{
   }
 
   @Override
-  public GameData getGameData(String gameName) {
-    return null;
+  public GameData getGameData(Integer gameID) {
+    return gameDataBase.get(gameID);
+  }
+
+  @Override
+  public Collection getKeys(){
+    return gameDataBase.keySet();
   }
 
   @Override

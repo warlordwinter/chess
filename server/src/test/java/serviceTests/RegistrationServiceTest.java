@@ -1,8 +1,6 @@
 package serviceTests;
 
-import dataAccess.DataAccessException;
 import dataAccess.MemoryAuthDao;
-import dataAccess.MemoryGameDao;
 import dataAccess.MemoryUserDao;
 import exception.ResponseException;
 import model.UserData;
@@ -10,13 +8,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import response.RegisterResponse;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class RegistrationServiceTest {
   MemoryAuthDao authDao = new MemoryAuthDao();
-  MemoryGameDao gameDao = new MemoryGameDao();
   MemoryUserDao userDao = new MemoryUserDao();
   UserData testUser = new UserData("john","kidney","test.gmail.com");
 

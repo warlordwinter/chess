@@ -16,4 +16,8 @@ public class RegisterResponse {
     this.username = null;
     this.authToken = null;
   }
+
+  public String getAuthToken() {
+    return authToken;
+  }
 }

@@ -14,34 +14,32 @@ import java.util.Collection;
 
 public class GameService {
 
-  private ResponseException authenticate(Request req, AuthDao authDao) throws ResponseException {
-    String authHeader = req.headers("authorization");
-    if(!authDao.verifyAuthToken(authHeader)){
+  private ResponseException authenticate(String token, AuthDao authDao) throws ResponseException {
+    if(!authDao.verifyAuthToken(token)){
       throw new ResponseException(401, "Error: unauthorized");
     }
     return null;
   }
-  public CreateGameResponse createGame(Request req, GameDao gameDao, AuthDao authDao) throws ResponseException {
-    authenticate(req,authDao);
-    GameData gameName = new Gson().fromJson(req.body(), GameData.class);
-    GameData game = gameDao.createGame(gameName.getGameName());
+  public CreateGameResponse createGame(String token,GameData gameData, GameDao gameDao, AuthDao authDao) throws ResponseException {
+    authenticate(token,authDao);
+    GameData game = gameDao.createGame(gameData.getGameName());
     return new CreateGameResponse(game.getGameID());
   }
 
-  public ListGameResponse listGame(Request req, AuthDao authDao, GameDao gameDao) throws ResponseException {
-    authenticate(req,authDao);
+  public ListGameResponse listGame(String token, AuthDao authDao, GameDao gameDao) throws ResponseException {
+    authenticate(token,authDao);
     Collection<GameData> collection = gameDao.listGames();
     return new ListGameResponse(collection);
   }
 
-  public void joinGame(JoinGameRequest request, Request req, GameDao gameDao, AuthDao authDao) throws ResponseException {
-    authenticate(req,authDao);
+  public void joinGame(JoinGameRequest request, String token, GameDao gameDao, AuthDao authDao) throws ResponseException {
+    authenticate(token,authDao);
 
     if(request.gameID() == null||request.gameID()==null){
       throw new ResponseException(400, "Error: bad request");
     }
 
-    String authHeader = req.headers("authorization");
+    String authHeader = token;
     gameDao.updateGame(request,authDao,authHeader);
   }
 }

@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import dataAccess.AuthDao;
 import dataAccess.GameDao;
 import exception.ResponseException;
+import model.GameData;
 import requests.JoinGameRequest;
 import response.CreateGameResponse;
 import response.JoinGameResponse;
@@ -17,7 +18,9 @@ public class GameHandler {
 
   public Object createGame(Request req, Response res, GameDao gameDao, AuthDao authDao) {
     try{
-      CreateGameResponse response = new GameService().createGame(req,gameDao,authDao);
+      String token = req.headers("authorization");
+      GameData gameName = new Gson().fromJson(req.body(), GameData.class);
+      CreateGameResponse response = new GameService().createGame(token,gameName,gameDao,authDao);
       res.status(200);
       return new Gson().toJson(response);
     }catch(ResponseException e) {
@@ -29,7 +32,8 @@ public class GameHandler {
 
   public Object listGames(Request req, Response res, AuthDao authDao, GameDao gameDao) {
     try {
-      ListGameResponse response=new GameService().listGame(req, authDao, gameDao);
+      String token = req.headers("authorization");
+      ListGameResponse response=new GameService().listGame(token, authDao, gameDao);
       res.status(200);
       return new Gson().toJson(response);
     } catch(ResponseException e){
@@ -41,9 +45,10 @@ public class GameHandler {
 
   public Object joinGame(Request req, Response res, GameDao gameDao, AuthDao authDao) {
     try{
+      String token = req.headers("authorization");
       JoinGameRequest request = new Gson().fromJson(req.body(), JoinGameRequest.class);
       GameService response = new GameService();
-      response.joinGame(request,req,gameDao,authDao);
+      response.joinGame(request,token,gameDao,authDao);
       res.status(200);
       return "{}";
     }catch(ResponseException e){

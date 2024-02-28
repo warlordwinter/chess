@@ -9,7 +9,9 @@ import java.util.Collection;
 public interface GameDao {
   void clearGameData();
 
-  GameData getGameData(String GameName);
+  GameData getGameData(Integer gameID);
+
+  Collection getKeys();
 
   GameData createGame(String GameName);
 
@@ -17,8 +19,8 @@ public interface GameDao {
 
   void addGame(Integer gameID, GameData gameData);
 
-  boolean checkGameAvalibility(JoinGameRequest request);
 
+  boolean checkGameAvalibility(JoinGameRequest request);
 
   void updateGame(JoinGameRequest request, AuthDao authDao, String authHeader) throws ResponseException;
 }
