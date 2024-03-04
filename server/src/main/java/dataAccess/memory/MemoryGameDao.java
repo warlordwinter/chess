@@ -1,5 +1,7 @@
-package dataAccess;
+package dataAccess.memory;
 
+import dataAccess.AuthDao;
+import dataAccess.GameDao;
 import exception.ResponseException;
 import model.AuthData;
 import model.GameData;
@@ -7,7 +9,7 @@ import requests.JoinGameRequest;
 
 import java.util.*;
 
-public class MemoryGameDao implements GameDao{
+public class MemoryGameDao implements GameDao {
 
   private Map<Integer, GameData> gameDataBase =new HashMap<>();
 

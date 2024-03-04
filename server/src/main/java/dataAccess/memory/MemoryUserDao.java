@@ -1,12 +1,13 @@
-package dataAccess;
+package dataAccess.memory;
 
 
+import dataAccess.UserDao;
 import model.UserData;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class MemoryUserDao implements UserDao{
+public class MemoryUserDao implements UserDao {
 
 
   @Override

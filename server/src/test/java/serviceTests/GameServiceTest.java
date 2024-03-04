@@ -1,8 +1,8 @@
 package serviceTests;
 
-import dataAccess.MemoryAuthDao;
-import dataAccess.MemoryGameDao;
-import dataAccess.MemoryUserDao;
+import dataAccess.memory.MemoryAuthDao;
+import dataAccess.memory.MemoryGameDao;
+import dataAccess.memory.MemoryUserDao;
 import exception.ResponseException;
 import model.GameData;
 import model.UserData;
@@ -15,7 +15,6 @@ import response.CreateGameResponse;
 import response.ListGameResponse;
 
 import java.util.Collection;
-import java.util.ListIterator;
 
 import static org.junit.jupiter.api.Assertions.*;
 

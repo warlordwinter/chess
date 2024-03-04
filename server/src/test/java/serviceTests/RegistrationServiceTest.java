@@ -1,14 +1,12 @@
 package serviceTests;
 
-import dataAccess.MemoryAuthDao;
-import dataAccess.MemoryUserDao;
+import dataAccess.memory.MemoryAuthDao;
+import dataAccess.memory.MemoryUserDao;
 import exception.ResponseException;
 import model.UserData;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RegistrationServiceTest {
   MemoryAuthDao authDao = new MemoryAuthDao();
