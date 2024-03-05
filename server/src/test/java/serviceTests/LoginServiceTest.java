@@ -1,5 +1,6 @@
 package serviceTests;
 
+import dataAccess.DataAccessException;
 import dataAccess.memory.MemoryAuthDao;
 import dataAccess.memory.MemoryUserDao;
 import exception.ResponseException;
@@ -17,7 +18,7 @@ class LoginServiceTest {
 
   @Test
   @DisplayName("Login Pass Test")
-  void loginAuthentication() throws ResponseException {
+  void loginAuthentication() throws DataAccessException {
     LoginService loginService = new LoginService();
     userDao.addUser(testUser);
     LoginResponse response = loginService.loginAuthentication(testUser, userDao, authDao);

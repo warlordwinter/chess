@@ -2,6 +2,7 @@ package server.handlers;
 
 import com.google.gson.Gson;
 import dataAccess.AuthDao;
+import dataAccess.DataAccessException;
 import dataAccess.UserDao;
 import exception.ResponseException;
 import model.UserData;
@@ -19,7 +20,7 @@ public class RegisterHandler {
       RegisterResponse authenticated=new RegistrationService().registerUser(user, userDao, authDao);
       res.status(200);
       return new Gson().toJson(authenticated);
-    } catch(ResponseException e){
+    } catch(DataAccessException e){
       res.status(e.StatusCode());
       RegisterResponse response = new RegisterResponse(e.getMessage());
       return new Gson().toJson(response);

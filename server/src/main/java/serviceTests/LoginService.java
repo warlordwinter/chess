@@ -1,6 +1,7 @@
 package serviceTests;
 
 import dataAccess.AuthDao;
+import dataAccess.DataAccessException;
 import dataAccess.UserDao;
 import exception.ResponseException;
 import model.AuthData;
@@ -12,9 +13,9 @@ import java.util.Map;
 
 public class LoginService {
 
-  public LoginResponse loginAuthentication(UserData user, UserDao userDao, AuthDao authDao) throws ResponseException {
+  public LoginResponse loginAuthentication(UserData user, UserDao userDao, AuthDao authDao) throws DataAccessException {
     if(!userDao.userInDatabase(user)) {
-      throw new ResponseException(401, "Error: unauthorized");
+      throw new DataAccessException(401, "Error: unauthorized");
     }
     AuthData token = authDao.createAuthToken(user.getUsername());
     authDao.addAuthToken(token);

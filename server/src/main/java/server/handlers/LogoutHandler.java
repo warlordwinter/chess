@@ -2,6 +2,7 @@ package server.handlers;
 
 import com.google.gson.Gson;
 import dataAccess.AuthDao;
+import dataAccess.DataAccessException;
 import exception.ResponseException;
 import response.LoginResponse;
 import serviceTests.LogoutService;
@@ -17,7 +18,7 @@ public class LogoutHandler {
       logoutService.logout(authHeader,authDao);
       res.status(200);
       return "{}";
-    } catch (ResponseException e){
+    } catch (DataAccessException e){
       e.printStackTrace();
       res.status(e.StatusCode());
       LoginResponse response =new LoginResponse(e.getMessage());

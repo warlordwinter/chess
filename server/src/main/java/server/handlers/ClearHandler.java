@@ -2,6 +2,7 @@ package server.handlers;
 
 import com.google.gson.Gson;
 import dataAccess.AuthDao;
+import dataAccess.DataAccessException;
 import dataAccess.GameDao;
 import dataAccess.UserDao;
 import exception.ResponseException;
@@ -16,7 +17,7 @@ public class ClearHandler {
       clearService.clear(userDao, gameDao, authDao);
       res.status(200);
       return new Gson().toJson(clearService);
-    } catch (ResponseException e) {
+    } catch (DataAccessException e) {
       e.printStackTrace();  // Log the exception
       res.status(e.StatusCode());
       return "{}";

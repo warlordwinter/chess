@@ -1,6 +1,7 @@
 package dataAccess.sql;
 
 import dataAccess.AuthDao;
+import dataAccess.DataAccessException;
 import dataAccess.GameDao;
 import exception.ResponseException;
 import model.GameData;
@@ -45,6 +46,6 @@ public class GameSqlDataAccess implements GameDao {
   }
 
   @Override
-  public void updateGame(JoinGameRequest request, AuthDao authDao, String authHeader) throws ResponseException {}
+  public void updateGame(JoinGameRequest request, AuthDao authDao, String authHeader) throws DataAccessException {}
 
 }

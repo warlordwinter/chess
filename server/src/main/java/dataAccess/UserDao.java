@@ -6,7 +6,7 @@ import model.UserData;
 public interface UserDao {
 
 
-  void addUser(UserData user) throws ResponseException;
+  void addUser(UserData user) throws DataAccessException;
 
   UserData getUser(UserData userData);
 

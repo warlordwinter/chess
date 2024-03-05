@@ -1,5 +1,6 @@
 package serviceTests;
 
+import dataAccess.DataAccessException;
 import dataAccess.memory.MemoryAuthDao;
 import dataAccess.memory.MemoryGameDao;
 import dataAccess.memory.MemoryUserDao;
@@ -29,7 +30,7 @@ class GameServiceTest {
   GameData gameData = new GameData(1234,"mike","","tic-tac",null);
 
   @BeforeEach
-  void setUp() throws ResponseException {
+  void setUp() throws DataAccessException {
     RegistrationService registrationService = new RegistrationService();
     token = registrationService.registerUser(testUser,userDao,authDao).getAuthToken();
     registrationService.registerUser(testUserTwo,userDao,authDao);
@@ -37,7 +38,7 @@ class GameServiceTest {
 
   @Test
   @DisplayName("Create Game Pass Test")
-  void createGamePass() throws ResponseException {
+  void createGamePass() throws DataAccessException {
     GameService gameService = new GameService();
     CreateGameResponse response = gameService.createGame(token,gameData,gameDao,authDao);
     assertNotNull(response);
@@ -45,7 +46,7 @@ class GameServiceTest {
 
   @Test
   @DisplayName("Create Game Fail Test")
-  void createGameFail() throws ResponseException {
+  void createGameFail() throws DataAccessException {
     GameService gameService = new GameService();
     CreateGameResponse response = gameService.createGame(token,gameData,gameDao,authDao);
     assertNotNull(response);
@@ -55,7 +56,7 @@ class GameServiceTest {
 
   @Test
   @DisplayName("List Game Pass Test")
-  void listGamePass() throws ResponseException {
+  void listGamePass() throws DataAccessException {
     GameService listService = new GameService();
     GameService gameService = new GameService();
     gameService.createGame(token,gameData,gameDao,authDao);
@@ -74,7 +75,7 @@ class GameServiceTest {
 
   @Test
   @DisplayName("List Game Fail Test")
-  void listGameFail() throws ResponseException {
+  void listGameFail() throws DataAccessException {
     GameService listService = new GameService();
     GameService gameService = new GameService();
     gameService.createGame(token,gameData,gameDao,authDao);
@@ -84,7 +85,7 @@ class GameServiceTest {
 
   @Test
   @DisplayName("Join Game Pass Test")
-  void joinGamePass() throws ResponseException {
+  void joinGamePass() throws DataAccessException {
     GameService gameService = new GameService();
     gameService.createGame(token,gameData,gameDao,authDao);
     Collection collection = gameDao.getKeys();
@@ -99,7 +100,7 @@ class GameServiceTest {
 
   @Test
   @DisplayName("Join Game Fail Test")
-  void joinGameFail() throws ResponseException {
+  void joinGameFail() throws DataAccessException {
     GameService gameService = new GameService();
     gameService.createGame(token,gameData,gameDao,authDao);
     Assertions.assertThrows(ResponseException.class, () -> gameService.joinGame(new JoinGameRequest("BLACK",null),token,gameDao,authDao), "Error: bad request");

@@ -1,5 +1,6 @@
 package serviceTests;
 
+import dataAccess.DataAccessException;
 import dataAccess.memory.MemoryAuthDao;
 import dataAccess.memory.MemoryUserDao;
 import exception.ResponseException;
@@ -17,7 +18,7 @@ class LogoutServiceTest {
   String token = null;
 
   @BeforeEach
-  void setUp() throws ResponseException {
+  void setUp() throws DataAccessException {
     RegistrationService registrationService = new RegistrationService();
     token = registrationService.registerUser(testUser,userDao,authDao).getAuthToken();
   }
@@ -31,7 +32,7 @@ class LogoutServiceTest {
   }
   @Test
   @DisplayName("Logout Pass Test")
-  void logoutSuccessful() throws ResponseException {
+  void logoutSuccessful() throws DataAccessException {
     LogoutService logoutService = new LogoutService();
     logoutService.logout(token, authDao);
     assertFalse(authDao.verifyAuthToken(token));

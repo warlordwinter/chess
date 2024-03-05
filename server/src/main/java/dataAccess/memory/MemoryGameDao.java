@@ -1,6 +1,7 @@
 package dataAccess.memory;
 
 import dataAccess.AuthDao;
+import dataAccess.DataAccessException;
 import dataAccess.GameDao;
 import exception.ResponseException;
 import model.AuthData;
@@ -56,10 +57,10 @@ public class MemoryGameDao implements GameDao {
   }
 
   @Override
-  public void updateGame(JoinGameRequest request, AuthDao authDao, String authHeader) throws ResponseException {
+  public void updateGame(JoinGameRequest request, AuthDao authDao, String authHeader) throws DataAccessException {
     GameData currentGame= gameDataBase.get(Integer.parseInt(request.gameID()));
     if(currentGame ==null){
-      throw new ResponseException(400, "Error: bad request");
+      throw new DataAccessException(400, "Error: bad request");
     }
     if (request.playerColor() == null) {
     } else if (!request.playerColor().isEmpty() && !request.gameID().equals("0")) {
@@ -69,7 +70,7 @@ public class MemoryGameDao implements GameDao {
       } else if (currentGame.getWhiteUsername() == null && request.playerColor().equals("WHITE")) {
         currentGame.setWhiteUsername(authData.getUsername());
       } else {
-        throw new ResponseException(403, "Error: already taken");
+        throw new DataAccessException(403, "Error: already taken");
       }
       gameDataBase.put(Integer.parseInt(request.gameID()), currentGame);
     }

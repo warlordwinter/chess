@@ -22,5 +22,5 @@ public interface GameDao {
 
   boolean checkGameAvalibility(JoinGameRequest request);
 
-  void updateGame(JoinGameRequest request, AuthDao authDao, String authHeader) throws ResponseException;
+  void updateGame(JoinGameRequest request, AuthDao authDao, String authHeader) throws DataAccessException;
 }

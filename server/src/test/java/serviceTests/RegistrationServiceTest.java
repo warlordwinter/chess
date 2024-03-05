@@ -1,5 +1,6 @@
 package serviceTests;
 
+import dataAccess.DataAccessException;
 import dataAccess.memory.MemoryAuthDao;
 import dataAccess.memory.MemoryUserDao;
 import exception.ResponseException;
@@ -15,7 +16,7 @@ class RegistrationServiceTest {
 
   @Test
   @DisplayName("Register User Pass")
-  void registerUserPass() throws ResponseException {
+  void registerUserPass() throws DataAccessException {
     RegistrationService registrationService = new RegistrationService();
     registrationService.registerUser(testUser,userDao,authDao);
     Assertions.assertEquals(userDao.userInDatabase(testUser)==true,userDao.userInDatabase(testUser)==true);

@@ -1,5 +1,6 @@
 package serviceTests;
 
+import dataAccess.DataAccessException;
 import dataAccess.memory.MemoryAuthDao;
 import dataAccess.memory.MemoryGameDao;
 import dataAccess.memory.MemoryUserDao;
@@ -17,14 +18,14 @@ class ClearServiceTest {
   UserData testUser = new UserData("john","kidney","test.gmail.com");
 
   @BeforeEach
-  void setUp() throws ResponseException {
+  void setUp() throws DataAccessException {
     RegistrationService registrationService = new RegistrationService();
     registrationService.registerUser(testUser,userDao,authDao);
   }
 
   @Test
   @DisplayName("Clear Pass Test")
-  void clearPass() throws ResponseException {
+  void clearPass() throws DataAccessException {
     ClearService clearService = new ClearService();
     clearService.clear(userDao,gameDao,authDao);
     Assertions.assertEquals(userDao.userInDatabase(testUser)==false,userDao.userInDatabase(testUser)==false);
@@ -32,7 +33,7 @@ class ClearServiceTest {
 
   @Test
   @DisplayName("Clear Fail Test")
-  void clearFail() throws ResponseException {
+  void clearFail() throws DataAccessException {
     ClearService clearService = new ClearService();
     clearService.clear(userDao,gameDao,authDao);
     RegistrationService registrationService = new RegistrationService();

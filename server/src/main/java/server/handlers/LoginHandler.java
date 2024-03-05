@@ -2,6 +2,7 @@ package server.handlers;
 
 import com.google.gson.Gson;
 import dataAccess.AuthDao;
+import dataAccess.DataAccessException;
 import dataAccess.UserDao;
 import exception.ResponseException;
 import model.UserData;
@@ -19,7 +20,7 @@ public class LoginHandler {
       res.status(200);
       return new Gson().toJson(token);
 
-    }catch(ResponseException e){
+    }catch(DataAccessException e){
       res.status(e.StatusCode());
 //      ResponseObject
       res.status(e.StatusCode());
