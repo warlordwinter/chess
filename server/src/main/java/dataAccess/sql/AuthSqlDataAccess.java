@@ -48,30 +48,31 @@ public class AuthSqlDataAccess implements AuthDao {
   }
 
   @Override
-  public void deleteAuthToken(String authToken) {
-
+  public void deleteAuthToken(String authToken) throws DataAccessException{
+    Connection conn = DatabaseManager.getConnection();
+    try (var preparedStatement = conn.prepareStatement("DELETE FROM authData WHERE authtoken=?")) {
+      preparedStatement.setString(1, authToken);
+      preparedStatement.executeUpdate();
+    } catch(SQLException e){
+      throw new DataAccessException(500, e.getMessage());
+    }
   }
 
   @Override
   public boolean verifyAuthToken(String authToken) throws DataAccessException {
     Connection conn = DatabaseManager.getConnection();
-    try (var preparedStatement = conn.prepareStatement("SELECT authtoken FROM authData WHERE authdata=?")) {
-      preparedStatement.setString(1,authToken);
-      try(var rs = preparedStatement.executeQuery()){
-        while(rs.next()){
-          System.out.printf("The auth token is in the database");
+    try (var preparedStatement = conn.prepareStatement("SELECT authtoken FROM authData WHERE authtoken=?")) {
+      preparedStatement.setString(1, authToken);
+      try (var rs = preparedStatement.executeQuery()) {
+        while (rs.next()) {
+//          System.out.println("The auth token is in the database");
           return true;
         }
       }
-    } catch (SQLException e){
+    } catch (SQLException e) {
       throw new DataAccessException(500, e.getMessage());
     }
     return false;
-  }
-
-  @Override
-  public Map<String, AuthData> getAuthDataBase() {
-    return authDataBase;
   }
 
   @Override

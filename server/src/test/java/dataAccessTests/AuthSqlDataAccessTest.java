@@ -17,7 +17,8 @@ class AuthSqlDataAccessTest {
   }
 
   @AfterEach
-  void tearDown() {
+  void tearDown() throws DataAccessException {
+    authSqlDataAccess.clearAuthData();
   }
 
   @Nested
@@ -69,20 +70,43 @@ class AuthSqlDataAccessTest {
       }
     }
 
-    @Test
-    void deleteAuthToken() {
+    @Nested
+    class testDeleteAuthToken {
+      @Test
+      @DisplayName("Successful Delete Token")
+      void goodDeleteAuthToken() throws DataAccessException {
+        AuthData token = authSqlDataAccess.createAuthToken("johnny-test");
+        authSqlDataAccess.addAuthToken(token);
+        authSqlDataAccess.deleteAuthToken(token.getUsername());
+        assertNull(authSqlDataAccess.getToken(token.getUsername()));
+      }
+
+      @Test
+      @DisplayName("Unsuccessful Delete Token")
+      void badDeleteAuthToken() throws DataAccessException {
+        AuthData token = authSqlDataAccess.createAuthToken("johnny-test");
+        authSqlDataAccess.addAuthToken(token);
+        assertNull(authSqlDataAccess.getToken(token.getUsername()));
+      }
 
     }
-
     @Nested
     class verifyAuthTests {
       @Test
       @DisplayName("True Verify AuthToken Test")
-      void verifyAuthToken() throws DataAccessException {
+      void trueVerifyAuthToken() throws DataAccessException {
         AuthData token =authSqlDataAccess.createAuthToken("john-tron");
 
         authSqlDataAccess.addAuthToken(token);
+        assertTrue(authSqlDataAccess.verifyAuthToken(token.getAuthToken()));
+      }
 
+      @Test
+      @DisplayName("False Verify AuthToken Test")
+      void falseVerifyAuthToken() throws DataAccessException {
+        AuthData token =authSqlDataAccess.createAuthToken("john-tron");
+
+        assertFalse(authSqlDataAccess.verifyAuthToken(token.getAuthToken()));
       }
     }
   }
