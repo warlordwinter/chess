@@ -14,38 +14,59 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserSqlDataAccessTest {
   private static UserSqlDataAccess userSqlDataAccess;
+  private UserData testUser;
 
   @BeforeEach
   void setUp() throws DataAccessException {
     DatabaseManager.configureDatabase();
     userSqlDataAccess = new UserSqlDataAccess();
+    testUser=new UserData("testUser", "testPassword", "test@example.com");
   }
 
-  @Test
-  @DisplayName("Successful Add User Test")
-  public void trueTestAddUser() {
-    UserData testUser = new UserData("testUser", "testPassword", "test@example.com");
+  @Nested
+  class addUserTests {
+    @Test
+    @DisplayName("Successful Add User Test")
+    public void trueTestAddUser() {
 
-    try {
-      userSqlDataAccess.addUser(testUser);
+      try {
+        userSqlDataAccess.addUser(testUser);
 
-      assertEquals(testUser, userSqlDataAccess.getUser(testUser));
+        assertEquals(testUser, userSqlDataAccess.getUser(testUser));
 
-    } catch (DataAccessException e) {
-      fail("Exception thrown: " + e.getMessage());
+      } catch (DataAccessException e) {
+        fail("Exception thrown: " + e.getMessage());
+      }
+    }
+
+    @Test
+    @DisplayName("Failed Add User Test")
+    public void falseTestAddUser() {
+      UserData badTestUser=new UserData("notInTable", "notInTable", "notInTable@gmail.com");
+
+      try {
+        assertNull(userSqlDataAccess.getUser(badTestUser));
+
+      } catch (DataAccessException e) {
+        fail("Exception thrown: " + e.getMessage());
+      }
     }
   }
 
-  @Test
-  @DisplayName("Failed Add User Test")
-  public void falseTestAddUser() {
-    UserData testUser = new UserData("notInTable", "notInTable", "notInTable@gmail.com");
+  @Nested
+  class getUserTests{
 
-    try {
-      assertNull(userSqlDataAccess.getUser(testUser));
-
-    } catch (DataAccessException e) {
-      fail("Exception thrown: " + e.getMessage());
+    @Test
+    @DisplayName("Successful Get User Test")
+    public void trueTestGetUser(){
+      try {
+        userSqlDataAccess.addUser(testUser);
+        assertEquals(testUser, userSqlDataAccess.getUser(testUser));
+      } catch (DataAccessException e) {
+        fail("Exception thrown: " + e.getMessage());
+      }
     }
+
   }
+
 }
