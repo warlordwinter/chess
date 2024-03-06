@@ -70,11 +70,11 @@ public class DatabaseManager {
         }
     }
 
-    public static void configureDatabase() throws ResponseException{
+    public static void configureDatabase() throws DataAccessException{
         try {
             DatabaseManager.createDatabase();
         } catch (DataAccessException e) {
-            throw new ResponseException(500, String.format("Unable to configure database: %s", e.getMessage()));
+            throw new DataAccessException(500, String.format("Unable to configure database: %s", e.getMessage()));
         }
         try (var conn = DatabaseManager.getConnection()) {
             for (var statement : createStatements) {
@@ -83,7 +83,7 @@ public class DatabaseManager {
                 }
             }
         } catch (SQLException | DataAccessException ex) {
-            throw new ResponseException(500, String.format("Unable to configure database: %s", ex.getMessage()));
+            throw new DataAccessException(500, String.format("Unable to configure database: %s", ex.getMessage()));
         }
     }
 

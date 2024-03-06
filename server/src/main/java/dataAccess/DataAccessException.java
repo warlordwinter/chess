@@ -13,4 +13,8 @@ public class DataAccessException extends Exception{
     public int StatusCode() {
         return code;
     }
+
+    public String message(){
+        return super.getMessage();
+    }
 }

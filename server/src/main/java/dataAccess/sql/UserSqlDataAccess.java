@@ -6,20 +6,35 @@ import dataAccess.UserDao;
 import exception.ResponseException;
 import model.UserData;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
 
 public class UserSqlDataAccess implements UserDao {
 
-  public UserSqlDataAccess() throws ResponseException {
+  public void doTransaction() throws DataAccessException{
+
+  }
+
+  public UserSqlDataAccess() throws DataAccessException {
     DatabaseManager.configureDatabase();
   }
 
 
   @Override
   public void addUser(UserData user) throws DataAccessException {
-    DatabaseManager.getConnection();
+    String statement = "INSERT INTO userdata (username, password, email) VALUES (?, ?, ?)";
+    Connection conn = DatabaseManager.getConnection();
+    try(var preparedStatement = conn.prepareStatement(statement)){
+    preparedStatement.setString(1, user.getUsername());
+    preparedStatement.setString(2, user.getPassword());
+    preparedStatement.setString(3, user.getEmail());
+    preparedStatement.executeUpdate();
+
+    }catch(SQLException e) {
+      throw new DataAccessException(500,e.getMessage());
+    }
   }
 
   @Override

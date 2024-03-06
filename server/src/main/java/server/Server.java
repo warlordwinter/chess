@@ -4,21 +4,22 @@ import dataAccess.*;
 import dataAccess.memory.MemoryAuthDao;
 import dataAccess.memory.MemoryGameDao;
 import dataAccess.memory.MemoryUserDao;
+import dataAccess.sql.UserSqlDataAccess;
 import exception.ResponseException;
 import server.handlers.*;
 import spark.*;
 
 public class Server {
 
-    public Server(){
+    public Server() throws DataAccessException{
         try {
             DatabaseManager.configureDatabase();
-        } catch (ResponseException e) {
+        } catch (DataAccessException e) {
             throw new RuntimeException(e);
         }
     }
 
-    UserDao userDao = new MemoryUserDao();
+    UserDao userDao = new UserSqlDataAccess();
     GameDao gameDao = new MemoryGameDao();
     AuthDao authDao = new MemoryAuthDao(); // change these to sequel
 
