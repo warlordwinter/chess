@@ -38,7 +38,22 @@ public class UserSqlDataAccess implements UserDao {
   }
 
   @Override
-  public UserData getUser(UserData userData) {
+  public UserData getUser(UserData userData) throws DataAccessException {
+    Connection conn = DatabaseManager.getConnection();
+    String findType = userData.getUsername();
+    try (var preparedStatement = conn.prepareStatement("SELECT username,password, email FROM userdata Where username=?")) {
+      preparedStatement.setString(1,findType);
+      try(var rs = preparedStatement.executeQuery()){
+        while(rs.next()){
+          var username = rs.getString("username");
+          var password = rs.getString("password");
+          var email = rs.getString("email");
+          return new UserData(username,password,email);
+        }
+      }
+    } catch (SQLException e){
+      throw new DataAccessException(500, e.getMessage());
+    }
     return null;
   }
 

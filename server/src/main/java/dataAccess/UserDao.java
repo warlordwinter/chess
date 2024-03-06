@@ -8,7 +8,7 @@ public interface UserDao {
 
   void addUser(UserData user) throws DataAccessException;
 
-  UserData getUser(UserData userData);
+  UserData getUser(UserData userData) throws DataAccessException;
 
   void clearUserData();
 
