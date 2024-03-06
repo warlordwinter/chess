@@ -39,12 +39,10 @@ class UserSqlDataAccessTest {
   @Test
   @DisplayName("Failed Add User Test")
   public void falseTestAddUser() {
-    UserData testUser = new UserData("testUser", "testPassword", "test@example.com");
+    UserData testUser = new UserData("notInTable", "notInTable", "notInTable@gmail.com");
 
     try {
-      userSqlDataAccess.addUser(testUser);
-
-//      assertThrows(DataAccessException.class,userSqlDataAccess.addUser(testUser));
+      assertNull(userSqlDataAccess.getUser(testUser));
 
     } catch (DataAccessException e) {
       fail("Exception thrown: " + e.getMessage());
