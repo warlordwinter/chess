@@ -5,6 +5,8 @@ import dataAccess.sql.AuthSqlDataAccess;
 import model.AuthData;
 import org.junit.jupiter.api.*;
 
+import java.sql.SQLException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AuthSqlDataAccessTest {
@@ -77,8 +79,8 @@ class AuthSqlDataAccessTest {
       void goodDeleteAuthToken() throws DataAccessException {
         AuthData token = authSqlDataAccess.createAuthToken("johnny-test");
         authSqlDataAccess.addAuthToken(token);
-        authSqlDataAccess.deleteAuthToken(token.getUsername());
-        assertNull(authSqlDataAccess.getToken(token.getUsername()));
+        authSqlDataAccess.deleteAuthToken(token.getAuthToken());
+        assertNull(authSqlDataAccess.getToken(token.getAuthToken()));
       }
 
       @Test
@@ -86,7 +88,8 @@ class AuthSqlDataAccessTest {
       void badDeleteAuthToken() throws DataAccessException {
         AuthData token = authSqlDataAccess.createAuthToken("johnny-test");
         authSqlDataAccess.addAuthToken(token);
-        assertNull(authSqlDataAccess.getToken(token.getUsername()));
+        authSqlDataAccess.deleteAuthToken("john-test");
+        assertNotNull(authSqlDataAccess.getToken(token.getAuthToken()));
       }
 
     }

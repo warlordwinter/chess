@@ -75,22 +75,31 @@ public class AuthSqlDataAccess implements AuthDao {
     return false;
   }
 
+
   @Override
   public AuthData getToken(String authID) throws DataAccessException {
     Connection conn = DatabaseManager.getConnection();
-    try (var preparedStatement = conn.prepareStatement("SELECT authToken,username FROM authdata Where authtoken=?")) {
-      preparedStatement.setString(1,authID);
-      try(var rs = preparedStatement.executeQuery()){
-        while(rs.next()){
+    try (var preparedStatement = conn.prepareStatement("SELECT authToken, username FROM authdata WHERE authtoken=?")) {
+      preparedStatement.setString(1, authID);
+      try (var rs = preparedStatement.executeQuery()) {
+        if (rs.next()) {
           var authTokenID = rs.getString("authToken");
           var username = rs.getString("username");
-          return new AuthData(authTokenID,username);
+          return new AuthData(authTokenID, username);
         }
       }
-    } catch (SQLException e){
+    } catch (SQLException e) {
       throw new DataAccessException(500, e.getMessage());
+    } finally {
+      try {
+        if (conn != null) {
+          conn.close();
+        }
+      } catch (SQLException e) {
+      }
     }
     return null;
   }
+
 
 }
