@@ -105,4 +105,16 @@ class UserSqlDataAccessTest {
     }
   }
 
+  @Test
+  @DisplayName("Clear Database Test")
+  void clearDatabaseTest(){
+    try{
+      userSqlDataAccess.addUser(testUser);
+      userSqlDataAccess.clearUserData();
+      assertNull(userSqlDataAccess.getUser(testUser));
+    } catch(DataAccessException e){
+      fail("Exception thrown: " + e.getMessage());
+    }
+  }
+
 }

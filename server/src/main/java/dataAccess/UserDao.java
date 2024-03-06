@@ -10,8 +10,8 @@ public interface UserDao {
 
   UserData getUser(UserData userData) throws DataAccessException;
 
-  void clearUserData();
+  void clearUserData() throws DataAccessException;
 
 
-  boolean userInDatabase(UserData userData);
+  boolean userInDatabase(UserData userData) throws DataAccessException;
 }
