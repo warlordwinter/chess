@@ -14,12 +14,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserSqlDataAccessTest {
   private static UserSqlDataAccess userSqlDataAccess;
-  private UserData testUser;
+  private UserData testUser,badTestUser;
 
   @BeforeEach
   void setUp() throws DataAccessException {
     DatabaseManager.configureDatabase();
     userSqlDataAccess = new UserSqlDataAccess();
+    badTestUser=new UserData("notInTable", "notInTable", "notInTable@gmail.com");
     testUser=new UserData("testUser", "testPassword", "test@example.com");
   }
 
@@ -67,6 +68,41 @@ class UserSqlDataAccessTest {
       }
     }
 
+    @Test
+    @DisplayName("Failed Get User Test")
+    public void falseTestGetUser(){
+      try {
+        userSqlDataAccess.addUser(testUser);
+        assertNull(userSqlDataAccess.getUser(badTestUser));
+      } catch (DataAccessException e) {
+        fail("Exception thrown: " + e.getMessage());
+      }
+    }
+  }
+
+  @Nested
+  class userInDataBaseTest{
+
+    @Test
+    @DisplayName("Successful User in Database Test")
+    void trueUserInDataBaseTest(){
+      try {
+        userSqlDataAccess.addUser(testUser);
+        userSqlDataAccess.userInDatabase(testUser);
+      } catch (DataAccessException e){
+        fail("Exception thrown: " + e.getMessage());
+      }
+    }
+
+    @Test
+    @DisplayName("Failed User in Database Test")
+    void falseUserInDataBaseTest(){
+      try {
+        userSqlDataAccess.userInDatabase(badTestUser);
+      } catch (DataAccessException e){
+        fail("Exception thrown: " + e.getMessage());
+      }
+    }
   }
 
 }
