@@ -60,8 +60,8 @@ public class UserSqlDataAccess implements UserDao {
   @Override
   public void clearUserData() throws DataAccessException {
     Connection conn = DatabaseManager.getConnection();
-    try(var preparedStatment = conn.prepareStatement("TRUNCATE userdata")){
-      preparedStatment.executeUpdate();
+    try(var preparedStatement = conn.prepareStatement("TRUNCATE userdata")){
+      preparedStatement.executeUpdate();
     }catch(SQLException e){
       throw new DataAccessException(500, e.getMessage());
     }

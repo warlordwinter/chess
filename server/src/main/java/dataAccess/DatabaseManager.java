@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class DatabaseManager {
     private static final String databaseName;
-    private static final String user;
+    public static final String user;
     private static final String password;
     private static final String connectionUrl;
 
@@ -94,7 +94,7 @@ public class DatabaseManager {
               `whiteUsername` varchar(125),
               `blackUsername` varchar(125),
               `gameName` varchar(125) NOT NULL,
-              `game` blob NOT NULL,
+              `game` blob,
               PRIMARY KEY (`gameID`),
               INDEX (`gameName`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci

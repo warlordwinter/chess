@@ -5,10 +5,7 @@ import dataAccess.DatabaseManager;
 import dataAccess.sql.UserSqlDataAccess;
 import exception.ResponseException;
 import model.UserData;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,6 +19,10 @@ class UserSqlDataAccessTest {
     userSqlDataAccess = new UserSqlDataAccess();
     badTestUser=new UserData("notInTable", "notInTable", "notInTable@gmail.com");
     testUser=new UserData("testUser", "testPassword", "test@example.com");
+  }
+  @AfterEach
+  void tearDown() throws DataAccessException {
+    userSqlDataAccess.clearUserData();
   }
 
   @Nested

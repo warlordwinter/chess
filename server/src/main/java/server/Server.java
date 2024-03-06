@@ -4,6 +4,7 @@ import dataAccess.*;
 import dataAccess.memory.MemoryAuthDao;
 import dataAccess.memory.MemoryGameDao;
 import dataAccess.memory.MemoryUserDao;
+import dataAccess.sql.AuthSqlDataAccess;
 import dataAccess.sql.UserSqlDataAccess;
 import exception.ResponseException;
 import server.handlers.*;
@@ -21,7 +22,7 @@ public class Server {
 
     UserDao userDao = new UserSqlDataAccess();
     GameDao gameDao = new MemoryGameDao();
-    AuthDao authDao = new MemoryAuthDao(); // change these to sequel
+    AuthDao authDao = new AuthSqlDataAccess(); // change these to sequel
 
 
     public int run(int desiredPort) {
