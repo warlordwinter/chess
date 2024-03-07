@@ -12,7 +12,4 @@ public class ResponseException extends Exception {
         return statusCode;
     }
 
-//    public String getMessage(){
-//        return this.message;
-//    }
 }

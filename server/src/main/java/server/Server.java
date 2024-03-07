@@ -5,6 +5,7 @@ import dataAccess.memory.MemoryAuthDao;
 import dataAccess.memory.MemoryGameDao;
 import dataAccess.memory.MemoryUserDao;
 import dataAccess.sql.AuthSqlDataAccess;
+import dataAccess.sql.GameSqlDataAccess;
 import dataAccess.sql.UserSqlDataAccess;
 import exception.ResponseException;
 import server.handlers.*;
@@ -12,7 +13,7 @@ import spark.*;
 
 public class Server {
 
-    public Server() throws DataAccessException{
+    public Server(){
         try {
             DatabaseManager.configureDatabase();
         } catch (DataAccessException e) {
@@ -21,7 +22,7 @@ public class Server {
     }
 
     UserDao userDao = new UserSqlDataAccess();
-    GameDao gameDao = new MemoryGameDao();
+    GameDao gameDao = new GameSqlDataAccess();
     AuthDao authDao = new AuthSqlDataAccess(); // change these to sequel
 
 

@@ -19,7 +19,7 @@ public class AuthSqlDataAccess implements AuthDao {
   @Override
   public void clearAuthData() throws DataAccessException {
     Connection conn = DatabaseManager.getConnection();
-    try(var preparedStatement = conn.prepareStatement("TRUNCATE authdata")){
+    try(var preparedStatement = conn.prepareStatement("TRUNCATE authData")){
       preparedStatement.executeUpdate();
     }catch(SQLException e){
       throw new DataAccessException(500, e.getMessage());
@@ -35,7 +35,7 @@ public class AuthSqlDataAccess implements AuthDao {
 
   @Override
   public void addAuthToken(AuthData authToken) throws DataAccessException {
-    String statement = "INSERT INTO authdata (authtoken,username) VALUES (?, ?)";
+    String statement = "INSERT INTO authData (authtoken,username) VALUES (?, ?)";
     Connection conn = DatabaseManager.getConnection();
     try(var preparedStatement = conn.prepareStatement(statement)){
       preparedStatement.setString(1, authToken.getAuthToken());
@@ -79,7 +79,7 @@ public class AuthSqlDataAccess implements AuthDao {
   @Override
   public AuthData getToken(String authID) throws DataAccessException {
     Connection conn = DatabaseManager.getConnection();
-    try (var preparedStatement = conn.prepareStatement("SELECT authToken, username FROM authdata WHERE authtoken=?")) {
+    try (var preparedStatement = conn.prepareStatement("SELECT authToken, username FROM authData WHERE authtoken=?")) {
       preparedStatement.setString(1, authID);
       try (var rs = preparedStatement.executeQuery()) {
         if (rs.next()) {

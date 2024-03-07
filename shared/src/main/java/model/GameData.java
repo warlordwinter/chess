@@ -2,7 +2,7 @@ package model;
 
 import chess.ChessGame;
 
-import java.util.UUID;
+import java.sql.Blob;
 
 public class GameData {
   final Integer gameID;
@@ -24,7 +24,8 @@ public class GameData {
     this.whiteUsername=null;
     this.blackUsername=null;
     this.gameName=gameName;
-    this.game=null;
+    this.game=new ChessGame();
+    this.game.getBoard().resetBoard();
   }
 
 

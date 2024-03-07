@@ -13,12 +13,13 @@ import static java.sql.Statement.RETURN_GENERATED_KEYS;
 
 public class UserSqlDataAccess implements UserDao {
 
-  public void doTransaction() throws DataAccessException{
 
-  }
-
-  public UserSqlDataAccess() throws DataAccessException {
-    DatabaseManager.configureDatabase();
+  public UserSqlDataAccess(){
+    try {
+      DatabaseManager.configureDatabase();
+    } catch (DataAccessException e) {
+      throw new RuntimeException(e);
+    }
   }
 
 

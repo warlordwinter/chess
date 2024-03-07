@@ -94,7 +94,7 @@ public class DatabaseManager {
               `whiteUsername` varchar(125),
               `blackUsername` varchar(125),
               `gameName` varchar(125) NOT NULL,
-              `game` blob,
+              `game` text NOT NULL,
               PRIMARY KEY (`gameID`),
               INDEX (`gameName`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
