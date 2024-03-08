@@ -4,12 +4,13 @@ import dataAccess.DataAccessException;
 import dataAccess.memory.MemoryAuthDao;
 import dataAccess.memory.MemoryGameDao;
 import dataAccess.memory.MemoryUserDao;
-import exception.ResponseException;
 import model.UserData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import service.ClearService;
+import service.RegistrationService;
 
 class ClearServiceTest {
   MemoryAuthDao authDao = new MemoryAuthDao();

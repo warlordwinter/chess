@@ -49,7 +49,7 @@ public class MemoryGameDao implements GameDao {
   }
 
   @Override
-  public boolean checkGameAvalibility(JoinGameRequest request) {
+  public boolean checkGameAvailability(JoinGameRequest request) {
     if(gameDataBase.get(Integer.parseInt(request.gameID())) == null){
       return false;
     }

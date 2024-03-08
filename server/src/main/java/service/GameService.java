@@ -1,4 +1,4 @@
-package serviceTests;
+package service;
 
 import com.google.gson.Gson;
 import dataAccess.AuthDao;

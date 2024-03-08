@@ -4,10 +4,9 @@ import com.google.gson.Gson;
 import dataAccess.AuthDao;
 import dataAccess.DataAccessException;
 import dataAccess.UserDao;
-import exception.ResponseException;
 import model.UserData;
 import response.LoginResponse;
-import serviceTests.LoginService;
+import service.LoginService;
 import spark.Request;
 import spark.Response;
 
@@ -21,9 +20,9 @@ public class LoginHandler {
       return new Gson().toJson(token);
 
     }catch(DataAccessException e){
-      res.status(e.StatusCode());
+      res.status(e.getStatusCode());
 //      ResponseObject
-      res.status(e.StatusCode());
+      res.status(e.getStatusCode());
       LoginResponse response = new LoginResponse(e.getMessage());
       return new Gson().toJson(response);
     }

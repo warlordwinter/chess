@@ -6,13 +6,14 @@ import dataAccess.AuthDao;
 import dataAccess.DataAccessException;
 import dataAccess.DatabaseManager;
 import dataAccess.GameDao;
-import exception.ResponseException;
-import model.AuthData;
 import model.GameData;
 import requests.JoinGameRequest;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.UUID;
 
@@ -39,8 +40,11 @@ public class GameSqlDataAccess implements GameDao {
           var whiteUsername = rs.getString("whiteUsername");
           var blackUsername = rs.getString("blackUsername");
           var gameName = rs.getString("gameName");
-          var game = rs.getBlob("game");
-          return new GameData(Integer.parseInt(gameID1),whiteUsername,blackUsername,gameName, (ChessGame) game);
+          var game = rs.getString("game");
+          Gson gson = new Gson();
+          ChessGame finishedGame = gson.fromJson(game,ChessGame.class);
+
+          return new GameData(Integer.parseInt(gameID1),whiteUsername,blackUsername,gameName, finishedGame);
         }
       }
     } catch (SQLException e) {
@@ -70,8 +74,29 @@ public class GameSqlDataAccess implements GameDao {
   }
 
   @Override
-  public Collection<GameData> listGames() {
-    return null;
+  public Collection<GameData> listGames() throws DataAccessException {
+    String statement ="SELECT gameID, whiteUsername, blackUsername, gameName, game FROM gameData";
+    Collection<GameData> gameDataCollection = new ArrayList<>();
+    try (Connection conn = DatabaseManager.getConnection();
+         PreparedStatement preparedStatement = conn.prepareStatement(statement);
+         ResultSet rs = preparedStatement.executeQuery()) {
+
+      while (rs.next()) {
+        int gameID = rs.getInt("gameID");
+        String whiteUsername = rs.getString("whiteUsername");
+        String blackUsername = rs.getString("blackUsername");
+        String gameName = rs.getString("gameName");
+        String game = rs.getString("game");
+        Gson gson = new Gson();
+        ChessGame finishedGame = gson.fromJson(game,ChessGame.class);
+        GameData gameData = new GameData(gameID, whiteUsername, blackUsername, gameName, finishedGame);
+        gameDataCollection.add(gameData);
+      }
+
+    } catch (SQLException | DataAccessException e) {
+      throw new DataAccessException(500, e.getMessage());
+    }
+    return gameDataCollection;
   }
 
   @Override
@@ -94,7 +119,23 @@ public class GameSqlDataAccess implements GameDao {
   }
 
   @Override
-  public boolean checkGameAvalibility(JoinGameRequest request) {
+  public boolean checkGameAvailability(JoinGameRequest request) throws DataAccessException {
+    Connection conn = DatabaseManager.getConnection();
+    try (var preparedStatement = conn.prepareStatement("SELECT whiteUsername, blackUsername FROM gameData WHERE gameID = ?")) {
+      preparedStatement.setString(1, request.gameID());
+      try (var rs = preparedStatement.executeQuery()) {
+        if (rs.next()) {
+          String blackUsername = rs.getString("blackUsername");
+          String whiteUsername = rs.getString("whiteUsername");
+
+          if (blackUsername == null || whiteUsername == null) {
+            return true;
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new DataAccessException(500, e.getMessage());
+    }
     return false;
   }
 

@@ -1,6 +1,5 @@
 package dataAccess;
 
-import exception.ResponseException;
 import model.GameData;
 import requests.JoinGameRequest;
 
@@ -15,12 +14,13 @@ public interface GameDao {
 
   GameData createGame(String GameName) throws DataAccessException;
 
-  Collection<GameData> listGames();
+  Collection<GameData> listGames() throws DataAccessException;
 
   void addGame(Integer gameID, GameData gameData) throws DataAccessException;
 
 
-  boolean checkGameAvalibility(JoinGameRequest request);
+  boolean checkGameAvailability(JoinGameRequest request) throws DataAccessException;
+
 
   void updateGame(JoinGameRequest request, AuthDao authDao, String authHeader) throws DataAccessException;
 }

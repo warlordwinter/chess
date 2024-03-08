@@ -10,6 +10,9 @@ public class DataAccessException extends Exception{
         this.code = code;
     }
 
+    public int getStatusCode() {
+        return code;
+    }
     public int StatusCode() {
         return code;
     }
@@ -17,4 +20,6 @@ public class DataAccessException extends Exception{
     public String message(){
         return super.getMessage();
     }
+
+
 }

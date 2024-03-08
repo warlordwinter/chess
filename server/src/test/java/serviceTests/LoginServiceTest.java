@@ -8,6 +8,7 @@ import model.UserData;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import response.LoginResponse;
+import service.LoginService;
 
 import static org.junit.jupiter.api.Assertions.*;
 

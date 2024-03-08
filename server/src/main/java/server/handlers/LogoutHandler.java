@@ -3,9 +3,8 @@ package server.handlers;
 import com.google.gson.Gson;
 import dataAccess.AuthDao;
 import dataAccess.DataAccessException;
-import exception.ResponseException;
 import response.LoginResponse;
-import serviceTests.LogoutService;
+import service.LogoutService;
 import spark.Request;
 import spark.Response;
 

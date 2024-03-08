@@ -14,6 +14,8 @@ import org.junit.jupiter.api.Test;
 import requests.JoinGameRequest;
 import response.CreateGameResponse;
 import response.ListGameResponse;
+import service.GameService;
+import service.RegistrationService;
 
 import java.util.Collection;
 
