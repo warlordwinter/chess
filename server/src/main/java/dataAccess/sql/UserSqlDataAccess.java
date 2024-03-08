@@ -5,6 +5,7 @@ import dataAccess.DatabaseManager;
 import dataAccess.UserDao;
 import exception.ResponseException;
 import model.UserData;
+import utility.PasswordHashing;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -29,7 +30,7 @@ public class UserSqlDataAccess implements UserDao {
     Connection conn = DatabaseManager.getConnection();
     try(var preparedStatement = conn.prepareStatement(statement)){
     preparedStatement.setString(1, user.getUsername());
-    preparedStatement.setString(2, user.getPassword());
+    preparedStatement.setString(2, PasswordHashing.hashPassword(user.getPassword()));
     preparedStatement.setString(3, user.getEmail());
     preparedStatement.executeUpdate();
 
@@ -48,6 +49,9 @@ public class UserSqlDataAccess implements UserDao {
         while(rs.next()){
           var username = rs.getString("username");
           var password = rs.getString("password");
+          if(!PasswordHashing.verifyPassword(userData.getPassword(),password)){
+            throw new DataAccessException(401,"Error: unauthorized");
+          }
           var email = rs.getString("email");
           return new UserData(username,password,email);
         }
