@@ -2,7 +2,9 @@ package dataAccessTests;
 
 import chess.ChessGame;
 import dataAccess.DataAccessException;
+import dataAccess.sql.AuthSqlDataAccess;
 import dataAccess.sql.GameSqlDataAccess;
+import model.AuthData;
 import model.GameData;
 import org.junit.jupiter.api.*;
 import requests.JoinGameRequest;
@@ -17,6 +19,8 @@ public class GameSqlDataAccessTest {
   GameData gameData,gameDataWithoutUsernames;
   ChessGame chessGame;
   JoinGameRequest joinGameRequest;
+  AuthSqlDataAccess authDao;
+  String authHeader;
 
   @BeforeEach
   void setUp() {
@@ -24,7 +28,15 @@ public class GameSqlDataAccessTest {
     chessGame = new ChessGame();
     gameData = new GameData(111,"mikeAndIke","Captain_Sparkles","fight For Glory",chessGame);
     gameDataWithoutUsernames =new GameData("Fight Time", 12123);
-    joinGameRequest = new JoinGameRequest("black",String.valueOf(12123));
+    joinGameRequest = new JoinGameRequest("BLACK",String.valueOf(12123));
+    authDao = new AuthSqlDataAccess();
+    AuthData Token =authDao.createAuthToken("john-tron");
+    try {
+      authDao.addAuthToken(Token);
+    } catch (DataAccessException e) {
+      throw new RuntimeException(e);
+    }
+    authHeader = Token.getAuthToken();
   }
 
   @AfterEach
@@ -145,7 +157,20 @@ public class GameSqlDataAccessTest {
       }
     }
   }
-  @Test
-  void updateGame() {
+  @Nested
+  class testUpdateGame {
+    @Test
+    @DisplayName("Passing Update Game")
+    void updateGame() {
+      try {
+        gameSql.updateGame(joinGameRequest,authDao,authHeader);
+        GameData currentGame = gameSql.getGameData(Integer.parseInt(joinGameRequest.gameID()));
+        assertEquals("john-tron",currentGame.getBlackUsername());
+      } catch (DataAccessException e) {
+        fail("Exception thrown: " + e.getMessage());
+      }
+
+    }
+
   }
 }

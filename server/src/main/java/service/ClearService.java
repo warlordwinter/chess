@@ -4,7 +4,6 @@ import dataAccess.AuthDao;
 import dataAccess.DataAccessException;
 import dataAccess.GameDao;
 import dataAccess.UserDao;
-import exception.ResponseException;
 
 public class ClearService {
 

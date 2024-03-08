@@ -6,6 +6,7 @@ import dataAccess.AuthDao;
 import dataAccess.DataAccessException;
 import dataAccess.DatabaseManager;
 import dataAccess.GameDao;
+import model.AuthData;
 import model.GameData;
 import requests.JoinGameRequest;
 
@@ -140,6 +141,39 @@ public class GameSqlDataAccess implements GameDao {
   }
 
   @Override
-  public void updateGame(JoinGameRequest request, AuthDao authDao, String authHeader) throws DataAccessException {}
+  public void updateGame(JoinGameRequest request, AuthDao authDao, String authHeader) throws DataAccessException {
+    String statement = "UPDATE gameData SET gameID=?, ";
+    GameData currentGame = getGameData(Integer.parseInt(request.gameID()));
+    int change = 0;
+    if (currentGame == null) {
+      throw new DataAccessException(400, "Error: bad request");
+    }
+    if (request.playerColor() != null && !request.playerColor().isEmpty() && !request.gameID().equals("0")) {
+      AuthData authData = authDao.getToken(authHeader);
+      if (currentGame.getBlackUsername() == null && request.playerColor().equals("BLACK")) {
+        currentGame.setBlackUsername(authData.getUsername());
+        statement += "blackUsername=? ";
+        change += 1;
+      } else if (currentGame.getWhiteUsername() == null && request.playerColor().equals("WHITE")) {
+        currentGame.setWhiteUsername(authData.getUsername());
+        statement += "whiteUsername=? ";
+        change += 1;
+      } else {
+        throw new DataAccessException(403, "Error: already taken");
+      }
+      String serializedGame = new Gson().toJson(currentGame);
+      Connection conn = DatabaseManager.getConnection();
+      try (var preparedStatement = conn.prepareStatement(statement + "WHERE gameID=?")) {
+        preparedStatement.setInt(1, Integer.parseInt(request.gameID()));
+        preparedStatement.setString(2, serializedGame);
+        if (change == 1) {
+          preparedStatement.setString(3, authData.getUsername());
+        }
+        preparedStatement.executeUpdate();
+      } catch (SQLException e) {
+        throw new DataAccessException(500, e.getMessage());
+      }
+    }
+  }
 
 }
