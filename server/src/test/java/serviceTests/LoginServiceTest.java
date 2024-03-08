@@ -32,6 +32,6 @@ class LoginServiceTest {
   @DisplayName("Login Fail Test")
   void loginAuthenticationFail() {
     LoginService loginService = new LoginService();
-    assertThrows(ResponseException.class, () -> loginService.loginAuthentication(testUser, userDao, authDao));
+    assertThrows(DataAccessException.class, () -> loginService.loginAuthentication(testUser, userDao, authDao));
   }
 }

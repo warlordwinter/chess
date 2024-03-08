@@ -30,7 +30,7 @@ class LogoutServiceTest {
   void logoutFail() {
     LogoutService logoutService = new LogoutService();
     String invalidToken = "invalidToken";
-    assertThrows(ResponseException.class, () -> logoutService.logout(invalidToken, authDao));
+    assertThrows(DataAccessException.class, () -> logoutService.logout(invalidToken, authDao));
   }
   @Test
   @DisplayName("Logout Pass Test")

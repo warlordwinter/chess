@@ -82,7 +82,7 @@ class GameServiceTest {
     GameService gameService = new GameService();
     gameService.createGame(token,gameData,gameDao,authDao);
 
-    Assertions.assertThrows(ResponseException.class, () -> listService.listGame(tokenFake,authDao,gameDao), "Error:unauthorized");
+    Assertions.assertThrows(DataAccessException.class, () -> listService.listGame(tokenFake,authDao,gameDao), "Error:unauthorized");
   }
 
   @Test
@@ -105,7 +105,7 @@ class GameServiceTest {
   void joinGameFail() throws DataAccessException {
     GameService gameService = new GameService();
     gameService.createGame(token,gameData,gameDao,authDao);
-    Assertions.assertThrows(ResponseException.class, () -> gameService.joinGame(new JoinGameRequest("BLACK",null),token,gameDao,authDao), "Error: bad request");
+    Assertions.assertThrows(DataAccessException.class, () -> gameService.joinGame(new JoinGameRequest("BLACK",null),token,gameDao,authDao), "Error: bad request");
 
   }
 }

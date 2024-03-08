@@ -28,6 +28,6 @@ class RegistrationServiceTest {
   void registerUserFail() throws ResponseException {
     RegistrationService registrationService = new RegistrationService();
     UserData testUserFail = new UserData("john",null,null);
-    Assertions.assertThrows(ResponseException.class, () -> registrationService.registerUser(testUserFail,userDao,authDao), "Error: Bad Request");
+    Assertions.assertThrows(DataAccessException.class, () -> registrationService.registerUser(testUserFail,userDao,authDao), "Error: Bad Request");
   }
 }

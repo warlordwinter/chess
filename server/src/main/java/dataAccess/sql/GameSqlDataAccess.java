@@ -166,7 +166,7 @@ public class GameSqlDataAccess implements GameDao {
       statement += "WHERE gameId=?";
       Connection conn = DatabaseManager.getConnection();
       try (var preparedStatement = conn.prepareStatement(statement)) {
-        int parameterIndex = 1;
+        int parameterIndex = 1; //there is an issue hiding here.
         if (currentGame.getBlackUsername() != null) {
           preparedStatement.setString(parameterIndex++, currentGame.getBlackUsername());
         }
