@@ -142,7 +142,7 @@ public class GameSqlDataAccess implements GameDao {
 
   @Override
   public void updateGame(JoinGameRequest request, AuthDao authDao, String authHeader) throws DataAccessException {
-    String statement = "UPDATE gameData SET gameID=?, ";
+    String statement = "UPDATE gameData SET ";
     GameData currentGame = getGameData(Integer.parseInt(request.gameID()));
     int change = 0;
     if (currentGame == null) {
@@ -150,30 +150,35 @@ public class GameSqlDataAccess implements GameDao {
     }
     if (request.playerColor() != null && !request.playerColor().isEmpty() && !request.gameID().equals("0")) {
       AuthData authData = authDao.getToken(authHeader);
-      if (currentGame.getBlackUsername() == null && request.playerColor().equals("BLACK")) {
+      if ("BLACK".equals(request.playerColor()) && currentGame.getBlackUsername() == null) {
         currentGame.setBlackUsername(authData.getUsername());
-        statement += "blackUsername=? ";
+        statement += "blackUsername=?, ";
         change += 1;
-      } else if (currentGame.getWhiteUsername() == null && request.playerColor().equals("WHITE")) {
+      } else if ("WHITE".equals(request.playerColor()) && currentGame.getWhiteUsername() == null) {
         currentGame.setWhiteUsername(authData.getUsername());
-        statement += "whiteUsername=? ";
+        statement += "whiteUsername=?, ";
         change += 1;
       } else {
         throw new DataAccessException(403, "Error: already taken");
       }
       String serializedGame = new Gson().toJson(currentGame);
+      statement += "game=? ";
+      statement += "WHERE gameId=?";
       Connection conn = DatabaseManager.getConnection();
-      try (var preparedStatement = conn.prepareStatement(statement + "WHERE gameID=?")) {
-        preparedStatement.setInt(1, Integer.parseInt(request.gameID()));
-        preparedStatement.setString(2, serializedGame);
-        if (change == 1) {
-          preparedStatement.setString(3, authData.getUsername());
+      try (var preparedStatement = conn.prepareStatement(statement)) {
+        int parameterIndex = 1;
+        if (currentGame.getBlackUsername() != null) {
+          preparedStatement.setString(parameterIndex++, currentGame.getBlackUsername());
         }
+        if (currentGame.getWhiteUsername() != null) {
+          preparedStatement.setString(parameterIndex++, currentGame.getWhiteUsername());
+        }
+        preparedStatement.setString(parameterIndex++, serializedGame);
+        preparedStatement.setInt(parameterIndex, Integer.parseInt(request.gameID()));
         preparedStatement.executeUpdate();
       } catch (SQLException e) {
         throw new DataAccessException(500, e.getMessage());
       }
     }
   }
-
 }

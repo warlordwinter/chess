@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GameSqlDataAccessTest {
 
   GameSqlDataAccess gameSql;
-  GameData gameData,gameDataWithoutUsernames;
+  GameData gameData,gameDataWithoutUsernames,gameDataWithBlackUsername;
   ChessGame chessGame;
   JoinGameRequest joinGameRequest;
   AuthSqlDataAccess authDao;
@@ -27,6 +27,7 @@ public class GameSqlDataAccessTest {
     gameSql = new GameSqlDataAccess();
     chessGame = new ChessGame();
     gameData = new GameData(111,"mikeAndIke","Captain_Sparkles","fight For Glory",chessGame);
+    gameDataWithBlackUsername = new GameData(1234,null,"Already Taken","fightnight",chessGame);
     gameDataWithoutUsernames =new GameData("Fight Time", 12123);
     joinGameRequest = new JoinGameRequest("BLACK",String.valueOf(12123));
     authDao = new AuthSqlDataAccess();
@@ -161,15 +162,31 @@ public class GameSqlDataAccessTest {
   class testUpdateGame {
     @Test
     @DisplayName("Passing Update Game")
-    void updateGame() {
+    void passingUpdateGame() {
       try {
-        gameSql.updateGame(joinGameRequest,authDao,authHeader);
-        GameData currentGame = gameSql.getGameData(Integer.parseInt(joinGameRequest.gameID()));
-        assertEquals("john-tron",currentGame.getBlackUsername());
+        gameSql.addGame(Integer.parseInt(joinGameRequest.gameID()), gameDataWithoutUsernames);
+        GameData initialGame = gameSql.getGameData(Integer.parseInt(joinGameRequest.gameID()));
+        assertNull(initialGame.getBlackUsername());
+        gameSql.updateGame(joinGameRequest, authDao, authHeader);
+        GameData updatedGame = gameSql.getGameData(Integer.parseInt(joinGameRequest.gameID()));
+        assertEquals("john-tron", updatedGame.getBlackUsername());
       } catch (DataAccessException e) {
         fail("Exception thrown: " + e.getMessage());
       }
+    }
 
+    @Test
+    @DisplayName("Failing Update Game")
+    void failingUpdateGame() {
+      try {
+        gameSql.addGame(Integer.parseInt(joinGameRequest.gameID()), gameDataWithBlackUsername);
+        gameSql.updateGame(joinGameRequest, authDao, authHeader);
+        GameData updatedGame = gameSql.getGameData(Integer.parseInt(joinGameRequest.gameID()));
+        assertNotEquals("john-tron", updatedGame.getBlackUsername());
+      } catch (DataAccessException e) {
+        return;
+      }
+      fail("Expected DataAccessException was not thrown.");
     }
 
   }
