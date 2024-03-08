@@ -25,7 +25,7 @@ public class Server {
 
     UserDao userDao = new UserSqlDataAccess();
     GameDao gameDao = new GameSqlDataAccess();
-    AuthDao authDao = new AuthSqlDataAccess(); // change these to sequel
+    AuthDao authDao = new AuthSqlDataAccess();
 
 
     public int run(int desiredPort) {
@@ -42,8 +42,6 @@ public class Server {
         Spark.awaitInitialization();
         return Spark.port();
     }
-
-
 
     public void stop() {
         Spark.stop();
