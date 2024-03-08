@@ -16,13 +16,19 @@ class UserSqlDataAccessTest {
   @BeforeEach
   void setUp(){
     userSqlDataAccess = new UserSqlDataAccess();
+    try {
+      userSqlDataAccess.clearUserData();
+    } catch (DataAccessException e) {
+      throw new RuntimeException(e);
+    }
     badTestUser=new UserData("notInTable", "notInTable", "notInTable@gmail.com");
     testUser=new UserData("testUser", "testPassword", "test@example.com");
+
   }
-  @AfterEach
-  void tearDown() throws DataAccessException {
-    userSqlDataAccess.clearUserData();
-  }
+//  @AfterEach
+//  void tearDown() throws DataAccessException {
+//    userSqlDataAccess.clearUserData();
+//  }
 
   @Nested
   class addUserTests {

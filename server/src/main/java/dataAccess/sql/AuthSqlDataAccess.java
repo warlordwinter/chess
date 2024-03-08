@@ -34,7 +34,7 @@ public class AuthSqlDataAccess implements AuthDao {
 
   @Override
   public void addAuthToken(AuthData authToken) throws DataAccessException {
-    String statement = "INSERT INTO authData (authtoken,username) VALUES (?, ?)";
+    String statement = "INSERT INTO authData (authToken,username) VALUES (?, ?)";
     Connection conn = DatabaseManager.getConnection();
     try(var preparedStatement = conn.prepareStatement(statement)){
       preparedStatement.setString(1, authToken.getAuthToken());
@@ -49,7 +49,7 @@ public class AuthSqlDataAccess implements AuthDao {
   @Override
   public void deleteAuthToken(String authToken) throws DataAccessException{
     Connection conn = DatabaseManager.getConnection();
-    try (var preparedStatement = conn.prepareStatement("DELETE FROM authData WHERE authtoken=?")) {
+    try (var preparedStatement = conn.prepareStatement("DELETE FROM authData WHERE authToken=?")) {
       preparedStatement.setString(1, authToken);
       preparedStatement.executeUpdate();
     } catch(SQLException e){
@@ -60,7 +60,7 @@ public class AuthSqlDataAccess implements AuthDao {
   @Override
   public boolean verifyAuthToken(String authToken) throws DataAccessException {
     Connection conn = DatabaseManager.getConnection();
-    try (var preparedStatement = conn.prepareStatement("SELECT authtoken FROM authData WHERE authtoken=?")) {
+    try (var preparedStatement = conn.prepareStatement("SELECT authToken FROM authData WHERE authToken=?")) {
       preparedStatement.setString(1, authToken);
       try (var rs = preparedStatement.executeQuery()) {
         while (rs.next()) {
@@ -78,7 +78,7 @@ public class AuthSqlDataAccess implements AuthDao {
   @Override
   public AuthData getToken(String authID) throws DataAccessException {
     Connection conn = DatabaseManager.getConnection();
-    try (var preparedStatement = conn.prepareStatement("SELECT authToken, username FROM authData WHERE authtoken=?")) {
+    try (var preparedStatement = conn.prepareStatement("SELECT authToken, username FROM authData WHERE authToken=?")) {
       preparedStatement.setString(1, authID);
       try (var rs = preparedStatement.executeQuery()) {
         if (rs.next()) {

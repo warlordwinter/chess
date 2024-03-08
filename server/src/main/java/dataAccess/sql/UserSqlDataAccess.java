@@ -18,7 +18,7 @@ public class UserSqlDataAccess implements UserDao {
 
   @Override
   public void addUser(UserData user) throws DataAccessException {
-    String statement="INSERT INTO userdata (username, password, email) VALUES (?, ?, ?)";
+    String statement="INSERT INTO userData (username, password, email) VALUES (?, ?, ?)";
     Connection conn=DatabaseManager.getConnection();
     try (var preparedStatement=conn.prepareStatement(statement)) {
       preparedStatement.setString(1, user.getUsername());
@@ -35,7 +35,7 @@ public class UserSqlDataAccess implements UserDao {
   public UserData getUser(UserData userData) throws DataAccessException {
     Connection conn=DatabaseManager.getConnection();
     String findType=userData.getUsername();
-    try (var preparedStatement=conn.prepareStatement("SELECT username,password, email FROM userdata Where username=?")) {
+    try (var preparedStatement=conn.prepareStatement("SELECT username,password, email FROM userData Where username=?")) {
       preparedStatement.setString(1, findType);
       try (var rs=preparedStatement.executeQuery()) {
         while (rs.next()) {
@@ -57,7 +57,7 @@ public class UserSqlDataAccess implements UserDao {
   @Override
   public void clearUserData() throws DataAccessException {
     Connection conn=DatabaseManager.getConnection();
-    try (var preparedStatement=conn.prepareStatement("TRUNCATE userdata")) {
+    try (var preparedStatement=conn.prepareStatement("TRUNCATE userData")) {
       preparedStatement.executeUpdate();
     } catch (SQLException e) {
       throw new DataAccessException(500, e.getMessage());
@@ -69,7 +69,7 @@ public class UserSqlDataAccess implements UserDao {
   public boolean userInDatabase(UserData userData) throws DataAccessException {
     Connection conn=DatabaseManager.getConnection();
     String findType=userData.getUsername();
-    try (var preparedStatement=conn.prepareStatement("SELECT username, password FROM userdata WHERE username=?")) {
+    try (var preparedStatement=conn.prepareStatement("SELECT username, password FROM userData WHERE username=?")) {
       preparedStatement.setString(1, findType);
       try (var rs=preparedStatement.executeQuery()) {
         while (rs.next()) {

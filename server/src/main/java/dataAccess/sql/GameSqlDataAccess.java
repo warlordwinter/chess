@@ -142,7 +142,7 @@ public class GameSqlDataAccess implements GameDao {
 
   @Override
   public void updateGame(JoinGameRequest request, AuthDao authDao, String authHeader) throws DataAccessException {
-    String statement = "UPDATE gameData SET blackUsername=?, whiteUsername=?,game =? WHERE gameId =?";
+    String statement = "UPDATE gameData SET blackUsername=?, whiteUsername=?,game =? WHERE gameID =?";
     GameData currentGame = getGameData(Integer.parseInt(request.gameID()));
     if (currentGame == null) {
       throw new DataAccessException(400, "Error: bad request");
