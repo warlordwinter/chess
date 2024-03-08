@@ -104,7 +104,7 @@ public class DatabaseManager {
             CREATE TABLE IF NOT EXISTS  userData (
               `username` varchar(125) NOT NULL,
               `password` varchar(125) NOT NULL,
-              `email` varchar(125) NOT NULL,
+              `email` varchar(125),
               PRIMARY KEY (`username`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
             """,

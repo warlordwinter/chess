@@ -15,14 +15,6 @@ import static java.sql.Statement.RETURN_GENERATED_KEYS;
 public class UserSqlDataAccess implements UserDao {
 
 
-  public UserSqlDataAccess() {
-    try {
-      DatabaseManager.configureDatabase();
-    } catch (DataAccessException e) {
-      throw new RuntimeException(e);
-    }
-  }
-
 
   @Override
   public void addUser(UserData user) throws DataAccessException {

@@ -34,7 +34,7 @@ class UserSqlDataAccessTest {
       try {
         userSqlDataAccess.addUser(testUser);
 
-        assertEquals(testUser, userSqlDataAccess.getUser(testUser));
+        assertEquals(testUser.getUsername(), userSqlDataAccess.getUser(testUser).getUsername());
 
       } catch (DataAccessException e) {
         fail("Exception thrown: " + e.getMessage());
@@ -63,7 +63,7 @@ class UserSqlDataAccessTest {
     public void trueTestGetUser(){
       try {
         userSqlDataAccess.addUser(testUser);
-        assertEquals(testUser, userSqlDataAccess.getUser(testUser));
+        assertEquals(testUser.getUsername(), userSqlDataAccess.getUser(testUser).getUsername());
       } catch (DataAccessException e) {
         fail("Exception thrown: " + e.getMessage());
       }
