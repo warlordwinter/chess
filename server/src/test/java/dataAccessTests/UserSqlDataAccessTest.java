@@ -14,8 +14,7 @@ class UserSqlDataAccessTest {
   private UserData testUser,badTestUser;
 
   @BeforeEach
-  void setUp() throws DataAccessException {
-    DatabaseManager.configureDatabase();
+  void setUp(){
     userSqlDataAccess = new UserSqlDataAccess();
     badTestUser=new UserData("notInTable", "notInTable", "notInTable@gmail.com");
     testUser=new UserData("testUser", "testPassword", "test@example.com");

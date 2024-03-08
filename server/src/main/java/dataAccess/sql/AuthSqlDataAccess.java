@@ -15,7 +15,6 @@ import java.util.UUID;
 import static dataAccess.DatabaseManager.user;
 
 public class AuthSqlDataAccess implements AuthDao {
-  public Map<String, AuthData> authDataBase =new HashMap<>();
   @Override
   public void clearAuthData() throws DataAccessException {
     Connection conn = DatabaseManager.getConnection();
