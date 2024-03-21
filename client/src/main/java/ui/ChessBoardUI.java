@@ -1,6 +1,9 @@
 package ui;
 
 import chess.ChessBoard;
+import chess.ChessGame;
+import chess.ChessPiece;
+import chess.ChessPosition;
 
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
@@ -11,7 +14,7 @@ public class ChessBoardUI {
   ChessBoard chessBoard = new ChessBoard();
   private boolean reverseTheBoard = false;
   private static final String EMPTY = " ";
-  static String[] headers = { "a","b","c","d","e","f","g","h" };
+  static String[] headers = {"a","b","c","d","e","f","g","h"};
   static String[] columns = {"1","2","3","4","5","6","7","8"};
   private static final int BOARD_SIZE_IN_SQUARES = 8;
   private static final int LINE_WIDTH_IN_CHARS = 1;
@@ -31,11 +34,14 @@ public class ChessBoardUI {
   static void buildBoard(ChessBoard chesBoard, boolean reverseTheBoard, String[] headers, String[] column){
     var out = new PrintStream(System.out, true, StandardCharsets.UTF_8);
     drawHeaders(headers,out);
+    printRow(out,column,chesBoard);
+    drawHeaders(headers,out);
 
   }
 
   private static void drawHeaders(String[] headers, PrintStream out) {
     setGrey(out);
+    out.print(EMPTY.repeat(3));
 
     for (int boardCol = 0; boardCol < BOARD_SIZE_IN_SQUARES; ++boardCol) {
       drawHeader(out, headers[boardCol]);
@@ -44,13 +50,13 @@ public class ChessBoardUI {
         out.print(EMPTY.repeat(LINE_WIDTH_IN_CHARS));
       }
     }
+    out.print(EMPTY.repeat(3));
     setBlack(out);
     out.println();
   }
 
 
   private static void drawHeader(PrintStream out, String header) {
-
     out.print(EMPTY.repeat(1));
     printHeaderText(out, header);
     out.print(EMPTY.repeat(1));
@@ -58,11 +64,40 @@ public class ChessBoardUI {
 
   private static void printHeaderText(PrintStream out, String player) {
     out.print(SET_BG_COLOR_LIGHT_GREY);
-    out.print(SET_TEXT_COLOR_GREEN);
+    out.print(SET_TEXT_COLOR_BLACK);
 
     out.print(player);
 
     setGrey(out);
+  }
+
+  private static void printRow(PrintStream out,String[] columns, ChessBoard chessBoard){
+    for (int boardCol = 0; boardCol< BOARD_SIZE_IN_SQUARES; boardCol++ ){
+      drawColumn(out,columns[boardCol]);
+
+      for (int row=0; row < 8; row++){ //this is where I will go through the board
+        for (int col = 0; col < 8; col ++){
+          ChessPosition chessPosition = new ChessPosition(row,col);
+          ChessPiece currentPiece = chessBoard.getPiece(chessPosition);
+          ChessPiece.PieceType type = currentPiece.getPieceType();
+          ChessGame.TeamColor color = currentPiece.getTeamColor();
+          placeSquare(type,color,out);
+        }
+      }
+      out.println();
+    }
+
+  }
+
+  private static void placeSquare(ChessPiece.PieceType type, ChessGame.TeamColor color, PrintStream out) {
+
+  }
+
+  private static void drawColumn(PrintStream out, String value) {
+    setGrey(out);
+    out.print(EMPTY.repeat(1));
+    printHeaderText(out, value);
+    out.print(EMPTY.repeat(1));
   }
 
   private static void setGrey(PrintStream out) {
@@ -73,6 +108,11 @@ public class ChessBoardUI {
     out.print(SET_BG_COLOR_BLACK);
     out.print(SET_TEXT_COLOR_BLACK);
   }
+  private static void setWhite(PrintStream out) {
+    out.print(SET_BG_COLOR_WHITE);
+    out.print(SET_TEXT_COLOR_BLACK);
+  }
+
 
 
 }
