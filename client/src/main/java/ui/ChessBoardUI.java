@@ -4,6 +4,7 @@ import chess.ChessBoard;
 import chess.ChessGame;
 import chess.ChessPiece;
 import chess.ChessPosition;
+import chess.movement.*;
 
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
@@ -31,10 +32,11 @@ public class ChessBoardUI {
     out.print(SET_TEXT_COLOR_WHITE);
   }
 
-  static void buildBoard(ChessBoard chesBoard, boolean reverseTheBoard, String[] headers, String[] column){
+  static void buildBoard(ChessBoard chessBoard, boolean reverseTheBoard, String[] headers, String[] column){
     var out = new PrintStream(System.out, true, StandardCharsets.UTF_8);
+    chessBoard.resetBoard(); //remember to remove this line later
     drawHeaders(headers,out);
-    printRow(out,column,chesBoard);
+    printRow(out,column,chessBoard);
     drawHeaders(headers,out);
 
   }
@@ -72,25 +74,58 @@ public class ChessBoardUI {
   }
 
   private static void printRow(PrintStream out,String[] columns, ChessBoard chessBoard){
-    for (int boardCol = 0; boardCol< BOARD_SIZE_IN_SQUARES; boardCol++ ){
-      drawColumn(out,columns[boardCol]);
-
       for (int row=0; row < 8; row++){ //this is where I will go through the board
+        drawColumn(out,columns[row]);
         for (int col = 0; col < 8; col ++){
+          out.print(EMPTY);
           ChessPosition chessPosition = new ChessPosition(row,col);
-          ChessPiece currentPiece = chessBoard.getPiece(chessPosition);
-          ChessPiece.PieceType type = currentPiece.getPieceType();
-          ChessGame.TeamColor color = currentPiece.getTeamColor();
-          placeSquare(type,color,out);
+          ChessPiece currentPiece = chessBoard.getPieceForUI(chessPosition);
+          //print square color
+          if(currentPiece!=null) {
+            ChessPiece.PieceType type = currentPiece.getPieceType();
+            ChessGame.TeamColor color = currentPiece.getTeamColor();
+            placeSquare(type, color, out);
+          }else{
+            out.print(EMPTY.repeat(1));
+          }
+          out.print(EMPTY.repeat(2));
         }
+        drawColumn(out,columns[row]);
+        out.println();
       }
       out.println();
-    }
 
   }
 
   private static void placeSquare(ChessPiece.PieceType type, ChessGame.TeamColor color, PrintStream out) {
-
+    String letter = "";
+    switch (type) {
+      case BISHOP:
+        letter = "B";
+        break;
+      case ROOK:
+        letter = "R";
+        break;
+      case QUEEN:
+        letter = "Q";
+        break;
+      case KING:
+        letter = "K";
+        break;
+      case KNIGHT:
+        letter = "N";
+        break;
+      case PAWN:
+        letter = "P";
+        break;
+    }
+    if(color == ChessGame.TeamColor.BLACK){
+      out.print(SET_TEXT_COLOR_RED);
+      out.print(letter);
+    }else{
+      out.print(SET_TEXT_COLOR_BLUE);
+      out.print(letter);
+    }
   }
 
   private static void drawColumn(PrintStream out, String value) {
