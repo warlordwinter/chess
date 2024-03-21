@@ -104,6 +104,7 @@ public class ChessPiece {
             case PAWN:
                 ChessMovementRule pawnRules = new PawnMovementRules();
                 pawnRules.chessMove(board,myPosition,collection);
+                break; // I added this break recently
         }
         return collection;
     }

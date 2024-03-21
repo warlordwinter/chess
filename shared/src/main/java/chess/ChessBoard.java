@@ -79,9 +79,12 @@ public class ChessBoard {
 //            return squares[row][col];
         }
     }
-//    public ChessPiece getPiecePredictions(ChessPosition position) {
-//        return squares;
-//    }
+
+    public ChessPiece getPieceForUI(ChessPosition position){
+        int row = position.getRow();
+        int col = position.getColumn();
+        return squares[row][col];
+    }
     /**
      * Sets the board to the default starting board
      * (How the game of chess normally starts)
