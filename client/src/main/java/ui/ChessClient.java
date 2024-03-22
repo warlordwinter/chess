@@ -5,8 +5,10 @@ import model.AuthData;
 import model.GameData;
 import model.UserData;
 import ui.requests.CreateGamesRequest;
+import ui.response.ListGameResponse;
 
 import java.util.Arrays;
+import java.util.Collection;
 
 public class ChessClient {
   private final String serverUrl;
@@ -30,6 +32,7 @@ public class ChessClient {
         case "login" -> login(params);
         case "logout" -> signOut();
         case "create" -> createGame(params);
+        case "list" -> listGame();
         default -> help();
       };
     }catch(ResponseException ex){
@@ -40,7 +43,7 @@ public class ChessClient {
   public String signOut() throws ResponseException{
     assertSignedIn();
     server.logout(stringAuthToken);
-    stringAuthToken=null;
+    stringAuthToken = null;
     state=State.SIGNEDOUT;
     return String.format("Logged out!");
   }
@@ -83,6 +86,26 @@ public class ChessClient {
     } else {
       throw new ResponseException(400, "Expected: create <NAME>");
     }
+  }
+
+  public String listGame()throws ResponseException{
+    assertSignedIn();
+    ListGameResponse listGameResponse = server.listGames(stringAuthToken);
+    Collection<GameData> games=listGameResponse.getGames();
+
+    StringBuilder result = new StringBuilder("Games:\n");
+    int count = 1;
+    for (GameData game : games) {
+      String players = getPlayersString(game);
+      result.append(String.format("%d. %s (%s)\n", count++, game.getGameName(), players));
+    }
+    return result.toString();
+  }
+
+  private String getPlayersString(GameData game) {
+    String whitePlayer = game.getWhiteUsername() != null ? game.getWhiteUsername() : "Empty";
+    String blackPlayer = game.getBlackUsername() != null ? game.getBlackUsername() : "Empty";
+    return whitePlayer + " vs " + blackPlayer;
   }
 
 
