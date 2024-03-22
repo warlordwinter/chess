@@ -10,12 +10,15 @@ import ui.response.ListGameResponse;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ChessClient {
   private final String serverUrl;
   private final ServerFacade server;
   private String stringAuthToken;
   private State state = State.SIGNEDOUT;
+  private Map<Integer,GameData> gameList = new HashMap<>();
 
   public ChessClient(String serverUrl) {
     server = new ServerFacade(serverUrl);
@@ -35,11 +38,21 @@ public class ChessClient {
         case "create" -> createGame(params);
         case "list" -> listGame();
         case "join" -> joinGame(params);
+        case "observe" -> observe(params);
         default -> help();
       };
     }catch(ResponseException ex){
       return ex.getMessage();
     }
+  }
+
+  public String observe(String[] params) throws ResponseException {
+    assertSignedIn();
+    GameData gameData=gameList.get(Integer.parseInt(params[0]));
+    String gameID = String.valueOf(gameData.getGameID());
+    JoinGameRequest joinGameRequest = new JoinGameRequest(null,gameID);
+    server.observe(stringAuthToken,joinGameRequest);
+    return String.format("You are now observing %s",gameID);
   }
 
   public String signOut() throws ResponseException{
@@ -99,6 +112,7 @@ public class ChessClient {
     int count = 1;
     for (GameData game : games) {
       String players = getPlayersString(game);
+      gameList.put(count,game);
       result.append(String.format("%d. %s (%s)\n", count++, game.getGameName(), players));
     }
     return result.toString();
@@ -106,8 +120,9 @@ public class ChessClient {
 
   public String joinGame(String ... params)throws ResponseException{
     assertSignedIn();
-    String gameID = params[0];
+    GameData gameData=gameList.get(Integer.parseInt(params[0]));
     String color = params[1];
+    String gameID = String.valueOf(gameData.getGameID());
 
     JoinGameRequest joinGameRequest = new JoinGameRequest(color,gameID);
     server.joinGames(stringAuthToken,joinGameRequest);

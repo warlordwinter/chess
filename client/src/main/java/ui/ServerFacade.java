@@ -55,7 +55,10 @@ public class ServerFacade {
     return this.makeRequest("PUT",path,joinGameRequest,authHeader, JoinGameResponse.class);
   }
 
-
+  public JoinGameResponse observe(String authHeader,JoinGameRequest joinGameRequest) throws ResponseException {
+    var path = "/game";
+    return this.makeRequest("PUT",path,joinGameRequest,authHeader, JoinGameResponse.class);
+  }
 
   private <T> T makeRequest(String method, String path, Object request, String authToken, Class<T> responseClass) throws ResponseException {
     try {
@@ -125,4 +128,5 @@ public class ServerFacade {
   private boolean isSuccessful(int status) {
     return status / 100 == 2;
   }
+
 }
