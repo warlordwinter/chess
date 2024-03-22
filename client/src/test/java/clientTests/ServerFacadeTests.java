@@ -57,8 +57,6 @@ public class ServerFacadeTests {
         server.stop();
     }
 
-    @Nested
-    class initialTests {
         @Test
         @DisplayName("Register Successful")
         void registerSuccessful() {
@@ -130,10 +128,8 @@ public class ServerFacadeTests {
                 facade.logout("hi! this is a fake token");
             });
         }
-    }
 
-    @Nested
-    class gameTest {
+
         @Test
         @DisplayName("Create Game Successful")
         void createGameSuccessful() {
@@ -236,5 +232,4 @@ public class ServerFacadeTests {
             }
 
         }
-    }
 }
