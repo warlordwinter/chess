@@ -10,7 +10,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.URI;
 import java.net.URL;
 
 public class ServerFacade {
@@ -20,25 +19,37 @@ public class ServerFacade {
     serverUrl = url;
   }
 
-  public UserData register(UserData userData) throws ResponseException {
+  public AuthData register(UserData userData) throws ResponseException {
     var path = "/user";
-    return this.makeRequest("POST",path,userData,UserData.class);
+    return this.makeRequest("POST",path,userData,null,AuthData.class);
   }
 
   public AuthData login(UserData userData) throws ResponseException{
     var path = "/session";
-    return this.makeRequest("POST",path, userData, AuthData.class);
+    return this.makeRequest("POST",path, userData, null,AuthData.class);
+  }
+
+  public AuthData logout(String authToken) throws ResponseException {
+    var path = "/session";
+    return this.makeRequest("DELETE", path, null, authToken, AuthData.class);
   }
 
 
-  private <T> T makeRequest(String method, String path, Object request, Class<T> responseClass) throws ResponseException {
+  private <T> T makeRequest(String method, String path, Object request, String authToken, Class<T> responseClass) throws ResponseException {
     try {
-      URL url = (new URI(serverUrl + path)).toURL();
+      URL url = new URL(serverUrl + path);
       HttpURLConnection http = (HttpURLConnection) url.openConnection();
       http.setRequestMethod(method);
       http.setDoOutput(true);
 
-      writeBody(request, http);
+      if (authToken != null && !authToken.isEmpty()) {
+        http.setRequestProperty("Authorization", authToken);
+      }
+
+      if (request != null) {
+        writeBody(request, http);
+      }
+
       http.connect();
       throwIfNotSuccessful(http);
       return readBody(http, responseClass);
