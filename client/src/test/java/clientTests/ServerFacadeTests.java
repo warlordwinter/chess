@@ -33,12 +33,12 @@ public class ServerFacadeTests {
 
     @BeforeAll
     public static void init() {
-        clearData();
         server = new Server();
         var port = server.run(0);
         String serverUrl = "http://localhost:" + port;
         facade = new ServerFacade(serverUrl);
         System.out.println("Started test HTTP server on " + port);
+        clearData();
     }
 
     private static void clearData() {
