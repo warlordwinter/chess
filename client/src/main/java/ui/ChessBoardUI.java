@@ -34,30 +34,41 @@ public class ChessBoardUI {
   static void buildBoard(ChessBoard chessBoard, boolean reverseTheBoard, String[] headers, String[] column){
     var out = new PrintStream(System.out, true, StandardCharsets.UTF_8);
     chessBoard.resetBoard(); //remember to remove this line later
-    drawHeaders(headers,out);
+    drawHeaders(headers,out,reverseTheBoard);
     printRow(out,column,chessBoard,reverseTheBoard);
-    drawHeaders(headers,out);
+    drawHeaders(headers,out,reverseTheBoard);
 
     setBlack(out); // reverse board
     out.println();
-    drawHeaders(headers,out);
+    drawHeaders(headers,out,reverseTheBoard);
     reverseTheBoard = true;
     printRow(out,column,chessBoard,reverseTheBoard);
-    drawHeaders(headers,out);
+    drawHeaders(headers,out,reverseTheBoard);
     setWhite(out);
   }
 
-  private static void drawHeaders(String[] headers, PrintStream out) {
+  private static void drawHeaders(String[] headers, PrintStream out, Boolean reverseTheBoard) {
     setGrey(out);
     out.print(EMPTY.repeat(3));
 
-    for (int boardCol = 0; boardCol < BOARD_SIZE_IN_SQUARES; ++boardCol) {
-      drawHeader(out, headers[boardCol]);
+    if(reverseTheBoard==false){
+      for (int boardCol = 0; boardCol < BOARD_SIZE_IN_SQUARES; ++boardCol) {
+        drawHeader(out, headers[boardCol]);
 
-      if (boardCol < BOARD_SIZE_IN_SQUARES - 1) {
-        out.print(EMPTY.repeat(LINE_WIDTH_IN_CHARS));
+        if (boardCol < BOARD_SIZE_IN_SQUARES - 1) {
+          out.print(EMPTY.repeat(LINE_WIDTH_IN_CHARS));
+        }
+      }
+    }else {
+      for (int boardCol=BOARD_SIZE_IN_SQUARES - 1; boardCol >= 0; --boardCol) {
+        drawHeader(out, headers[boardCol]);
+
+        if (boardCol > 0) {
+          out.print(EMPTY.repeat(LINE_WIDTH_IN_CHARS));
+        }
       }
     }
+
     out.print(EMPTY.repeat(4));
     setBlack(out);
     out.println();
