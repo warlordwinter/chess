@@ -2,7 +2,9 @@ package ui;
 
 import exception.ResponseException;
 import model.AuthData;
+import model.GameData;
 import model.UserData;
+import ui.requests.CreateGamesRequest;
 
 import java.util.Arrays;
 
@@ -27,6 +29,7 @@ public class ChessClient {
         case "quit" -> "quit";
         case "login" -> login(params);
         case "logout" -> signOut();
+        case "create" -> createGame(params);
         default -> help();
       };
     }catch(ResponseException ex){
@@ -74,9 +77,9 @@ public class ChessClient {
   public String createGame(String ... params) throws ResponseException {
     if (params.length == 1) {
       String gameName = params[0];
-//      CreateGameRequest request = new CreateGameRequest(gameName);
-//      server.createGames(authdata.getAuthToken(), request);
-      return "hi";
+      CreateGamesRequest createGamesRequest = new CreateGamesRequest(gameName);
+      GameData gameData= server.createGames(stringAuthToken, createGamesRequest);
+      return String.format("Created game: %s with ID: %s", params[0], gameData.getGameID());
     } else {
       throw new ResponseException(400, "Expected: create <NAME>");
     }

@@ -3,7 +3,9 @@ package ui;
 import com.google.gson.Gson;
 import exception.ResponseException;
 import model.AuthData;
+import model.GameData;
 import model.UserData;
+import ui.requests.CreateGamesRequest;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,6 +35,12 @@ public class ServerFacade {
     var path = "/session";
     return this.makeRequest("DELETE", path, null, authToken, AuthData.class);
   }
+
+  public GameData createGames(String authHeader, CreateGamesRequest gameRequest) throws ResponseException {
+    var path = "/game";
+    return this.makeRequest("POST", path, gameRequest, authHeader, GameData.class);
+  }
+
 
 
   private <T> T makeRequest(String method, String path, Object request, String authToken, Class<T> responseClass) throws ResponseException {
