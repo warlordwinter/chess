@@ -6,10 +6,15 @@ import dataAccess.sql.GameSqlDataAccess;
 import dataAccess.sql.UserSqlDataAccess;
 import exception.ResponseException;
 import model.AuthData;
+import model.GameData;
 import model.UserData;
 import org.junit.jupiter.api.*;
 import server.Server;
 import ui.ServerFacade;
+import ui.requests.CreateGamesRequest;
+import ui.requests.JoinGameRequest;
+import ui.response.JoinGameResponse;
+import ui.response.ListGameResponse;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -34,7 +39,6 @@ public class ServerFacadeTests {
         facade = new ServerFacade(serverUrl);
         System.out.println("Started test HTTP server on " + port);
         clearData();
-//        preregister();
     }
 
     private static void clearData() {
@@ -47,21 +51,11 @@ public class ServerFacadeTests {
         }
     }
 
-    private static void preregister(){
-        try {
-            facade.register(new UserData("already","registered","letsgo@gmail.com"));
-        } catch (ResponseException e){
-            throw new RuntimeException(e);
-        }
-    }
 
     @AfterAll
     static void stopServer() {
         server.stop();
     }
-
-    @Nested
-    class registerLoginLogout{
 
         @Test
         @DisplayName("Register Successful")
@@ -130,7 +124,103 @@ public class ServerFacadeTests {
             });
         }
 
-    }
+
+        @Test
+        @DisplayName("Create Game Successful")
+        void createGameSuccessful(){
+            try{
+                AuthData authData = facade.register(test1UserData);
+                String authHeader = authData.getAuthToken();
+                CreateGamesRequest createGamesRequest = new CreateGamesRequest("battle time");
+                GameData gameData = facade.createGames(authHeader,createGamesRequest);
+                Assertions.assertNotNull(gameData,"This should not be null");
+            }catch(ResponseException e){
+                fail("Exception thrown: " + e.getMessage());
+            }
+
+        }
+
+        @Test
+        @DisplayName("Create Game Fail")
+        void createGameFail(){
+            try{
+                AuthData authData = facade.register(test1UserData);
+                String authHeader = authData.getAuthToken();
+                CreateGamesRequest createGamesRequest = new CreateGamesRequest(null);
+                Assertions.assertThrows(ResponseException.class, () -> {
+                    facade.createGames(authHeader,createGamesRequest);
+                });
+            }catch(ResponseException e){
+                fail("Exception thrown: " + e.getMessage());
+            }
+
+        }
+
+        @Test
+        @DisplayName("List Game Successful")
+        void listGameSuccessful(){
+            try{
+                AuthData authData = facade.register(test1UserData);
+                String authHeader = authData.getAuthToken();
+                ListGameResponse response = facade.listGames(authHeader);
+                Assertions.assertNotNull(response,"This should not be null");
+            }catch(ResponseException e){
+                fail("Exception thrown: " + e.getMessage());
+            }
+
+        }
+
+        @Test
+        @DisplayName("List Game Fail")
+        void listGameFail(){
+            try{
+                AuthData authData = facade.register(test1UserData);
+                Assertions.assertThrows(ResponseException.class, () -> {
+                    facade.listGames("hihihihih");
+                });
+            }catch(ResponseException e){
+                fail("Exception thrown: " + e.getMessage());
+            }
+
+        }
+
+        @Test
+        @DisplayName("Join Game Successful")
+        void joinGameSuccessful(){
+            try{
+                AuthData authData = facade.register(test1UserData);
+                String authHeader = authData.getAuthToken();
+                CreateGamesRequest createGamesRequest = new CreateGamesRequest("battle time");
+                GameData gameData = facade.createGames(authHeader,createGamesRequest);
+
+                JoinGameRequest joinGameRequest = new JoinGameRequest("BLACK",String.valueOf(gameData.getGameID()));
+                JoinGameResponse joinGameResponse = facade.joinGames(authHeader,joinGameRequest);
+                Assertions.assertNotNull(joinGameResponse,"This should not be null");
+            }catch(ResponseException e){
+                fail("Exception thrown: " + e.getMessage());
+            }
+
+        }
+
+        @Test
+        @DisplayName("Join Game Fail")
+        void joinGameFail(){
+            try{
+                AuthData authData = facade.register(test1UserData);
+                String authHeader = authData.getAuthToken();
+                CreateGamesRequest createGamesRequest = new CreateGamesRequest("battle time");
+                GameData gameData = facade.createGames(authHeader,createGamesRequest);
+
+                JoinGameRequest joinGameRequest = new JoinGameRequest("GREY",String.valueOf(gameData.getGameID()));
+
+                Assertions.assertThrows(ResponseException.class, () -> {
+                    facade.joinGames(authHeader,joinGameRequest);
+                });
+            }catch(ResponseException e){
+                fail("Exception thrown: " + e.getMessage());
+            }
+
+        }
 
 
 
