@@ -17,6 +17,7 @@ public class Repl {
     var result = "";
     while (!result.equals("quit")) {
       printPrompt();
+      client.help();
       String line = scanner.nextLine();
 
       try {

@@ -44,7 +44,7 @@ public class ChessBoardUI {
     reverseTheBoard = true;
     printRow(out,column,chessBoard,reverseTheBoard);
     drawHeaders(headers,out);
-
+    setWhite(out);
   }
 
   private static void drawHeaders(String[] headers, PrintStream out) {
@@ -172,8 +172,8 @@ public class ChessBoardUI {
     out.print(SET_TEXT_COLOR_BLACK);
   }
   private static void setWhite(PrintStream out) {
-    out.print(SET_BG_COLOR_WHITE);
-    out.print(SET_TEXT_COLOR_BLACK);
+//    out.print(SET_BG_COLOR_WHITE);
+    out.print(SET_TEXT_COLOR_WHITE);
   }
 
 }

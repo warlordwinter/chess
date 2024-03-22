@@ -1,5 +1,6 @@
 package ui;
 
+import chess.ChessBoard;
 import exception.ResponseException;
 import model.AuthData;
 import model.GameData;
@@ -19,6 +20,9 @@ public class ChessClient {
   private String stringAuthToken;
   private State state = State.SIGNEDOUT;
   private Map<Integer,GameData> gameList = new HashMap<>();
+
+  static String[] headers = {"a","b","c","d","e","f","g","h"};
+  static String[] columns = {"1","2","3","4","5","6","7","8"};
 
   public ChessClient(String serverUrl) {
     server = new ServerFacade(serverUrl);
@@ -52,6 +56,7 @@ public class ChessClient {
     String gameID = String.valueOf(gameData.getGameID());
     JoinGameRequest joinGameRequest = new JoinGameRequest(null,gameID);
     server.observe(stringAuthToken,joinGameRequest);
+    ChessBoardUI.buildBoard(new ChessBoard(),false,headers,columns);
     return String.format("You are now observing %s",gameID);
   }
 
@@ -121,11 +126,13 @@ public class ChessClient {
   public String joinGame(String ... params)throws ResponseException{
     assertSignedIn();
     GameData gameData=gameList.get(Integer.parseInt(params[0]));
-    String color = params[1];
+    String color = params[1].toUpperCase();
     String gameID = String.valueOf(gameData.getGameID());
 
     JoinGameRequest joinGameRequest = new JoinGameRequest(color,gameID);
     server.joinGames(stringAuthToken,joinGameRequest);
+
+    ChessBoardUI.buildBoard(new ChessBoard(),false,headers,columns);
 
     return String.format("You have joined game %s as the %suser",params[0],params[1]);
   }
