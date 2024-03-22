@@ -3,7 +3,6 @@ package ui;
 import javax.management.Notification;
 import java.util.Scanner;
 
-import static java.awt.Color.GREEN;
 import static java.awt.Color.RED;
 
 public class Repl {
@@ -11,7 +10,7 @@ public class Repl {
   public Repl(String serverUrl) { client = new ChessClient(serverUrl);}
 
   public void run() {
-    System.out.println("\uD83D\uDC36 Welcome to the pet store. Sign in to start.");
+    System.out.println("Welcome to Chess. Sign in to start.");
     System.out.print(client.help());
 
     Scanner scanner = new Scanner(System.in);
@@ -32,7 +31,7 @@ public class Repl {
   }
 
   private void printPrompt() {
-    System.out.print("\n" + ">>> " + GREEN);
+    System.out.print("\n" + ">>> ");
   }
 
   public void notify(Notification notification) {

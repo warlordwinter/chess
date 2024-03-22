@@ -26,7 +26,7 @@ public class ChessClient {
         case "register" -> register(params);
         case "quit" -> "quit";
         case "login" -> login(params);
-        case "logout" -> logout();
+        case "logout" -> signOut();
         default -> help();
       };
     }catch(ResponseException ex){
@@ -34,9 +34,11 @@ public class ChessClient {
     }
   }
 
-  public String logout() throws ResponseException{
+  public String signOut() throws ResponseException{
     assertSignedIn();
-    logout(stringAuthToken);
+    server.logout(stringAuthToken);
+    stringAuthToken=null;
+    state=State.SIGNEDOUT;
     return String.format("Logged out!");
   }
 
@@ -48,6 +50,7 @@ public class ChessClient {
       UserData userData =new UserData(username,password,email);
       AuthData authData = server.register(userData);
       stringAuthToken = authData.getAuthToken();
+      state = State.SIGNEDIN;
       return String.format("Welcome %s", username);
     }
     throw new ResponseException(400, "Expected register <username>,<password>,<email> - to create an account");
@@ -59,6 +62,7 @@ public class ChessClient {
         UserData userData = new UserData(params[0], params[1], null);
         AuthData authData = server.login(userData);
         stringAuthToken = authData.getAuthToken();
+        state = State.SIGNEDIN;
         return String.format("Welcome Back %s", params[0]);
       }
       throw new ResponseException(400, "Expected login <username> <password> - to login to your account");
