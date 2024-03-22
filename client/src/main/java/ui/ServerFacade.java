@@ -6,6 +6,7 @@ import model.AuthData;
 import model.GameData;
 import model.UserData;
 import ui.requests.CreateGamesRequest;
+import ui.requests.JoinGameRequest;
 import ui.response.ListGameResponse;
 
 import java.io.IOException;
@@ -45,6 +46,11 @@ public class ServerFacade {
   public ListGameResponse listGames(String authHeader) throws ResponseException{
     var path = "/game";
     return this.makeRequest("GET", path, null, authHeader, ListGameResponse.class);
+  }
+
+  public void joinGames(String authHeader, JoinGameRequest joinGameRequest) throws ResponseException{
+    var path = "/game";
+    this.makeRequest("PUT",path,joinGameRequest,authHeader,null);
   }
 
 

@@ -5,6 +5,7 @@ import model.AuthData;
 import model.GameData;
 import model.UserData;
 import ui.requests.CreateGamesRequest;
+import ui.requests.JoinGameRequest;
 import ui.response.ListGameResponse;
 
 import java.util.Arrays;
@@ -33,6 +34,7 @@ public class ChessClient {
         case "logout" -> signOut();
         case "create" -> createGame(params);
         case "list" -> listGame();
+        case "join" -> joinGame(params);
         default -> help();
       };
     }catch(ResponseException ex){
@@ -100,6 +102,17 @@ public class ChessClient {
       result.append(String.format("%d. %s (%s)\n", count++, game.getGameName(), players));
     }
     return result.toString();
+  }
+
+  public String joinGame(String ... params)throws ResponseException{
+    assertSignedIn();
+    String gameID = params[0];
+    String color = params[1];
+
+    JoinGameRequest joinGameRequest = new JoinGameRequest(gameID,color);
+    server.joinGames(stringAuthToken,joinGameRequest);
+
+    return "hi";
   }
 
   private String getPlayersString(GameData game) {
