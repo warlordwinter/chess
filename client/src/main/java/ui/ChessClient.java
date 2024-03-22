@@ -109,10 +109,10 @@ public class ChessClient {
     String gameID = params[0];
     String color = params[1];
 
-    JoinGameRequest joinGameRequest = new JoinGameRequest(gameID,color);
+    JoinGameRequest joinGameRequest = new JoinGameRequest(color,gameID);
     server.joinGames(stringAuthToken,joinGameRequest);
 
-    return "hi";
+    return String.format("You have joined game %s as the %suser",params[0],params[1]);
   }
 
   private String getPlayersString(GameData game) {

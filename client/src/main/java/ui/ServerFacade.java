@@ -1,12 +1,14 @@
 package ui;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import exception.ResponseException;
 import model.AuthData;
 import model.GameData;
 import model.UserData;
 import ui.requests.CreateGamesRequest;
 import ui.requests.JoinGameRequest;
+import ui.response.JoinGameResponse;
 import ui.response.ListGameResponse;
 
 import java.io.IOException;
@@ -48,9 +50,9 @@ public class ServerFacade {
     return this.makeRequest("GET", path, null, authHeader, ListGameResponse.class);
   }
 
-  public void joinGames(String authHeader, JoinGameRequest joinGameRequest) throws ResponseException{
+  public JoinGameResponse joinGames(String authHeader, JoinGameRequest joinGameRequest) throws ResponseException{
     var path = "/game";
-    this.makeRequest("PUT",path,joinGameRequest,authHeader,null);
+    return this.makeRequest("PUT",path,joinGameRequest,authHeader, JoinGameResponse.class);
   }
 
 
@@ -63,7 +65,7 @@ public class ServerFacade {
       http.setDoOutput(true);
 
       if (authToken != null && !authToken.isEmpty()) {
-        http.setRequestProperty("Authorization", authToken);
+        http.setRequestProperty("authorization", authToken);
       }
 
       if (request != null) {
@@ -82,9 +84,19 @@ public class ServerFacade {
   private static void writeBody(Object request, HttpURLConnection http) throws IOException {
     if (request != null) {
       http.addRequestProperty("Content-Type", "application/json");
-      String reqData = new Gson().toJson(request);
-      try (OutputStream reqBody = http.getOutputStream()) {
-        reqBody.write(reqData.getBytes());
+      try {
+        String reqData = new Gson().toJson(request);
+        if (reqData != null && !reqData.isEmpty()) {
+          try (OutputStream reqBody = http.getOutputStream()) {
+            reqBody.write(reqData.getBytes());
+          }
+        } else {
+          System.err.println("Request body is empty after serialization.");
+        }
+      } catch (JsonSyntaxException e) {
+        System.err.println("Failed to serialize request object to JSON: " + e.getMessage());
+      } catch (Exception e) {
+        System.err.println("Error writing request data to output stream: " + e.getMessage());
       }
     }
   }
