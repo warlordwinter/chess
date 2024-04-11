@@ -1,17 +1,12 @@
 package server;
 
 import dataAccess.*;
-import dataAccess.memory.MemoryAuthDao;
-import dataAccess.memory.MemoryGameDao;
-import dataAccess.memory.MemoryUserDao;
 import dataAccess.sql.AuthSqlDataAccess;
 import dataAccess.sql.GameSqlDataAccess;
 import dataAccess.sql.UserSqlDataAccess;
-import exception.ResponseException;
 import server.handlers.*;
-import spark.*;
-
-import java.sql.Connection;
+import server.websocket.WebSocketHandler;
+import spark.Spark;
 
 public class Server {
 
@@ -26,11 +21,15 @@ public class Server {
     UserDao userDao = new UserSqlDataAccess();
     GameDao gameDao = new GameSqlDataAccess();
     AuthDao authDao = new AuthSqlDataAccess();
+    WebSocketHandler webSocketHandler = new WebSocketHandler();
 
 
     public int run(int desiredPort) {
         Spark.port(desiredPort);
         Spark.staticFiles.location("web");
+
+        Spark.webSocket("/connect",webSocketHandler);
+
         Spark.get("/game" , (req,res) -> (new GameHandler().listGames(req,res,authDao,gameDao)));
         Spark.delete("/session", (req,res) -> (new LogoutHandler().handleLogout(req,res,authDao)));
         Spark.post("/session", (req,res) -> (new LoginHandler().handleLogin(req,res,userDao,authDao)));
