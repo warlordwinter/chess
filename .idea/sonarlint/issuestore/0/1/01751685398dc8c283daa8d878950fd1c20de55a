@@ -1,10 +1,6 @@
 
-•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ôˆ–ÓJ$5c035d97-2993-4e8a-8180-20726fefddde
-z
-java:S2387">"serverMessageType" is the name of a field in "ServerMessage".(îÙïÒJ$b8d12c51-ede8-4f62-9e3d-958e62709b6d
-l
-java:S2160"+Override the "equals" method in this class.(”ùşıÿÿÿÿJ$ce4a726c-9306-4f62-b9c2-0746adc7e439
-q
-java:S1068"5Remove this unused "serverMessageType" private field.(îÙïÒJ$08cd91c4-f2f8-434a-9891-2b7b077eb078
+œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ôˆ–Ó8¢øì1J$c88fe6ee-2662-4d80-b0b5-5b5083be2f0b
+s
+java:S2160"+Override the "equals" method in this class.(”ùşıÿÿÿÿ8²¢øì1J$bfaa1dbf-906b-40de-bbe5-56d1ce8a2618
 k
-java:S1068"(Remove this unused "game" private field.(„ÜÑÉ8ĞÌªğì1J$8aa95990-c569-42f0-9f52-5e6113cbc6d2
+java:S1068"(Remove this unused "game" private field.(„ÜÑÉ8¾¢øì1J$60f5c3ea-9c3a-4d79-bc73-6ace4a86833d

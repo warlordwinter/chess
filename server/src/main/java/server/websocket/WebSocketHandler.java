@@ -13,7 +13,8 @@ import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketConnect;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketMessage;
 import org.eclipse.jetty.websocket.api.annotations.WebSocket;
-import webSocketMessages.serverMessages.ServerMessage;
+import requests.JoinGameRequest;
+import webSocketMessages.serverMessages.messages.Error;
 import webSocketMessages.serverMessages.messages.LoadGame;
 import webSocketMessages.serverMessages.messages.Notification;
 import webSocketMessages.userCommands.UserGameCommand;
@@ -55,33 +56,47 @@ public class WebSocketHandler {
 
   public void join(String msg, Session session,String authToken) throws IOException {
     //call the api to verify game in db
+    String color=null;
     try {
-      JoinPlayer joinPlayer = new Gson().fromJson(msg, JoinPlayer.class);
+      JoinPlayer joinPlayer=new Gson().fromJson(msg, JoinPlayer.class);
       //add an if statement here to return an error if game doesn't exist
-      AuthData authData = authDao.getToken(authToken);
-      String username = authData.getUsername();
+      AuthData authData=authDao.getToken(authToken);
+      String username=authData.getUsername();
       Integer gameID=joinPlayer.getGameID();
       ChessGame.TeamColor teamColor=joinPlayer.getPlayerColor();
 //      String authToken=joinPlayer.getAuthToken();
 
       //get game
-      GameData gameData = gameDao.getGameData(gameID);
-      ChessBoard game = gameData.getGame().getBoard();
+      GameData gameData=gameDao.getGameData(gameID);
+      ChessBoard game=gameData.getGame().getBoard();
 
       connectionManager.addSessionToGame(gameID, authToken, session);
-      //send load game message use gson and session.getRemote().sendString(msg);
-      LoadGame loadGame=new LoadGame(ServerMessage.ServerMessageType.LOAD_GAME, game);
+
+      if(teamColor == ChessGame.TeamColor.BLACK){
+        color = "BLACK";
+      }else{
+        color="WHITE";
+      }
+
+     JoinGameRequest joinGameRequest = new JoinGameRequest(color,String.valueOf(gameID));
+     if(!gameDao.checkGameAvailability(joinGameRequest)){
+       throw new DataAccessException(403,"There is already a player joined");
+     }
+
+    //send load game message use gson and session.getRemote().sendString(msg);
+      LoadGame loadGame=new LoadGame(game);
       session.getRemote().sendString(new Gson().toJson(loadGame));
 
       //session
       var message=String.format("%s has join the game as %s", username, teamColor);
-      var notification=new Notification(ServerMessage.ServerMessageType.NOTIFICATION, message);
+      var notification=new Notification(message);
       //exclude the client
       connectionManager.broadcast(gameID,notification,authToken);
     }
     catch (DataAccessException e) {
       e.printStackTrace();
-//      e.
+      msg =e.getMessage();
+      session.getRemote().sendString(new Gson().toJson(new Error("Error"+msg)));
     }
   }
 

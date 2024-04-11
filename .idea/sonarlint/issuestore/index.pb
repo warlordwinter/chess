@@ -44,3 +44,14 @@ c
 :
 
 client.iml,8\1\81276a78d81379d1349e1ff0f16babcbe4db95cc
+:
+
+server.iml,8\2\8223cc95a68355bfb31e8c65de12cb67ce74a18a
+r
+Bsrc/main/java/webSocketMessages/serverMessages/messages/Error.java,7\c\7caa9c3efc529edf654921f57140f4205788e89a
+[
++src/main/java/requests/JoinGameRequest.java,4\8\48afab7ed2d369e19e2ed9a43630d939f3e11011
+c
+3src/main/java/dataAccess/sql/GameSqlDataAccess.java,5\0\506c4586f4ccf86e101529cc2de75e67812c3bff
+a
+1src/main/java/dataAccess/DataAccessException.java,6\e\6eb5d3ed21c9df98a86e3c1b8de2bcdc464b3e0e

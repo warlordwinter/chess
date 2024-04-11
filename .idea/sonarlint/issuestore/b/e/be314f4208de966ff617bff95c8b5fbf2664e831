@@ -1,7 +1,8 @@
 
 
-java:S3824"HReplace this "Map.containsKey()" with a call to "Map.computeIfAbsent()".(÷¾ßÿÿÿÿÿ8 ß€òì1J$da10a9c9-99a9-4cf8-b081-94b4997715e1
+java:S3824"HReplace this "Map.containsKey()" with a call to "Map.computeIfAbsent()".(÷¾ßÿÿÿÿÿ8±ÎÇ÷ì1J$ed6f7cd5-70db-4c84-b90f-1186c77164c1
 q
-java:S1172".Remove this unused method parameter "session".(ëŸÒ¥8Àß€òì1J$433d6be7-c412-4472-a883-a71dd9a6b09a
-r	java:S106"+Replace this use of System.out by a logger.(ÖÚìûûÿÿÿÿ8Àß€òì1J$61841030-ab4e-44ae-a5e0-bcd1b1fc86e5
-m	java:S106+"+Replace this use of System.err by a logger.(æÈñ²8ÏìŠòì1J$47bf30e4-82b0-4e1b-9f45-08bf43c67f62
+java:S1172".Remove this unused method parameter "session".(ëŸÒ¥8ÆÎÇ÷ì1J$10243051-14ee-48d2-bf27-f0961bbd9878
+r	java:S106"+Replace this use of System.out by a logger.(ÖÚìûûÿÿÿÿ8ÌÎÇ÷ì1J$8946de26-52bc-493a-bdfe-8b8aac60f0dd
+}	java:S125""<This block of commented-out lines of code should be removed.(¬Åî68áÎÇ÷ì1J$79216d2d-899e-4ea8-b19f-3ac882bac8d1
+r	java:S106>"+Replace this use of System.err by a logger.(ÕÈÂ¬ÿÿÿÿÿ8Ÿ—â÷ì1J$6db8e664-1c8e-4588-a50c-b6abcef6db7e

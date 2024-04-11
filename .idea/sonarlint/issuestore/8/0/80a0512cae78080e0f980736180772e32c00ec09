@@ -1,10 +1,6 @@
 
-•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ôˆ–ÓJ$8b61520a-fef0-4e46-93fe-6e06a348f1be
-z
-java:S2387">"serverMessageType" is the name of a field in "ServerMessage".(îÙïÒJ$a69257d7-1b99-4ce2-aa4c-3ff0c3d6afac
+•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ôˆ–ÓJ$1f9b7a68-adfa-405b-b708-43b21e762f9d
 l
-java:S2160"+Override the "equals" method in this class.(éÆÚšùÿÿÿÿJ$1851e086-79f2-4c71-890b-91614c13ec8a
+java:S2160"+Override the "equals" method in this class.(éÆÚšùÿÿÿÿJ$f2fe56c0-7d07-4e72-800c-42cc5fdb3dfa
 l
-java:S1068"+Remove this unused "message" private field.(ù„è¿ûÿÿÿÿJ$093ef417-a1f8-4f83-9c52-7088562c6a50
-q
-java:S1068"5Remove this unused "serverMessageType" private field.(îÙïÒJ$c05a228e-cc17-4f87-a49c-d1adba0460f8
+java:S1068"+Remove this unused "message" private field.(ù„è¿ûÿÿÿÿJ$b340b11a-ac94-4a64-9449-0cf91fdc4b96
