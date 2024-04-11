@@ -14,4 +14,21 @@ public class JoinPlayer extends UserGameCommand {
     this.playerColor = playerColor;
     this.commandType = commandType;
   }
+
+  public String getAuthToken() {
+    return authToken;
+  }
+
+  public Integer getGameID() {
+    return gameID;
+  }
+
+  public ChessGame.TeamColor getPlayerColor() {
+    return playerColor;
+  }
+
+  @Override
+  public CommandType getCommandType() {
+    return commandType;
+  }
 }

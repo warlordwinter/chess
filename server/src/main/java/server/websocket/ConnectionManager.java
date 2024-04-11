@@ -1,5 +1,6 @@
 package server.websocket;
 
+import com.google.gson.Gson;
 import org.eclipse.jetty.websocket.api.Session;
 
 import java.util.HashMap;
@@ -27,4 +28,23 @@ public class ConnectionManager {
   }
 
   Map<String,Session> getSessionsFOrGame(Integer gameID){return sessions.get(gameID);}
+
+  public void broadcastMessage(Integer gameID, String msg, String authToken){
+    Map<String, Session> gameSessions = sessions.get(gameID);
+    if (gameSessions != null) {
+      for (Map.Entry<String, Session> entry : gameSessions.entrySet()) {
+        String currentAuthToken = entry.getKey();
+        Session currentSession = entry.getValue();
+        if (!currentAuthToken.equals(authToken)) {
+          try {
+            currentSession.getRemote().sendString(new Gson().toJson(msg));
+          } catch (Exception e) {
+            // Handle the exception, e.g., log it
+            System.err.println("Failed to send message to session: " + e.getMessage());
+          }
+        }
+      }
+    }
+  }
+
 }

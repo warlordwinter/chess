@@ -1,8 +1,0 @@
-
-0
-java:S1220""Move this file to a named package.
-
-java:S1130"wRemove the declaration of thrown exception 'dataAccess.DataAccessException', as it cannot be thrown from method's body.(Θ¦
-E	java:S106	"+Replace this use of System.out by a logger.(Ϊφ†“ύÿÿÿÿ
-N
-java:S1128"8Remove this unused import 'exception.ResponseException'.(‘ύολ

@@ -12,4 +12,11 @@ public class JoinObserver extends UserGameCommand {
     this.gameID = gameID;
     this.userGameCommand = userGameCommand;
   }
+
+  public String getAuthToken() {
+    return authToken;
+  }
+  public Integer getGameID() {
+    return gameID;
+  }
 }

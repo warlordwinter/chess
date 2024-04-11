@@ -5,9 +5,10 @@ import webSocketMessages.serverMessages.ServerMessage;
 
 public class LoadGame extends ServerMessage {
   private ServerMessageType serverMessageType;
-  private ChessBoard chessBoard;
-  public LoadGame(ServerMessageType type,ChessBoard chessBoard) {
+  private ChessBoard game;
+  public LoadGame(ServerMessageType type,ChessBoard game) {
     super(type);
-    this.chessBoard = chessBoard;
+    this.game = game;
   }
+
 }

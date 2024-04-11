@@ -28,6 +28,7 @@ public class WebSocketFacade extends Endpoint {
 
       WebSocketContainer container =ContainerProvider.getWebSocketContainer();
       this.session =(Session) container.connectToServer(this,socketURI);
+      //deserialize the server message similar to websockethandler
 
       this.session.addMessageHandler(new MessageHandler.Whole<String>() {
         @Override
@@ -36,6 +37,8 @@ public class WebSocketFacade extends Endpoint {
           notificationHandler.notify(notification);
         }
       });
+
+
 
     } catch (DeploymentException | IOException | URISyntaxException ex) {
       throw new RuntimeException(ex);
