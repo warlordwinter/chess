@@ -28,10 +28,10 @@ public class WebSocketHandler {
 
     Connection conn = DatabaseManager.getConnection();
     switch(command.getCommandType()){
-      case JOIN_PLAYER -> join(conn,msg);
+      case JOIN_PLAYER -> join(conn);
     }
   }
 
-  private void join(Connection conn, msg);
+  private void join(Connection conn)
 
 }

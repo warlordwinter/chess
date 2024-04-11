@@ -8,6 +8,7 @@ import model.UserData;
 import ui.requests.CreateGamesRequest;
 import ui.requests.JoinGameRequest;
 import ui.response.ListGameResponse;
+import ui.websocket.NotificationHandler;
 import ui.websocket.WebSocketFacade;
 
 import java.util.Arrays;
@@ -20,6 +21,7 @@ public class ChessClient {
   private final ServerFacade server;
   private String stringAuthToken;
   private State state = State.SIGNEDOUT;
+  private NotificationHandler notificationHandler;
   private WebSocketFacade ws;
   private Map<Integer,GameData> gameList = new HashMap<>();
 
@@ -79,7 +81,6 @@ public class ChessClient {
       AuthData authData = server.register(userData);
       stringAuthToken = authData.getAuthToken();
       state = State.SIGNEDIN;
-      ws = new WebSocketFacade(serverUrl);
       return String.format("Welcome %s", username);
     }
     throw new ResponseException(400, "Expected register <username>,<password>,<email> - to create an account");
@@ -134,6 +135,7 @@ public class ChessClient {
 
     JoinGameRequest joinGameRequest = new JoinGameRequest(color,gameID);
     server.joinGames(stringAuthToken,joinGameRequest);
+    ws = new WebSocketFacade(serverUrl,notificationHandler);
 
     ChessBoardUI.buildBoard(new ChessBoard(),false,headers,columns);
 
