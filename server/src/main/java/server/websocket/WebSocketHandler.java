@@ -17,6 +17,7 @@ import webSocketMessages.serverMessages.messages.Error;
 import webSocketMessages.serverMessages.messages.LoadGame;
 import webSocketMessages.serverMessages.messages.Notification;
 import webSocketMessages.userCommands.UserGameCommand;
+import webSocketMessages.userCommands.commands.JoinObserver;
 import webSocketMessages.userCommands.commands.JoinPlayer;
 
 import java.io.IOException;
@@ -53,8 +54,46 @@ public class WebSocketHandler {
 
     switch(command.getCommandType()){
       case JOIN_PLAYER -> join(msg,session,authToken);
+      case JOIN_OBSERVER -> joinObserve(msg,session,authToken);
+      case MAKE_MOVE -> makeMove(msg,session,authToken);
     }
   }
+
+  private void makeMove(String msg, Session session, String authToken) {
+
+  }
+
+  private void joinObserve(String msg, Session session, String authToken) throws IOException {
+    try {
+      JoinObserver joinObserver = new Gson().fromJson(msg, JoinObserver.class);
+      AuthData authData = authDao.getToken(authToken);
+      String username = authData.getUsername();
+      Integer gameID = joinObserver.getGameID();
+      GameData gameData = gameDao.getGameData(gameID);
+      if(gameData==null){
+        throw new DataAccessException(401,"GameID is bad");
+      }
+      ChessBoard game = gameData.getGame().getBoard();
+
+
+      connectionManager.addSessionToGame(gameID, authToken, session);
+
+      LoadGame loadGame = new LoadGame(game);
+      session.getRemote().sendString(new Gson().toJson(loadGame));
+
+      //session
+      var message = String.format("%s has join the game as an Observer", username);
+      var notification = new Notification(message);
+      //exclude the client
+      connectionManager.broadcast(gameID, notification, authToken);
+
+    } catch (DataAccessException | IOException e) {
+      e.printStackTrace();
+      String errorMsg = e.getMessage();
+      session.getRemote().sendString(new Gson().toJson(new Error("Error"+errorMsg)));
+    }
+  }
+
 
   public void join(String msg, Session session,String authToken) throws IOException {
     //call the api to verify game in db
@@ -116,6 +155,8 @@ public class WebSocketHandler {
       session.getRemote().sendString(new Gson().toJson(new Error("Error"+msg)));
     }
   }
+
+
 
 
 
