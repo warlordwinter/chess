@@ -1,0 +1,10 @@
+
+œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ôˆ–Ó8ûİŸÕì1J$ec426b65-2a26-4f24-b889-dac20468a74d
+
+java:S2387">"serverMessageType" is the name of a field in "ServerMessage".(îÙïÒ8‚ŞŸÕì1J$20a1760a-c204-4e21-973e-f03dc133bb32
+s
+java:S2160"+Override the "equals" method in this class.(ª•‹Êúÿÿÿÿ8‚ŞŸÕì1J$27bd11f2-c73f-4bf0-90cb-f856819ba677
+t
+java:S1068"1Remove this unused "serverMessage" private field.(ü²•ú8ç‡ Õì1J$a0be65a3-3a94-4a91-bd9e-f0245bf1e268
+x
+java:S1068"5Remove this unused "serverMessageType" private field.(îÙïÒ8†ŞŸÕì1J$b4bf7104-d26c-4485-b88a-7036356f9da0

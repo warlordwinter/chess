@@ -1,0 +1,698 @@
+[33mcommit 15c85340b2b1e0c3274c94128e6f55ff0a086766[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Thu Mar 21 11:02:28 2024 -0600
+
+    got the scanner to work and the basic shell of all of the code
+
+[33mcommit 94e68f7ba780a1951143f958d55c15ca87575633[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Wed Mar 20 21:56:00 2024 -0600
+
+    finished the board and it looks greatgit add .
+
+[33mcommit 088220cb6c412d1c4f1388568ee53b1515b18ee4[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Wed Mar 20 21:24:05 2024 -0600
+
+    got my board to print out
+
+[33mcommit 34ee021249fa0510a8045b4372cfae49f19203fd[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Wed Mar 20 21:23:28 2024 -0600
+
+    got my board to print out
+
+[33mcommit a6c4faaf666f8663a76fcf9f74003ee538d842c4[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Wed Mar 20 19:36:42 2024 -0600
+
+    Finished with board logic
+
+[33mcommit 35e3e83c106dbf3ed45c2f99f0e98f36faf0c5ec[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Wed Mar 20 19:08:32 2024 -0600
+
+    Finished headers
+
+[33mcommit b81c7b753025a6acbd93f8882b811e6cbf27c3a4[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Wed Mar 20 19:07:50 2024 -0600
+
+    finished the headers
+
+[33mcommit 14a558afd51efe0e26e6740e60e9124290b668ad[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Thu Mar 14 09:43:41 2024 -0600
+
+    updated the chess board ui
+
+[33mcommit e1913f88bf72dc0610e8f41044943379993935bf[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Fri Mar 8 12:14:50 2024 -0700
+
+    Fixed some sql statements
+
+[33mcommit e89e317f5da673c437e1786bc4adeca08cd94d4c[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Fri Mar 8 11:51:20 2024 -0700
+
+    testing theory with setup in userSqlTests
+
+[33mcommit d5e418c155baa83171e82e7d1f755e1b92adf1f4[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Fri Mar 8 11:42:33 2024 -0700
+
+    Fixed list games
+
+[33mcommit 779552004d2d1d2217d0dcf91ceb9010f39549c0[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Thu Mar 7 23:39:16 2024 -0700
+
+    fixed some more tests and have almost fixed everything.
+
+[33mcommit 62997ae433a222c5fa2fd475d4fc7ab3d8c32b00[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Thu Mar 7 23:04:02 2024 -0700
+
+    fixed my user tests and got rid of the database there too.
+
+[33mcommit a61a0dc415aaca2c03d19841cc2cc903bbabde33[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Thu Mar 7 22:45:02 2024 -0700
+
+    fix login issues
+
+[33mcommit 966e5d822e3411581d711e993df5b1de8cbecd9a[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Thu Mar 7 21:46:34 2024 -0700
+
+    finished password protection
+
+[33mcommit ad8491d46766eae648f6fa77bef51a0b1bde51cd[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Thu Mar 7 21:28:22 2024 -0700
+
+    finished writing tests and finished game sql
+
+[33mcommit 0749f0e30f95b317aa7cdad941dcb36a1e793e31[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Thu Mar 7 20:54:44 2024 -0700
+
+    fixed project structure!
+
+[33mcommit 57ff442790177aaba458afb84dde1105c2ac9174[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Thu Mar 7 19:02:21 2024 -0700
+
+    Finished a bunch of tests in Game SQL DAO
+
+[33mcommit 06842e1af880c14752e688e3832c0a312db992a0[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Thu Mar 7 10:02:48 2024 -0700
+
+    We repaired the server to not throw a dataexceptions and we serielized the Chess Game
+
+[33mcommit 14607794ae525569db303f6e32ed3f4c01dc7e28[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Wed Mar 6 15:06:03 2024 -0700
+
+    finished sql and tests for auth data
+
+[33mcommit c495da8e68d9f0918004c2214f8d3251006377a5[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Wed Mar 6 14:21:11 2024 -0700
+
+    almost done with deleteAuthToken
+
+[33mcommit 7ec1f1b43f5f441905b6dfb52cc9aa8612a35cf2[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Wed Mar 6 13:53:01 2024 -0700
+
+    finished the adding and creating auth tokens
+
+[33mcommit 90d7b7dcba2ede0bd0cd765ff9b138dc75f3d63f[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Wed Mar 6 09:44:29 2024 -0700
+
+    Finished with UserSQL test and DAO classes
+
+[33mcommit b2ad9e32313271eb67e14c354b2a4d8681f64830[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Wed Mar 6 09:24:01 2024 -0700
+
+    finished userInDatabaseTest and methods
+
+[33mcommit 3b759a8a365a26e2daab1469f9f6e3c49e48952b[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Wed Mar 6 08:58:39 2024 -0700
+
+    finished get user passing test
+
+[33mcommit 11be25e7d390cea33d9036ddb1ac45d300c8ee50[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Wed Mar 6 08:47:51 2024 -0700
+
+    finished test for add user
+
+[33mcommit b34e43813e6992344886b8d04f01fe86adedda2a[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Wed Mar 6 08:39:41 2024 -0700
+
+    finished getUser and the first test of addUser.
+
+[33mcommit d967823ffeffb3a455bdf0ff64133b4055284b78[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Wed Mar 6 08:25:39 2024 -0700
+
+    finished addUser and it's first test
+
+[33mcommit a2ca6cebcff3a87d76b9380009a1dfdcfcc915ec[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Mar 5 10:40:42 2024 -0700
+
+    refactored our code to throw dataAccessExceptions
+
+[33mcommit 76b7d5f8a24639884d9dd2cbca39efe046627b0d[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Mon Mar 4 17:32:10 2024 -0700
+
+    We got the databaseManager and config files to work correctly!
+
+[33mcommit 2d654e9baae7c5773d46d32125c8f4942d077277[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Mon Mar 4 12:38:08 2024 -0700
+
+    phase 3 finished don't touch
+
+[33mcommit cfe342176fbb9bd49b225a4e25b6eda05795cfa1[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Thu Feb 29 10:37:53 2024 -0700
+
+    added the code for phase four. Also added stuff to git ignore
+
+[33mcommit 1ade84acc3404e9d6b87e3760399986400ab22c2[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Feb 27 18:29:02 2024 -0700
+
+    Did some code refactoring
+
+[33mcommit 0590d3c45add0d457200ea6837fb06eafea7ad8c[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Feb 27 18:26:42 2024 -0700
+
+    finished the logout tests
+
+[33mcommit d692900a15abfba2c17969c3be3b3cb8e9c51a6f[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Feb 27 18:20:52 2024 -0700
+
+    finished the login tests
+
+[33mcommit 23459f8e233175eec9080f81dd700a7d05bdcdf8[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Feb 27 17:41:29 2024 -0700
+
+    finished writing the game tests
+
+[33mcommit 800da25f37ed69ed3d8741768eb516ef6e8ac9a2[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Feb 27 16:02:01 2024 -0700
+
+    Made some unit test cases for my service classes
+
+[33mcommit c7edb35e5e4e6c95154c99c2d26a8e2ddff72e21[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Feb 27 14:32:24 2024 -0700
+
+    finished all of the API tests
+
+[33mcommit fc03523e91823913413036ed8e678c91ac790eba[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Feb 27 13:21:16 2024 -0700
+
+    finished the join game endpoint. Now working on the api tests
+
+[33mcommit 09b9e7f05c6cde980511cceb69c2c45a4cc442d9[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Feb 27 12:27:09 2024 -0700
+
+    almost done with join game
+
+[33mcommit bdcfd9a25ce31bdc3f693fd00014dee3f9160289[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Feb 27 11:14:42 2024 -0700
+
+    finished listGames
+
+[33mcommit f7b582f357553c74f030cfbe7a26541b04f02d1d[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Feb 27 09:38:52 2024 -0700
+
+    finished model class for gameModel
+
+[33mcommit 0e530b2e995ffce90215c1c7c2eb6a4ebba80001[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Feb 27 09:37:54 2024 -0700
+
+    fixed the response class for list games. Next step finish up the Memory Game information
+
+[33mcommit 1bdac9888081894971b968cc5ce267f8f83e225c[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Mon Feb 26 17:32:46 2024 -0700
+
+    almost done with create games. we need to fix the JSON objects being returned. Accessing the body seems to be the error
+
+[33mcommit df62ca597adfb82106210d4bac95d47de7b12cdf[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Mon Feb 26 16:42:07 2024 -0700
+
+    fixed the endpoints for login
+
+[33mcommit 196ec54d4411f95979e4b2fc00106353b3f728e1[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Mon Feb 26 14:12:37 2024 -0700
+
+    fixed the endpoint response class to return res objects
+
+[33mcommit 7bef5d4b1973d866f32d3423127c9a9f3e24363f[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Mon Feb 26 13:32:20 2024 -0700
+
+    added a user in database function to help asist register and Login endpoints
+
+[33mcommit 4b5644d9abffc43c623c29ec357bcf532dbd137f[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Mon Feb 26 12:55:14 2024 -0700
+
+    fixed auth dao and starting to do repairs on exception objects
+
+[33mcommit f4bd87f0426330e3004dcfb1d9596d9123c829cf[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Sun Feb 25 14:19:38 2024 -0700
+
+    need to repair the logout services
+
+[33mcommit 4c04c473ad76ef2f980fbdadb9aa7080177ee998[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Sun Feb 25 13:23:04 2024 -0700
+
+    Fixed some more information with my server
+
+[33mcommit 8ec9e2afe5ad5342343e0748808935cea5298275[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Fri Feb 23 20:02:09 2024 -0700
+
+    Started login handlers
+
+[33mcommit 08be5c5c1aefebdc8dcb41933964abd89663ef97[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Fri Feb 23 19:47:34 2024 -0700
+
+    fixed clear to return a 200 message
+
+[33mcommit dfb3cb1310f0780f54fed8c7b8966955cc14b488[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Fri Feb 23 19:33:10 2024 -0700
+
+    We finished the try catch block
+
+[33mcommit a91717a88d778c858b5d211725fd839a49e1010e[m
+Merge: 07fbf3b 88411c0
+Author: Wiley Welch <wjw37@byu.edu>
+Date:   Fri Feb 23 18:05:59 2024 -0700
+
+    Merge pull request #1 from warlordwinter/new-server
+    
+    main
+
+[33mcommit 88411c0aa010ed260260c8c74cd2d3bd3c40c268[m[33m ([m[1;31morigin/new-server[m[33m, [m[1;32mnew-server[m[33m)[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Fri Feb 23 17:58:55 2024 -0700
+
+    Fixed deep string and hash
+
+[33mcommit 4740d029b0d9db2952442d94b1496be89c240a7a[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Fri Feb 23 17:55:46 2024 -0700
+
+    finished the user endpoint
+
+[33mcommit 07fbf3bebc412ce39f0de64c90e31a37d195667e[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Thu Feb 22 20:16:54 2024 -0700
+
+    We started using pet shop to help us set up our registration service. Consider Refactoring services to match pet shop
+
+[33mcommit dfa2ea8885180b8d1e999bce6d0236c7ca2c9704[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Thu Feb 22 17:50:55 2024 -0700
+
+    fixed some more stuff interface classes and DAO classes
+
+[33mcommit 421fe42953d046860f9a03c4ff1db97f85b067e8[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Thu Feb 22 17:40:29 2024 -0700
+
+    built the model classes
+
+[33mcommit 5d4403faae09a3982acaeef1e037d26838353d62[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Thu Feb 22 17:38:31 2024 -0700
+
+    fixed the stuff with clear
+
+[33mcommit 89ee2fceb68fbcef80e3204034813d97b55ad696[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Thu Feb 22 11:19:39 2024 -0700
+
+     set up the starter code
+
+[33mcommit 6c686fb81da5a80ed07fa073be08f46d9a29badb[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Feb 13 10:17:07 2024 -0700
+
+    added the spark  dependancy
+
+[33mcommit aeb015566297d7fbcef6f039c719978697a4111f[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Wed Feb 7 11:53:44 2024 -0700
+
+    all done
+
+[33mcommit a9b073aba0fe12e8312cff1cff153af4bc6ec57b[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Wed Feb 7 11:18:35 2024 -0700
+
+    fixed stuff with valid moves added isOnBoard function
+
+[33mcommit 20a0faed9fb5744e9f224cc418fcdaac056d961e[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Wed Feb 7 10:51:28 2024 -0700
+
+    fixed some stuff with pawn to see if it's on the board
+
+[33mcommit 96648aa8861b25c2f6d2f676e1d1a74847737a00[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Wed Feb 7 10:47:31 2024 -0700
+
+    fixed some stuff with make move to account for pawn movement
+
+[33mcommit 14b7413e0b02b763d709b4de75692cac1b0cf9f1[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Feb 6 23:47:37 2024 -0700
+
+    fixed pawn stuff
+
+[33mcommit ad58c4b92b988b5ea127a15efa816b6b1f4fe8a4[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Feb 6 23:14:50 2024 -0700
+
+    finished Stalemate
+
+[33mcommit 3faa20bc3d9c4681df43d91bbb3c04463a0f9fee[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Feb 6 22:52:52 2024 -0700
+
+    fixed some stuff with chessgame and pawn
+
+[33mcommit 20ad50e04bf521051b9c5bff74c7c134b323d4a4[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Feb 6 21:45:36 2024 -0700
+
+    going to rewrite my enemymove set function to take in chess moves
+
+[33mcommit 61ac7a79d6614c09f0d2f4bc0638e9d13c3bd911[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Feb 6 19:23:41 2024 -0700
+
+    fixed valid moves to account for the king's position
+
+[33mcommit 0aa173cc74b75073c68d25613c3c0ed063ce9c09[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Feb 6 17:45:27 2024 -0700
+
+    fixed valid moves
+
+[33mcommit 217b22afbe8b02e0a8bc9dc1507f30a7cd0ef747[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Feb 6 12:27:06 2024 -0700
+
+    almost done with valid moves, built a constructor for the clone of board
+
+[33mcommit 221e7644137fd6aa26dd450d7ea22226659a2af8[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Feb 6 11:38:12 2024 -0700
+
+    adjusted EnemyMoveSet to return a ChessPosition Type & finshed isInCheck
+
+[33mcommit 9f68f805f57cd58f6e46ffed09664344a20fb743[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Mon Feb 5 13:46:23 2024 -0700
+
+    taking a break. Going to start on is check next
+
+[33mcommit 700c482df4cec8e9f76a256895d103e83fc39368[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Mon Feb 5 13:37:00 2024 -0700
+
+    fixed some stuff for Chess Game and Chess Board. Also, built helper function for enemy Moves
+
+[33mcommit 7ae472d89a4b8b60d9e0c02884400db091416722[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Sun Feb 4 15:11:40 2024 -0700
+
+    Finished the getters and setters
+
+[33mcommit 1b7df4f82835263195969425cc24c09f5b5da1b3[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Fri Feb 2 14:10:59 2024 -0700
+
+    finished my psydocode now time to start going
+
+[33mcommit 774b056d52b0132abdfd704f40bea39ba746af44[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Wed Jan 24 09:17:00 2024 -0700
+
+    fixed all of the piece placements
+
+[33mcommit 34c9b2dd76c34473f695fa66d8d8957db3a1d163[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Jan 23 23:54:31 2024 -0700
+
+    more fixs to the board tried to fix the deep equals method with no success
+
+[33mcommit e8eed883389ae178a7e4332653550f9365faecf7[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Jan 23 23:29:52 2024 -0700
+
+    more fixs to the board
+
+[33mcommit d37b21ee60192454acbd4c2acdb4bc9b5da44f9c[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Jan 23 22:59:26 2024 -0700
+
+    finished pawn movement
+
+[33mcommit e016087e6161923e375833db3e91973e05142e29[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Jan 23 22:34:34 2024 -0700
+
+    fixed some more stuff with the test cases
+
+[33mcommit 1454661cd41224de11242811889b3ad581891a0c[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Jan 23 22:14:17 2024 -0700
+
+    I think I finished everything
+
+[33mcommit 5d60d84f77ebf86f552d80b923e627442531ab90[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Jan 23 22:06:58 2024 -0700
+
+    fixed some more stuff with pawn to make the intro moves easier
+
+[33mcommit 50b28773dde6d552d339f69cb501b295ce0d71ae[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Jan 23 21:30:20 2024 -0700
+
+    fixed the dumb stuff with pawn
+
+[33mcommit 1dcbdc057dc378d27c29d4ba674266c241056a2c[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Jan 23 20:08:42 2024 -0700
+
+    fixed more of the stuff for pawn
+
+[33mcommit 197e1ebb4d7f1f6da9bcecf4626fa03b29caa037[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Jan 23 19:14:54 2024 -0700
+
+    fixed static error
+
+[33mcommit 2d445912f8dd0556ebca1b98457dfaf5b67df1e5[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Jan 23 18:39:52 2024 -0700
+
+    fixed knight
+
+[33mcommit d4670548e183bf597669740b731adc099aeac055[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Jan 23 10:26:17 2024 -0700
+
+    fixed all the directions for knight
+
+[33mcommit 6e810143f295c85e951de799251ec11cc0baf58e[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Mon Jan 22 16:32:55 2024 -0700
+
+    finishing up the knight
+
+[33mcommit 21033aaa4520e50502b1cd0ec99f0666506c9425[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Mon Jan 22 16:22:59 2024 -0700
+
+    fixed the kingmovement
+
+[33mcommit 58682ab3f0bb1f4efac20d2fb016a236d7f423fe[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Mon Jan 22 15:36:55 2024 -0700
+
+    Queen, Rook, and Bishop are working
+
+[33mcommit 1404a1f487f381a29714f1afc229267206b7d1c4[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Mon Jan 22 14:49:35 2024 -0700
+
+    fixed the index error with queen
+
+[33mcommit ea8bf048c727d33a1b946ddeed2be318fde1a9fa[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Mon Jan 22 14:15:35 2024 -0700
+
+    fixed the chessMovementRule logic to keep pieces on the board
+
+[33mcommit c93fb38b50f03f1fd77934193f7574c4291f482d[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Sat Jan 20 20:38:23 2024 -0700
+
+    taking a break from the stuff still need to solve the problem with the Rook capture
+
+[33mcommit 182b55ce37314c401f92decc0bcc66b57bab72c8[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Sat Jan 20 19:50:48 2024 -0700
+
+    added some logic for the get chess piece function
+
+[33mcommit 78182d0ae85ffc4869a6b410c893d79c38af4d54[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Sat Jan 20 19:32:10 2024 -0700
+
+    fixed rook again
+
+[33mcommit 73d61c037083eee5d0e5e13bd632ea064b5f6f17[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Sat Jan 20 18:30:26 2024 -0700
+
+    fixing the rook movement
+
+[33mcommit 78b80ee6151be0542e1de779d24c698657099ecf[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Sat Jan 20 18:29:49 2024 -0700
+
+    fixed the rook class
+
+[33mcommit 67701fed7689686860a10e8d8380f76c469c0e19[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Sat Jan 20 16:14:09 2024 -0700
+
+    finished bishop
+
+[33mcommit 6316f75fb3378d73d42975078f005668b958d452[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Sat Jan 20 15:03:36 2024 -0700
+
+    fixing the bishop class and movementclass
+
+[33mcommit 030e95bde759ad7511adbdaeb30724516309e48f[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Sat Jan 20 14:50:50 2024 -0700
+
+    fixed bishop
+
+[33mcommit b3a3518135777f82bc1771377bcd53456d873240[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Fri Jan 19 17:29:16 2024 -0700
+
+    fixed deep equals
+
+[33mcommit ff9437af8d1e5d62c17107d874fd706e75527cfd[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Fri Jan 19 16:28:43 2024 -0700
+
+    Fixed deep string and hash
+
+[33mcommit 69f681a5be0502e267fbf504e30c986fbac8bba5[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Fri Jan 19 16:07:56 2024 -0700
+
+    Almost done with the chessboard
+
+[33mcommit 7d0d2c50f74cb773d20e27213433f888ae99dbfa[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Fri Jan 19 14:25:30 2024 -0700
+
+    chess movement helper functions
+
+[33mcommit 13ca8cfb15d0507c162d4fecc7ced97e3c3020ca[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Jan 16 21:31:29 2024 -0700
+
+    got my tests for chessmove and chesspositions to pass
+
+[33mcommit d1353da62968383d7d9717467a641c495ffddcc3[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Jan 16 10:05:09 2024 -0700
+
+    built the skeleton outline of the chess movement subclasses
+
+[33mcommit d470ea548fb2fd8cdc35fe26ab00ddbb8e66cce0[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Jan 16 09:59:56 2024 -0700
+
+    started building the Chess Movement Rules
+
+[33mcommit 01c5d337345729fe5873dc8dbf3abb79875d2fc8[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Sun Jan 14 16:31:56 2024 -0700
+
+    I had to repair some git issues
+
+[33mcommit dd8824c0a9f5157ccf0e9976f7d1d42a4da7b330[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Sun Jan 14 16:31:03 2024 -0700
+
+    did I fix this?
+
+[33mcommit fd4f7bc8ca476652f8700dd01b37f84551dc2ddc[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Sun Jan 14 15:52:03 2024 -0700
+
+    fixed my dependencies and TestFactory file
+
+[33mcommit 98e76355c06337f149257d696c1c4da33aaab236[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Thu Jan 11 17:37:53 2024 -0700
+
+    init(phase0)
+
+[33mcommit 9bddec2b5e057201ffa2b46cb0d0a143278c996d[m
+Author: Wiley Welch <wileyjwelch1@gmail.com>
+Date:   Tue Jan 9 10:19:57 2024 -0700
+
+    initial(notes) creation
+
+[33mcommit 2e38558e841415798d19b49bf2bca55efbc82afc[m
+Author: Wiley Welch <wjw37@byu.edu>
+Date:   Tue Jan 9 09:42:29 2024 -0700
+
+    Create LICENSE

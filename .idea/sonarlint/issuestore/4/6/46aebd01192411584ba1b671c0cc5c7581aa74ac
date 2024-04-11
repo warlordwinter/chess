@@ -1,0 +1,16 @@
+
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ïØ¨¬úÿÿÿÿ8¹Ù‰Õì1J$7750c57e-21b4-42cf-a777-1a7c1c16edc3
+œ	java:S116"URename this field "auth_token" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŞøòÕÿÿÿÿÿ8½Ù‰Õì1J$e8a605d8-8463-4c7e-89e2-8d3a4d04a36c
+}
+java:S2387	":"commandType" is the name of a field in "UserGameCommand".(È¯ëÈ8¾Ù‰Õì1J$54fef615-e226-4f8d-b103-75fbff6eeda5
+n
+java:S2160"+Override the "equals" method in this class.(Ô´—×8¿Ù‰Õì1J$793eac29-adc5-4e22-aa0d-6df19ab29390
+v
+java:S1068".Remove this unused "auth_token" private field.(ŞøòÕÿÿÿÿÿ8ÄÙ‰Õì1J$a787df6a-9afb-4bbc-8c85-c2942e98832c
+r
+java:S1068"*Remove this unused "gameID" private field.(µ—ÒÙùÿÿÿÿ8ÄÙ‰Õì1J$45fbb9cc-4523-4e7b-87ec-5dd2ce36b55f
+r
+java:S1068	"/Remove this unused "commandType" private field.(È¯ëÈ8ÄÙ‰Õì1J$050df5e1-ffd9-4c24-b8a1-dd5d45a58d1a
+u
+java:S1068
+"-Remove this unused "chessMove" private field.(Èâº„ùÿÿÿÿ8ÄÙ‰Õì1J$5897b102-7de8-4025-806a-2c73e33d46ba

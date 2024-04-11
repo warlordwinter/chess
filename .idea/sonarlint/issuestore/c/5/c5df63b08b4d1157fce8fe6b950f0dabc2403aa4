@@ -1,0 +1,16 @@
+
+w
+java:S1488"aImmediately return this expression instead of assigning it to the temporary variable "authToken".(ÍÔ™Ï
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(İéõ
+M
+java:S2589^"7Remove this expression which always evaluates to "true"(¡ææú
+P	java:S125C"<This block of commented-out lines of code should be removed.(˜ï X
+>	java:S108a")Either remove or fill this block of code.(É®£
+F
+java:S1128"+Remove this unused import 'model.UserData'.(ˆÆ‰òşÿÿÿÿ
+I
+java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ
+R
+java:S1128"<Remove this unused import 'dataAccess.DatabaseManager.user'.(‘¼§Ä

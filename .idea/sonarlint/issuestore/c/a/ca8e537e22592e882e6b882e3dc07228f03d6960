@@ -1,0 +1,15 @@
+
+[	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(δª ψ
+`	java:S112 "FDefine and throw a dedicated exception instead of using a generic one.(λκίϋÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(δεσ
+]
+java:S2095A"HUse try-with-resources or close this "Connection" in a "finally" clause.(’™έn
+o	java:S115	"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ωόπ
+o	java:S115
+"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(«Εϊν
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(…μι
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ζ§Οο
+U
+java:S1118":Add a private constructor to hide the implicit public one.( ωΣ‹ÿÿÿÿÿ
+N
+java:S1128"8Remove this unused import 'exception.ResponseException'.(‘ύολ
