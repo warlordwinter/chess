@@ -13,7 +13,6 @@ import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketConnect;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketMessage;
 import org.eclipse.jetty.websocket.api.annotations.WebSocket;
-import requests.JoinGameRequest;
 import webSocketMessages.serverMessages.messages.Error;
 import webSocketMessages.serverMessages.messages.LoadGame;
 import webSocketMessages.serverMessages.messages.Notification;
@@ -48,6 +47,9 @@ public class WebSocketHandler {
     UserGameCommand command = new Gson().fromJson(msg, UserGameCommand.class);
 
     String authToken = command.getAuthString();
+    if(!authDao.verifyAuthToken(authToken)){
+      session.getRemote().sendString(new Gson().toJson(new Error("Error"+msg)));
+    }
 
     switch(command.getCommandType()){
       case JOIN_PLAYER -> join(msg,session,authToken);
@@ -64,8 +66,11 @@ public class WebSocketHandler {
       Integer gameID=joinPlayer.getGameID();
       ChessGame.TeamColor teamColor=joinPlayer.getPlayerColor();
 
-      //get game
       GameData gameData=gameDao.getGameData(gameID);
+
+      if(gameData==null){
+        throw new DataAccessException(401,"GameID is bad");
+      }
 
       ChessBoard game=gameData.getGame().getBoard();
 
@@ -88,7 +93,7 @@ public class WebSocketHandler {
         }
 
       }
-     JoinGameRequest joinGameRequest = new JoinGameRequest(color,String.valueOf(gameID));
+//     JoinGameRequest joinGameRequest = new JoinGameRequest(color,String.valueOf(gameID));
       if ((!username.equals(gameData.getWhiteUsername()) && color.equals("WHITE")) ||
               (!username.equals(gameData.getBlackUsername()) && color.equals("BLACK"))) {
         throw new DataAccessException(403, "There is already a player joined");
