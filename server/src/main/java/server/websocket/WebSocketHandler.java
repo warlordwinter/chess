@@ -59,18 +59,18 @@ public class WebSocketHandler {
     String color=null;
     try {
       JoinPlayer joinPlayer=new Gson().fromJson(msg, JoinPlayer.class);
-      //add an if statement here to return an error if game doesn't exist
       AuthData authData=authDao.getToken(authToken);
       String username=authData.getUsername();
       Integer gameID=joinPlayer.getGameID();
       ChessGame.TeamColor teamColor=joinPlayer.getPlayerColor();
-//      String authToken=joinPlayer.getAuthToken();
 
       //get game
       GameData gameData=gameDao.getGameData(gameID);
+
       ChessBoard game=gameData.getGame().getBoard();
 
       connectionManager.addSessionToGame(gameID, authToken, session);
+
 
       if(teamColor == ChessGame.TeamColor.BLACK){
         color = "BLACK";
@@ -78,10 +78,22 @@ public class WebSocketHandler {
         color="WHITE";
       }
 
+      if(color =="WHITE"){
+        if(gameData.getWhiteUsername() ==null){
+          throw new DataAccessException(401,"Websocket was called before http");
+        }else{
+          if(gameData.getBlackUsername() ==null){
+            throw new DataAccessException(401,"Websocket was called before http");
+          }
+        }
+
+      }
      JoinGameRequest joinGameRequest = new JoinGameRequest(color,String.valueOf(gameID));
-     if(!gameDao.checkGameAvailability(joinGameRequest)){
-       throw new DataAccessException(403,"There is already a player joined");
-     }
+      if ((!username.equals(gameData.getWhiteUsername()) && color.equals("WHITE")) ||
+              (!username.equals(gameData.getBlackUsername()) && color.equals("BLACK"))) {
+        throw new DataAccessException(403, "There is already a player joined");
+      }
+
 
     //send load game message use gson and session.getRemote().sendString(msg);
       LoadGame loadGame=new LoadGame(game);

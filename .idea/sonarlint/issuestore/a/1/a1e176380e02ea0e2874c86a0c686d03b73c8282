@@ -1,12 +1,19 @@
 
-ˆ	java:S112/"FDefine and throw a dedicated exception instead of using a generic one.(¥†¬è8Ø—£ùì1J$e161f5b9-44ff-44c6-b4e0-dee5c1b729cd
+ˆ	java:S112/"FDefine and throw a dedicated exception instead of using a generic one.(¥†¬è8Š•øùì1J$b6262ff4-fb85-41dd-8361-d78beaa9e872
+ˆ
+java:S1192N"FDefine a constant instead of duplicating this literal "WHITE" 3 times.(ÌÉ–8•øùì1J$f98a844f-cfed-4aeb-a442-ef67dedf9be9
 
-java:S13014"KReplace this "switch" statement by "if" statements to increase readability.(ÏÊÆ8ğ—£ùì1J$b6884004-ce7b-4748-82dc-29aa7497c1f6
+java:S13014"KReplace this "switch" statement by "if" statements to increase readability.(ÏÊÆ8‘•øùì1J$2c4818fc-15f7-44bb-9647-23afe6c50135
+„
+java:S4973Q"<Strings and Boxed types should be compared using "equals()".(¯Æ¨¼ÿÿÿÿÿ8••øùì1J$465b3e5c-d50a-45b4-bf71-880ba6e38fb2
 d
-java:S1116"Remove this empty statement.(Åñ­õşÿÿÿÿ8°™£ùì1J$bb712b83-ea30-42c4-9155-a5cabdcdfa1e
-r	java:S106+"+Replace this use of System.out by a logger.(Íìƒ‘úÿÿÿÿ8šš£ùì1J$2b1a3bb9-9ca6-4cfd-afb6-50fd0ec29764
-›	java:S1314"YComplete cases by adding the missing enum constants or add a default case to this switch.(ÏÊÆ8¿š£ùì1J$2f867214-0d8f-4856-a3d2-972e1e00a64c
-ƒ	java:S125C"<This block of commented-out lines of code should be removed.(Â­ÚÃøÿÿÿÿ8Óš£ùì1J$44b904ee-c3a9-4eed-a1bf-ed642e2b9bbd
-~	java:S125V"<This block of commented-out lines of code should be removed.(æä¦­8Úš£ùì1J$8f9d8680-ef07-45d9-acf1-7d9d2a76fc42
+java:S1116"Remove this empty statement.(Åñ­õşÿÿÿÿ8¨–øùì1J$0fff56ff-c24b-44c7-9224-102ea6d88a98
+r	java:S106+"+Replace this use of System.out by a logger.(Íìƒ‘úÿÿÿÿ8÷–øùì1J$5c4fb975-3435-426f-aef2-df51c54d1bc8
+›	java:S1314"YComplete cases by adding the missing enum constants or add a default case to this switch.(ÏÊÆ8—øùì1J$6ba182e3-ee0c-41a9-a047-fd95bf33e951
+…
+java:S1854["CRemove this useless assignment to local variable "joinGameRequest".(ˆ†µB8——øùì1J$ce0f2c1f-72b8-470b-b681-c8792a795259
+v
+java:S1481["4Remove this unused "joinGameRequest" local variable.(ˆ†µB8§—øùì1J$e1b80610-2bba-4561-b4f1-63e950841680
+~	java:S125b"<This block of commented-out lines of code should be removed.(æä¦­8ª—øùì1J$e9c01c2b-1985-43f3-9ddb-35dc4f1a6ac4
 s
-java:S1068"+Remove this unused "userDao" private field.(Í§«¬øÿÿÿÿ8îš£ùì1J$22081c30-a7b1-4a5d-8226-b6e68062b934
+java:S1068"+Remove this unused "userDao" private field.(Í§«¬øÿÿÿÿ8´—øùì1J$cae015b8-5628-4e18-9eee-8a6096a20969
