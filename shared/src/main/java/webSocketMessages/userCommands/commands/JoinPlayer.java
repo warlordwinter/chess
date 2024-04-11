@@ -4,19 +4,21 @@ import chess.ChessGame;
 import webSocketMessages.userCommands.UserGameCommand;
 
 public class JoinPlayer extends UserGameCommand {
-  private String authToken;
+  private String joinPlayerAuthToken; // No @SerializedName annotation
+
   private Integer gameID;
   private ChessGame.TeamColor playerColor;
-  private CommandType commandType;
-  public JoinPlayer(String authToken, Integer gameID, ChessGame.TeamColor playerColor,CommandType commandType) {
+  private CommandType cType;
+
+  public JoinPlayer(String authToken, Integer gameID, ChessGame.TeamColor playerColor, CommandType cType) {
     super(authToken);
     this.gameID = gameID;
     this.playerColor = playerColor;
-    this.commandType = commandType;
+    this.commandType = cType;
   }
 
   public String getAuthToken() {
-    return authToken;
+    return joinPlayerAuthToken;
   }
 
   public Integer getGameID() {
@@ -32,3 +34,4 @@ public class JoinPlayer extends UserGameCommand {
     return commandType;
   }
 }
+

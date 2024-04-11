@@ -21,12 +21,14 @@ import webSocketMessages.userCommands.commands.JoinPlayer;
 
 import java.io.IOException;
 
+;
+
 @WebSocket
 public class WebSocketHandler {
   private final ConnectionManager connectionManager = new ConnectionManager();
-  private UserDao userDao;
-  private GameDao gameDao;
-  private AuthDao authDao;
+  private final UserDao userDao;
+  private final GameDao gameDao;
+  private final AuthDao authDao;
 
   public WebSocketHandler(UserDao userDao, GameDao gameDao, AuthDao authDao) {
     this.userDao = userDao;
@@ -47,20 +49,20 @@ public class WebSocketHandler {
     String authToken = command.getAuthString();
 
     switch(command.getCommandType()){
-//      case JOIN_OBSERVER -> join(session,false,authToken);
-      case JOIN_PLAYER -> join(new Gson().fromJson(msg, JoinPlayer.class),session);
+      case JOIN_PLAYER -> join(msg,session,authToken);
     }
   }
 
-  public void join(JoinPlayer joinPlayer, Session session) throws IOException {
+  public void join(String msg, Session session,String authToken) throws IOException {
     //call the api to verify game in db
     try {
+      JoinPlayer joinPlayer = new Gson().fromJson(msg, JoinPlayer.class);
       //add an if statement here to return an error if game doesn't exist
-      AuthData authData = authDao.getToken(joinPlayer.getAuthToken());
+      AuthData authData = authDao.getToken(authToken);
       String username = authData.getUsername();
       Integer gameID=joinPlayer.getGameID();
       ChessGame.TeamColor teamColor=joinPlayer.getPlayerColor();
-      String authToken=joinPlayer.getAuthToken();
+//      String authToken=joinPlayer.getAuthToken();
 
       //get game
       GameData gameData = gameDao.getGameData(gameID);
@@ -75,10 +77,11 @@ public class WebSocketHandler {
       var message=String.format("%s has join the game as %s", username, teamColor);
       var notification=new Notification(ServerMessage.ServerMessageType.NOTIFICATION, message);
       //exclude the client
-      connectionManager.broadcastMessage(gameID,message,authToken);
+      connectionManager.broadcast(gameID,notification,authToken);
     }
     catch (DataAccessException e) {
-      throw new RuntimeException(e);
+      e.printStackTrace();
+//      e.
     }
   }
 

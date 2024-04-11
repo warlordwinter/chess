@@ -1,0 +1,12 @@
+
+ˆ	java:S112."FDefine and throw a dedicated exception instead of using a generic one.(¥†¬è8š½Ù÷ì1J$cb18a569-dd9c-438e-82de-6363c157c5fe
+
+java:S13013"KReplace this "switch" statement by "if" statements to increase readability.(ÏÊÆ8½Ù÷ì1J$5cd0f157-e5dc-46ac-9bcd-6212b8660ea5
+d
+java:S1116"Remove this empty statement.(Åñ­õşÿÿÿÿ8Ş½Ù÷ì1J$98e29482-8179-4218-aed3-d44a3de44372
+r	java:S106*"+Replace this use of System.out by a logger.(Íìƒ‘úÿÿÿÿ8ì½Ù÷ì1J$12c557be-9eb0-4ebd-9e7d-3c083b55f1a1
+›	java:S1313"YComplete cases by adding the missing enum constants or add a default case to this switch.(ÏÊÆ8ú½Ù÷ì1J$217d6b13-418c-43bd-9c11-5fff67a8ae1c
+ƒ	java:S125A"<This block of commented-out lines of code should be removed.(Â­ÚÃøÿÿÿÿ8ƒ¾Ù÷ì1J$399d6670-d8be-4b43-bf8f-74edf12881a9
+~	java:S125H"<This block of commented-out lines of code should be removed.(æä¦­8…¾Ù÷ì1J$c91ec65d-4f3f-4e05-a85e-fc173bb52997
+s
+java:S1068"+Remove this unused "userDao" private field.(Í§«¬øÿÿÿÿ8‹¾Ù÷ì1J$17a020b9-0105-44ec-ab9b-01c7cd7ead70
