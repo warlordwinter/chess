@@ -44,13 +44,5 @@
         </plugins>
     </build>
 
-    <dependancies>
-        <!-- https://mvnrepository.com/artifact/org.glassfish.tyrus.bundles/tyrus-standalone-client -->
-        <dependency>
-            <groupId>org.glassfish.tyrus.bundles</groupId>
-            <artifactId>tyrus-standalone-client</artifactId>
-            <version>2.2.0-M1</version>
-        </dependency>
-    </dependancies>
 
 </project>
