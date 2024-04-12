@@ -135,9 +135,6 @@ public class WebSocketHandler {
     String username = authData.getUsername();
     GameData gameData = gameDao.getGameData(gameID);
     ChessGame game = gameData.getGame();
-    if(game.isGameOver()){
-      throw new DataAccessException(403,"Game is over");
-    }
     if(game ==null){
       throw new DataAccessException(402, "The game is over");
     }

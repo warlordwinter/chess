@@ -14,10 +14,27 @@ import java.util.Set;
 public class ChessGame {
     private TeamColor team;
     private ChessBoard board;
-    private boolean isGameOver;
+
+    private boolean firstMove;
     public ChessGame() {
         this.board = new ChessBoard();
-        this.isGameOver = false;
+        this.firstMove = true;
+    }
+
+    public TeamColor getTeam() {
+        return team;
+    }
+
+    public void setTeam(TeamColor team) {
+        this.team=team;
+    }
+
+    public boolean isFirstMove() {
+        return firstMove;
+    }
+
+    public void setFirstMove(boolean firstMove) {
+        this.firstMove=firstMove;
     }
 
     /**
@@ -27,9 +44,6 @@ public class ChessGame {
         return team;
     }
 
-    public boolean isGameOver() {
-        return isGameOver;
-    }
 
     /**
      * Set's which teams turn it is
@@ -93,7 +107,13 @@ public class ChessGame {
      * @throws InvalidMoveException if move is invalid
      */
     public void makeMove(ChessMove move) throws InvalidMoveException {
+        if(isFirstMove()==true){
+            setTeamTurn(TeamColor.WHITE);
+            setFirstMove(false);
+        }
         TeamColor teamColor = getTeamTurn();
+
+
         ChessPosition startingPosition = move.getStartPosition();
         ChessPiece piece = board.getPiece(startingPosition);
         TeamColor piececolor = piece.getTeamColor();
@@ -181,15 +201,11 @@ public class ChessGame {
                     }
                 }
             }
-            setGameOver(true);
             return !hasValidMoves;
         }
         return false;
     }
 
-    public void setGameOver(boolean gameOver) {
-        isGameOver=gameOver;
-    }
 
     /**
      * Determines if the given team is in stalemate, which here is defined as having
