@@ -1,6 +1,7 @@
 package ui;
 
 import chess.ChessBoard;
+import chess.ChessGame;
 import exception.ResponseException;
 import model.AuthData;
 import model.GameData;
@@ -60,6 +61,7 @@ public class ChessClient {
     String gameID = String.valueOf(gameData.getGameID());
     JoinGameRequest joinGameRequest = new JoinGameRequest(null,gameID);
     server.observe(stringAuthToken,joinGameRequest);
+    ws.joinObserver(stringAuthToken, gameData.getGameID());
     ChessBoardUI.buildBoard(new ChessBoard(),false,headers,columns);
     return String.format("You are now observing %s",gameID);
   }
@@ -68,6 +70,7 @@ public class ChessClient {
     assertSignedIn();
     server.logout(stringAuthToken);
     stringAuthToken = null;
+    ws = null;
     state=State.SIGNEDOUT;
     return String.format("Logged out!");
   }
@@ -106,6 +109,7 @@ public class ChessClient {
       String gameName = params[0];
       CreateGamesRequest createGamesRequest = new CreateGamesRequest(gameName);
       GameData gameData= server.createGames(stringAuthToken, createGamesRequest);
+      gameList.put(gameData.getGameID(),gameData);
       return String.format("Created game: %s with ID: %s", params[0], gameData.getGameID());
     } else {
       throw new ResponseException(400, "Expected: create <NAME>");
@@ -132,10 +136,18 @@ public class ChessClient {
     GameData gameData=gameList.get(Integer.parseInt(params[0]));
     String color = params[1].toUpperCase();
     String gameID = String.valueOf(gameData.getGameID());
+    ChessGame.TeamColor wsColor;
 
     JoinGameRequest joinGameRequest = new JoinGameRequest(color,gameID);
     server.joinGames(stringAuthToken,joinGameRequest);
     ws = new WebSocketFacade(serverUrl,notificationHandler);
+    if(color.equals("BLACK")){
+      wsColor =ChessGame.TeamColor.BLACK;
+    }else{
+      wsColor = ChessGame.TeamColor.WHITE;
+    }
+    ws.joinGame(stringAuthToken,gameData.getGameID(),wsColor);
+
 
     ChessBoardUI.buildBoard(new ChessBoard(),false,headers,columns);
 

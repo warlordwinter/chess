@@ -1,20 +1,19 @@
 package ui.websocket;
 
+import chess.ChessGame;
+import chess.ChessMove;
 import com.google.gson.Gson;
 import exception.ResponseException;
-import org.glassfish.grizzly.http.server.Session;
-import org.glassfish.tyrus.core.wsadl.model.Endpoint;
+import webSocketMessages.userCommands.commands.*;
 
 import javax.management.Notification;
-import javax.websocket.ContainerProvider;
-import javax.websocket.DeploymentException;
-import javax.websocket.MessageHandler;
-import javax.websocket.WebSocketContainer;
+import javax.websocket.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
 public class WebSocketFacade extends Endpoint {
+
 
   Session session;
   NotificationHandler notificationHandeler;
@@ -43,5 +42,59 @@ public class WebSocketFacade extends Endpoint {
     } catch (DeploymentException | IOException | URISyntaxException ex) {
       throw new RuntimeException(ex);
     }
+  }
+
+  public void joinGame(String authToken, int gameID, ChessGame.TeamColor playerColor){
+    try {
+      JoinPlayer joinPlayer=new JoinPlayer(authToken, gameID, playerColor);
+      this.session.getBasicRemote().sendText(new Gson().toJson(joinPlayer));
+    }catch(IOException e){
+      throw new RuntimeException(e.getMessage());
+
+    }
+  }
+
+  public void leave(String authToken, int gameID){
+    try {
+      Leave leave=new Leave(authToken, gameID);
+      this.session.getBasicRemote().sendText(new Gson().toJson(leave));
+    }catch(IOException e){
+      throw new RuntimeException(e.getMessage());
+
+    }
+  }
+
+  public void makeMove(String authToken, Integer gameID, ChessMove move){
+    try {
+      MakeMove makeMove = new MakeMove(authToken,gameID,move);
+      this.session.getBasicRemote().sendText(new Gson().toJson(move));
+    }catch(IOException e){
+      throw new RuntimeException(e.getMessage());
+    }
+  }
+
+  public void resign(String authToken, int gameID){
+    try {
+      Resign resign=new Resign(authToken, gameID);
+      this.session.getBasicRemote().sendText(new Gson().toJson(resign));
+    }catch(IOException e){
+      throw new RuntimeException(e.getMessage());
+
+    }
+  }
+
+  public void joinObserver(String authToken, int gameID){
+    try {
+      JoinObserver observer = new JoinObserver(authToken, gameID);
+      this.session.getBasicRemote().sendText(new Gson().toJson(observer));
+    }catch(IOException e){
+      throw new RuntimeException(e.getMessage());
+
+    }
+  }
+
+  @Override
+  public void onOpen(Session session, EndpointConfig endpointConfig) {
+
   }
 }

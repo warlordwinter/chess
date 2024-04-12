@@ -1,19 +1,25 @@
 
-z
-java:S1117;"9Rename "board" which hides the field declared at line 16.(Ú®∆”˛ˇˇˇˇJ$eeca73c4-7001-4f65-b19f-de08fc0ecae2
-g
-java:S1168>"+Return an empty collection instead of null.(•πÔçJ$a3bf8f00-28fe-4eee-92a6-1dc11fc85cfc
-t
-java:S1117D"8Rename "team" which hides the field declared at line 15.(¶ÃßÛJ$791bc7b9-bc89-4759-b02f-70816178a2a5
-w	java:S125H"<This block of commented-out lines of code should be removed.(ë…ŒªJ$c71deca9-2dda-4ae0-9d4b-062c10f8af98
-h
-java:S1125M"'Remove the unnecessary boolean literal.(˛úÒú¸ˇˇˇˇJ$614f0bbd-28ac-4665-acf1-77a05916eb4e
-t
-java:S1854k"8Remove this useless assignment to local variable "type".(‹©ÄƒJ$d59426af-f28a-4a4a-add1-c4f6950807c6
-w	java:S125d"<This block of commented-out lines of code should be removed.(˙˘≠ÑJ$1d8db6c3-3ff3-484f-a03d-061be443856f
-e
-java:S1481k")Remove this unused "type" local variable.(‹©ÄƒJ$fc7c74e2-5096-4431-8812-a1d95b98521b
-w	java:S125z"<This block of commented-out lines of code should be removed.(ç∏˘ŒJ$7d5edf31-19ea-49da-afe2-37d15fd8d5fe
-è
-java:S3776ú"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(≈ÕÜıJ$86cab392-06d9-47d7-a179-58855a241669
-}	java:S125 "<This block of commented-out lines of code should be removed.(Ã’©ˇ˝ˇˇˇˇJ$601b15a7-7b05-4f88-a74b-30efef10920d
+ü
+java:S4144+"WUpdate this method so that its implementation is not identical to "getTeam" on line 24.(£°°à˙ˇˇˇˇ8ü£˜üÌ1J$458d9865-97d2-4d1d-b8a7-0847a36152ae
+ü
+java:S41445"WUpdate this method so that its implementation is not identical to "setTeam" on line 28.(ë‰°Ò˘ˇˇˇˇ8•£˜üÌ1J$60eda351-1ca5-405a-a97a-637c57efe052
+Å
+java:S1117I"9Rename "board" which hides the field declared at line 16.(Ú®∆”˛ˇˇˇˇ8°§˜üÌ1J$707dbf9f-559c-481d-a868-21975552dd08
+n
+java:S1168L"+Return an empty collection instead of null.(•πÔç8¥§˜üÌ1J$4d89f301-aebf-40d2-ab05-0a66ad199f06
+{
+java:S1117R"8Rename "team" which hides the field declared at line 15.(¶ÃßÛ8∫§˜üÌ1J$f5659c7a-5aab-49ad-a1cc-84614ad927ee
+~	java:S125V"<This block of commented-out lines of code should be removed.(ë…Œª8¿§˜üÌ1J$b2d42cc9-7a1a-485f-b45f-ae5631a9b6fe
+o
+java:S1125["'Remove the unnecessary boolean literal.(˛úÒú¸ˇˇˇˇ8›§˜üÌ1J$5a22bb2b-6d38-44d2-b19c-0c35fe7e1143
+{
+java:S1854"8Remove this useless assignment to local variable "type".(‹©Äƒ8Ì§˜üÌ1J$baeee99b-9fb9-4e79-bdbc-c567e9fb2389
+i
+java:S1125n"'Remove the unnecessary boolean literal.(Ï∑¸/8Ú§˜üÌ1J$660ff1df-7d56-4695-8f9c-2d458528ad5b
+~	java:S125x"<This block of commented-out lines of code should be removed.(˙˘≠Ñ8ˆ§˜üÌ1J$096e950a-7411-4a0b-8312-78d50fdd445b
+l
+java:S1481")Remove this unused "type" local variable.(‹©Äƒ8ˇ§˜üÌ1J$10d0713c-c1fb-4425-af97-3b4e0430a42b
+	java:S125é"<This block of commented-out lines of code should be removed.(ç∏˘Œ8Å•˜üÌ1J$a49f44e0-7071-42df-9c90-52aa1e4742e5
+ñ
+java:S3776∞"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(≈ÕÜı8â•˜üÌ1J$9b6f109b-7770-431f-be11-c8ae49946065
+Ñ	java:S125⁄"<This block of commented-out lines of code should be removed.(Ã’©ˇ˝ˇˇˇˇ8ê•˜üÌ1J$1913fb06-49ec-431b-b56a-a5e83432d51c

@@ -1,6 +1,6 @@
 
-š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ïØ¨¬úÿÿÿÿJ$a2cc8fa0-901e-4856-b86e-adda3c331381
-•	java:S116"URename this field "auth_token" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÞøòÕÿÿÿÿÿJ$b45ef657-a9ca-4567-bb94-bdd5786ddcee
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ïØ¨¬úÿÿÿÿJ$e1f9a767-0b87-4189-896e-8ec026743b42
+•	java:S116"URename this field "auth_token" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÞøòÕÿÿÿÿÿJ$348a78cc-2105-4f3f-8ee6-f0268506cecd
 l
-java:S2160"+Override the "equals" method in this class.(éÀ¢”ýÿÿÿÿJ$c9dd7e27-5f0f-4a67-92ef-80e14a1ff8a9
-•	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢æºÇüÿÿÿÿ8Åš²ší1J$88f7bcd4-0414-4c40-8d0a-e123b67006ca
+java:S2160"+Override the "equals" method in this class.(éÀ¢”ýÿÿÿÿJ$b8930c87-32cb-4b8d-aef5-4b2f4e83d2c2
+•	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢æºÇüÿÿÿÿ8Åš²ší1J$4c5ac4ee-7eb7-493b-9bc2-6a1ea53457d3
