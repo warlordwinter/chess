@@ -169,4 +169,25 @@ public class GameSqlDataAccess implements GameDao {
       }
     }
   }
+
+  @Override
+  public void updateGameBoard(int gameId, GameData gameData) throws DataAccessException {
+    String statement = "UPDATE gameData SET game=? WHERE gameID=?";
+    if (gameData == null) {
+      throw new DataAccessException(400, "Error: bad request");
+    }
+
+    String serializedGame = new Gson().toJson(gameData);
+
+    try (Connection conn = DatabaseManager.getConnection();
+         PreparedStatement preparedStatement = conn.prepareStatement(statement)) {
+      preparedStatement.setString(1, serializedGame);
+      preparedStatement.setInt(2, gameId);
+      preparedStatement.executeUpdate();
+    } catch (SQLException e) {
+      throw new DataAccessException(500, e.getMessage());
+    }
+  }
+
+
 }

@@ -10,6 +10,7 @@ import java.util.Arrays;
 public class ChessBoard {
     public ChessPiece[][] squares = new ChessPiece[8][8]; //this array has no data type but is basically a list that will store all of the chess piece objects
     public ChessBoard() {
+        resetBoard();
     }
 
     public ChessBoard(ChessBoard original){

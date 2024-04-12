@@ -2,6 +2,7 @@ package server.websocket;
 
 import com.google.gson.Gson;
 import org.eclipse.jetty.websocket.api.Session;
+import webSocketMessages.serverMessages.messages.LoadGame;
 import webSocketMessages.serverMessages.messages.Notification;
 
 import java.io.IOException;
@@ -66,5 +67,20 @@ public void broadcast(Integer gameID, Notification notification, String exceptTh
   }
 }
 
+  public void broadcastGame(Integer gameID, LoadGame loadGame) {
+    Map<String, Session> gameSessions = sessions.get(gameID);
+    if (gameSessions != null) {
+      String loadGameJson = new Gson().toJson(loadGame);
+      for (Map.Entry<String, Session> entry : gameSessions.entrySet()) {
+        Session session = entry.getValue();
+        try {
+          session.getRemote().sendString(loadGameJson);
+        } catch (IOException e) {
+          // Handle the exception, e.g., log it
+          System.err.println("Failed to send LoadGame message to session: " + e.getMessage());
+        }
+      }
+    }
+  }
 
 }

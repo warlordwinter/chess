@@ -23,4 +23,6 @@ public interface GameDao {
 
 
   void updateGame(JoinGameRequest request, AuthDao authDao, String authHeader) throws DataAccessException;
+
+  public void updateGameBoard(int gameId, GameData gameData) throws DataAccessException;
 }

@@ -3,12 +3,14 @@ package dataAccess.memory;
 import dataAccess.AuthDao;
 import dataAccess.DataAccessException;
 import dataAccess.GameDao;
-import exception.ResponseException;
 import model.AuthData;
 import model.GameData;
 import requests.JoinGameRequest;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public class MemoryGameDao implements GameDao {
 
@@ -74,5 +76,9 @@ public class MemoryGameDao implements GameDao {
       }
       gameDataBase.put(Integer.parseInt(request.gameID()), currentGame);
     }
+  }
+
+  @Override
+  public void updateGameBoard(int gameId, GameData gameData) throws DataAccessException{
   }
 }

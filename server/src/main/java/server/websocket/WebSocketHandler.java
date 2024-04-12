@@ -2,6 +2,8 @@ package server.websocket;
 
 import chess.ChessBoard;
 import chess.ChessGame;
+import chess.ChessMove;
+import chess.InvalidMoveException;
 import com.google.gson.Gson;
 import dataAccess.AuthDao;
 import dataAccess.DataAccessException;
@@ -19,8 +21,10 @@ import webSocketMessages.serverMessages.messages.Notification;
 import webSocketMessages.userCommands.UserGameCommand;
 import webSocketMessages.userCommands.commands.JoinObserver;
 import webSocketMessages.userCommands.commands.JoinPlayer;
+import webSocketMessages.userCommands.commands.MakeMove;
 
 import java.io.IOException;
+import java.util.Collection;
 
 ;
 
@@ -59,7 +63,34 @@ public class WebSocketHandler {
     }
   }
 
-  private void makeMove(String msg, Session session, String authToken) {
+  private void makeMove(String msg, Session session, String authToken) throws IOException {
+    MakeMove makeMove = new Gson().fromJson(msg, MakeMove.class);
+    ChessMove move = makeMove.getChessMove();
+    Integer gameID = makeMove.getGameId();
+    try {
+      GameData gameData = gameDao.getGameData(gameID);
+      String gameName = gameData.getGameName();
+      String whiteUsername = gameData.getWhiteUsername();
+      String blackUsername = gameData.getBlackUsername();
+      Collection<ChessMove> moveCollection = gameData.getGame().validMoves(move.getStartPosition());
+        if(moveCollection.contains(move)){
+          ChessGame game = gameData.getGame();
+          game.makeMove(move);
+          gameDao.updateGameBoard(gameID,new GameData(gameID,whiteUsername,blackUsername,gameName,game));
+
+          connectionManager.broadcastGame(gameID,new LoadGame(game.getBoard()));
+        }else{
+          throw new DataAccessException(402,"Move is invalid");
+        }
+      var message = String.format("Player has made a move");
+      var notification = new Notification(message);
+      connectionManager.broadcast(gameID, notification, authToken);
+    } catch (DataAccessException | InvalidMoveException e) {
+      e.printStackTrace();
+      String errorMsg = e.getMessage();
+      session.getRemote().sendString(new Gson().toJson(new Error("Error"+errorMsg)));
+    }
+
 
   }
 
