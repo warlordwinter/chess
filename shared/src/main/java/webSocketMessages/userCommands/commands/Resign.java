@@ -14,4 +14,8 @@ public class Resign extends UserGameCommand {
   public Integer getGameID() {
     return gameID;
   }
+
+  public String getAuth_token() {
+    return auth_token;
+  }
 }

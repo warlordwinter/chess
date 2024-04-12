@@ -2,6 +2,7 @@ package server.websocket;
 
 import com.google.gson.Gson;
 import org.eclipse.jetty.websocket.api.Session;
+import webSocketMessages.serverMessages.messages.Error;
 import webSocketMessages.serverMessages.messages.LoadGame;
 import webSocketMessages.serverMessages.messages.Notification;
 
@@ -50,6 +51,27 @@ public void broadcast(Integer gameID, Notification notification, String exceptTh
     }
   }
 }
+
+  public void broadcastError(Integer gameID, Error error, String authToken) throws IOException {
+    Map<String, Session> gameSessions = sessions.get(gameID);
+    if (gameSessions != null) {
+      String notify = new Gson().toJson(error);
+      Session session = gameSessions.get(authToken);
+      if (session != null) {
+        try {
+          session.getRemote().sendString(notify);
+        } catch (IOException e) {
+          throw new RuntimeException(e);
+        }
+      } else {
+        System.err.println("Session with authToken " + authToken + " not found.");
+      }
+    } else {
+      System.err.println("Game with ID " + gameID + " not found.");
+    }
+  }
+
+
 
 
   public void broadcastGame(Integer gameID, LoadGame loadGame) {

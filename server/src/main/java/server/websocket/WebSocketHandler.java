@@ -63,10 +63,16 @@ public class WebSocketHandler {
       case JOIN_OBSERVER -> joinObserve(msg,session,authToken);
       case MAKE_MOVE -> makeMove(msg,session,authToken);
       case RESIGN -> resign(msg,session,authToken);
+      case LEAVE -> leave(msg,session,authToken);
     }
   }
 
-  private void resign(String msg, Session session, String authToken) {
+  private void leave(String msg, Session session, String authToken) {
+
+
+  }
+
+  private void resign(String msg, Session session, String authToken) throws IOException {
     Resign resign = new Gson().fromJson(msg, Resign.class);
     int gameID = resign.getGameID();
     try {
@@ -74,6 +80,18 @@ public class WebSocketHandler {
       String bUsername = gameData.getBlackUsername();
       String wUsername = gameData.getWhiteUsername();
       String name = gameData.getGameName();
+      AuthData authData = authDao.getToken(authToken);
+      String username = authData.getUsername();
+
+      if(completedGames.contains(gameID)){
+        throw new DataAccessException(402, "The game is over");
+      }
+
+      if (!username.equals(bUsername) && !username.equals(wUsername)) {
+        throw new DataAccessException(403, "Observer can't resign");
+      }
+
+
       GameData completedGame = new GameData(gameID);
 
       gameDao.updateGameBoard(gameID,completedGame);
@@ -84,7 +102,10 @@ public class WebSocketHandler {
       var notification = new Notification(message);
       connectionManager.broadcast(gameID, notification, null,true);
     } catch (DataAccessException | IOException e) {
-      throw new RuntimeException(e);
+      e.printStackTrace();
+      String errorMsg = e.getMessage();
+      Error error = new Error(errorMsg);
+      connectionManager.broadcastError(gameID,error,authToken);
     }
 
   }
@@ -110,9 +131,6 @@ public class WebSocketHandler {
     String blackUsername = gameData.getBlackUsername();
     ChessPiece piece = game.getBoard().getPiece(move.getStartPosition());
     ChessGame.TeamColor color = piece.getTeamColor();
-    if (game.isInCheckmate(ChessGame.TeamColor.WHITE) || game.isInCheckmate(ChessGame.TeamColor.BLACK)) {
-      throw new DataAccessException(402, "The game is over");
-    }
       Collection<ChessMove> moveCollection = gameData.getGame().validMoves(move.getStartPosition());
         if(moveCollection.contains(move)){
           if(color == ChessGame.TeamColor.BLACK){
@@ -125,6 +143,10 @@ public class WebSocketHandler {
             }
           }
           game.makeMove(move);
+          if (game.isInCheckmate(ChessGame.TeamColor.WHITE) || game.isInCheckmate(ChessGame.TeamColor.BLACK)) {
+            completedGames.add(gameID);
+          }
+
           gameDao.updateGameBoard(gameID,new GameData(gameID,whiteUsername,blackUsername,gameName,game));
 
           connectionManager.broadcastGame(gameID,new LoadGame(game.getBoard()));
