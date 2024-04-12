@@ -23,7 +23,6 @@ public class GameData {
     this.blackUsername=null;
     this.gameName=gameName;
     this.game=new ChessGame();
-    this.game.getBoard().resetBoard();
   }
 
   public GameData(Integer gameID){

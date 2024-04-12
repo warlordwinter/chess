@@ -14,9 +14,10 @@ import java.util.Set;
 public class ChessGame {
     private TeamColor team;
     private ChessBoard board;
+    private boolean isGameOver;
     public ChessGame() {
         this.board = new ChessBoard();
-        this.team = TeamColor.WHITE;
+        this.isGameOver = false;
     }
 
     /**
@@ -24,6 +25,10 @@ public class ChessGame {
      */
     public TeamColor getTeamTurn() {
         return team;
+    }
+
+    public boolean isGameOver() {
+        return isGameOver;
     }
 
     /**
@@ -94,11 +99,7 @@ public class ChessGame {
         TeamColor piececolor = piece.getTeamColor();
 //        Collection<ChessMove> validMoves = validMoves(startingPosition);
 
-        if (!piece.getTeamColor().equals(teamColor)) {
-            throw new InvalidMoveException();
-        }
-
-        if (validMoves(startingPosition).contains(move) != true) {
+        if (!piececolor.equals(teamColor) || !validMoves(startingPosition).contains(move)) {
             throw new InvalidMoveException();
         }
 
@@ -180,11 +181,15 @@ public class ChessGame {
                     }
                 }
             }
+            setGameOver(true);
             return !hasValidMoves;
         }
         return false;
     }
 
+    public void setGameOver(boolean gameOver) {
+        isGameOver=gameOver;
+    }
 
     /**
      * Determines if the given team is in stalemate, which here is defined as having

@@ -1,21 +1,19 @@
 
-T
-java:S11176"9Rename "board" which hides the field declared at line 16.(ò¨ÆÓşÿÿÿÿ
-A
-java:S11689"+Return an empty collection instead of null.(¥¹ï
-N
-java:S1117?"8Rename "team" which hides the field declared at line 15.(¦Ì§ó
-Q	java:S125C"<This block of commented-out lines of code should be removed.(‘ÉÎ»
-B
-java:S1125H"'Remove the unnecessary boolean literal.(şœñœüÿÿÿÿ
-N
-java:S1854j"8Remove this useless assignment to local variable "type".(Ü©€Ä
-Q	java:S125_"<This block of commented-out lines of code should be removed.(úù­„
-=
-java:S1125e"'Remove the unnecessary boolean literal.(¤É¿½
-?
-java:S1481j")Remove this unused "type" local variable.(Ü©€Ä
-Q	java:S125y"<This block of commented-out lines of code should be removed.(¸ùÎ
-i
-java:S3776›"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(ÅÍ†õ
-W	java:S125Å"<This block of commented-out lines of code should be removed.(ÌÕ©ÿıÿÿÿÿ
+z
+java:S1117;"9Rename "board" which hides the field declared at line 16.(ò¨ÆÓşÿÿÿÿJ$eeca73c4-7001-4f65-b19f-de08fc0ecae2
+g
+java:S1168>"+Return an empty collection instead of null.(¥¹ïJ$a3bf8f00-28fe-4eee-92a6-1dc11fc85cfc
+t
+java:S1117D"8Rename "team" which hides the field declared at line 15.(¦Ì§óJ$791bc7b9-bc89-4759-b02f-70816178a2a5
+w	java:S125H"<This block of commented-out lines of code should be removed.(‘ÉÎ»J$c71deca9-2dda-4ae0-9d4b-062c10f8af98
+h
+java:S1125M"'Remove the unnecessary boolean literal.(şœñœüÿÿÿÿJ$614f0bbd-28ac-4665-acf1-77a05916eb4e
+t
+java:S1854k"8Remove this useless assignment to local variable "type".(Ü©€ÄJ$d59426af-f28a-4a4a-add1-c4f6950807c6
+w	java:S125d"<This block of commented-out lines of code should be removed.(úù­„J$1d8db6c3-3ff3-484f-a03d-061be443856f
+e
+java:S1481k")Remove this unused "type" local variable.(Ü©€ÄJ$fc7c74e2-5096-4431-8812-a1d95b98521b
+w	java:S125z"<This block of commented-out lines of code should be removed.(¸ùÎJ$7d5edf31-19ea-49da-afe2-37d15fd8d5fe
+
+java:S3776œ"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(ÅÍ†õJ$86cab392-06d9-47d7-a179-58855a241669
+}	java:S125Ê"<This block of commented-out lines of code should be removed.(ÌÕ©ÿıÿÿÿÿJ$601b15a7-7b05-4f88-a74b-30efef10920d

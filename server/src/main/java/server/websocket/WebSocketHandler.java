@@ -28,16 +28,16 @@ import java.util.Set;
 @WebSocket
 public class WebSocketHandler {
   private final ConnectionManager connectionManager = new ConnectionManager();
-  private final UserDao userDao;
-  private final GameDao gameDao;
-  private final AuthDao authDao;
+  private UserDao userDao;
+  private GameDao gameDao;
+  private AuthDao authDao;
 
   private final Set<Integer> completedGames = new HashSet<>();
 
   public WebSocketHandler(UserDao userDao, GameDao gameDao, AuthDao authDao) {
-    this.userDao = userDao;
-    this.gameDao = gameDao;
-    this.authDao = authDao;
+    this.userDao=userDao;
+    this.gameDao=gameDao;
+    this.authDao=authDao;
   }
 
 
@@ -135,6 +135,9 @@ public class WebSocketHandler {
     String username = authData.getUsername();
     GameData gameData = gameDao.getGameData(gameID);
     ChessGame game = gameData.getGame();
+    if(game.isGameOver()){
+      throw new DataAccessException(403,"Game is over");
+    }
     if(game ==null){
       throw new DataAccessException(402, "The game is over");
     }
@@ -155,12 +158,13 @@ public class WebSocketHandler {
             }
           }
           game.makeMove(move);
+
+          ChessGame.TeamColor currentTeamColor = game.getTeamTurn();
           if (game.isInCheckmate(ChessGame.TeamColor.WHITE) || game.isInCheckmate(ChessGame.TeamColor.BLACK)) {
             completedGames.add(gameID);
           }
-
-          gameDao.updateGameBoard(gameID,new GameData(gameID,whiteUsername,blackUsername,gameName,game));
-
+          GameData updatedGame = new GameData(gameID,whiteUsername,blackUsername,gameName,game);
+          gameDao.updateGameBoard(gameID,updatedGame);
           connectionManager.broadcastGame(gameID,new LoadGame(game.getBoard()));
         }else{
           throw new DataAccessException(402,"Move is invalid");
@@ -173,8 +177,6 @@ public class WebSocketHandler {
       String errorMsg = e.getMessage();
       session.getRemote().sendString(new Gson().toJson(new Error("Error"+errorMsg)));
     }
-
-
   }
 
   private void joinObserve(String msg, Session session, String authToken) throws IOException {

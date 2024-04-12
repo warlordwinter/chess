@@ -34,18 +34,18 @@ public class GameSqlDataAccess implements GameDao {
   public GameData getGameData(Integer gameID) throws DataAccessException {
     Connection conn = DatabaseManager.getConnection();
     try (var preparedStatement = conn.prepareStatement("SELECT gameID, whiteUsername,blackUsername,gameName,game FROM gameData WHERE gameID=?")) {
-      preparedStatement.setString(1, String.valueOf(gameID));
+      preparedStatement.setInt(1, gameID);
       try (var rs = preparedStatement.executeQuery()) {
         if (rs.next()) {
-          var gameID1 = rs.getString("gameID");
+          var gameID1 = rs.getInt("gameID");
           var whiteUsername = rs.getString("whiteUsername");
           var blackUsername = rs.getString("blackUsername");
           var gameName = rs.getString("gameName");
           var game = rs.getString("game");
           Gson gson = new Gson();
-          ChessGame finishedGame = gson.fromJson(game,ChessGame.class);
-
-          return new GameData(Integer.parseInt(gameID1),whiteUsername,blackUsername,gameName, finishedGame);
+//          ChessGame finishedGame = gson.fromJson(game,ChessGame.class);
+//          ChessBoard board = finishedGame.getBoard();
+          return new GameData(gameID1,whiteUsername,blackUsername,gameName, gson.fromJson(game,ChessGame.class));
         }
       }
     } catch (SQLException e) {

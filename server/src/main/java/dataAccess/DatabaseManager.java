@@ -1,8 +1,8 @@
 package dataAccess;
 
-import exception.ResponseException;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 
 public class DatabaseManager {
@@ -94,7 +94,7 @@ public class DatabaseManager {
               `whiteUsername` varchar(125),
               `blackUsername` varchar(125),
               `gameName` varchar(125) NOT NULL,
-              `game` text NOT NULL,
+              `game` LONGTEXT NOT NULL,
               PRIMARY KEY (`gameID`),
               INDEX (`gameName`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci

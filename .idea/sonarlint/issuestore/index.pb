@@ -19,3 +19,9 @@ a
 1src/main/java/dataAccess/DataAccessException.java,6\e\6eb5d3ed21c9df98a86e3c1b8de2bcdc464b3e0e
 p
 @src/main/java/webSocketMessages/userCommands/commands/Leave.java,d\e\dee124fb76001e376f0739689e9790955798b0e2
+P
+ src/main/java/server/Server.java,4\c\4c405aa622276106ee9ef8c3a2fbee4e76dcafbb
+]
+-src/main/java/dataAccess/DatabaseManager.java,c\a\ca8e537e22592e882e6b882e3dc07228f03d6960
+]
+-src/main/java/chess/InvalidMoveException.java,7\4\74dbc6a85b1a58bc483c83143b099c250c60bd7d

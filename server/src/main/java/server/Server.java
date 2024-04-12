@@ -21,7 +21,7 @@ public class Server {
     UserDao userDao = new UserSqlDataAccess();
     GameDao gameDao = new GameSqlDataAccess();
     AuthDao authDao = new AuthSqlDataAccess();
-    WebSocketHandler webSocketHandler = new WebSocketHandler(userDao,gameDao,authDao);
+    WebSocketHandler webSocketHandler = new WebSocketHandler(userDao, gameDao, authDao);
 
 
     public int run(int desiredPort) {
