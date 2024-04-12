@@ -15,3 +15,7 @@ Q
 !src/main/java/model/GameData.java,6\7\67153312f42cfc25e918e7241d99ff3d32f0ce01
 c
 3src/main/java/dataAccess/sql/GameSqlDataAccess.java,5\0\506c4586f4ccf86e101529cc2de75e67812c3bff
+a
+1src/main/java/dataAccess/DataAccessException.java,6\e\6eb5d3ed21c9df98a86e3c1b8de2bcdc464b3e0e
+p
+@src/main/java/webSocketMessages/userCommands/commands/Leave.java,d\e\dee124fb76001e376f0739689e9790955798b0e2

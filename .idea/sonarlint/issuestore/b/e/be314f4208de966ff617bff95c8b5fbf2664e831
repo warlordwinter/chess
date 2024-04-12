@@ -1,8 +1,10 @@
 
-	java:S1120"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8İ¡í˜í1J$58c0da1e-37c0-4990-befc-1944b88db6ac
+	java:S1125"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Û³Ğší1J$722a1faf-dd82-4fd1-a689-f78e0c09a322
+	java:S112D"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¿İĞší1J$cc161f6f-09c0-496a-a907-bf61966dbd37
 
-java:S3824"HReplace this "Map.containsKey()" with a call to "Map.computeIfAbsent()".(÷¾ßÿÿÿÿÿ8ÌñŞ˜í1J$dee13b14-ad4f-4d22-8a14-df9b7f1a85d1
-q
-java:S1172".Remove this unused method parameter "session".(ëŸÒ¥8äñŞ˜í1J$a688e2f5-5de2-4cfe-83a1-938263a7725e
-r	java:S106"+Replace this use of System.out by a logger.(ÖÚìûûÿÿÿÿ8æñŞ˜í1J$b91d9622-d209-4043-afd2-f56ce9bd6103
-m	java:S106A"+Replace this use of System.err by a logger.(£«ºç8ÿñŞ˜í1J$df62a5b0-a13b-486f-a7ad-5445f551e0bb
+java:S3824"HReplace this "Map.containsKey()" with a call to "Map.computeIfAbsent()".(÷¾ßÿÿÿÿÿ8ÌñŞ˜í1J$67dea104-a887-4761-b50f-56a07752447a
+r	java:S106"+Replace this use of System.out by a logger.(ıİ¢ üÿÿÿÿ8Êúãší1J$1285d9a2-3cdc-450b-a22c-f49d0a680385
+r	java:S106!"+Replace this use of System.out by a logger.(¤‹şııÿÿÿÿ8Ìúãší1J$216690cf-a1e7-4aae-8f48-811fe2cd1870
+r	java:S106G"+Replace this use of System.err by a logger.(¶•Ğ¡ıÿÿÿÿ8Çîší1J$66f36e5b-5332-4263-aac3-3c9ff5aa80ff
+r	java:S106J"+Replace this use of System.err by a logger.(™ñ‡üıÿÿÿÿ8¸…’ší1J$1b80b9fb-e869-4497-b8e7-6ade7cb5986c
+m	java:S106["+Replace this use of System.err by a logger.(£«ºç8º…’ší1J$7f49cb2b-6aef-4540-ae75-b22a59bcb016

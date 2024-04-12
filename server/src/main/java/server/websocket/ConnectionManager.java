@@ -21,17 +21,21 @@ public class ConnectionManager {
     gameSessions.put(authToken,session);
   }
 
-  void removeSessionFromGame(Integer gameID,String authToken, Session session){
-
-    if(!sessions.containsKey(gameID)){
+  void removeSessionFromGame(Integer gameID, String authToken) {
+    if (sessions.containsKey(gameID)) {
       Map<String, Session> gameSessions = sessions.get(gameID);
-      gameSessions.remove(authToken);
-    }else{
-      System.out.println("GameID doesn't exist");
+      if (gameSessions.containsKey(authToken)) {
+        gameSessions.remove(authToken);
+      } else {
+        System.out.println("Session with authToken " + authToken + " does not exist in game " + gameID);
+      }
+    } else {
+      System.out.println("Game with ID " + gameID + " does not exist");
     }
   }
 
-  Map<String,Session> getSessionsFOrGame(Integer gameID){return sessions.get(gameID);}
+
+  Map<String,Session> getSessionsForGame(Integer gameID){return sessions.get(gameID);}
 
 public void broadcast(Integer gameID, Notification notification, String exceptThisAuthToken, boolean sendToAll) throws IOException {
   Map<String, Session> gameSessions = sessions.get(gameID);

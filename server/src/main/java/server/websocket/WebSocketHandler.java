@@ -16,10 +16,7 @@ import webSocketMessages.serverMessages.messages.Error;
 import webSocketMessages.serverMessages.messages.LoadGame;
 import webSocketMessages.serverMessages.messages.Notification;
 import webSocketMessages.userCommands.UserGameCommand;
-import webSocketMessages.userCommands.commands.JoinObserver;
-import webSocketMessages.userCommands.commands.JoinPlayer;
-import webSocketMessages.userCommands.commands.MakeMove;
-import webSocketMessages.userCommands.commands.Resign;
+import webSocketMessages.userCommands.commands.*;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -68,7 +65,22 @@ public class WebSocketHandler {
   }
 
   private void leave(String msg, Session session, String authToken) {
+    Leave leave = new Gson().fromJson(msg, Leave.class);
+    try {
+      int gameID = leave.getGameID();
+      GameData gameData =gameDao.getGameData(gameID);
+      String bUsername = gameData.getBlackUsername();
+      String wUsername = gameData.getWhiteUsername();
+      String name = gameData.getGameName();
+      AuthData authData = authDao.getToken(authToken);
+      String username = authData.getUsername();
+      var message=String.format("%s has left the game", username);
+      Notification notification = new Notification(message);
+      connectionManager.broadcast(gameID,notification,authToken,false);
+      connectionManager.removeSessionFromGame(gameID,authToken);
+    } catch (Exception e) {
 
+    }
 
   }
 
