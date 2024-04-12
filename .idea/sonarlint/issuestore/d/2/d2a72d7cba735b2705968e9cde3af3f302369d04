@@ -1,0 +1,13 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ïØ¨¬úÿÿÿÿ
+o	java:S116"URename this field "auth_token" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŞøòÕÿÿÿÿÿ
+P
+java:S2387	":"commandType" is the name of a field in "UserGameCommand".(È¯ëÈ
+A
+java:S2160"+Override the "equals" method in this class.(š±©‰
+I
+java:S1068".Remove this unused "auth_token" private field.(ŞøòÕÿÿÿÿÿ
+E
+java:S1068"*Remove this unused "gameID" private field.(µ—ÒÙùÿÿÿÿ
+E
+java:S1068	"/Remove this unused "commandType" private field.(È¯ëÈ
