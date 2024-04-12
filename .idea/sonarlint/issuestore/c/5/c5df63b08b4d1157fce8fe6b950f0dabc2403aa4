@@ -1,16 +1,0 @@
-
-
-java:S1488"aImmediately return this expression instead of assigning it to the temporary variable "authToken".(ÍÔ™ÏJ$13dccb72-f209-485b-a943-f2e000befc45
-•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(İéõJ$e95038ae-0d9e-4983-a5c3-6b67c7f68851
-s
-java:S2589^"7Remove this expression which always evaluates to "true"(¡ææúJ$a148dc03-c931-4005-8e36-721b811da00f
-v	java:S125C"<This block of commented-out lines of code should be removed.(˜ï XJ$055e9443-ba16-47b1-a548-85bafb97f889
-d	java:S108a")Either remove or fill this block of code.(É®£J$b0a92962-ca9b-4f4b-b1d6-c68e848f37a2
-l
-java:S1128"+Remove this unused import 'model.UserData'.(ˆÆ‰òşÿÿÿÿJ$89b399db-4d40-422c-ba70-3653297d730d
-o
-java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿJ$a2abfdb8-c331-41e9-9475-1e2a60f7809f
-k
-java:S1128"*Remove this unused import 'java.util.Map'.(¼è½ÒşÿÿÿÿJ$30b806b5-781c-4230-b48d-204e877778de
-x
-java:S1128"<Remove this unused import 'dataAccess.DatabaseManager.user'.(‘¼§ÄJ$8d0f4ca2-3449-4b24-8741-76510085dc8c

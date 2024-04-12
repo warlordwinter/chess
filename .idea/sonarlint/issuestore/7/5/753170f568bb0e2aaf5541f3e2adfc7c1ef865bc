@@ -1,8 +1,0 @@
-
-E
-java:S1066P"/Merge this if statement with the enclosing one.(¤öô‘
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(İéõ
-N
-java:S1128"8Remove this unused import 'exception.ResponseException'.(‘ıïë
-`
-java:S1128"ERemove this unused import 'java.sql.Statement.RETURN_GENERATED_KEYS'.(¼áÛúÿÿÿÿ

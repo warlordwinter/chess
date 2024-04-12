@@ -1,15 +1,0 @@
-
-	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(δª ψJ$97d9e17e-e78a-4ef3-be17-f3d1ade3f751
-†	java:S112 "FDefine and throw a dedicated exception instead of using a generic one.(λκίϋÿÿÿÿJ$5e5e28ed-0a0c-4cdc-90cd-43d89d25fce8
-•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(δεσJ$e0136f23-53ed-4cc6-8d33-fe4fec75ec2b
-ƒ
-java:S2095A"HUse try-with-resources or close this "Connection" in a "finally" clause.(’™έnJ$88f68592-0466-405b-a29c-689a3202c740
-•	java:S115	"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ΩόπJ$27ccd92d-3c47-4ee5-875a-3eaaf7ac70d0
-•	java:S115
-"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(«ΕϊνJ$b54fdc13-79ae-4b52-a93a-a089f7fe5381
-•	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(…μιJ$772705f9-3aef-4f6e-8d12-5a86a4befd2c
-•	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ζ§ΟοJ$cdfb8b1b-4e99-48ca-b805-93fce00c34b8
-{
-java:S1118":Add a private constructor to hide the implicit public one.( ωΣ‹ÿÿÿÿÿJ$12eddadc-f190-45b5-a34a-6b31bce221f9
-t
-java:S1128"8Remove this unused import 'exception.ResponseException'.(‘ύολJ$369848a6-4d88-4e94-b2ac-22ed0a22b3d3

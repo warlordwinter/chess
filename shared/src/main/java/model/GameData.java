@@ -2,8 +2,6 @@ package model;
 
 import chess.ChessGame;
 
-import java.sql.Blob;
-
 public class GameData {
   final Integer gameID;
   String whiteUsername;
@@ -28,6 +26,13 @@ public class GameData {
     this.game.getBoard().resetBoard();
   }
 
+  public GameData(Integer gameID){
+    this.gameID = gameID;
+    this.whiteUsername=null;
+    this.blackUsername=null;
+    this.gameName=null;
+    this.game=null;
+  }
 
   public Integer getGameID() {
     return gameID;

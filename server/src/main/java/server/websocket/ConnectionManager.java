@@ -32,40 +32,25 @@ public class ConnectionManager {
 
   Map<String,Session> getSessionsFOrGame(Integer gameID){return sessions.get(gameID);}
 
-//  public void broadcastMessage(Integer gameID, String msg, String authToken){
-//    Map<String, Session> gameSessions = sessions.get(gameID);
-//    if (gameSessions != null) {
-//      for (Map.Entry<String, Session> entry : gameSessions.entrySet()) {
-//        String currentAuthToken = entry.getKey();
-//        Session currentSession = entry.getValue();
-//        if (!currentAuthToken.equals(authToken)) {
-//          try {
-//            currentSession.getRemote().sendString(new Gson().toJson(msg));
-//          } catch (Exception e) {
-//            // Handle the exception, e.g., log it
-//            System.err.println("Failed to send message to session: " + e.getMessage());
-//          }
-//        }
-//      }
-//    }
-//  }
-public void broadcast(Integer gameID, Notification notification, String exceptThisAuthToken) {
+public void broadcast(Integer gameID, Notification notification, String exceptThisAuthToken, boolean sendToAll) throws IOException {
   Map<String, Session> gameSessions = sessions.get(gameID);
   if (gameSessions != null) {
+    String notify = new Gson().toJson(notification);
     for (Map.Entry<String, Session> entry : gameSessions.entrySet()) {
       String authToken = entry.getKey();
       Session session = entry.getValue();
-      if (!authToken.equals(exceptThisAuthToken)) {
-        try {
-          session.getRemote().sendString(new Gson().toJson(notification));
-        } catch (IOException e) {
-          // Handle the exception, e.g., log it
-          System.err.println("Failed to send notification to session: " + e.getMessage());
-        }
+      if (!sendToAll && authToken.equals(exceptThisAuthToken)) {
+        continue; // Skip this session if it matches exceptThisAuthToken and sendToAll is false
+      }
+      try {
+        session.getRemote().sendString(notify);
+      } catch (IOException e) {
+        throw new RuntimeException(e);
       }
     }
   }
 }
+
 
   public void broadcastGame(Integer gameID, LoadGame loadGame) {
     Map<String, Session> gameSessions = sessions.get(gameID);

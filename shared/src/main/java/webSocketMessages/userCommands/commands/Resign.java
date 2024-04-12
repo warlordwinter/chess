@@ -6,10 +6,12 @@ public class Resign extends UserGameCommand {
   private String auth_token;
   private Integer gameID;
 
-  private CommandType commandType;
-  public Resign(String authToken, Integer gameID,CommandType commandType) {
+  public Resign(String authToken, Integer gameID) {
     super(authToken);
     this.gameID = gameID;
-    this.commandType = commandType;
+  }
+
+  public Integer getGameID() {
+    return gameID;
   }
 }

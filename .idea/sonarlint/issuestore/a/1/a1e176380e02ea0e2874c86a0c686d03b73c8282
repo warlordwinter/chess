@@ -1,18 +1,41 @@
 
-ˆ	java:S1123"FDefine and throw a dedicated exception instead of using a generic one.(¥†¬è8ã¦Ïÿì1J$1dffabd2-c499-4e4c-820b-9832622157c5
+ˆ	java:S1125"FDefine and throw a dedicated exception instead of using a generic one.(¥†¬è8ƒ§´˜í1J$5e67b090-1f2b-4d4a-8bcc-b0a39e7b6865
+	java:S112W"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8„§´˜í1J$139d02c4-ce2c-43f0-9f6d-ab4bcd87d4fa
 ‰
-java:S1192™"FDefine a constant instead of duplicating this literal "WHITE" 3 times.(ÌÉ–8ø¦Ïÿì1J$484c87c0-7063-44ee-a055-6ae1f44a7b4e
+java:S1192Ê"FDefine a constant instead of duplicating this literal "WHITE" 3 times.(ÌÉ–8ˆ§´˜í1J$a24ec446-e802-4b07-9a0b-da237c8608cc
+™
+java:S1192b"QDefine a constant instead of duplicating this literal "The game is over" 3 times.(ıµªˆıÿÿÿÿ8Áƒ™í1J$a846b1c1-5c8c-469e-888c-79965bc8e976
 ‰
-java:S11928"FDefine a constant instead of duplicating this literal "Error" 4 times.(¼³åŞ8ø¦Ïÿì1J$eaa370f2-d10f-4673-a326-1cb6076dbcb8
+java:S1192:"FDefine a constant instead of duplicating this literal "Error" 4 times.(¼³åŞ8ˆ§´˜í1J$30ad7e69-f906-489e-8a70-2b8d39b0dad8
+˜
+java:S1192x"PDefine a constant instead of duplicating this literal "Move is invalid" 3 times.(‹«¯°ıÿÿÿÿ8ˆ§´˜í1J$cc36a9b7-2af5-49ea-b81f-336048078873
 …
-java:S4973œ"<Strings and Boxed types should be compared using "equals()".(¯Æ¨¼ÿÿÿÿÿ8§Ïÿì1J$155ae14f-d0a7-46fe-a61c-215b54ee6311
+java:S4973Í"<Strings and Boxed types should be compared using "equals()".(¯Æ¨¼ÿÿÿÿÿ8§´˜í1J$4e882d0f-f7fc-4cd5-8828-b16f65caf304
 d
-java:S1116"Remove this empty statement.(Åñ­õşÿÿÿÿ8ı©Ïÿì1J$4f102254-3c50-4bbd-b9e6-55f82d75f73c
-r	java:S106/"+Replace this use of System.out by a logger.(Íìƒ‘úÿÿÿÿ8˜«Ïÿì1J$d3c75ab5-2b58-470d-850a-7fda7f5f3472
-›	java:S131;"YComplete cases by adding the missing enum constants or add a default case to this switch.(ÏÊÆ8Ã«Ïÿì1J$e28e62df-1c09-49c5-bea5-21c2e8991c68
+java:S1116"Remove this empty statement.(Åñ­õşÿÿÿÿ8×§´˜í1J$981c8bbd-5a9e-42af-86aa-5ebad14a0bc5
+r	java:S1061"+Replace this use of System.out by a logger.(Íìƒ‘úÿÿÿÿ8æ§´˜í1J$28776930-1ea4-4946-a598-5ce62ac9ae99
+›	java:S131="YComplete cases by adding the missing enum constants or add a default case to this switch.(ÏÊÆ8ñ§´˜í1J$e96cae03-b509-4665-956a-91d478d33baf
+…
+java:S1854J"=Remove this useless assignment to local variable "bUsername".(“ê²¥øÿÿÿÿ8ö§´˜í1J$76dfa507-883e-41e0-8eb5-734bbe69f5b2
+
+java:S1854K"=Remove this useless assignment to local variable "wUsername".(×ª—W8ö§´˜í1J$4816abbd-644e-4820-94b4-176c8b83ab98
+€
+java:S1854L"8Remove this useless assignment to local variable "name".(É•¹ôıÿÿÿÿ8ö§´˜í1J$933dc0f5-3f33-4b8e-8879-aef091cb7f04
+…
+java:S1172E"=Remove these unused method parameters "session", "authToken".(¯¸³Ğúÿÿÿÿ8ø§´˜í1J$1364953f-eb22-464e-8193-dcce72ffda68
+v
+java:S1481J".Remove this unused "bUsername" local variable.(“ê²¥øÿÿÿÿ8ü§´˜í1J$7fe43cd9-1bf1-45b5-9cc0-6d05ccb98ca9
+p
+java:S1481K".Remove this unused "wUsername" local variable.(×ª—W8ı§´˜í1J$28db2795-d75b-4c62-bff3-13975573bd3a
+q
+java:S1481L")Remove this unused "name" local variable.(É•¹ôıÿÿÿÿ8ı§´˜í1J$eb86ff15-1845-44fe-a3f5-2c787851148a
 h
-java:S3457U"%String contains no format specifiers.(¡½†‹8Â®Ïÿì1J$af53c641-6d5f-443d-a271-1576e87f5c9a
-„	java:S125¦"<This block of commented-out lines of code should be removed.(¢š¢µùÿÿÿÿ8Ñ®Ïÿì1J$e94768e8-83ee-490d-9458-4afa641c20cc
-	java:S125­"<This block of commented-out lines of code should be removed.(æä¦­8Ö®Ïÿì1J$15817ee4-9eb8-4e24-a1d4-9d9b8870b215
+java:S3457S"%String contains no format specifiers.(·›¤£8ÿ§´˜í1J$ea6c5468-dd6a-4fd3-b510-cbe6f26377bb
+•
+java:S3776\"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ú×¤—8…¨´˜í1J$939e9d96-96cc-455c-82c3-8fae279d54a1
+i
+java:S3457†"%String contains no format specifiers.(¡½†‹8¨´˜í1J$1ef64896-e8e5-48f1-ba73-b19bd2854004
+„	java:S125×"<This block of commented-out lines of code should be removed.(¢š¢µùÿÿÿÿ8š¨´˜í1J$f02f57b6-6a4f-486b-906d-7962ff47bd57
+	java:S125Ş"<This block of commented-out lines of code should be removed.(æä¦­8œ¨´˜í1J$ed82554a-c1ff-4370-ba71-1617a3ba343d
 s
-java:S1068""+Remove this unused "userDao" private field.(Í§«¬øÿÿÿÿ8å®Ïÿì1J$f0058dc5-45d2-4559-b099-3b2992d12090
+java:S1068""+Remove this unused "userDao" private field.(Í§«¬øÿÿÿÿ8 ¨´˜í1J$3ffa6b4a-c176-4731-8a78-541e856ba703

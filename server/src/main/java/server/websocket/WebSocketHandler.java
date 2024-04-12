@@ -1,9 +1,6 @@
 package server.websocket;
 
-import chess.ChessBoard;
-import chess.ChessGame;
-import chess.ChessMove;
-import chess.InvalidMoveException;
+import chess.*;
 import com.google.gson.Gson;
 import dataAccess.AuthDao;
 import dataAccess.DataAccessException;
@@ -22,9 +19,12 @@ import webSocketMessages.userCommands.UserGameCommand;
 import webSocketMessages.userCommands.commands.JoinObserver;
 import webSocketMessages.userCommands.commands.JoinPlayer;
 import webSocketMessages.userCommands.commands.MakeMove;
+import webSocketMessages.userCommands.commands.Resign;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 ;
 
@@ -34,6 +34,8 @@ public class WebSocketHandler {
   private final UserDao userDao;
   private final GameDao gameDao;
   private final AuthDao authDao;
+
+  private final Set<Integer> completedGames = new HashSet<>();
 
   public WebSocketHandler(UserDao userDao, GameDao gameDao, AuthDao authDao) {
     this.userDao = userDao;
@@ -60,21 +62,68 @@ public class WebSocketHandler {
       case JOIN_PLAYER -> join(msg,session,authToken);
       case JOIN_OBSERVER -> joinObserve(msg,session,authToken);
       case MAKE_MOVE -> makeMove(msg,session,authToken);
+      case RESIGN -> resign(msg,session,authToken);
     }
   }
 
-  private void makeMove(String msg, Session session, String authToken) throws IOException {
+  private void resign(String msg, Session session, String authToken) {
+    Resign resign = new Gson().fromJson(msg, Resign.class);
+    int gameID = resign.getGameID();
+    try {
+      GameData gameData =gameDao.getGameData(gameID);
+      String bUsername = gameData.getBlackUsername();
+      String wUsername = gameData.getWhiteUsername();
+      String name = gameData.getGameName();
+      GameData completedGame = new GameData(gameID);
+
+      gameDao.updateGameBoard(gameID,completedGame);
+
+      completedGames.add(gameID);
+
+      var message = String.format("A Player has resigned");
+      var notification = new Notification(message);
+      connectionManager.broadcast(gameID, notification, null,true);
+    } catch (DataAccessException | IOException e) {
+      throw new RuntimeException(e);
+    }
+
+  }
+
+  private void makeMove(String msg, Session session, String authToken) throws IOException, DataAccessException {
     MakeMove makeMove = new Gson().fromJson(msg, MakeMove.class);
     ChessMove move = makeMove.getChessMove();
     Integer gameID = makeMove.getGameId();
     try {
-      GameData gameData = gameDao.getGameData(gameID);
-      String gameName = gameData.getGameName();
-      String whiteUsername = gameData.getWhiteUsername();
-      String blackUsername = gameData.getBlackUsername();
+    if(completedGames.contains(gameID)){
+      throw new DataAccessException(402, "The game is over");
+    }
+
+    AuthData authData = authDao.getToken(authToken);
+    String username = authData.getUsername();
+    GameData gameData = gameDao.getGameData(gameID);
+    ChessGame game = gameData.getGame();
+    if(game ==null){
+      throw new DataAccessException(402, "The game is over");
+    }
+    String gameName = gameData.getGameName();
+    String whiteUsername = gameData.getWhiteUsername();
+    String blackUsername = gameData.getBlackUsername();
+    ChessPiece piece = game.getBoard().getPiece(move.getStartPosition());
+    ChessGame.TeamColor color = piece.getTeamColor();
+    if (game.isInCheckmate(ChessGame.TeamColor.WHITE) || game.isInCheckmate(ChessGame.TeamColor.BLACK)) {
+      throw new DataAccessException(402, "The game is over");
+    }
       Collection<ChessMove> moveCollection = gameData.getGame().validMoves(move.getStartPosition());
         if(moveCollection.contains(move)){
-          ChessGame game = gameData.getGame();
+          if(color == ChessGame.TeamColor.BLACK){
+            if (!gameData.getBlackUsername().equals(username)) {
+              throw new DataAccessException(402, "Move is invalid");
+            }
+          }else{
+            if (!gameData.getWhiteUsername().equals(username)) {
+              throw new DataAccessException(402, "Move is invalid");
+            }
+          }
           game.makeMove(move);
           gameDao.updateGameBoard(gameID,new GameData(gameID,whiteUsername,blackUsername,gameName,game));
 
@@ -84,7 +133,7 @@ public class WebSocketHandler {
         }
       var message = String.format("Player has made a move");
       var notification = new Notification(message);
-      connectionManager.broadcast(gameID, notification, authToken);
+      connectionManager.broadcast(gameID, notification, authToken,false);
     } catch (DataAccessException | InvalidMoveException e) {
       e.printStackTrace();
       String errorMsg = e.getMessage();
@@ -116,7 +165,7 @@ public class WebSocketHandler {
       var message = String.format("%s has join the game as an Observer", username);
       var notification = new Notification(message);
       //exclude the client
-      connectionManager.broadcast(gameID, notification, authToken);
+      connectionManager.broadcast(gameID, notification, authToken,false);
 
     } catch (DataAccessException | IOException e) {
       e.printStackTrace();
@@ -178,7 +227,7 @@ public class WebSocketHandler {
       var message=String.format("%s has join the game as %s", username, teamColor);
       var notification=new Notification(message);
       //exclude the client
-      connectionManager.broadcast(gameID,notification,authToken);
+      connectionManager.broadcast(gameID,notification,authToken,false);
     }
     catch (DataAccessException e) {
       e.printStackTrace();

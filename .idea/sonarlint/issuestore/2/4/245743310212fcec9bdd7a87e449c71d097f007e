@@ -1,9 +1,0 @@
-
-’
-java:S1450"QRemove the "ws" field and declare it as a local variable in the relevant methods.(™ËñÚüÿÿÿÿJ$4c18cfde-e5ca-421c-883e-364e4d4668ac
-f
-java:S3457H"%String contains no format specifiers.(¯ÀÜÖøÿÿÿÿJ$be8eb0bb-5330-440c-a495-a8b7c2b603c9
-’
-java:S3457}"Q%n should be used in place of \n to produce the platform-specific line separator.(‘ÃûÿÿÿÿJ$63d0e600-aed6-43c3-8014-4810580404aa
-g
-java:S1068"&Remove this unused "ws" private field.(™ËñÚüÿÿÿÿJ$12e4a161-8e2e-4f52-bea2-fb8aca8ca7b4
