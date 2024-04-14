@@ -69,6 +69,7 @@ public class GameSqlDataAccess implements GameDao {
   @Override
   public GameData createGame(String gameName) throws DataAccessException {
     Integer uniqueGameID =Math.abs(UUID.randomUUID().hashCode());
+    ChessGame game = new ChessGame();
     GameData newGame = new GameData(gameName,uniqueGameID);
     addGame(uniqueGameID,newGame);
     return newGame;

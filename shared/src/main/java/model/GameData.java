@@ -23,6 +23,7 @@ public class GameData {
     this.blackUsername=null;
     this.gameName=gameName;
     this.game=new ChessGame();
+
   }
 
   public GameData(Integer gameID){
@@ -36,6 +37,7 @@ public class GameData {
   public Integer getGameID() {
     return gameID;
   }
+
 
   public String getWhiteUsername() {
     return whiteUsername;
