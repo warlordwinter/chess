@@ -4,9 +4,9 @@ import chess.ChessGame;
 import chess.ChessMove;
 import com.google.gson.Gson;
 import exception.ResponseException;
+import webSocketMessages.serverMessages.ServerMessage;
 import webSocketMessages.userCommands.commands.*;
 
-import javax.management.Notification;
 import javax.websocket.*;
 import java.io.IOException;
 import java.net.URI;
@@ -29,10 +29,12 @@ public class WebSocketFacade extends Endpoint {
       this.session =(Session) container.connectToServer(this,socketURI);
       //deserialize the server message similar to websockethandler
 
+
+
       this.session.addMessageHandler(new MessageHandler.Whole<String>() {
         @Override
         public void onMessage(String message) {
-          Notification notification = new Gson().fromJson(message, Notification.class);
+          ServerMessage notification = new Gson().fromJson(message, ServerMessage.class);
           notificationHandler.notify(notification);
         }
       });

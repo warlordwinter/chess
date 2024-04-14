@@ -1,7 +1,8 @@
 package ui.websocket;
 
-import javax.management.Notification;
+import webSocketMessages.serverMessages.ServerMessage;
 
 public interface NotificationHandler {
-  void notify(Notification notification);
+  void notify(ServerMessage notification);
+   // create three methods and would take in a notification deserialize this inside server facade
 }

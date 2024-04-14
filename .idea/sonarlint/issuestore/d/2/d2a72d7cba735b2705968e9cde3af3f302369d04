@@ -1,6 +1,0 @@
-
-š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ïØ¨¬úÿÿÿÿJ$eb603081-05c1-4d9c-9e20-ef6c6a9ea47a
-•	java:S116"URename this field "auth_token" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÞøòÕÿÿÿÿÿJ$d8676404-fca3-4074-846f-49b7bba2dbb5
-g
-java:S2160"+Override the "equals" method in this class.(š±©‰J$a75f61ff-4108-4c87-ac6e-27fe626c680f
-•	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢æºÇüÿÿÿÿ8Ð±É™í1J$beccea4d-db07-4857-9c0a-2b1de917b3ee

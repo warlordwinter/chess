@@ -19,6 +19,7 @@ public class ChessGame {
     public ChessGame() {
         this.board = new ChessBoard();
         this.firstMove = true;
+        this.team = TeamColor.WHITE;
     }
 
     public TeamColor getTeam() {
@@ -111,6 +112,7 @@ public class ChessGame {
             setTeamTurn(TeamColor.WHITE);
             setFirstMove(false);
         }
+
         TeamColor teamColor = getTeamTurn();
 
 

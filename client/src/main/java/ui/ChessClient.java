@@ -11,6 +11,7 @@ import ui.requests.JoinGameRequest;
 import ui.response.ListGameResponse;
 import ui.websocket.NotificationHandler;
 import ui.websocket.WebSocketFacade;
+import webSocketMessages.serverMessages.ServerMessage;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -22,9 +23,18 @@ public class ChessClient {
   private final ServerFacade server;
   private String stringAuthToken;
   private State state = State.SIGNEDOUT;
-  private NotificationHandler notificationHandler;
+  private NotificationHandler notificationHandler = new NotificationHandler() {
+    @Override
+    public void notify(ServerMessage notification) {
+      // switch case goes here
+    }
+  };
   private WebSocketFacade ws;
   private Map<Integer,GameData> gameList = new HashMap<>();
+
+  private int currentGame;
+
+  private boolean gameMenu = false;
 
   static String[] headers = {"a","b","c","d","e","f","g","h"};
   static String[] columns = {"1","2","3","4","5","6","7","8"};
@@ -48,11 +58,36 @@ public class ChessClient {
         case "list" -> listGame();
         case "join" -> joinGame(params);
         case "observe" -> observe(params);
+        case "redraw" -> redraw();
+        case "leave" -> leave();
+        case "move" -> makeMove(params);
+//        case "resign" ->resign();
         default -> help();
       };
     }catch(ResponseException ex){
       return ex.getMessage();
     }
+  }
+
+  private String makeMove(String... params) {
+    String username = params[0];
+    String password = params[1];
+//    ChessPosition startingPosition = new ChessPosition();
+//    ChessPosition endingPosition = new ChessPosition();
+//    ChessMove chessMove = new ChessMove()''
+//    ws.makeMove(stringAuthToken,currentGame,chessMove);
+    return String.format("Move Complete Waiting for Opponent");
+  }
+
+  private String leave() {
+    ws.leave(stringAuthToken,currentGame);
+    gameMenu =false;
+    return String.format("Leaving the Game");
+  }
+
+  public String redraw() {
+    ChessBoardUI.buildBoard(new ChessBoard(),false,headers,columns);
+    return String.format("Here is the Board Redrawn");
   }
 
   public String observe(String[] params) throws ResponseException {
@@ -141,6 +176,8 @@ public class ChessClient {
     JoinGameRequest joinGameRequest = new JoinGameRequest(color,gameID);
     server.joinGames(stringAuthToken,joinGameRequest);
     ws = new WebSocketFacade(serverUrl,notificationHandler);
+    currentGame = gameData.getGameID();
+    gameMenu =true;
     if(color.equals("BLACK")){
       wsColor =ChessGame.TeamColor.BLACK;
     }else{
@@ -161,25 +198,43 @@ public class ChessClient {
   }
 
 
-  public String help(){
-    if (state == State.SIGNEDOUT) {
-      return """
-              - register <USERNAME> <PASSWORD> <EMAIL> - this is how you register
-              - login
-              - quit - playing chess
-              - help - all possible options
-              """;
+  public String help() {
+    if (gameMenu) {
+      return gamePlayMenu();
+    } else {
+      if (state == State.SIGNEDOUT) {
+        return """
+                    - register <USERNAME> <PASSWORD> <EMAIL> - this is how you register
+                    - login
+                    - quit - playing chess
+                    - help - all possible options
+                    """;
+      } else {
+        return """
+                    - create <NAME> - make a new game
+                    - join <ID> [WHITE|BLACK|<empty>] - join a game
+                    - list - list all of the games
+                    - logout - log out
+                    - observe <ID> - watch a game
+                    - quit - stop playing chess
+                    - help - get all the commands
+                    """;
+      }
     }
-    return  """
-                - create <NAME> - make a new game
-                - join <ID> [WHITE|BLACK|<empty>] -a game
-                - list - all of the games
-                - logout
-                - observe <ID> - Watch a game
-                - quit -stop playing chess
-                - help - get all the commands
-                """;
   }
+
+
+  public String gamePlayMenu() {
+    return """
+        - Help
+        - Redraw -redraw the board
+        - Leave
+        - Make Move - <initial cordinates> <ending cordinates> ex: move 1,2 2,3
+        - Resign
+        - Highlight Legal Moves
+        """;
+  }
+
 
   private void assertSignedIn() throws ResponseException {
     if (state == State.SIGNEDOUT) {
