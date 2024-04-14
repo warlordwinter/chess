@@ -8,7 +8,6 @@ import model.GameData;
 import model.UserData;
 import ui.requests.CreateGamesRequest;
 import ui.requests.JoinGameRequest;
-import ui.response.ListGameResponse;
 import ui.websocket.NotificationHandler;
 import ui.websocket.WebSocketFacade;
 import webSocketMessages.serverMessages.ServerMessage;

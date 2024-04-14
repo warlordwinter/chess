@@ -1,14 +1,12 @@
 
 
-java:S1192*"NDefine a constant instead of duplicating this literal "blackUsername" 3 times.(ğ†Ô‡ûÿÿÿÿJ$fe4196cf-0dd3-44eb-b2ba-22da1aeb2ee9
+java:S1192)"NDefine a constant instead of duplicating this literal "blackUsername" 3 times.(ğ†Ô‡ûÿÿÿÿJ$77d6c5a8-f1c5-4cf2-b7f3-53ad7beef2f9
 
-java:S1192)"NDefine a constant instead of duplicating this literal "whiteUsername" 3 times.(¦Ÿ©ùÿÿÿÿJ$67d76f52-d103-4dd2-928a-863abe40d449
-•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(İéõJ$a499082e-745c-46a9-8bbe-ac9bf2ae05eb
+java:S1192("NDefine a constant instead of duplicating this literal "whiteUsername" 3 times.(¦Ÿ©ùÿÿÿÿJ$cc73452c-1d20-4d4d-bc11-4470bacf0639
+•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(İéõJ$1549740c-c1ec-431c-a145-5a07c4f047f0
 s
-java:S25897"7Remove this expression which always evaluates to "true"(¡ææúJ$5df5f7b9-b5e5-4331-92a3-cf350e642c41
-|	java:S125/"<This block of commented-out lines of code should be removed.(è×†şÿÿÿÿJ$8f901c08-f7cc-44d8-9099-eb694fed7672
-d	java:S108:")Either remove or fill this block of code.(É®£J$25040221-e6c2-456c-b453-8b270b1b4b56
+java:S25896"7Remove this expression which always evaluates to "true"(¡ææúJ$d4d3d719-220c-4d26-9a58-568b2b39fc78
+|	java:S125."<This block of commented-out lines of code should be removed.(è×†şÿÿÿÿJ$ec3a83d6-c9f9-4bd8-85a7-73f5b653200f
+d	java:S1089")Either remove or fill this block of code.(É®£J$7409e45c-b1f1-4e10-9779-0d0382cfe5c8
 g
-java:S1168B"+Return an empty collection instead of null.(¥¹ïJ$1e816645-c496-4409-bddd-3751d0150c56
-`
-java:S2676G"Use the original value instead.(İÖ²ÿÿÿÿÿJ$ee518482-df34-478c-9911-a2f05f01a77f
+java:S1168A"+Return an empty collection instead of null.(¥¹ïJ$e8cbbb4f-6a39-477c-a2f1-693f69f721c3

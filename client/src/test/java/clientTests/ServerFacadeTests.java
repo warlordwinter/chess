@@ -14,7 +14,6 @@ import ui.ServerFacade;
 import ui.requests.CreateGamesRequest;
 import ui.requests.JoinGameRequest;
 import ui.response.JoinGameResponse;
-import ui.response.ListGameResponse;
 
 import static org.junit.jupiter.api.Assertions.fail;
 

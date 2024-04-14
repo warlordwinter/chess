@@ -1,11 +1,9 @@
 
-v
-java:S1488/"`Immediately return this expression instead of assigning it to the temporary variable "gameData".(ÉýÈ‘
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ñ‘Ší
-—
-java:S1186U"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(œ”ýž
-:
-java:S2676%"Use the original value instead.(ÝÖ²ÿÿÿÿÿ
-\
-java:S1126:"AReplace this if-then-else statement by a single return statement.(¢ßòÔûÿÿÿÿ
->	java:S108F")Either remove or fill this block of code.(Áõê‰
+œ
+java:S1488$"`Immediately return this expression instead of assigning it to the temporary variable "gameData".(ÉýÈ‘J$4b173f42-3322-4e67-81f4-452f3101bc57
+•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ñ‘ŠíJ$7aa38c80-a3ee-4179-bd04-471e3520250a
+½
+java:S1186J"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(œ”ýžJ$9f4f2981-0883-424b-a3df-cbf847b325f4
+‚
+java:S1126/"AReplace this if-then-else statement by a single return statement.(¢ßòÔûÿÿÿÿJ$d238ca79-7299-4243-8904-08e20563161a
+d	java:S108;")Either remove or fill this block of code.(Áõê‰J$befcbe80-8395-42ae-97a0-bd649445440c

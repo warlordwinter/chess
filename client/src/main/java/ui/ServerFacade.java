@@ -9,7 +9,6 @@ import model.UserData;
 import ui.requests.CreateGamesRequest;
 import ui.requests.JoinGameRequest;
 import ui.response.JoinGameResponse;
-import ui.response.ListGameResponse;
 
 import java.io.IOException;
 import java.io.InputStream;
