@@ -17,13 +17,20 @@ public class GameData {
     this.game=game;
   }
 
+  public GameData(String gameName,Integer gameID,ChessGame game){
+    this.gameID = gameID;
+    this.whiteUsername=null;
+    this.blackUsername=null;
+    this.gameName=gameName;
+    this.game=game;
+  }
+
   public GameData(String gameName,Integer gameID){
     this.gameID = gameID;
     this.whiteUsername=null;
     this.blackUsername=null;
     this.gameName=gameName;
     this.game=new ChessGame();
-
   }
 
   public GameData(Integer gameID){

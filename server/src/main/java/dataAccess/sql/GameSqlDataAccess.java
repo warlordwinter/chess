@@ -43,9 +43,9 @@ public class GameSqlDataAccess implements GameDao {
           var gameName = rs.getString("gameName");
           var game = rs.getString("game");
           Gson gson = new Gson();
-//          ChessGame finishedGame = gson.fromJson(game,ChessGame.class);
+          ChessGame finishedGame = gson.fromJson(game,ChessGame.class); //the error is that the finishedGame isn't being serialized correctly
 //          ChessBoard board = finishedGame.getBoard();
-          return new GameData(gameID1,whiteUsername,blackUsername,gameName, gson.fromJson(game,ChessGame.class));
+          return new GameData(gameID1,whiteUsername,blackUsername,gameName, finishedGame);
         }
       }
     } catch (SQLException e) {
@@ -70,7 +70,8 @@ public class GameSqlDataAccess implements GameDao {
   public GameData createGame(String gameName) throws DataAccessException {
     Integer uniqueGameID =Math.abs(UUID.randomUUID().hashCode());
     ChessGame game = new ChessGame();
-    GameData newGame = new GameData(gameName,uniqueGameID);
+    game.createChessBoard();
+    GameData newGame = new GameData(gameName,uniqueGameID,game);
     addGame(uniqueGameID,newGame);
     return newGame;
   }
@@ -110,6 +111,7 @@ public class GameSqlDataAccess implements GameDao {
       preparedStatement.setString(2, gameData.getWhiteUsername());
       preparedStatement.setString(3, gameData.getBlackUsername());
       preparedStatement.setString(4, gameData.getGameName());
+//      preparedStatement.setString(5, gameData.getGame()); I need to convert this to a string
       ChessGame game = gameData.getGame();
       String serializedGame = new Gson().toJson(game);
       preparedStatement.setString(5, serializedGame);
@@ -157,7 +159,8 @@ public class GameSqlDataAccess implements GameDao {
       } else {
         throw new DataAccessException(403, "Error: already taken");
       }
-      String serializedGame = new Gson().toJson(currentGame);
+
+      String serializedGame = new Gson().toJson(currentGame.getGame());
       Connection conn = DatabaseManager.getConnection();
       try (var preparedStatement = conn.prepareStatement(statement)) {
         preparedStatement.setString(1, currentGame.getBlackUsername());
@@ -178,7 +181,7 @@ public class GameSqlDataAccess implements GameDao {
       throw new DataAccessException(400, "Error: bad request");
     }
 
-    String serializedGame = new Gson().toJson(gameData);
+    String serializedGame = new Gson().toJson(gameData.getGame());
 
     try (Connection conn = DatabaseManager.getConnection();
          PreparedStatement preparedStatement = conn.prepareStatement(statement)) {

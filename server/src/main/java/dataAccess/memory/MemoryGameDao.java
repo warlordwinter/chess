@@ -1,5 +1,6 @@
 package dataAccess.memory;
 
+import chess.ChessGame;
 import dataAccess.AuthDao;
 import dataAccess.DataAccessException;
 import dataAccess.GameDao;
@@ -34,7 +35,9 @@ public class MemoryGameDao implements GameDao {
   @Override
   public GameData createGame(String gameName) {
     Integer uniqueGameID =Math.abs(UUID.randomUUID().hashCode());
-    GameData newGame = new GameData(gameName,uniqueGameID);
+    ChessGame game = new ChessGame();
+    game.createChessBoard();
+    GameData newGame = new GameData(gameName,uniqueGameID,game);
     addGame(uniqueGameID,newGame);
     return newGame;
   }

@@ -26,6 +26,11 @@ public class ChessGame {
         return team;
     }
 
+    public void createChessBoard(){
+        this.board =new ChessBoard();
+        this.board.resetBoard();
+    }
+
     public void setTeam(TeamColor team) {
         this.team=team;
     }
