@@ -1,6 +1,5 @@
 package dataAccess.memory;
 
-import chess.ChessGame;
 import dataAccess.AuthDao;
 import dataAccess.DataAccessException;
 import dataAccess.GameDao;
@@ -11,7 +10,6 @@ import requests.JoinGameRequest;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 public class MemoryGameDao implements GameDao {
 
@@ -32,15 +30,6 @@ public class MemoryGameDao implements GameDao {
     return gameDataBase.keySet();
   }
 
-  @Override
-  public GameData createGame(String gameName) {
-    Integer uniqueGameID =Math.abs(UUID.randomUUID().hashCode());
-    ChessGame game = new ChessGame();
-    game.createChessBoard();
-    GameData newGame = new GameData(gameName,uniqueGameID,game);
-    addGame(uniqueGameID,newGame);
-    return newGame;
-  }
 
   @Override
   public Collection<GameData> listGames() {

@@ -16,7 +16,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.UUID;
 
 public class GameSqlDataAccess implements GameDao {
 
@@ -64,16 +63,6 @@ public class GameSqlDataAccess implements GameDao {
   @Override
   public Collection getKeys() {
     return null;
-  }
-
-  @Override
-  public GameData createGame(String gameName) throws DataAccessException {
-    Integer uniqueGameID =Math.abs(UUID.randomUUID().hashCode());
-    ChessGame game = new ChessGame();
-    game.createChessBoard();
-    GameData newGame = new GameData(gameName,uniqueGameID,game);
-    addGame(uniqueGameID,newGame);
-    return newGame;
   }
 
   @Override

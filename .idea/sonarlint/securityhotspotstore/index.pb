@@ -43,3 +43,13 @@ b
 2src/main/java/server/handlers/RegisterHandler.java,f\6\f6f12af2b39fd703f4c0efae7f9c9fd5abaf4c39
 _
 /src/main/java/server/handlers/ClearHandler.java,a\b\ab0be82c92b70f4eac57000b8b76533d8075ee09
+b
+2src/main/java/dataAccess/memory/MemoryAuthDao.java,1\7\17f8959700d51e774f272f62ff13c7c067631bbf
+]
+-src/main/java/dataAccess/DatabaseManager.java,c\a\ca8e537e22592e882e6b882e3dc07228f03d6960
+e
+5src/main/java/server/websocket/ConnectionManager.java,b\e\be314f4208de966ff617bff95c8b5fbf2664e831
+Q
+!src/main/java/model/AuthData.java,7\b\7bcd29809a55527ca1777bd63a3d1e148c92b46e
+a
+1src/main/java/ui/requests/CreateGamesRequest.java,3\c\3c479e5136448e75e4ab85c991dd0c7a036eaf6a
