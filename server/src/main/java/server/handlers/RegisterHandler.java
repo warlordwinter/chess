@@ -20,7 +20,7 @@ public class RegisterHandler {
       res.status(200);
       return new Gson().toJson(authenticated);
     } catch(DataAccessException e){
-      res.status(e.StatusCode());
+      res.status(e.statusCode());
       RegisterResponse response = new RegisterResponse(e.getMessage());
       return new Gson().toJson(response);
     }

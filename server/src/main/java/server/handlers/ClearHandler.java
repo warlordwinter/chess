@@ -18,7 +18,7 @@ public class ClearHandler {
       return new Gson().toJson(clearService);
     } catch (DataAccessException e) {
       e.printStackTrace();  // Log the exception
-      res.status(e.StatusCode());
+      res.status(e.statusCode());
       return "{}";
     }
   }

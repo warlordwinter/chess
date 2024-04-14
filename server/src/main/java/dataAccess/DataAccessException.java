@@ -13,7 +13,7 @@ public class DataAccessException extends Exception{
     public int getStatusCode() {
         return code;
     }
-    public int StatusCode() {
+    public int statusCode() {
         return code;
     }
 

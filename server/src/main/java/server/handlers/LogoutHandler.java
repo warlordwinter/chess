@@ -19,7 +19,7 @@ public class LogoutHandler {
       return "{}";
     } catch (DataAccessException e){
       e.printStackTrace();
-      res.status(e.StatusCode());
+      res.status(e.statusCode());
       LoginResponse response =new LoginResponse(e.getMessage());
       return new Gson().toJson(response);
     }

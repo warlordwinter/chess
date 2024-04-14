@@ -24,7 +24,7 @@ public class GameHandler {
       res.status(200);
       return new Gson().toJson(response);
     }catch(DataAccessException e) {
-      res.status(e.StatusCode());
+      res.status(e.statusCode());
       CreateGameResponse response = new CreateGameResponse(e.getMessage());
       return new Gson().toJson(response);
     }
@@ -37,7 +37,7 @@ public class GameHandler {
       res.status(200);
       return new Gson().toJson(response);
     } catch(DataAccessException e){
-      res.status(e.StatusCode());
+      res.status(e.statusCode());
       ListGameResponse response = new ListGameResponse(e.getMessage());
       return new Gson().toJson(response);
     }
@@ -52,7 +52,7 @@ public class GameHandler {
       res.status(200);
       return "{}";
     }catch(DataAccessException e){
-      res.status(e.StatusCode());
+      res.status(e.statusCode());
       JoinGameResponse response = new JoinGameResponse(e.getMessage());
       return new Gson().toJson(response);
     }
