@@ -17,7 +17,7 @@ public class ChessGame {
 
     private boolean firstMove;
     public ChessGame() {
-        this.board = new ChessBoard();
+//        this.board = new ChessBoard();
         this.firstMove = true;
         this.team = TeamColor.WHITE;
     }
