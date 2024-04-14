@@ -10,8 +10,4 @@ public class CreateGamesRequest {
   public String getGameName() {
     return gameName;
   }
-
-  public void setGameName(String gameName) {
-    this.gameName = gameName;
-  }
 }

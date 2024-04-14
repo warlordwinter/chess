@@ -34,9 +34,6 @@ public class ConnectionManager {
     }
   }
 
-
-  Map<String,Session> getSessionsForGame(Integer gameID){return sessions.get(gameID);}
-
 public void broadcast(Integer gameID, Notification notification, String exceptThisAuthToken, boolean sendToAll) throws IOException {
   Map<String, Session> gameSessions = sessions.get(gameID);
   if (gameSessions != null) {

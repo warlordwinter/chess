@@ -1,3 +1,8 @@
 
-|	java:S125"<This block of commented-out lines of code should be removed.(ƒ÷›ËúÿÿÿÿJ$f6182e0f-3276-4e34-ad87-9737c3bc6379
-	java:S116"TRename this field "PieceType" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨ş±²J$40e18d81-2a35-47fa-828e-d07e125f9c06
+ƒ	java:S125"<This block of commented-out lines of code should be removed.(ƒ÷›Ëúÿÿÿÿ8§‹©÷í1J$e493c958-1657-4ef3-9f8f-84fda5b37574
+n
+java:S3010"&Remove this assignment of "pieceType".(«È‘ÿÿÿÿÿ8Ë˜ª÷í1J$20c2756e-c700-4be8-9f2f-f93c5e0eff6f
+}
+java:S2209"5Change this instance-reference to a static reference.(«È‘ÿÿÿÿÿ8Î˜ª÷í1J$f01c814f-37a6-4a8b-996f-9b8b09e91809
+}
+java:S2209&"5Change this instance-reference to a static reference.(¿¶Ëçûÿÿÿÿ8Ô˜ª÷í1J$60d5db6c-4a04-4b2b-a63a-3ccd45a46c82

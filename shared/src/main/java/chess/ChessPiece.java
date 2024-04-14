@@ -15,18 +15,18 @@ import java.util.Objects;
  */
 public class ChessPiece {
     private final ChessGame.TeamColor pieceColor;
-    static ChessPiece.PieceType PieceType;
+    static ChessPiece.PieceType pieceType;
 
     public ChessPiece(ChessGame.TeamColor pieceColor, ChessPiece.PieceType type) {
         this.pieceColor =pieceColor;
-        this.PieceType = type;
+        this.pieceType= type;
     }
 
     @Override
     public String toString() {
         return "ChessPiece{" +
                 "pieceColor=" + pieceColor +
-                ", PieceType=" + PieceType +
+                ", PieceType=" + pieceType +
                 '}';
     }
 
@@ -35,12 +35,12 @@ public class ChessPiece {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ChessPiece piece=(ChessPiece) o;
-        return pieceColor == piece.pieceColor && PieceType == piece.PieceType;
+        return pieceColor == piece.pieceColor && pieceType == piece.pieceType;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(pieceColor, PieceType);
+        return Objects.hash(pieceColor, pieceType);
     }
 
     /**
@@ -66,7 +66,7 @@ public class ChessPiece {
      * @return which type of chess piece this piece is
      */
     public PieceType getPieceType() {
-        return PieceType;
+        return pieceType;
     }
 
     /**
