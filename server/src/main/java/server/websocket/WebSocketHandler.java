@@ -69,12 +69,23 @@ public class WebSocketHandler {
     Leave leave = new Gson().fromJson(msg, Leave.class);
     try {
       int gameID = leave.getGameID();
+      AuthData authData = authDao.getToken(authToken);
+      String username = authData.getUsername();
       GameData gameData =gameDao.getGameData(gameID);
       String bUsername = gameData.getBlackUsername();
       String wUsername = gameData.getWhiteUsername();
+      if(bUsername.equals(username)){
+        bUsername = null;
+      }
+      if(wUsername.equals(username)){
+        wUsername=null;
+      }
+
+//      GameData updatedGame = new GameData(gameID,wUsername,bUsername, gameData.getGameName(),gameData.getGame());
+//      JoinGameRequest joinGameRequest = new JoinGameRequest()
+//      gameDao.updateGame();
+
       String name = gameData.getGameName();
-      AuthData authData = authDao.getToken(authToken);
-      String username = authData.getUsername();
       var message=String.format("Notification: %s has left the game", username);
       Notification notification = new Notification(message);
       connectionManager.broadcast(gameID,notification,authToken,false);
@@ -237,15 +248,15 @@ public class WebSocketHandler {
       }
 
       if(color =="WHITE"){
-        if(gameData.getWhiteUsername() ==null){
-          throw new DataAccessException(401,"Websocket was called before http");
-        }else{
-          if(gameData.getBlackUsername() ==null){
+        if(gameData.getWhiteUsername() ==null) {
+          throw new DataAccessException(401, "Websocket was called before http");
+        }
+      }
+
+
+      if(color.equals("BLACK") && gameData.getBlackUsername() ==null){
             throw new DataAccessException(401,"Websocket was called before http");
           }
-        }
-
-      }
 //     JoinGameRequest joinGameRequest = new JoinGameRequest(color,String.valueOf(gameID));
       if ((!username.equals(gameData.getWhiteUsername()) && color.equals("WHITE")) ||
               (!username.equals(gameData.getBlackUsername()) && color.equals("BLACK"))) {

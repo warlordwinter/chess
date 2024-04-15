@@ -1,16 +1,25 @@
 
+	java:S112s"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Öôœî1J$b79d5105-8a3e-4a00-808a-d801ead90301
+
+java:S1192¹"UDefine a constant instead of duplicating this literal ". Please start over." 3 times.(à®ŠŸşÿÿÿÿ8Ùôœî1J$1b645145-4857-43bb-bdf7-97cfbf20d609
 k
-java:S1604"(Make this anonymous inner class a lambda(ÇŞİë8ğ©¼‚î1J$e039566f-8301-4188-8382-03c9290a011d
-~	java:S125B"<This block of commented-out lines of code should be removed.(‰È¬¯8Ï«¼‚î1J$4689ccec-d509-4d88-8b99-674109fc424e
-h
-java:S3457p"%String contains no format specifiers.(ñ‘“Å8×«¼‚î1J$234f6c20-58cc-46df-bcb4-b4f925739fe7
+java:S1604!"(Make this anonymous inner class a lambda(ÇŞİë8Üôœî1J$3c8c338b-0e47-4c39-966e-0cd466016d76
+~	java:S125H"<This block of commented-out lines of code should be removed.(‰È¬¯8âõœî1J$7425fd2f-c1f8-4799-b8f3-d0be4b200db0
 m
-java:S3457v"%String contains no format specifiers.(òõÈöÿÿÿÿÿ8Ø«¼‚î1J$8f1d49ff-e27f-426e-b193-c04e2f684bad
+java:S3457W"%String contains no format specifiers.(ÛÌ¿æşÿÿÿÿ8çõœî1J$c5a2961b-db60-4115-ac3a-68c3978a5eac
 m
-java:S3457{"%String contains no format specifiers.(¾ÑÁôøÿÿÿÿ8Ù«¼‚î1J$d9102b2a-339d-4ef1-9159-a07d4b0daca7
+java:S3457j"%String contains no format specifiers.(¿±Ô·şÿÿÿÿ8îõœî1J$3f562947-555a-4511-bec1-0c32732d7654
+m
+java:S3457x"%String contains no format specifiers.(òõÈöÿÿÿÿÿ8ğõœî1J$56c40656-a72d-4d8b-aa04-43aee433e8c1
+m
+java:S3457}"%String contains no format specifiers.(¾ÑÁôøÿÿÿÿ8ñõœî1J$16b6836a-04d0-46ee-9dcf-7648f2c230cf
 n
-java:S3457"%String contains no format specifiers.(¯ÀÜÖøÿÿÿÿ8Ü«¼‚î1J$caabb5f2-2da8-44ee-8953-cb71e3b5a41e
+java:S3457‘"%String contains no format specifiers.(¯ÀÜÖøÿÿÿÿ8óõœî1J$54f1b327-9018-4590-83a2-7c44d03f025a
 š
-java:S3457Å"Q%n should be used in place of \n to produce the platform-specific line separator.(‘Ãûÿÿÿÿ8å«¼‚î1J$8b141fb2-7627-4d75-9644-c006ce7a725f
-„	java:S125Ş"<This block of commented-out lines of code should be removed.(ÖºÀ—úÿÿÿÿ8é«¼‚î1J$35fc3a7a-ce65-4dc7-9a0c-d4a06d6c13ef
-	java:S125â"<This block of commented-out lines of code should be removed.(éùÓ8é«¼‚î1J$99b434cb-e5cb-451a-a167-86684c576a41
+java:S3457Ç"Q%n should be used in place of \n to produce the platform-specific line separator.(‘Ãûÿÿÿÿ8ùõœî1J$2ff4f4a2-abfa-470a-8b1b-82afd8f8e0e6
+§
+java:S2142à"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ÚÍÜ½úÿÿÿÿ8ÿõœî1J$9317cafa-1262-4d74-bf26-dc5e2ce7795b
+n	java:S106á"+Replace this use of System.out by a logger.(äìÎÆ8€öœî1J$eb052bd2-2b53-4a9f-9a59-0063c79988fc
+	java:S125ä"<This block of commented-out lines of code should be removed.(éùÓ8öœî1J$9c178983-37ef-43e1-b572-035f4e5db5fc
+s	java:S106ñ"+Replace this use of System.out by a logger.(ÌñÒÜÿÿÿÿÿ8ƒöœî1J$6b2a6bfb-7193-48d5-aac7-b72e0ffde43f
+s	java:S106"+Replace this use of System.out by a logger.(ÌñÒÜÿÿÿÿÿ8…öœî1J$1f520d57-162a-4d18-bd42-a58da43b618f

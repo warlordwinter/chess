@@ -1,22 +1,22 @@
 
-	java:S112?"FDefine and throw a dedicated exception instead of using a generic one.(¼ÿ¾¹ÿÿÿÿÿ8îÈ‚î1J$991f620c-716b-4fcf-b4d9-c825fcf6db50
-	java:S112`"FDefine and throw a dedicated exception instead of using a generic one.(Ê“Åıÿÿÿÿ8òÈ‚î1J$9fc86f4a-32df-4c5f-b22d-c34b59aaa7d1
-	java:S112j"FDefine and throw a dedicated exception instead of using a generic one.(Ê“Åıÿÿÿÿ8ôÈ‚î1J$d4235d0d-c731-431d-852c-5d74d00be07a
-	java:S112t"FDefine and throw a dedicated exception instead of using a generic one.(Ê“Åıÿÿÿÿ8ôÈ‚î1J$7507e256-9496-4db4-bf2b-82b46fff1dd3
-	java:S112}"FDefine and throw a dedicated exception instead of using a generic one.(Ê“Åıÿÿÿÿ8ôÈ‚î1J$787bd830-7e13-4eb6-8f39-36c9f67aa8a6
-	java:S112‡"FDefine and throw a dedicated exception instead of using a generic one.(Ê“Åıÿÿÿÿ8ôÈ‚î1J$aafe1644-aad8-4a1f-a4c6-2e6df4d58dbc
+	java:S112B"FDefine and throw a dedicated exception instead of using a generic one.(¼ÿ¾¹ÿÿÿÿÿ8äËÂšî1J$e0d85d24-db59-4536-92d9-12119f290479
+	java:S112c"FDefine and throw a dedicated exception instead of using a generic one.(Ê“Åıÿÿÿÿ8éËÂšî1J$0627da86-731b-47b0-956f-4b47e6fc0648
+	java:S112m"FDefine and throw a dedicated exception instead of using a generic one.(Ê“Åıÿÿÿÿ8éËÂšî1J$412d5801-214e-4a00-b836-8aa1fb8d3ed8
+	java:S112w"FDefine and throw a dedicated exception instead of using a generic one.(Ê“Åıÿÿÿÿ8éËÂšî1J$66701b2c-1538-4cd9-bb6c-f28c1634ae7e
+	java:S112€"FDefine and throw a dedicated exception instead of using a generic one.(Ê“Åıÿÿÿÿ8éËÂšî1J$4c768d37-7e34-4982-bfda-d2d39e9569ba
+	java:S112Š"FDefine and throw a dedicated exception instead of using a generic one.(Ê“Åıÿÿÿÿ8éËÂšî1J$b3edad24-eae9-4268-94cf-2846e6cb6f30
 p
-java:S1604,"(Make this anonymous inner class a lambda(ÆÏ¹úÿÿÿÿ8ıÈ‚î1J$ae64e9f6-780a-43fc-ae38-35d397d40bf0
+java:S1604/"(Make this anonymous inner class a lambda(ÆÏ¹úÿÿÿÿ8ƒÌÂšî1J$70d1ad9f-0b07-4709-b273-53078685daec
 Ê
-java:S1186‘"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(òø¨œøÿÿÿÿ8¡È‚î1J$bf04a847-4d18-430b-b49e-b07988b61224
+java:S1186”"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(òø¨œøÿÿÿÿ8øÍÂšî1J$2436d630-be84-4815-95d3-920e46d94f86
 »
-java:S1130"yRemove the declaration of thrown exception 'exception.ResponseException', as it cannot be thrown from constructor's body.(İñ¸Y8¬È‚î1J$3cdcdbb1-ac1a-4e08-b312-009d410f2f77
-m	java:S106$"+Replace this use of System.out by a logger.(Êü¦ç8³È‚î1J$07bf9c89-eba9-4d8c-bbd2-7832fc0fd1bd
+java:S1130""yRemove the declaration of thrown exception 'exception.ResponseException', as it cannot be thrown from constructor's body.(İñ¸Y8ÉÎÂšî1J$016f8e49-5ff6-4ffd-a678-386a3196ec6a
+m	java:S106'"+Replace this use of System.out by a logger.(Êü¦ç8ğÎÂšî1J$92329cbf-ab33-4c51-b61d-62bbf8bc6137
 m
-java:S1905'"*Remove this unnecessary cast to "Session".(µÃµÔ8µÈ‚î1J$dc430dce-155e-4aa4-8655-ca7b60167dbb
-r	java:S1065"+Replace this use of System.out by a logger.(îÌÔÈıÿÿÿÿ8ÁÈ‚î1J$5d277926-f35b-456f-98d8-ebe72af5f130
-ƒ	java:S1258"<This block of commented-out lines of code should be removed.(à„¶‹ùÿÿÿÿ8ÂÈ‚î1J$be8264ef-3742-4ae3-ac0b-93283e1b7c33
-m	java:S106E"+Replace this use of System.out by a logger.(õšÙó8ÅÈ‚î1J$c225851e-418d-41ce-a19e-cb0f91a4fd1d
-m	java:S106K"+Replace this use of System.out by a logger.(›ØÃß8ÆÈ‚î1J$69124af3-a7cc-4bca-8b6e-d6aabadb41f2
-m	java:S106M"+Replace this use of System.out by a logger.(‘Ñ‹ú8ÆÈ‚î1J$fa36ff20-a9a8-4d2b-a07e-a904326db7ff
-m	java:S106W"+Replace this use of System.out by a logger.(ú“¢ş8ÈÈ‚î1J$fd747fa1-46a2-4774-adad-f1b9d8f43735
+java:S1905*"*Remove this unnecessary cast to "Session".(µÃµÔ8ùÎÂšî1J$a959d442-da66-4035-8dbf-dd6c758c8a23
+r	java:S1068"+Replace this use of System.out by a logger.(îÌÔÈıÿÿÿÿ8ÕÏÂšî1J$60c63ffd-e024-4e81-be71-3a15d01b57cf
+ƒ	java:S125;"<This block of commented-out lines of code should be removed.(à„¶‹ùÿÿÿÿ8×ÏÂšî1J$8b0c19e5-4d5e-492d-be25-90708aa5ae09
+m	java:S106H"+Replace this use of System.out by a logger.(õšÙó8åÏÂšî1J$0ea320e6-2352-4a48-ba85-697df2f9b9f3
+m	java:S106N"+Replace this use of System.out by a logger.(›ØÃß8øÏÂšî1J$d8b59f83-ac01-4f51-8495-09ea8b5c1066
+m	java:S106P"+Replace this use of System.out by a logger.(‘Ñ‹ú8ûÏÂšî1J$9dfaf130-4dd2-417e-9856-27876bd4a8b2
+m	java:S106Z"+Replace this use of System.out by a logger.(ú“¢ş8„ĞÂšî1J$04a3e1b1-19c7-417e-a923-023c9e77f8f3

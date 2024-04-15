@@ -1,29 +1,26 @@
 
 ¨
-java:S1104"eMake endingPositionsCollection a static final constant or non-public and provide accessors if needed.(ı¿¾Ç8‡ñ—î1J$b4bec585-8b5a-484b-a50b-6297981fcfe3
+java:S1104"eMake endingPositionsCollection a static final constant or non-public and provide accessors if needed.(ı¿¾Ç8î”è™î1J$7e6ae3e3-1321-4dd3-861f-d08ff00eacdc
 ‚
-java:S1444"?Make this "public static endingPositionsCollection" field final(ı¿¾Ç8Šñ—î1J$9f04f0af-3a26-42f4-a113-abb1d112d7e7
+java:S1444"?Make this "public static endingPositionsCollection" field final(ı¿¾Ç8ğ”è™î1J$1e117a30-a43a-4cc7-bf3a-f2439e64fd9e
 k
-java:S5411G"(Use a primitive boolean expression here.(Ÿ¯æµ8ñ—î1J$57d963ab-f5f9-446c-911b-bb9296423cf9
+java:S5411J"(Use a primitive boolean expression here.(Ÿ¯æµ8ó”è™î1J$6e438129-eee1-457b-ba7d-37b412f492ec
 œ
-java:S1450"YRemove the "chessMoves" field and declare it as a local variable in the relevant methods.(­„ôı8ôñ—î1J$7e303abb-5b60-4d5a-88e7-74ab06c11671
+java:S1450"YRemove the "chessMoves" field and declare it as a local variable in the relevant methods.(­„ôı8×é™î1J$032cd940-aae6-4d3b-adc0-5c998b07760a
 Ÿ
-java:S1450"\Remove the "chessPosition" field and declare it as a local variable in the relevant methods.(°ë‚Ğ8õñ—î1J$dccac658-6713-433a-8e49-9765b8840dd6
+java:S1450"\Remove the "chessPosition" field and declare it as a local variable in the relevant methods.(°ë‚Ğ8è™î1J$b20300f0-d1c9-4b29-8707-8bc17270f74c
 `
-java:S2386"Make this member "protected".(ı¿¾Ç8úñ—î1J$af6f29fd-cbe0-4c19-9e58-120c723b368f
-r	java:S106"+Replace this use of System.out by a logger.(ÌñÒÜÿÿÿÿÿ8–‘ñ—î1J$79d765b3-711b-4bad-9f4c-a8bd224af48f
-r	java:S106("+Replace this use of System.out by a logger.(ÌñÒÜÿÿÿÿÿ8 ‘ñ—î1J$cd7122d9-2e56-4d13-8305-e442386de7be
-ƒ	java:S125@"<This block of commented-out lines of code should be removed.(ŸÔÜ¶ûÿÿÿÿ8ª‘ñ—î1J$67ca572d-e2b1-43ba-ace7-46acb7ec20e5
+java:S2386"Make this member "protected".(ı¿¾Ç8šè™î1J$09f6a1fe-8a51-4324-9359-ba1247ef78cb
+r	java:S106"+Replace this use of System.out by a logger.(ÌñÒÜÿÿÿÿÿ8ßè™î1J$8ee0ac69-ec75-4d31-a879-aa59c98204cc
+r	java:S106("+Replace this use of System.out by a logger.(ÌñÒÜÿÿÿÿÿ8óè™î1J$6f7867db-f3ea-4193-955f-3e85884d920f
 j
-java:S1125G"'Remove the unnecessary boolean literal.(Ÿ¯æµ8°‘ñ—î1J$e5e69677-2487-461d-bbb7-73bcec53e744
+java:S1125J"'Remove the unnecessary boolean literal.(Ÿ¯æµ8’è™î1J$18f31796-f374-4265-9d92-33532e6ee6f9
 j
-java:S1125o"'Remove the unnecessary boolean literal.(Ÿ¯æµ8¼‘ñ—î1J$3fffc088-7ff0-4aa0-83b9-f2f688d9fdaa
+java:S1125r"'Remove the unnecessary boolean literal.(Ÿ¯æµ8Èè™î1J$79ea15d0-81bf-4d77-b1e6-06d5af188f8a
 r
-java:S1172†".Remove this unused method parameter "columns".(Ë—£–8Å‘ñ—î1J$60de8893-1fd6-4fa7-b58d-4666bd4a1443
+java:S1172‰".Remove this unused method parameter "columns".(Ë—£–8ñè™î1J$c7d44378-3aa2-464c-bb45-640ffdf6fbe2
 e
-java:S1116ˆ"Remove this empty statement.(©Ôğúøÿÿÿÿ8Ç‘ñ—î1J$3a651760-cd38-41d4-bbc1-e38a850b7c6e
-„	java:S125Õ"<This block of commented-out lines of code should be removed.(Ò•ŸÄøÿÿÿÿ8Ù‘ñ—î1J$8d9953b5-888d-4360-a901-9f0fca18c835
+java:S1116‹"Remove this empty statement.(©Ôğúøÿÿÿÿ8÷è™î1J$573197af-6cac-4cdd-aa49-d195f62197c4
+„	java:S125Ø"<This block of commented-out lines of code should be removed.(Ò•ŸÄøÿÿÿÿ8§Ÿè™î1J$a7e2190a-d925-4235-96b8-21d2bba9bc2e
 v
-java:S1068"3Remove this unused "reverseTheBoard" private field.(¼Ö­·8Ü‘ñ—î1J$e9a9f7ed-ebb0-40d9-b786-56980ee6cafd
-v
-java:S1144Ô"-Remove this unused private "setWhite" method.(£ÛÒÿÿÿÿÿ8Ş‘ñ—î1J$ec7b3f89-2ae2-4ff8-b9a4-f98be8cf6f31
+java:S1068"3Remove this unused "reverseTheBoard" private field.(¼Ö­·8ªŸè™î1J$3e1ea873-9c35-456a-a8c7-55561f57c704

@@ -30,7 +30,7 @@ public class ChessBoardUI {
 
     out.print(ERASE_SCREEN);
     chessPosition = new ChessPosition(1,2);
-    buildBoard(new ChessBoard(),false, headers, columns, color,chessPosition);
+    buildBoard(new ChessBoard(),false, headers, columns, color, chessPosition);
 
     out.print(SET_BG_COLOR_BLACK);
     out.print(SET_TEXT_COLOR_WHITE);
@@ -39,29 +39,32 @@ public class ChessBoardUI {
   public static void buildBoard(ChessBoard chessBoard, boolean reverseTheBoard, String[] headers, String[] column, ChessGame.TeamColor teamColor,ChessPosition chessPosition){
     var out=new PrintStream(System.out, true, StandardCharsets.UTF_8);
     chessBoard.resetBoard();
-    chessMoves = chessBoard.getPiece(chessPosition).pieceMoves(chessBoard,chessPosition);
-    for (ChessMove move: chessMoves){
-      endingPositionsCollection.add(move.getEndPosition());
+    if (chessPosition!= null) {
+      chessMoves=chessBoard.getPiece(chessPosition).pieceMoves(chessBoard, chessPosition);
+      for (ChessMove move: chessMoves){
+        endingPositionsCollection.add(move.getEndPosition());
+      }
     }
+    color = teamColor;
+    chessBoard.resetBoard(); //remember to remove this line later
 
-    if(teamColor == ChessGame.TeamColor.WHITE||teamColor==null) {
-      chessBoard.resetBoard(); //remember to remove this line later
-      drawHeaders(headers, out, reverseTheBoard);
+    if(color == ChessGame.TeamColor.WHITE||color==null) {
+      drawHeaders(headers, out, false);
       printRow(out, column, chessBoard, reverseTheBoard);
-      drawHeaders(headers, out, reverseTheBoard);
+      drawHeaders(headers, out, false);
     }
 
     setBlack(out); // reverse board
     out.println();
 
-    if(teamColor == ChessGame.TeamColor.BLACK||teamColor==null) {
-      drawHeaders(headers, out, reverseTheBoard);
+    if(color == ChessGame.TeamColor.BLACK||color==null) {
+      drawHeaders(headers, out, true);
       reverseTheBoard=true;
       printRow(out, column, chessBoard, reverseTheBoard);
-      drawHeaders(headers, out, reverseTheBoard);
+      drawHeaders(headers, out, true);
     }
 
-//    setWhite(out);
+    setWhite(out);
   }
 
   private static void drawHeaders(String[] headers, PrintStream out, Boolean reverseTheBoard) {

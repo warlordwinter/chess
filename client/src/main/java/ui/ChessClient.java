@@ -15,10 +15,15 @@ import ui.websocket.NotificationHandler;
 import ui.websocket.WebSocketFacade;
 import webSocketMessages.serverMessages.ServerMessage;
 
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+
+import static java.lang.Thread.sleep;
+import static ui.EscapeSequences.*;
 
 public class ChessClient {
   private final String serverUrl;
@@ -63,6 +68,7 @@ public class ChessClient {
         case "redraw" -> redraw();
         case "leave" -> leave();
         case "move" -> makeMove(params);
+        case "highlight" ->highlight(params);
 //        case "resign" ->resign();
         default -> help();
       };
@@ -71,28 +77,16 @@ public class ChessClient {
     }
   }
 
-  int getLetterColumn(String letter) {
-    switch (letter.toLowerCase()) {
-      case "a":
-        return 1;
-      case "b":
-        return 2;
-      case "c":
-        return 3;
-      case "d":
-        return 4;
-      case "e":
-        return 5;
-      case "f":
-        return 6;
-      case "g":
-        return 7;
-      case "h":
-        return 8;
-      default:
-        throw new IllegalArgumentException("Invalid column letter: " + letter+" Please start over");
-    }
+  private String highlight(String... params) {
+    int row = Integer.parseInt(params[0]);
+    int col = getLetterColumn(params[1],ws.getPlayerBoardColor());
+
+    ChessPosition chosenPiece = new ChessPosition(row,col);
+    ChessBoardUI.buildBoard(ws.getCurrentBoard(),false,headers,columns,ws.getPlayerBoardColor(),chosenPiece);
+
+    return String.format("Here are all the legal moves");
   }
+
 
   private String makeMove(String... params) {
     int row = Integer.parseInt(params[0]);
@@ -101,18 +95,26 @@ public class ChessClient {
     int row2 = Integer.parseInt(params[2]);
     String column2 = params[3];
 
-    int startingColumn = getLetterColumn(column);
-    int endingColumn = getLetterColumn(column2);
+    int startingColumn = getLetterColumn(column,ws.getPlayerBoardColor());
+    int endingColumn = getLetterColumn(column2,ws.getPlayerBoardColor());
 
     ChessPosition startingPosition = new ChessPosition(row,startingColumn);
     ChessPosition endingPosition = new ChessPosition(row2,endingColumn);
     ChessMove chessMove = new ChessMove(startingPosition,endingPosition,null);
     ws.makeMove(stringAuthToken,currentGame,chessMove);
 
-    return String.format("Move Complete Waiting for Opponent");
+    return String.format("Waiting for Opponent");
   }
 
   private String leave() {
+
+    JoinGameRequest joinGameRequest = new JoinGameRequest(null,String.valueOf(currentGame));
+    try {
+      server.joinGames(stringAuthToken,joinGameRequest);
+    } catch (ResponseException e) {
+      throw new RuntimeException(e);
+    }
+
     ws.leave(stringAuthToken,currentGame);
     gameMenu =false;
     return String.format("Leaving the Game");
@@ -219,9 +221,9 @@ public class ChessClient {
 
     ws.joinGame(stringAuthToken,gameData.getGameID(),wsColor);
 
-//    try{sleep(500);}catch(Exception e){
-//      System.out.println("Error: " + e.getMessage());
-//    }
+    try{sleep(10000);}catch(Exception e){
+      System.out.println("Error: " + e.getMessage());
+    }
 
 //    ChessBoardUI.buildBoard(new ChessBoard(),false,headers,columns);
 
@@ -236,6 +238,9 @@ public class ChessClient {
 
 
   public String help() {
+    var out = new PrintStream(System.out, true, StandardCharsets.UTF_8);
+    out.print(SET_BG_COLOR_WHITE);
+    out.print(SET_TEXT_COLOR_BLACK);
     if (gameMenu) {
       return gamePlayMenu();
     } else {
@@ -262,15 +267,18 @@ public class ChessClient {
 
 
   public String gamePlayMenu() {
+    var out = new PrintStream(System.out, true, StandardCharsets.UTF_8);
+    out.print(SET_BG_COLOR_WHITE);
+    out.print(SET_TEXT_COLOR_BLACK);
     return
         """
         - Welcome to the Game Interface
         - Help
         - Redraw -redraw the board
         - Leave
-        - move <initial cordinates> <ending cordinates> ex: move 2 a 3 a
+        - Move <initial cordinates> <ending cordinates> ex: move 2 a 3 a
         - Resign
-        - Highlight Legal Moves
+        - Highlight - Shows You Your Legal Moves <select piece> ex: highlight 2 a
         """;
   }
 
@@ -280,4 +288,55 @@ public class ChessClient {
       throw new ResponseException(400, "You must sign in");
     }
   }
+
+  int getLetterColumn(String letter, ChessGame.TeamColor color) {
+    switch (color) {
+      case WHITE:
+        switch (letter.toLowerCase()) {
+          case "h":
+            return 1;
+          case "g":
+            return 2;
+          case "f":
+            return 3;
+          case "e":
+            return 4;
+          case "d":
+            return 5;
+          case "c":
+            return 6;
+          case "b":
+            return 7;
+          case "a":
+            return 8;
+          default:
+            throw new IllegalArgumentException("Invalid column letter: " + letter + ". Please start over.");
+        }
+      case BLACK:
+        switch (letter.toLowerCase()) {
+          case "a":
+            return 1;
+          case "b":
+            return 2;
+          case "c":
+            return 3;
+          case "d":
+            return 4;
+          case "e":
+            return 5;
+          case "f":
+            return 6;
+          case "g":
+            return 7;
+          case "h":
+            return 8;
+          default:
+            throw new IllegalArgumentException("Invalid column letter: " + letter + ". Please start over.");
+        }
+      default:
+        throw new IllegalArgumentException("Invalid color: " + color + ". Please start over.");
+    }
+  }
+
+
 }
