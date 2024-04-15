@@ -1,0 +1,24 @@
+
+
+java:S1192,"FDefine a constant instead of duplicating this literal "/game" 4 times.(ê´ã£şÿÿÿÿ8”‰®øí1J$992a3f63-bb53-400a-9d06-1d8d17d549a7
+¡
+java:S4144:"YUpdate this method so that its implementation is not identical to "joinGames" on line 53.(‘‘Áãüÿÿÿÿ8È‰®øí1J$b28b89af-2d97-46b9-9324-c736bb553531
+‰
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(”É÷ùÿÿÿÿ8Í‰®øí1J$06cd0e5a-e244-4d59-ad7c-07a9daf974af
+ƒ
+java:S1075""ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8Ï‰®øí1J$389d3c04-7b80-4765-bda7-ca9d50244b22
+ƒ
+java:S1075'"ARefactor your code to get this URI from a customizable parameter.(ÛÌJ8Ğ‰®øí1J$118c4654-6ac7-456e-876d-f4fbf290af1e
+‰
+java:S1075,"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8Ñ‰®øí1J$851a53a0-ce84-4482-b6c4-b7558baef5ed
+‰
+java:S10751"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8Ò‰®øí1J$2da6eda0-8dcd-4eaf-aa12-679640955ba3
+‰
+java:S10756"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8Ó‰®øí1J$1442dc56-560e-48fb-bb01-7e406372cf90
+‰
+java:S1075;"ARefactor your code to get this URI from a customizable parameter.(ê´ã£şÿÿÿÿ8Ô‰®øí1J$169ace11-b921-4f14-8d94-7a89919f63cb
+s
+java:S1874A"+Remove this use of "URL"; it is deprecated.(¸íî—úÿÿÿÿ8Ø‰®øí1J$523d9db2-9d96-4637-85c8-9d80d234e294
+m	java:S106a"+Replace this use of System.err by a logger.(´­À›8ä‰®øí1J$c48d87a1-c9d6-490c-b0fb-97c4f7a9f15c
+r	java:S106d"+Replace this use of System.err by a logger.(†æµ·ıÿÿÿÿ8å‰®øí1J$418321d6-e19f-4427-a24e-47319d9fed86
+m	java:S106f"+Replace this use of System.err by a logger.(Ê¥È8æ‰®øí1J$c36b7574-bd6a-4c9d-ab8e-537e29fa08af

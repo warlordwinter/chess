@@ -1,0 +1,26 @@
+
+	java:S112>"FDefine and throw a dedicated exception instead of using a generic one.(ΌÿΎΉÿÿÿÿÿ8Β¤‹ών1J$db25f3af-895d-4779-8606-a043379c1868
+	java:S112^"FDefine and throw a dedicated exception instead of using a generic one.(Κ“Εύÿÿÿÿ8Γ¤‹ών1J$42d41a17-2f99-4496-a7f2-8e29506d2719
+	java:S112h"FDefine and throw a dedicated exception instead of using a generic one.(Κ“Εύÿÿÿÿ8Γ¤‹ών1J$d0fa8770-2496-4e4e-9013-b66403bba736
+	java:S112r"FDefine and throw a dedicated exception instead of using a generic one.(Κ“Εύÿÿÿÿ8Γ¤‹ών1J$1495f45c-8dc8-4140-a3af-7456d373b6a1
+	java:S112{"FDefine and throw a dedicated exception instead of using a generic one.(Κ“Εύÿÿÿÿ8Γ¤‹ών1J$d622ccc9-f89f-4dcf-8aa2-583e9b3238f8
+	java:S112…"FDefine and throw a dedicated exception instead of using a generic one.(Κ“Εύÿÿÿÿ8Γ¤‹ών1J$dd84d066-c423-4a87-b1c1-3adcd434e8de
+p
+java:S1604+"(Make this anonymous inner class a lambda(ΖΟΉϊÿÿÿÿ8Ε¤‹ών1J$2cd7b07a-dacd-4d25-893d-6b79b4be978e
+Κ
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ςψ¨ψÿÿÿÿ8Π¤‹ών1J$6fd93ac0-3164-4d86-8d46-f5ec5897921f
+»
+java:S1130"yRemove the declaration of thrown exception 'exception.ResponseException', as it cannot be thrown from constructor's body.(έρΈY8Υ¤‹ών1J$907c99ff-5cd9-4e94-9309-0da31f09dff5
+m	java:S106#"+Replace this use of System.out by a logger.(Κό¦η8Ψ¤‹ών1J$824af91a-312e-42b9-a19e-f4d7020fa275
+m
+java:S1905&"*Remove this unnecessary cast to "Session".(µΓµΤ8Ω¤‹ών1J$132cbe51-7b1f-4b45-8b15-32e677adeb5f
+r	java:S1064"+Replace this use of System.out by a logger.(ξΜΤΘύÿÿÿÿ8ί¤‹ών1J$46f4c4b1-caba-4d3a-befc-bfa2a06bc0ed
+ƒ	java:S1257"<This block of commented-out lines of code should be removed.(ΰ„¶‹ωÿÿÿÿ8α¤‹ών1J$3640cc89-5da2-40a8-b0e6-eae321f43f30
+m	java:S106D"+Replace this use of System.out by a logger.(υΩσ8β¤‹ών1J$61fa20f3-98ef-4595-989d-eb889b8129c6
+m	java:S106J"+Replace this use of System.out by a logger.(›ΨΓί8γ¤‹ών1J$554a63aa-ace2-4bcf-a85a-b58f456f6f17
+m	java:S106L"+Replace this use of System.out by a logger.(‘Ρ‹ϊ8γ¤‹ών1J$ce196f1b-107e-4b15-bc52-8df5ae01797e
+m	java:S106V"+Replace this use of System.out by a logger.(ϊ“Άώ8γ¤‹ών1J$e5687242-7973-4e13-83e2-fcdd248f7e17
+„
+java:S1854o"<Remove this useless assignment to local variable "makeMove".(°Αϊψÿÿÿÿ8ζ¤‹ών1J$769a2b54-e95d-42e6-8325-8e924978e202
+u
+java:S1481o"-Remove this unused "makeMove" local variable.(°Αϊψÿÿÿÿ8θ¤‹ών1J$99d99d03-9ee2-48a5-878b-d6e4826e4a82
