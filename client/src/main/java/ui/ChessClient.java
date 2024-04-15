@@ -86,7 +86,7 @@ public class ChessClient {
   }
 
   public String redraw() {
-    ChessBoardUI.buildBoard(new ChessBoard(),false,headers,columns);
+    ChessBoardUI.buildBoard(ws.getCurrentBoard(),false,headers,columns);
     return String.format("Here is the Board Redrawn");
   }
 
@@ -183,10 +183,14 @@ public class ChessClient {
     }else{
       wsColor = ChessGame.TeamColor.WHITE;
     }
+
     ws.joinGame(stringAuthToken,gameData.getGameID(),wsColor);
 
+//    try{sleep(500);}catch(Exception e){
+//      System.out.println("Error: " + e.getMessage());
+//    }
 
-    ChessBoardUI.buildBoard(new ChessBoard(),false,headers,columns);
+//    ChessBoardUI.buildBoard(new ChessBoard(),false,headers,columns);
 
     return String.format("You have joined game %s as the %suser",params[0],params[1]);
   }

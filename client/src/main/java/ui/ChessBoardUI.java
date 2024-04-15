@@ -31,7 +31,7 @@ public class ChessBoardUI {
     out.print(SET_TEXT_COLOR_WHITE);
   }
 
-  static void buildBoard(ChessBoard chessBoard, boolean reverseTheBoard, String[] headers, String[] column){
+  public static void buildBoard(ChessBoard chessBoard, boolean reverseTheBoard, String[] headers, String[] column){
     var out = new PrintStream(System.out, true, StandardCharsets.UTF_8);
     chessBoard.resetBoard(); //remember to remove this line later
     drawHeaders(headers,out,reverseTheBoard);

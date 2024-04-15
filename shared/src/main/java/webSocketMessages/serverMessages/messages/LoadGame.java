@@ -10,4 +10,7 @@ public class LoadGame extends ServerMessage {
     this.game = game;
   }
 
+  public ChessBoard getGame() {
+    return game;
+  }
 }

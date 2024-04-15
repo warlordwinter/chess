@@ -61,6 +61,7 @@ public class WebSocketHandler {
       case MAKE_MOVE -> makeMove(msg,session,authToken);
       case RESIGN -> resign(msg,session,authToken);
       case LEAVE -> leave(msg,session,authToken);
+      default -> session.getRemote().sendString(new Gson().toJson(new Error("Error: command type is invalid")));
     }
   }
 
@@ -74,7 +75,7 @@ public class WebSocketHandler {
       String name = gameData.getGameName();
       AuthData authData = authDao.getToken(authToken);
       String username = authData.getUsername();
-      var message=String.format("%s has left the game", username);
+      var message=String.format("Notification: %s has left the game", username);
       Notification notification = new Notification(message);
       connectionManager.broadcast(gameID,notification,authToken,false);
       connectionManager.removeSessionFromGame(gameID,authToken);
@@ -155,7 +156,7 @@ public class WebSocketHandler {
             }
           }
           game.makeMove(move);
-
+// add functionality for check and stalemate
           ChessGame.TeamColor currentTeamColor = game.getTeamTurn();
           if (game.isInCheckmate(ChessGame.TeamColor.WHITE) || game.isInCheckmate(ChessGame.TeamColor.BLACK)) {
             completedGames.add(gameID);
@@ -195,7 +196,7 @@ public class WebSocketHandler {
       session.getRemote().sendString(new Gson().toJson(loadGame));
 
       //session
-      var message = String.format("%s has join the game as an Observer", username);
+      var message = String.format("Notification: %s has join the game as an Observer", username);
       var notification = new Notification(message);
       //exclude the client
       connectionManager.broadcast(gameID, notification, authToken,false);
@@ -257,7 +258,7 @@ public class WebSocketHandler {
       session.getRemote().sendString(new Gson().toJson(loadGame));
 
       //session
-      var message=String.format("%s has join the game as %s", username, teamColor);
+      var message=String.format("Notification: %s has join the game as %s", username, teamColor);
       var notification=new Notification(message);
       //exclude the client
       connectionManager.broadcast(gameID,notification,authToken,false);
