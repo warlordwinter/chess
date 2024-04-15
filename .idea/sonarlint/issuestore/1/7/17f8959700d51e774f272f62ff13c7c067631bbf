@@ -1,8 +1,0 @@
-
-
-java:S1488"aImmediately return this expression instead of assigning it to the temporary variable "authToken".(ÍÔ™ÏJ$5e594a2f-18b5-4fd5-9282-8355e608068e
-™
-java:S1104"XMake authDataBase a static final constant or non-public and provide accessors if needed.(€­£™üÿÿÿÿJ$f21c03a8-b941-48c6-91d5-16f50b2f5312
-•	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ñ‘ŠíJ$2e2681a4-addc-41c2-b8df-3b87947026ae
-|
-java:S1126%"AReplace this if-then-else statement by a single return statement.(Â¡}J$99206253-89c7-4acd-a334-79b0189dbfd5

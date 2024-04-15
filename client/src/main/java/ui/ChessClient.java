@@ -119,7 +119,7 @@ public class ChessClient {
   }
 
   public String redraw() {
-    ChessBoardUI.buildBoard(ws.getCurrentBoard(),false,headers,columns);
+    ChessBoardUI.buildBoard(ws.getCurrentBoard(),false,headers,columns,ws.getPlayerBoardColor(),null);
     return String.format("Here is the Board Redrawn");
   }
 
@@ -130,7 +130,7 @@ public class ChessClient {
     JoinGameRequest joinGameRequest = new JoinGameRequest(null,gameID);
     server.observe(stringAuthToken,joinGameRequest);
     ws.joinObserver(stringAuthToken, gameData.getGameID());
-    ChessBoardUI.buildBoard(new ChessBoard(),false,headers,columns);
+    ChessBoardUI.buildBoard(new ChessBoard(),false,headers,columns,null,null);
     return String.format("You are now observing %s",gameID);
   }
 

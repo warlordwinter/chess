@@ -27,6 +27,9 @@ public class WebSocketFacade extends Endpoint {
   static String[] columns = {"1","2","3","4","5","6","7","8"};
   ChessGame.TeamColor playerBoardColor;
 
+  public ChessGame.TeamColor getPlayerBoardColor() {
+    return playerBoardColor;
+  }
 
   public WebSocketFacade(String serverUrl, NotificationHandler notificationHandler) throws ResponseException {
     try {
@@ -77,7 +80,7 @@ public class WebSocketFacade extends Endpoint {
       System.out.println("Error: Something is wrong with the board");
     }
 
-    ChessBoardUI.buildBoard(loadGame.getGame(),false,headers,columns);
+    ChessBoardUI.buildBoard(loadGame.getGame(),false,headers,columns,playerBoardColor,null);
     currentBoard = loadGame.getGame();
   }
 

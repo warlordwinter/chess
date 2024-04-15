@@ -1,12 +1,11 @@
 package ui;
 
-import chess.ChessBoard;
-import chess.ChessGame;
-import chess.ChessPiece;
-import chess.ChessPosition;
+import chess.*;
 
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import static ui.EscapeSequences.*;
 
@@ -19,32 +18,50 @@ public class ChessBoardUI {
   private static final int BOARD_SIZE_IN_SQUARES = 8;
   private static final int LINE_WIDTH_IN_CHARS = 1;
 
+  private static ChessGame.TeamColor color;
+  private static ChessPosition chessPosition;
+  private static Collection<ChessMove> chessMoves;
+  public static Collection<ChessPosition> endingPositionsCollection = new ArrayList<>();
+
+
 
   public static void main(String[] args) {
     var out = new PrintStream(System.out, true, StandardCharsets.UTF_8);
 
     out.print(ERASE_SCREEN);
-
-    buildBoard(new ChessBoard(),false, headers, columns);
+    chessPosition = new ChessPosition(1,2);
+    buildBoard(new ChessBoard(),false, headers, columns, color,chessPosition);
 
     out.print(SET_BG_COLOR_BLACK);
     out.print(SET_TEXT_COLOR_WHITE);
   }
 
-  public static void buildBoard(ChessBoard chessBoard, boolean reverseTheBoard, String[] headers, String[] column){
-    var out = new PrintStream(System.out, true, StandardCharsets.UTF_8);
-    chessBoard.resetBoard(); //remember to remove this line later
-    drawHeaders(headers,out,reverseTheBoard);
-    printRow(out,column,chessBoard,reverseTheBoard);
-    drawHeaders(headers,out,reverseTheBoard);
+  public static void buildBoard(ChessBoard chessBoard, boolean reverseTheBoard, String[] headers, String[] column, ChessGame.TeamColor teamColor,ChessPosition chessPosition){
+    var out=new PrintStream(System.out, true, StandardCharsets.UTF_8);
+    chessBoard.resetBoard();
+    chessMoves = chessBoard.getPiece(chessPosition).pieceMoves(chessBoard,chessPosition);
+    for (ChessMove move: chessMoves){
+      endingPositionsCollection.add(move.getEndPosition());
+    }
+
+    if(teamColor == ChessGame.TeamColor.WHITE||teamColor==null) {
+      chessBoard.resetBoard(); //remember to remove this line later
+      drawHeaders(headers, out, reverseTheBoard);
+      printRow(out, column, chessBoard, reverseTheBoard);
+      drawHeaders(headers, out, reverseTheBoard);
+    }
 
     setBlack(out); // reverse board
     out.println();
-    drawHeaders(headers,out,reverseTheBoard);
-    reverseTheBoard = true;
-    printRow(out,column,chessBoard,reverseTheBoard);
-    drawHeaders(headers,out,reverseTheBoard);
-    setWhite(out);
+
+    if(teamColor == ChessGame.TeamColor.BLACK||teamColor==null) {
+      drawHeaders(headers, out, reverseTheBoard);
+      reverseTheBoard=true;
+      printRow(out, column, chessBoard, reverseTheBoard);
+      drawHeaders(headers, out, reverseTheBoard);
+    }
+
+//    setWhite(out);
   }
 
   private static void drawHeaders(String[] headers, PrintStream out, Boolean reverseTheBoard) {
@@ -116,6 +133,10 @@ public class ChessBoardUI {
 
   private static void rowCreator(PrintStream out, String[] columns, ChessBoard chessBoard, int row, int col){
     tileColor(out,row,col);
+    ChessPosition currentLocation = new ChessPosition(row+1,col+1);;
+    if(endingPositionsCollection.contains(currentLocation)){
+      setGreen(out);
+    }
     out.print(EMPTY);
     ChessPosition chessPosition = new ChessPosition(row,col);
     ChessPiece currentPiece = chessBoard.getPieceForUI(chessPosition);
@@ -182,6 +203,11 @@ public class ChessBoardUI {
   private static void setBlack(PrintStream out) {
     out.print(SET_BG_COLOR_BLACK);
     out.print(SET_TEXT_COLOR_BLACK);
+  }
+
+  private static void setGreen(PrintStream out){
+    out.print(SET_TEXT_COLOR_GREEN);
+    out.print(SET_BG_COLOR_GREEN);
   }
   private static void setWhite(PrintStream out) {
 //    out.print(SET_BG_COLOR_WHITE);

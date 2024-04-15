@@ -1,10 +1,0 @@
-
-†	java:S1122"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚ÒéüÿÿÿÿJ$7b0a7bbf-a928-4256-978c-12c2e92b0712
-†	java:S112A"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚ÒéüÿÿÿÿJ$1414d6f1-a95a-4ec2-9fd1-9b384ad78be2
-‰
-java:S3824"HReplace this "Map.containsKey()" with a call to "Map.computeIfAbsent()".(÷¾ßžÿÿÿÿÿJ$f3eeef66-9d60-456b-8670-465c8fcf091e
-k	java:S106"+Replace this use of System.out by a logger.(ýÝ¢ üÿÿÿÿJ$ad5ca55d-4f45-4270-b077-eb98a9301f2e
-k	java:S106!"+Replace this use of System.out by a logger.(¤‹þýýÿÿÿÿJ$6f2f9ebf-5a54-4566-bd21-06fd0f56d71a
-k	java:S106D"+Replace this use of System.err by a logger.(¶•Ð¡ýÿÿÿÿJ$ea31400a-f4a1-4147-b7a9-bcac18fe6d33
-k	java:S106G"+Replace this use of System.err by a logger.(™ñ‡üýÿÿÿÿJ$a3f514ed-b8f1-46e8-98c4-24c72f6b717e
-f	java:S106X"+Replace this use of System.err by a logger.(£«ºçJ$9979cc7c-98bf-4726-94b6-8fc18848cb37
