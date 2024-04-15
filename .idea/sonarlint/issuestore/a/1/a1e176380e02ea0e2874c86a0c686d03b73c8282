@@ -1,50 +1,50 @@
 
-	java:S1122"FDefine and throw a dedicated exception instead of using a generic one.(¥†¬θ8ΐ©ύν1J$acb77030-4e93-467b-9add-713b22a322ba
+	java:S1122"FDefine and throw a dedicated exception instead of using a generic one.(¥†¬θ8ΐ©ύν1J$040bacd3-1eea-402b-9097-eddf756bc412
 ‰
-java:S1192μ"FDefine a constant instead of duplicating this literal "WHITE" 3 times.(ΜΙ–8Ξ©ύν1J$378c98ee-1f6d-47a5-8f5b-e4b278dfc9a3
+java:S1192μ"FDefine a constant instead of duplicating this literal "WHITE" 3 times.(ΜΙ–8Ξ©ύν1J$50ec65d1-7f8b-406a-be84-c2717b9a020e
 ™
-java:S1192d"QDefine a constant instead of duplicating this literal "The game is over" 3 times.(ύµªύÿÿÿÿ8Ξ©ύν1J$b0b97ee3-2ebb-4036-b6a3-69ba0d5b30e7
+java:S1192d"QDefine a constant instead of duplicating this literal "The game is over" 3 times.(ύµªύÿÿÿÿ8Ξ©ύν1J$4c3278e2-d846-47ad-ada1-59c851864324
 ‰
-java:S11927"FDefine a constant instead of duplicating this literal "Error" 4 times.(Ό³εή8Ξ©ύν1J$00d75281-7f3f-4400-925b-74230b6cc932
+java:S11927"FDefine a constant instead of duplicating this literal "Error" 4 times.(Ό³εή8Ξ©ύν1J$327ee15b-18a9-4ef0-8765-bdaa11908d85
 ™
-java:S1192—"PDefine a constant instead of duplicating this literal "Move is invalid" 3 times.(‹«―°ύÿÿÿÿ8Ξ©ύν1J$0d832387-7694-46cd-a95b-71dda58053b6
+java:S1192—"PDefine a constant instead of duplicating this literal "Move is invalid" 3 times.(‹«―°ύÿÿÿÿ8Ξ©ύν1J$94704ba6-9727-4ccb-99a4-a324d60cdc1b
 …
-java:S4973ο"<Strings and Boxed types should be compared using "equals()".(―Ζ¨Όÿÿÿÿÿ8ί©ύν1J$f94cd657-8bda-4b06-a947-d8bef0e7bf47
+java:S4973ο"<Strings and Boxed types should be compared using "equals()".(―Ζ¨Όÿÿÿÿÿ8ί©ύν1J$2dce3539-24b3-4e81-a817-476bf81d2556
 d
-java:S1116"Remove this empty statement.(Ερ­υώÿÿÿÿ8Β©ύν1J$255517a8-feea-4047-9d28-6b901fd44650
-r	java:S106."+Replace this use of System.out by a logger.(Νμƒ‘ϊÿÿÿÿ8ξ©ύν1J$b89cdf4a-2f0f-4b0b-96a6-39c3d24416ba
+java:S1116"Remove this empty statement.(Ερ­υώÿÿÿÿ8Β©ύν1J$eea887ce-a3af-4345-93d5-e8deb28593b1
+r	java:S106."+Replace this use of System.out by a logger.(Νμƒ‘ϊÿÿÿÿ8ξ©ύν1J$c34b367a-035b-476a-9b4d-d6a8b4896a1f
 …
-java:S1854I"=Remove this useless assignment to local variable "bUsername".(“κ²¥ψÿÿÿÿ8‚©ύν1J$843276e7-6cb5-4b1a-ad14-1d8ee59c0018
+java:S1854I"=Remove this useless assignment to local variable "bUsername".(“κ²¥ψÿÿÿÿ8‚©ύν1J$9b6a4429-babe-4b3d-9b1a-aa3374ac87a6
 
-java:S1854J"=Remove this useless assignment to local variable "wUsername".(Χª—W8‚©ύν1J$a82e543f-b479-46c9-89f9-7b2d61bad8f3
+java:S1854J"=Remove this useless assignment to local variable "wUsername".(Χª—W8‚©ύν1J$78ee4f8e-2d9b-4c82-8685-e70b1ed5a8b5
 €
-java:S1854K"8Remove this useless assignment to local variable "name".(Ι•Ήτύÿÿÿÿ8‚©ύν1J$ed181999-585f-4a4c-9190-886bb43c4643
+java:S1854K"8Remove this useless assignment to local variable "name".(Ι•Ήτύÿÿÿÿ8‚©ύν1J$f4baa916-eb3c-4b43-9f08-b68dab0bb694
 v
-java:S1172D".Remove this unused method parameter "session".(Φ‰·ªÿÿÿÿÿ8„©ύν1J$1de7b1b0-9362-4bdc-a6a0-3a96dbe5a819
+java:S1172D".Remove this unused method parameter "session".(Φ‰·ªÿÿÿÿÿ8„©ύν1J$80bdad3e-4bd6-4661-90f3-e69517c276cd
 v
-java:S1481I".Remove this unused "bUsername" local variable.(“κ²¥ψÿÿÿÿ8‡©ύν1J$4f436192-c2d1-4c6c-9075-74dee1c0de14
+java:S1481I".Remove this unused "bUsername" local variable.(“κ²¥ψÿÿÿÿ8‡©ύν1J$c96e6873-c62e-4009-a94a-380f07b024ec
 p
-java:S1481J".Remove this unused "wUsername" local variable.(Χª—W8‡©ύν1J$45617ca5-8bec-4e09-bee2-178bfa6f795f
+java:S1481J".Remove this unused "wUsername" local variable.(Χª—W8‡©ύν1J$afbe9552-d74c-4325-bffd-0e206febf6ad
 q
-java:S1481K")Remove this unused "name" local variable.(Ι•Ήτύÿÿÿÿ8‡©ύν1J$d8301868-528d-4906-a63a-14f4fddfc82f
-k	java:S108R")Either remove or fill this block of code.(”ύΎ8©ύν1J$79d781e6-aa6e-4486-ada5-588008deea21
+java:S1481K")Remove this unused "name" local variable.(Ι•Ήτύÿÿÿÿ8‡©ύν1J$2f9a3b15-ec58-4f42-a7e9-ecf260e160c4
+k	java:S108R")Either remove or fill this block of code.(”ύΎ8©ύν1J$a936154b-cda0-4ba5-8332-4f2f0afaafa0
 €
-java:S1854_"8Remove this useless assignment to local variable "name".(Ι•Ήτύÿÿÿÿ8‹©ύν1J$4cf10a76-cfd7-44ce-b231-5a44b13e6c9b
+java:S1854_"8Remove this useless assignment to local variable "name".(Ι•Ήτύÿÿÿÿ8‹©ύν1J$b5f4895f-0a7c-4c82-b763-6c7e74a57776
 v
-java:S1172X".Remove this unused method parameter "session".(Πισ’όÿÿÿÿ8‹©ύν1J$7ebf72e9-8de8-4b27-b279-f9ce00e33dda
+java:S1172X".Remove this unused method parameter "session".(Πισ’όÿÿÿÿ8‹©ύν1J$3a5425ed-25bf-4c7b-afa6-1b7c438fda15
 q
-java:S1481_")Remove this unused "name" local variable.(Ι•Ήτύÿÿÿÿ8©ύν1J$3bcddc77-3509-4dc6-bdfd-3960cb644eb5
+java:S1481_")Remove this unused "name" local variable.(Ι•Ήτύÿÿÿÿ8©ύν1J$e6caab82-3837-4099-91de-2bd6072471b9
 h
-java:S3457r"%String contains no format specifiers.(·›¤£8©ύν1J$1284cd80-34ac-48d8-8f8f-f23c08dffca3
+java:S3457r"%String contains no format specifiers.(·›¤£8©ύν1J$0b8c251e-37f2-45d2-a96f-60a6954ed18b
 •
-java:S3776~"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(ϊΧ¤—8‘©ύν1J$e11e5fc7-a58e-4606-bafa-5e1dfe1b9351
+java:S3776~"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(ϊΧ¤—8‘©ύν1J$8e4b25c9-9bb2-4f48-852d-8479def46375
 
-java:S1854 "DRemove this useless assignment to local variable "currentTeamColor".(πή­μϊÿÿÿÿ8’©ύν1J$42845bb4-1215-4996-a75e-bb3557a961f8
+java:S1854 "DRemove this useless assignment to local variable "currentTeamColor".(πή­μϊÿÿÿÿ8’©ύν1J$6ad53e3e-787d-4f29-8982-1416bf00e279
 ~
-java:S1481 "5Remove this unused "currentTeamColor" local variable.(πή­μϊÿÿÿÿ8©ύν1J$e89bcaa9-155c-4214-b666-25a043840c61
+java:S1481 "5Remove this unused "currentTeamColor" local variable.(πή­μϊÿÿÿÿ8©ύν1J$03ed995e-4d98-4940-921c-d4b3bc902e4a
 i
-java:S3457ª"%String contains no format specifiers.(΅½†‹8›©ύν1J$b9f7337c-2d64-47f2-9edb-096f5a78a4a8
-„	java:S125ω"<This block of commented-out lines of code should be removed.(ΆΆµωÿÿÿÿ8©©ύν1J$3d01b5c1-d708-4b56-9bdd-bd9518f15faa
-	java:S125€"<This block of commented-out lines of code should be removed.(ζδ¦­8«©ύν1J$1e0ac10d-e82f-4184-83b3-0b215de6ebbd
+java:S3457ª"%String contains no format specifiers.(΅½†‹8›©ύν1J$4b8d5dce-bc0d-4d69-8c02-c855a83bb3e2
+„	java:S125ω"<This block of commented-out lines of code should be removed.(ΆΆµωÿÿÿÿ8©©ύν1J$1598ab7f-29e6-4930-8187-4d6a15d9cd9d
+	java:S125€"<This block of commented-out lines of code should be removed.(ζδ¦­8«©ύν1J$c3cd9ad0-d407-447b-8ebb-e7427b483470
 s
-java:S1068"+Remove this unused "userDao" private field.(­¶ϊÿÿÿÿ8®©ύν1J$a70f4b66-aff8-4b40-a9c5-d76c3bf714d0
+java:S1068"+Remove this unused "userDao" private field.(­¶ϊÿÿÿÿ8®©ύν1J$248da636-fe00-447a-9c5e-93159270911f

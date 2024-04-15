@@ -2,6 +2,8 @@ package ui;
 
 import chess.ChessBoard;
 import chess.ChessGame;
+import chess.ChessMove;
+import chess.ChessPosition;
 import exception.ResponseException;
 import model.AuthData;
 import model.GameData;
@@ -69,13 +71,44 @@ public class ChessClient {
     }
   }
 
+  int getLetterColumn(String letter) {
+    switch (letter.toLowerCase()) {
+      case "a":
+        return 1;
+      case "b":
+        return 2;
+      case "c":
+        return 3;
+      case "d":
+        return 4;
+      case "e":
+        return 5;
+      case "f":
+        return 6;
+      case "g":
+        return 7;
+      case "h":
+        return 8;
+      default:
+        throw new IllegalArgumentException("Invalid column letter: " + letter+" Please start over");
+    }
+  }
+
   private String makeMove(String... params) {
-    String username = params[0];
-    String password = params[1];
-//    ChessPosition startingPosition = new ChessPosition();
-//    ChessPosition endingPosition = new ChessPosition();
-//    ChessMove chessMove = new ChessMove()''
-//    ws.makeMove(stringAuthToken,currentGame,chessMove);
+    int row = Integer.parseInt(params[0]);
+    String column = params[1];
+
+    int row2 = Integer.parseInt(params[2]);
+    String column2 = params[3];
+
+    int startingColumn = getLetterColumn(column);
+    int endingColumn = getLetterColumn(column2);
+
+    ChessPosition startingPosition = new ChessPosition(row,startingColumn);
+    ChessPosition endingPosition = new ChessPosition(row2,endingColumn);
+    ChessMove chessMove = new ChessMove(startingPosition,endingPosition,null);
+    ws.makeMove(stringAuthToken,currentGame,chessMove);
+
     return String.format("Move Complete Waiting for Opponent");
   }
 
@@ -229,11 +262,13 @@ public class ChessClient {
 
 
   public String gamePlayMenu() {
-    return """
+    return
+        """
+        - Welcome to the Game Interface
         - Help
         - Redraw -redraw the board
         - Leave
-        - Make Move - <initial cordinates> <ending cordinates> ex: move 1,2 2,3
+        - move <initial cordinates> <ending cordinates> ex: move 2 a 3 a
         - Resign
         - Highlight Legal Moves
         """;

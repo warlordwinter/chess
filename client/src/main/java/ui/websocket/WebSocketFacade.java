@@ -25,6 +25,7 @@ public class WebSocketFacade extends Endpoint {
   NotificationHandler notificationHandler;
   static String[] headers = {"a","b","c","d","e","f","g","h"};
   static String[] columns = {"1","2","3","4","5","6","7","8"};
+  ChessGame.TeamColor playerBoardColor;
 
 
   public WebSocketFacade(String serverUrl, NotificationHandler notificationHandler) throws ResponseException {
@@ -89,6 +90,7 @@ public class WebSocketFacade extends Endpoint {
   public void joinGame(String authToken, int gameID, ChessGame.TeamColor playerColor){
     try {
       JoinPlayer joinPlayer=new JoinPlayer(authToken, gameID, playerColor);
+      playerBoardColor =playerColor;
       this.session.getBasicRemote().sendText(new Gson().toJson(joinPlayer));
     }catch(IOException e){
       throw new RuntimeException(e.getMessage());
@@ -109,7 +111,7 @@ public class WebSocketFacade extends Endpoint {
   public void makeMove(String authToken, Integer gameID, ChessMove move){
     try {
       MakeMove makeMove = new MakeMove(authToken,gameID,move);
-      this.session.getBasicRemote().sendText(new Gson().toJson(move));
+      this.session.getBasicRemote().sendText(new Gson().toJson(makeMove));
     }catch(IOException e){
       throw new RuntimeException(e.getMessage());
     }

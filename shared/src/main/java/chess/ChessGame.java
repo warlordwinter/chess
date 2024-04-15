@@ -160,7 +160,7 @@ public class ChessGame {
         for (int i =0; i< 8; i++){
             for (int j = 0; j < 8; j++) {
                 king = board.getPiece(new ChessPosition(i+1,j+1));
-                if (king != null && king.getPieceType() == ChessPiece.pieceType.KING && king.getTeamColor().equals(teamColor)) {
+                if (king != null && king.getPieceType() == ChessPiece.PieceType.KING && king.getTeamColor().equals(teamColor)) {
                     ChessPosition kingsPosition = new ChessPosition(i+1, j+1);
                     Set<ChessPosition> enemyMoves=enemyMoveSet(teamColor, board);
                     return enemyMoves.contains(kingsPosition);

@@ -173,7 +173,7 @@ public class WebSocketHandler {
     } catch (DataAccessException | InvalidMoveException e) {
       e.printStackTrace();
       String errorMsg = e.getMessage();
-      session.getRemote().sendString(new Gson().toJson(new Error("Error"+errorMsg)));
+      session.getRemote().sendString(new Gson().toJson(new Error("Error"+errorMsg + "Is not a Valid Move. Press Enter")));
     }
   }
 

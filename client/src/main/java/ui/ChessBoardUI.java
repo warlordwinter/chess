@@ -158,6 +158,7 @@ public class ChessBoardUI {
       case PAWN:
         letter = "P";
         break;
+      default: letter = "";
     }
     if(color == ChessGame.TeamColor.BLACK){
       out.print(SET_TEXT_COLOR_RED);

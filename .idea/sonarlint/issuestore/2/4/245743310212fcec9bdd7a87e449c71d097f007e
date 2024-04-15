@@ -1,25 +1,16 @@
 
 k
-java:S1604"(Make this anonymous inner class a lambda(ÇŞİë8èÎåıí1J$716430eb-205f-441b-aed4-0bb90abc828b
-~	java:S125@"<This block of commented-out lines of code should be removed.(‰È¬¯8„Ïåıí1J$91bd57cc-fffa-46ea-9423-e216e0936801
-
-java:S1854J"<Remove this useless assignment to local variable "password".(×‘Çˆ8†Ïåıí1J$609a24fd-ce6a-4eb4-bc7e-1113f43f32a9
-
-java:S1854I"<Remove this useless assignment to local variable "username".(¼Ñœ’8†Ïåıí1J$47a44547-24f8-43d9-9062-963606d8fcdf
-p
-java:S1481I"-Remove this unused "username" local variable.(¼Ñœ’8‡Ïåıí1J$6d4c2088-5bc9-4a62-b84d-791cafc59416
-p
-java:S1481J"-Remove this unused "password" local variable.(×‘Çˆ8‡Ïåıí1J$fab27b4e-c0bb-4e26-bbaf-1ef1d1cb1a5f
-ƒ	java:S125K"<This block of commented-out lines of code should be removed.(ïÒÕŒûÿÿÿÿ8‡Ïåıí1J$dc737f77-5d3a-40e1-b382-5b6b42d42ef2
+java:S1604"(Make this anonymous inner class a lambda(ÇŞİë8ğ©¼‚î1J$e039566f-8301-4188-8382-03c9290a011d
+~	java:S125B"<This block of commented-out lines of code should be removed.(‰È¬¯8Ï«¼‚î1J$4689ccec-d509-4d88-8b99-674109fc424e
 h
-java:S3457O"%String contains no format specifiers.(ñ‘“Å8ˆÏåıí1J$d1a1d938-477d-4255-aa59-268f9228494c
+java:S3457p"%String contains no format specifiers.(ñ‘“Å8×«¼‚î1J$234f6c20-58cc-46df-bcb4-b4f925739fe7
 m
-java:S3457U"%String contains no format specifiers.(òõÈöÿÿÿÿÿ8ˆÏåıí1J$d39ba6d4-2e1b-474c-81ec-a50b19bc572f
+java:S3457v"%String contains no format specifiers.(òõÈöÿÿÿÿÿ8Ø«¼‚î1J$8f1d49ff-e27f-426e-b193-c04e2f684bad
 m
-java:S3457Z"%String contains no format specifiers.(¾ÑÁôøÿÿÿÿ8ŠÏåıí1J$9ff765bf-8e7d-4294-bc2e-63588e83676a
-m
-java:S3457n"%String contains no format specifiers.(¯ÀÜÖøÿÿÿÿ8ŒÏåıí1J$98ba71a3-c820-4376-805b-68362dfe8dfa
+java:S3457{"%String contains no format specifiers.(¾ÑÁôøÿÿÿÿ8Ù«¼‚î1J$d9102b2a-339d-4ef1-9159-a07d4b0daca7
+n
+java:S3457"%String contains no format specifiers.(¯ÀÜÖøÿÿÿÿ8Ü«¼‚î1J$caabb5f2-2da8-44ee-8953-cb71e3b5a41e
 š
-java:S3457¤"Q%n should be used in place of \n to produce the platform-specific line separator.(‘Ãûÿÿÿÿ8Ïåıí1J$cc7d6add-9512-440d-82fa-09e31dfbf6b7
-^	java:S125½"<This block of commented-out lines of code should be removed.(ÖºÀ—úÿÿÿÿ8…ıœşí1
-	java:S125Á"<This block of commented-out lines of code should be removed.(éùÓ8¾øéıí1J$a749087e-6d70-44ae-b512-ad264ad5b994
+java:S3457Å"Q%n should be used in place of \n to produce the platform-specific line separator.(‘Ãûÿÿÿÿ8å«¼‚î1J$8b141fb2-7627-4d75-9644-c006ce7a725f
+„	java:S125Ş"<This block of commented-out lines of code should be removed.(ÖºÀ—úÿÿÿÿ8é«¼‚î1J$35fc3a7a-ce65-4dc7-9a0c-d4a06d6c13ef
+	java:S125â"<This block of commented-out lines of code should be removed.(éùÓ8é«¼‚î1J$99b434cb-e5cb-451a-a167-86684c576a41
