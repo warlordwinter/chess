@@ -2,7 +2,6 @@ package chess.movement;
 
 import chess.*;
 
-import javax.swing.text.Position;
 import java.util.Collection;
 
 public class KingMovementRules extends ChessMovementRule{
@@ -55,4 +54,4 @@ public class KingMovementRules extends ChessMovementRule{
       }
     }
   }
-    }
+}
