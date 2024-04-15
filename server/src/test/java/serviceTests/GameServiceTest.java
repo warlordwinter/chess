@@ -4,7 +4,6 @@ import dataAccess.DataAccessException;
 import dataAccess.memory.MemoryAuthDao;
 import dataAccess.memory.MemoryGameDao;
 import dataAccess.memory.MemoryUserDao;
-import exception.ResponseException;
 import model.GameData;
 import model.UserData;
 import org.junit.jupiter.api.Assertions;
@@ -13,7 +12,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import requests.JoinGameRequest;
 import response.CreateGameResponse;
-import response.ListGameResponse;
+import sharedResponse.ListGameResponse;
 import service.GameService;
 import service.RegistrationService;
 

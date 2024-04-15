@@ -8,7 +8,7 @@ import model.GameData;
 import requests.JoinGameRequest;
 import response.CreateGameResponse;
 import response.JoinGameResponse;
-import response.ListGameResponse;
+import sharedResponse.ListGameResponse;
 import service.GameService;
 import spark.Request;
 import spark.Response;

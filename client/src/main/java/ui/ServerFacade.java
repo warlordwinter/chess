@@ -6,6 +6,7 @@ import exception.ResponseException;
 import model.AuthData;
 import model.GameData;
 import model.UserData;
+import sharedResponse.ListGameResponse;
 import ui.requests.CreateGamesRequest;
 import ui.requests.JoinGameRequest;
 import ui.response.JoinGameResponse;

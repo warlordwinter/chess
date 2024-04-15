@@ -1,4 +1,4 @@
-package response;
+package sharedResponse;
 
 import model.GameData;
 

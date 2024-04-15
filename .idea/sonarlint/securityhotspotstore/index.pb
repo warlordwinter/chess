@@ -53,3 +53,15 @@ Q
 !src/main/java/model/AuthData.java,7\b\7bcd29809a55527ca1777bd63a3d1e148c92b46e
 a
 1src/main/java/ui/requests/CreateGamesRequest.java,3\c\3c479e5136448e75e4ab85c991dd0c7a036eaf6a
+R
+"src/main/java/ui/ServerFacade.java,4\c\4cbb54bad5ecf934f35ad6a5c112c802bed0f07c
+Q
+!src/main/java/ui/ChessClient.java,2\4\245743310212fcec9bdd7a87e449c71d097f007e
+`
+0src/test/java/clientTests/ServerFacadeTests.java,c\f\cf4a6b87ba93a9e44d28b89d3437e0296868fa89
+M
+src/main/java/sharedResponses,5\b\5be9257f91e4f4ff3a2da33f8ddedb9b6e8766c4
+b
+2src/main/java/sharedResponse/ListGameResponse.java,1\6\1681559a9060f3a7b0c99a848d81894c98ee9cf1
+_
+/src/test/java/serviceTests/GameServiceTest.java,3\9\39232f3c1b3a31b225babf8336ceea05a580984a

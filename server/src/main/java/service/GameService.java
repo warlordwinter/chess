@@ -1,6 +1,5 @@
 package service;
 
-import com.google.gson.Gson;
 import dataAccess.AuthDao;
 import dataAccess.DataAccessException;
 import dataAccess.GameDao;
@@ -8,8 +7,7 @@ import exception.ResponseException;
 import model.GameData;
 import requests.JoinGameRequest;
 import response.CreateGameResponse;
-import response.ListGameResponse;
-import spark.Request;
+import sharedResponse.ListGameResponse;
 
 import java.util.Collection;
 

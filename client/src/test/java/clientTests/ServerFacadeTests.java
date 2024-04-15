@@ -10,6 +10,7 @@ import model.GameData;
 import model.UserData;
 import org.junit.jupiter.api.*;
 import server.Server;
+import sharedResponse.ListGameResponse;
 import ui.ServerFacade;
 import ui.requests.CreateGamesRequest;
 import ui.requests.JoinGameRequest;
