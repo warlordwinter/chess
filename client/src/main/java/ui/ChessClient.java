@@ -69,13 +69,19 @@ public class ChessClient {
         case "leave" -> leave();
         case "move" -> makeMove(params);
         case "highlight" ->highlight(params);
-//        case "resign" ->resign();
+        case "resign" ->resign();
         default -> help();
       };
     }catch(ResponseException ex){
       return ex.getMessage();
     }
   }
+
+  private String resign() {
+    ws.resign(stringAuthToken,currentGame);
+    return String.format("You have Resigned from the Game");
+  }
+
 
   private String highlight(String... params) {
     int row = Integer.parseInt(params[0]);
@@ -221,7 +227,7 @@ public class ChessClient {
 
     ws.joinGame(stringAuthToken,gameData.getGameID(),wsColor);
 
-    try{sleep(10000);}catch(Exception e){
+    try{sleep(1000);}catch(Exception e){
       System.out.println("Error: " + e.getMessage());
     }
 

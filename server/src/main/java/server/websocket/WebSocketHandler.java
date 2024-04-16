@@ -158,7 +158,7 @@ public class WebSocketHandler {
       Collection<ChessMove> moveCollection = gameData.getGame().validMoves(move.getStartPosition());
         if(moveCollection.contains(move)){
           if(color == ChessGame.TeamColor.BLACK){
-            if (!gameData.getBlackUsername().equals(username)) {
+            if (gameData.getBlackUsername() != null && !gameData.getBlackUsername().equals(username)) {
               throw new DataAccessException(402, "Move is invalid");
             }
           }else{
@@ -167,10 +167,11 @@ public class WebSocketHandler {
             }
           }
           game.makeMove(move);
-// add functionality for check and stalemate
+                                // add functionality for check and stalemate
           ChessGame.TeamColor currentTeamColor = game.getTeamTurn();
           if (game.isInCheckmate(ChessGame.TeamColor.WHITE) || game.isInCheckmate(ChessGame.TeamColor.BLACK)) {
             completedGames.add(gameID);
+            var message = String.format("CheckMate!");
           }
           GameData updatedGame = new GameData(gameID,whiteUsername,blackUsername,gameName,game);
           gameDao.updateGameBoard(gameID,updatedGame);
@@ -184,7 +185,7 @@ public class WebSocketHandler {
     } catch (DataAccessException | InvalidMoveException e) {
       e.printStackTrace();
       String errorMsg = e.getMessage();
-      session.getRemote().sendString(new Gson().toJson(new Error("Error"+errorMsg + "Is not a Valid Move. Press Enter")));
+      session.getRemote().sendString(new Gson().toJson(new Error("Error "+errorMsg + " Is not a Valid Move. Press Enter")));
     }
   }
 

@@ -29,7 +29,7 @@ public class ChessBoardUI {
     var out = new PrintStream(System.out, true, StandardCharsets.UTF_8);
 
     out.print(ERASE_SCREEN);
-    chessPosition = new ChessPosition(1,2);
+    chessPosition = new ChessPosition(1,7); //remove this later
     buildBoard(new ChessBoard(),false, headers, columns, color, chessPosition);
 
     out.print(SET_BG_COLOR_BLACK);
@@ -38,17 +38,22 @@ public class ChessBoardUI {
 
   public static void buildBoard(ChessBoard chessBoard, boolean reverseTheBoard, String[] headers, String[] column, ChessGame.TeamColor teamColor,ChessPosition chessPosition){
     var out=new PrintStream(System.out, true, StandardCharsets.UTF_8);
-    chessBoard.resetBoard();
+    if(chessMoves!=null){
+      chessMoves.clear();
+    }
+    if(endingPositionsCollection!= null) {
+      endingPositionsCollection.clear();
+    }
     if (chessPosition!= null) {
       chessMoves=chessBoard.getPiece(chessPosition).pieceMoves(chessBoard, chessPosition);
       for (ChessMove move: chessMoves){
         endingPositionsCollection.add(move.getEndPosition());
       }
+      endingPositionsCollection.add(chessPosition);
     }
     color = teamColor;
-    chessBoard.resetBoard(); //remember to remove this line later
 
-    if(color == ChessGame.TeamColor.WHITE||color==null) {
+    if(color == ChessGame.TeamColor.BLACK||color==null) {
       drawHeaders(headers, out, false);
       printRow(out, column, chessBoard, reverseTheBoard);
       drawHeaders(headers, out, false);
@@ -57,11 +62,11 @@ public class ChessBoardUI {
     setBlack(out); // reverse board
     out.println();
 
-    if(color == ChessGame.TeamColor.BLACK||color==null) {
-      drawHeaders(headers, out, true);
+    if(color == ChessGame.TeamColor.WHITE||color==null) {
+      drawHeaders(headers, out, false);
       reverseTheBoard=true;
       printRow(out, column, chessBoard, reverseTheBoard);
-      drawHeaders(headers, out, true);
+      drawHeaders(headers, out, false);
     }
 
     setWhite(out);
@@ -216,5 +221,6 @@ public class ChessBoardUI {
 //    out.print(SET_BG_COLOR_WHITE);
     out.print(SET_TEXT_COLOR_WHITE);
   }
+
 
 }
