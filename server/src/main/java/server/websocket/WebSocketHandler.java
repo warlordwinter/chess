@@ -69,11 +69,18 @@ public class WebSocketHandler {
     Leave leave = new Gson().fromJson(msg, Leave.class);
     try {
       int gameID = leave.getGameID();
+      String bUsername= null;
+      String wUsername = null;
       AuthData authData = authDao.getToken(authToken);
       String username = authData.getUsername();
       GameData gameData =gameDao.getGameData(gameID);
-      String bUsername = gameData.getBlackUsername();
-      String wUsername = gameData.getWhiteUsername();
+      if(gameData.getWhiteUsername()!=null){
+        wUsername = gameData.getWhiteUsername();
+      }
+      if(gameData.getBlackUsername()!= null){
+        bUsername = gameData.getBlackUsername();
+      }
+
       if(bUsername.equals(username)){
         bUsername = null;
       }
@@ -122,7 +129,7 @@ public class WebSocketHandler {
 
       completedGames.add(gameID);
 
-      var message = String.format("A Player has resigned");
+      var message = String.format("%s has resigned",name);
       var notification = new Notification(message);
       connectionManager.broadcast(gameID, notification, null,true);
     } catch (DataAccessException | IOException e) {
@@ -139,55 +146,80 @@ public class WebSocketHandler {
     ChessMove move = makeMove.getChessMove();
     Integer gameID = makeMove.getGameId();
     try {
-    if(completedGames.contains(gameID)){
-      throw new DataAccessException(402, "The game is over");
-    }
+      if (completedGames.contains(gameID)) {
+        throw new DataAccessException(402, "The game is over");
+      }
 
-    AuthData authData = authDao.getToken(authToken);
-    String username = authData.getUsername();
-    GameData gameData = gameDao.getGameData(gameID);
-    ChessGame game = gameData.getGame();
-    if(game ==null){
-      throw new DataAccessException(402, "The game is over");
-    }
-    String gameName = gameData.getGameName();
-    String whiteUsername = gameData.getWhiteUsername();
-    String blackUsername = gameData.getBlackUsername();
-    ChessPiece piece = game.getBoard().getPiece(move.getStartPosition());
-    ChessGame.TeamColor color = piece.getTeamColor();
+      AuthData authData = authDao.getToken(authToken);
+      String username = authData.getUsername();
+      GameData gameData = gameDao.getGameData(gameID);
+      ChessGame game = gameData.getGame();
+
+      if (game == null) {
+        throw new DataAccessException(402, "The game is over");
+      }
+
+      String gameName = gameData.getGameName();
+      String whiteUsername = gameData.getWhiteUsername();
+      String blackUsername = gameData.getBlackUsername();
+      ChessPiece piece = game.getBoard().getPiece(move.getStartPosition());
+      ChessGame.TeamColor color = piece.getTeamColor();
       Collection<ChessMove> moveCollection = gameData.getGame().validMoves(move.getStartPosition());
-        if(moveCollection.contains(move)){
-          if(color == ChessGame.TeamColor.BLACK){
-            if (gameData.getBlackUsername() != null && !gameData.getBlackUsername().equals(username)) {
-              throw new DataAccessException(402, "Move is invalid");
-            }
-          }else{
-            if (!gameData.getWhiteUsername().equals(username)) {
-              throw new DataAccessException(402, "Move is invalid");
-            }
-          }
-          game.makeMove(move);
-                                // add functionality for check and stalemate
-          ChessGame.TeamColor currentTeamColor = game.getTeamTurn();
-          if (game.isInCheckmate(ChessGame.TeamColor.WHITE) || game.isInCheckmate(ChessGame.TeamColor.BLACK)) {
-            completedGames.add(gameID);
-            var message = String.format("CheckMate!");
-          }
-          GameData updatedGame = new GameData(gameID,whiteUsername,blackUsername,gameName,game);
-          gameDao.updateGameBoard(gameID,updatedGame);
-          connectionManager.broadcastGame(gameID,new LoadGame(game.getBoard()));
-        }else{
-          throw new DataAccessException(402,"Move is invalid");
+
+      String opponentUsername = null; // Initialize opponentUsername
+      if (color == ChessGame.TeamColor.BLACK) {
+        opponentUsername = gameData.getWhiteUsername();
+      } else if (color == ChessGame.TeamColor.WHITE) {
+        opponentUsername = gameData.getBlackUsername();
+      }
+
+      if (moveCollection.contains(move)) {
+        if ((color == ChessGame.TeamColor.BLACK && !blackUsername.equals(username)) ||
+                (color == ChessGame.TeamColor.WHITE && !whiteUsername.equals(username))) {
+          throw new DataAccessException(402, "Move is invalid");
         }
-      var message = String.format("Player has made a move");
-      var notification = new Notification(message);
-      connectionManager.broadcast(gameID, notification, authToken,false);
+
+        game.makeMove(move);
+
+        // Broadcast check notifications
+        if (game.isInCheck(ChessGame.TeamColor.BLACK) || game.isInCheck(ChessGame.TeamColor.WHITE)) {
+          String message = String.format("Notification: %s is in check", opponentUsername);
+          Notification notification = new Notification(message);
+          connectionManager.broadcast(gameID, notification, authToken, true);
+        }
+
+        // Broadcast checkmate notifications
+        ChessGame.TeamColor currentTeamColor = game.getTeamTurn();
+        if ((game.isInCheckmate(ChessGame.TeamColor.WHITE) && color == ChessGame.TeamColor.BLACK)) {
+          completedGames.add(gameID);
+          String message = "CheckMate!";
+          Notification notification = new Notification(message);
+          connectionManager.broadcast(gameID, notification, authToken, true);
+        }
+        if ((game.isInCheckmate(ChessGame.TeamColor.BLACK) && color == ChessGame.TeamColor.WHITE)){
+          completedGames.add(gameID);
+          String message = "CheckMate!";
+          Notification notification = new Notification(message);
+          connectionManager.broadcast(gameID, notification, authToken, true);
+        }
+
+        // Update game data and broadcast move notification
+        GameData updatedGame = new GameData(gameID, whiteUsername, blackUsername, gameName, game);
+        gameDao.updateGameBoard(gameID, updatedGame);
+        connectionManager.broadcastGame(gameID, new LoadGame(game.getBoard()));
+
+        String message = String.format("Opponent: %s has made a move", username);
+        Notification notification = new Notification(message);
+        connectionManager.broadcast(gameID, notification, authToken, false);
+      } else {
+        throw new DataAccessException(402, "Move is invalid");
+      }
     } catch (DataAccessException | InvalidMoveException e) {
-      e.printStackTrace();
       String errorMsg = e.getMessage();
-      session.getRemote().sendString(new Gson().toJson(new Error("Error "+errorMsg + " Is not a Valid Move. Press Enter")));
+      session.getRemote().sendString(new Gson().toJson(new Error("Error " + errorMsg + " Is not a Valid Move. Press Enter")));
     }
   }
+
 
   private void joinObserve(String msg, Session session, String authToken) throws IOException {
     try {

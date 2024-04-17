@@ -147,4 +147,8 @@ public class WebSocketFacade extends Endpoint {
   @Override
   public void onOpen(Session session, EndpointConfig endpointConfig) {
   }
+
+  public void setCurrentBoard(ChessBoard currentBoard) {
+    this.currentBoard=currentBoard;
+  }
 }

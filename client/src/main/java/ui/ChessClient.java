@@ -1,6 +1,5 @@
 package ui;
 
-import chess.ChessBoard;
 import chess.ChessGame;
 import chess.ChessMove;
 import chess.ChessPosition;
@@ -23,7 +22,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static java.lang.Thread.sleep;
-import static ui.EscapeSequences.*;
+import static ui.EscapeSequences.SET_BG_COLOR_WHITE;
+import static ui.EscapeSequences.SET_TEXT_COLOR_BLACK;
 
 public class ChessClient {
   private final String serverUrl;
@@ -115,14 +115,15 @@ public class ChessClient {
   private String leave() {
 
     JoinGameRequest joinGameRequest = new JoinGameRequest(null,String.valueOf(currentGame));
-    try {
-      server.joinGames(stringAuthToken,joinGameRequest);
-    } catch (ResponseException e) {
-      throw new RuntimeException(e);
-    }
+//    try {
+//      server.joinGames(stringAuthToken,joinGameRequest);
+//    } catch (ResponseException e) {
+//      throw new RuntimeException(e);
+//    }
 
     ws.leave(stringAuthToken,currentGame);
     gameMenu =false;
+    ws.setCurrentBoard(null);
     return String.format("Leaving the Game");
   }
 
@@ -137,8 +138,14 @@ public class ChessClient {
     String gameID = String.valueOf(gameData.getGameID());
     JoinGameRequest joinGameRequest = new JoinGameRequest(null,gameID);
     server.observe(stringAuthToken,joinGameRequest);
+    ws = new WebSocketFacade(serverUrl,notificationHandler);
     ws.joinObserver(stringAuthToken, gameData.getGameID());
-    ChessBoardUI.buildBoard(new ChessBoard(),false,headers,columns,null,null);
+    gameMenu =true;
+
+    try{sleep(1000);}catch(Exception e){
+      System.out.println("Error: " + e.getMessage());
+    }
+//    ChessBoardUI.buildBoard(new ChessBoard(),false,headers,columns,null,null);
     return String.format("You are now observing %s",gameID);
   }
 
